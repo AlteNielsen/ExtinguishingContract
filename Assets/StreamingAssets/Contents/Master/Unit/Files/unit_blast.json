@@ -1,0 +1,59 @@
+{
+    "codename": "Blast",
+    "icon_path": "unit_icon_blast.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -4
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -5
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -8
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -7
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -6
+                }
+            ]
+        }
+    ]
+}

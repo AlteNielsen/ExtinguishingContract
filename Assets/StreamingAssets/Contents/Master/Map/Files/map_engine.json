@@ -1,0 +1,23 @@
+{
+    "codename": "Engine",
+    "normal_bg_path": "map_bg_normal_engine.png",
+    "burning_bg_path": "map_bg_burning_engine.png",
+    "view_path": "map_view_engine.png",
+    "data":
+    {
+        "width": 12,
+        "height": 8,
+        "layout":
+        [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+        ],
+        "fire_point": 47
+    }
+}

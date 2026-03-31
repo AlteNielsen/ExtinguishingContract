@@ -1,0 +1,75 @@
+{
+    "codename": "Hedgehog",
+    "icon_path": "unit_icon_hedgehog.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": -2,
+                    "relativeY": 2
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": 2
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": -1
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": -1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": 1
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": 1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": -1,
+                    "relativeY": 2
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 2
+                }
+            ]
+        }
+    ]
+}

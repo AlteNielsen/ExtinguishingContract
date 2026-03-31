@@ -1,0 +1,76 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+
+    <ui:Style src="project:/Assets/Scenes/Contract/ContractUSS.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+    
+    <ui:Template name="IndicatorButtons" src="project:/Assets/Scenes/Contract/IndicatorButtons.uxml" />
+    <ui:Template name="PreviewTemp" src="project:/Assets/Scenes/Contract/PreviewTemp.uxml" />
+
+    <ui:VisualElement class="black-sheet" />
+    <ui:VisualElement class="all-screen">
+        <ui:VisualElement class="left-screen half-screen">
+            <ui:VisualElement class="left-logo" />
+            <ui:VisualElement class="contract-select" >
+                <ui:Label class="serif-light-small" text="▼契約内容▼" />
+                <ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="道路破損" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="山間部" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="高温" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="乾季" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="強風" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="高低差" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="indicator-plank"  />
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="太陽嵐" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="火災旋風" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:Label class="serif-bold-small indicator-txt" text="密結合" />
+                        <ui:Instance template="IndicatorButtons" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="center-screen">
+            <ui:VisualElement class="center-line bg-white" />
+        </ui:VisualElement>
+        <ui:VisualElement class="right-screen half-screen">
+            <ui:VisualElement class="right-logo" />
+            <ui:VisualElement>
+                <ui:VisualElement  >
+                    <ui:Label class="serif-bold-mid" text="消火指標プレビュー" />
+                    <ui:VisualElement class="bg-white underbar-prev" />
+                </ui:VisualElement>
+                <ui:Instance template="PreviewTemp" />
+                <ui:Instance template="PreviewTemp" />
+                <ui:Instance template="PreviewTemp" />
+                <ui:Instance template="PreviewTemp" />
+                <ui:Instance template="PreviewTemp" />
+                <ui:Instance template="PreviewTemp" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

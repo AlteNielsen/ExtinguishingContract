@@ -1,0 +1,59 @@
+{
+    "codename": "Line",
+    "icon_path": "unit_icon_line.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 0
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": 0
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -3,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 3,
+                    "relativeY": 0
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -4,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 4,
+                    "relativeY": 0
+                }
+            ]
+        }
+    ]
+}

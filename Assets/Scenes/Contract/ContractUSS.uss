@@ -1,0 +1,81 @@
+.all-screen{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    flex-direction: row;
+    top: 5%;
+}
+
+.half-screen{
+    width: 47.5%;
+    height: 100%;
+}
+
+.center-screen{
+    width: 5%;
+    height: 100%;
+}
+
+.center-line{
+    width: 2px;
+    height: 100%;
+    left: 50%;
+}
+
+.left-logo{
+    width:85%;
+    height: 150px;
+    background-image: url('project:/Assets/Textures/logo_contract_left.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+.contract-select{
+    width: 85%;
+    height: 70%;
+    left: 10%;
+    top: 40px;
+}
+
+.indicator-plank{
+    height: 30px;
+}
+
+.indicator-txt{
+    width: 130px;
+}
+
+.buttons{
+    flex-direction: row;
+    top: 7px;
+}
+
+.button{
+    width: 35px;
+    height: 35px;
+    margin-left: 3px;
+}
+
+.button-txt{
+    position: absolute;
+    top: -27%;
+    left: 7%;
+}
+
+.right-logo{
+    width:100%;
+    height: 150px;
+    top: -10px;
+    background-image: url('project:/Assets/Textures/logo_contract_right.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+
+.underbar-prev{
+    width: 275px;
+    height: 1px;
+}
+
+.prev-indicator-txt{
+    width: 225px;
+}
