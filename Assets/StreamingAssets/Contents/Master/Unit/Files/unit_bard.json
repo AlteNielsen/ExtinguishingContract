@@ -1,0 +1,75 @@
+{
+    "codename": "Bard",
+    "icon_path": "unit_icon_bard.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -1
+                },
+                {
+                    "relativeX": -1,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": 1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -1
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": 1
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": -2,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": 2
+                }
+            ]
+        }
+    ]
+}

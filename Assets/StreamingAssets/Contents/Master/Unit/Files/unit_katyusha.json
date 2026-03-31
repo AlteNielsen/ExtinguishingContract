@@ -1,0 +1,71 @@
+{
+    "codename": "Katyusha",
+    "icon_path": "unit_icon_katyusha.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -4
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -4
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -3
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -2
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": -3
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -3,
+                    "relativeY": -4
+                },
+                {
+                    "relativeX": 3,
+                    "relativeY": -4
+                },
+                {
+                    "relativeX": -3,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 3,
+                    "relativeY": -2
+                }
+            ]
+        }
+    ]
+}

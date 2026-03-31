@@ -1,0 +1,13 @@
+{
+    "unit_base_pressure": 10,
+    "unit_lv_increase_ratio": 2,
+    "usable_pressure": 300,
+    "spread_speed": 1,
+
+    "initial_chance": 0.5,
+    "start_burning_block": 1,
+    "burning_speed": 1,
+
+    "unit_max_lv": 4,
+    "indicator_max_lv": 3
+}

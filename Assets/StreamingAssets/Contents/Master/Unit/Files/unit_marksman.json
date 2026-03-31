@@ -1,0 +1,71 @@
+{
+    "codename": "Marksman",
+    "icon_path": "unit_icon_marksman.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": -1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": -1,
+                    "relativeY": -1
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -1
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 0
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": -1,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -2
+                }
+            ]
+        }
+    ]
+}

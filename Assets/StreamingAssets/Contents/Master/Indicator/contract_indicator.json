@@ -1,0 +1,39 @@
+{
+    "deployment": {
+        "start_ratio": 1,
+        "final_ratio": 10
+    },
+    "unit_base_pressure": {
+        "start_ratio": 1,
+        "final_ratio": 5
+    },
+    "lv_pressure_ratio": {
+        "start_ratio": 1,
+        "final_ratio": 2
+    },
+    "usable_pressure": {
+        "start_ratio": 1,
+        "final_ratio": 20
+    },
+    "spread_speed": {
+        "start_ratio": 1,
+        "final_ratio": 10
+    },
+    "start_turn": {
+        "start_ratio": 1,
+        "final_ratio": 5
+    },
+
+    "initial_chance": {
+        "start_ratio": 1,
+        "final_ratio": 0
+    },
+    "start_burning_block": {
+        "start_ratio": 1,
+        "final_ratio": 9
+    },
+    "burning_speed": {
+        "start_ratio": 1,
+        "final_ratio": 9
+    }
+}

@@ -1,0 +1,58 @@
+.black-sheet{
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+}
+
+.bg-white{
+    background-color: #BBBBBB;
+}
+
+
+
+.serif-light-small{
+    color: #BBBBBB;
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
+    font-size: 16px;
+}
+
+.serif-light-mid{
+    color: #BBBBBB;
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
+    font-size: 24px;
+}
+
+.serif-bold-small{
+    color: #BBBBBB;
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
+    font-size: 18px;
+}
+
+.serif-bold-mid{
+    color: #BBBBBB;
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
+    font-size: 24px;
+}
+
+
+.row{
+    flex-direction: row;
+}
+
+
+
+.button-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #373737;
+}
+
+.button-main{
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    top: 7.5%;
+    left: 7.5%;
+    background-color: #505050;
+}

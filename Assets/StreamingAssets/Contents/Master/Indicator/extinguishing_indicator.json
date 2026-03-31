@@ -1,0 +1,32 @@
+{
+    "deployment": {
+        "icon_path": "ext_icon_deployment.png",
+        "base_value": -1,
+        "lv_increase": -1
+    },
+    "unit_base_pressure": {
+        "icon_path": "ext_icon_base.png",
+        "base_value": 5,
+        "lv_increase": 5
+    },
+    "lv_pressure_ratio": {
+        "icon_path": "ext_icon_power.png",
+        "base_value": 1,
+        "lv_increase": 1
+    },
+    "usable_pressure": {
+        "icon_path": "ext_icon_usable.png",
+        "base_value": -10,
+        "lv_increase": -10
+    },
+    "spread_speed": {
+        "icon_path": "ext_icon_spread.png",
+        "base_value": 1,
+        "lv_increase": 1
+    },
+    "start_turn": {
+        "icon_path": "ext_icon_turn.png",
+        "base_value": 1,
+        "lv_increase": 1
+    }
+}

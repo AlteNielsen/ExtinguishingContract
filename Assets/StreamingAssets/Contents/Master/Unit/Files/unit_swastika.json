@@ -1,0 +1,75 @@
+{
+    "codename": "Swastika",
+    "icon_path": "unit_icon_swastika.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": -2,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": 2
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 0,
+                    "relativeY": 3
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -3,
+                    "relativeY": 0
+                },
+                {
+                    "relativeX": 3,
+                    "relativeY": 0
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 3,
+                    "relativeY": -1
+                },
+                {
+                    "relativeX": -3,
+                    "relativeY": 1
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": 3
+                }
+            ]
+        }
+    ]
+}

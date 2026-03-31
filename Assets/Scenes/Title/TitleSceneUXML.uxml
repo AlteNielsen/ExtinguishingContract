@@ -1,0 +1,79 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Title/TitleSceneUSS.uss" />
+    
+    <ui:VisualElement class="all-screen">
+        <ui:VisualElement class="logo" />
+
+        <ui:VisualElement class="as-start" name="StartScreen">
+            <ui:Label class="press-start-base press-start-0" name="TextPressStart" text="- Press Start -" />
+            <ui:Button class="start-button" name="StartButton" />
+        </ui:VisualElement>
+        
+        <ui:VisualElement class="as-func" name="TitleScreen">
+            
+            <ui:VisualElement class="id">
+                <ui:VisualElement class="now-id">
+                    <ui:Label class="now-id-text" text="契約ID"/>
+                    <ui:Label class="now-id-id" text="333-333-333"/>
+                </ui:VisualElement>
+                <ui:VisualElement class="max-id">
+                    <ui:Label class="max-id-id" text="333-333-333"/>
+                    <ui:Label class="max-id-text" text="契約ID"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="id-underbar">
+                <ui:VisualElement class="now-id-underbar" />
+                <ui:VisualElement class="max-id-underbar" />
+            </ui:VisualElement>
+            <ui:VisualElement class="grade">
+                <ui:VisualElement class="now-grade">
+                    <ui:Label class="now-grade-text" text="進行中契約等級" />
+                    <ui:Label class="now-grade-value" text="634" />
+                </ui:VisualElement>
+                <ui:VisualElement class="max-grade">
+                    <ui:Label class="max-grade-value" text="634" />
+                    <ui:Label class="max-grade-text" text="最大契約等級" />
+                </ui:VisualElement>
+                <ui:VisualElement class="grade-underbar">
+                    <ui:VisualElement class="now-grade-underbar">
+                        <ui:VisualElement class="now-grade-underbar-1" />
+                        <ui:VisualElement class="now-grade-underbar-2" />
+                        <ui:VisualElement class="now-grade-underbar-3" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="max-grade-underbar">
+                        <ui:VisualElement class="max-grade-underbar-1" />
+                        <ui:VisualElement class="max-grade-underbar-2" />
+                        <ui:VisualElement class="max-grade-underbar-3" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="buttons">
+                <ui:VisualElement />
+                <ui:VisualElement class="new-game">
+                    <ui:Label text="新規契約" />
+                    <ui:VisualElement class="button-underbar" />
+                    <ui:Button class="four-button" name="NewGameButton" />
+                </ui:VisualElement>
+                <ui:VisualElement class="continue-game">
+                    <ui:Label text="履行継続" />
+                    <ui:VisualElement class="button-underbar" />
+                    <ui:Button class="four-button" name="ContinueButton" />
+                </ui:VisualElement>
+                <ui:VisualElement class="help">
+                    <ui:Label text="契約説明" />
+                    <ui:VisualElement class="button-underbar" />
+                    <ui:Button class="four-button" name="HelpButton" />
+                </ui:VisualElement>
+                <ui:VisualElement class="exit">
+                    <ui:Label text="終了" />
+                    <ui:VisualElement class="button-underbar" />
+                    <ui:Button class="four-button" name="ExitButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="setting">
+                <ui:VisualElement class="setting-tex" />
+                <ui:Button class="setting-button" name="SettingButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,63 @@
+{
+    "codename": "Star",
+    "icon_path": "unit_icon_star.png",
+    "range_data": 
+    [
+        {
+            "range": 
+            [
+                {
+                    "relativeX": 0,
+                    "relativeY": -4
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -5
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -5
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -1,
+                    "relativeY": -3
+                },
+                {
+                    "relativeX": 1,
+                    "relativeY": -3
+                }
+            ]
+        },
+        {
+            "range":
+            [
+                {
+                    "relativeX": -2,
+                    "relativeY": -6
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": -6
+                },
+                {
+                    "relativeX": -2,
+                    "relativeY": -2
+                },
+                {
+                    "relativeX": 2,
+                    "relativeY": -2
+                }
+            ]
+        }
+    ]
+}
