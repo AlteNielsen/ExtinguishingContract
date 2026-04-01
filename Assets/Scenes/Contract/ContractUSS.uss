@@ -38,7 +38,7 @@
 }
 
 .indicator-plank{
-    height: 30px;
+    height: 6.5%;
 }
 
 .indicator-txt{
