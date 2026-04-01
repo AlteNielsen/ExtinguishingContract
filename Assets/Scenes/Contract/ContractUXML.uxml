@@ -3,7 +3,7 @@
     <ui:Style src="project:/Assets/Scenes/Contract/ContractUSS.uss" />
     <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
     
-    <ui:Template name="IndicatorButtons" src="project:/Assets/Scenes/Contract/IndicatorButtons.uxml" />
+    <ui:Template name="IndicatorTemp" src="project:/Assets/Scenes/Contract/IndicatorTemp.uxml" />
     <ui:Template name="PreviewTemp" src="project:/Assets/Scenes/Contract/PreviewTemp.uxml" />
 
     <ui:VisualElement class="black-sheet" />
@@ -13,43 +13,16 @@
             <ui:VisualElement class="contract-select" >
                 <ui:Label class="serif-light-small" text="▼契約内容▼" />
                 <ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="道路破損" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="山間部" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="高温" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="乾季" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="強風" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="高低差" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
                     <ui:VisualElement class="indicator-plank"  />
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="太陽嵐" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="火災旋風" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="row" >
-                        <ui:Label class="serif-bold-small indicator-txt" text="密結合" />
-                        <ui:Instance template="IndicatorButtons" />
-                    </ui:VisualElement>
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
+                    <ui:Instance template="IndicatorTemp" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

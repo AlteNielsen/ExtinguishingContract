@@ -72,10 +72,10 @@
 
 
 .underbar-prev{
-    width: 275px;
+    width: 250px;
     height: 1px;
 }
 
 .prev-indicator-txt{
-    width: 225px;
+    width: 200px;
 }
