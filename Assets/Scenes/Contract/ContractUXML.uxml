@@ -12,18 +12,16 @@
             <ui:VisualElement class="left-logo" />
             <ui:VisualElement class="contract-select" >
                 <ui:Label class="serif-light-small" text="▼契約内容▼" />
-                <ui:VisualElement>
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:VisualElement class="indicator-plank"  />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                    <ui:Instance template="IndicatorTemp" />
-                </ui:VisualElement>
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="indicator-plank"  />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
+                <ui:Instance template="IndicatorTemp" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="center-screen">
