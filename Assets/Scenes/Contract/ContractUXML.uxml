@@ -7,8 +7,8 @@
     <ui:Template name="PreviewTemp" src="project:/Assets/Scenes/Contract/PreviewTemp.uxml" />
 
     <ui:VisualElement class="black-sheet" />
-    <ui:VisualElement class="all-screen">
-        <ui:VisualElement class="left-screen half-screen">
+    <ui:VisualElement class="all-screen row">
+        <ui:VisualElement class="half-screen">
             <ui:VisualElement class="left-logo" />
             <ui:VisualElement class="contract-select" >
                 <ui:Label class="serif-light-small" text="▼契約内容▼" />
@@ -27,21 +27,28 @@
         <ui:VisualElement class="center-screen">
             <ui:VisualElement class="center-line bg-white" />
         </ui:VisualElement>
-        <ui:VisualElement class="right-screen half-screen">
+        <ui:VisualElement class="half-screen">
             <ui:VisualElement class="right-logo" />
-            <ui:VisualElement>
-                <ui:VisualElement  >
+            <ui:VisualElement class="row-center row" >
+                <ui:VisualElement >
                     <ui:Label class="serif-bold-mid" text="消火指標プレビュー" />
-                    <ui:VisualElement class="bg-white underbar-prev" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
                 </ui:VisualElement>
-                <ui:Instance template="PreviewTemp" />
-                <ui:Instance template="PreviewTemp" />
-                <ui:Instance template="PreviewTemp" />
-                <ui:Instance template="PreviewTemp" />
-                <ui:Instance template="PreviewTemp" />
-                <ui:Instance template="PreviewTemp" />
+                <ui:VisualElement class="wid-plank" />
+                <ui:VisualElement class="wid-plank" />
+                <ui:VisualElement class="wid-plank" />
+                <ui:VisualElement>
+                    <ui:Label class="serif-bold-mid" text="現場環境プレビュー" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                    <ui:Instance template="PreviewTemp" />
+                </ui:VisualElement>
             </ui:VisualElement>
-
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

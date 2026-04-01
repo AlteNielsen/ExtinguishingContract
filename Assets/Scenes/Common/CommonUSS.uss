@@ -13,33 +13,39 @@
 .serif-light-small{
     color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
-    font-size: 16px;
+    font-size: 120%;
 }
 
 .serif-light-mid{
     color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
-    font-size: 24px;
+    font-size: 160%;
 }
 
 .serif-bold-small{
     color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
-    font-size: 18px;
+    font-size: 130%;
 }
 
 .serif-bold-mid{
     color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
-    font-size: 24px;
+    font-size: 160%;
 }
 
+
+.wid-plank{
+    width: 3%;
+}
 
 .row{
     flex-direction: row;
 }
 
-
+.row-center{
+    justify-content: center;
+}
 
 .button-bg{
     position: absolute;
