@@ -84,6 +84,11 @@
                             <ui:Instance template="IndicatorButton" />
                         </ui:VisualElement>
                     </ui:VisualElement>
+                    <ui:VisualElement class="hei-plank" />
+                    <ui:VisualElement class="row">
+                        <ui:VisualElement class="wid-half" />
+                        <ui:VisualElement class="bg-white map-button" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="line-horizontal" />
