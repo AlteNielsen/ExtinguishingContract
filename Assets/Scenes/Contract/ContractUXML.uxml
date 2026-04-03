@@ -5,6 +5,7 @@
     
     <ui:Template name="IndicatorTemp" src="project:/Assets/Scenes/Contract/IndicatorTemp.uxml" />
     <ui:Template name="PreviewTemp" src="project:/Assets/Scenes/Contract/PreviewTemp.uxml" />
+    <ui:Template name="ContractTemp" src="project:/Assets/Scenes/Common/ContractInfoTemp.uxml" />
 
     <ui:VisualElement class="black-sheet" />
     <ui:VisualElement class="all-screen row">
@@ -13,14 +14,22 @@
             <ui:VisualElement class="contract-select" >
                 <ui:Label class="serif-light-small" text="▼契約内容▼" />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
-                <ui:VisualElement class="indicator-plank"  />
+                <ui:VisualElement class="hei-plank"  />
+                <ui:VisualElement class="hei-plank"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
+                <ui:VisualElement class="hei-plank-small"  />
                 <ui:Instance template="IndicatorTemp" />
             </ui:VisualElement>
         </ui:VisualElement>
@@ -30,7 +39,7 @@
         <ui:VisualElement class="half-screen">
             <ui:VisualElement class="right-logo" />
             <ui:VisualElement class="row-center row" >
-                <ui:VisualElement >
+                <ui:VisualElement>
                     <ui:Label class="serif-bold-mid" text="消火指標プレビュー" />
                     <ui:Instance template="PreviewTemp" />
                     <ui:Instance template="PreviewTemp" />
@@ -47,6 +56,17 @@
                     <ui:Instance template="PreviewTemp" />
                     <ui:Instance template="PreviewTemp" />
                     <ui:Instance template="PreviewTemp" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="hei-plank" />
+            <ui:VisualElement class="hei-plank" />
+            <ui:VisualElement class="row-center row" >
+                <ui:Instance template="ContractTemp" />
+                <ui:VisualElement class="wid-plank"  />
+                <ui:VisualElement class="wid-quarter">
+                    <ui:Label class="color-gradiation-red hei-half serif-bold-mid middle-txt-base" text="Accept" />
+                    <ui:VisualElement class="hei-plank"/>
+                    <ui:Label class="color-gradiation-gray hei-half serif-bold-mid middle-txt-base" text="Deny" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

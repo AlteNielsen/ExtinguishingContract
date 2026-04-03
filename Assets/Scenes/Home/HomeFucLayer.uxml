@@ -1,0 +1,95 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Home/HomeUSS.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+
+    <ui:Template name="BlockButton" src="project:/Assets/Scenes/Home/BlockButton.uxml" />
+    <ui:Template name="IndicatorButton" src="project:/Assets/Scenes/Home/IndicatorButton.uxml" />
+
+    <ui:VisualElement class="all">
+        <ui:VisualElement class="row upper-screen">
+
+        </ui:VisualElement>
+        <ui:VisualElement class="row lower-screen">
+            <ui:VisualElement class="left-colomn hei-center">
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:Instance template="BlockButton" />
+            </ui:VisualElement>
+            <ui:VisualElement class="line-horizontal" />
+            <ui:VisualElement class="center-colomn">
+                <ui:VisualElement class="nine-plank">
+                    <ui:VisualElement class="row row-center">
+                        <ui:VisualElement>
+                            <ui:Label class="serif-light-small" text="▼Target Block▼" />
+                            <ui:Label class="serif-bold-special one-left" text="ダム区画" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="wid-plank" />
+                        <ui:VisualElement class="wid-plank" />
+                        <ui:VisualElement>
+                            <ui:Label class="serif-light-small" text="▼Current Situation▼" />
+                            <ui:Label class="serif-bold-special one-left" text="火災発生" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="wid-plank" />
+                        <ui:VisualElement class="wid-plank" />
+                        <ui:VisualElement class="hei-center" >
+                            <ui:Label class="serif-light-small" text="▼Extinguish Chance▼" />
+                            <ui:Label class="serif-bold-special one-left" text="75%" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row row-center">
+                        <ui:Label class="serif-light-small" text="▼消火指標▼" />
+                        <ui:VisualElement class="wid-quarter-rest" />
+                        <ui:VisualElement class="wid-plank" />
+                    </ui:VisualElement>
+                    <ui:VisualElement>
+                        <ui:VisualElement class="row row-center">
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hei-plank" />
+                        <ui:VisualElement class="row row-center">
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="hei-plank" />
+                        <ui:VisualElement class="row row-center">
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                            <ui:VisualElement class="wid-plank-small" />
+                            <ui:Instance template="IndicatorButton" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="line-horizontal" />
+            <ui:VisualElement class="right-colomn">
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    
+</ui:UXML>
