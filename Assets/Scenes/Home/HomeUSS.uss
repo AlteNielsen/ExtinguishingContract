@@ -54,6 +54,7 @@
 
 .nine-plank{
     width: 98%;
+    height: 100%;
     top: 1%;
     left: 1%;
 }
@@ -68,4 +69,9 @@
     background-image: url('project:/Assets/Textures/square_test_icon.png');
     -unity-background-scale-mode: scale-to-fit;
     background-position-x: left;
+}
+
+.map-button{
+    width: 120px;
+    height: 80px;
 }
