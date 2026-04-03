@@ -1,0 +1,30 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Home/HomeUSS.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+    
+    <ui:Template name="ReturnTemp" src="project:/Assets/Scenes/Common/ReturnButtonTemp.uxml" />
+    <ui:Template name="MemoTemp" src="project:/Assets/Scenes/Common/ContractMemoTemp.uxml" />
+
+    <ui:VisualElement class="sector-image" />
+    <ui:VisualElement class="all">
+        <ui:VisualElement class="row upper-screen">
+            <ui:Instance template="ReturnTemp" />
+            <ui:VisualElement class="wid-fourty" />
+            <ui:Instance template="MemoTemp" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row lower-screen">
+            <ui:VisualElement class="left-colomn">
+                <ui:VisualElement class="black-sheet-semi-red" />
+            </ui:VisualElement>
+            <ui:VisualElement class="line-horizontal bg-red" />
+            <ui:VisualElement class="center-colomn">
+                <ui:VisualElement class="black-sheet-semi-red" />
+            </ui:VisualElement>
+            <ui:VisualElement class="line-horizontal bg-waterblue" />
+            <ui:VisualElement class="right-colomn">
+                <ui:VisualElement class="black-sheet-semi-red" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    
+</ui:UXML>

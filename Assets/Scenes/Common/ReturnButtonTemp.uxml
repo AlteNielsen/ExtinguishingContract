@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+    
+    <ui:VisualElement class="return-button" >
+        <ui:VisualElement class="all color-gradiation-black" />
+        <ui:VisualElement class="return-button-icon" />
+    </ui:VisualElement>
+
+</ui:UXML>

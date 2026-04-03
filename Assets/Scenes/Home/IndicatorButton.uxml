@@ -1,0 +1,30 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    
+    <ui:Style src="project:/Assets/Scenes/Home/HomeUSS.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+
+    <ui:VisualElement class="indicator-button">
+        <ui:VisualElement class="button-bg" />
+        <ui:VisualElement class="button-main" />
+        <ui:VisualElement class="on-button row">
+            <ui:VisualElement class="indicator-icon" />
+            <ui:VisualElement class="all">
+                <ui:VisualElement class="row">
+                    <ui:Label class="serif-bold-small color-waterblue" text="+88%" />
+                    <ui:VisualElement class="wid-plank" />
+                    <ui:Label class="serif-bold-small color-white anti-overflow" text="FuelRelease" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row">
+                    <ui:Label class="sans-bold-small color-white" text="水圧" />
+                    <ui:VisualElement class="wid-plank" />
+                    <ui:Label class="sans-bold-small color-white" text="-10" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="wid-quarter" />
+            <ui:VisualElement class="wid-quarter" />
+            <ui:VisualElement class="wid-quarter" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    
+</ui:UXML>

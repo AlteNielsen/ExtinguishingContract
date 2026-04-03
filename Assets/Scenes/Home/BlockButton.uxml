@@ -1,0 +1,13 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    
+    <ui:Style src="project:/Assets/Scenes/Home/HomeUSS.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
+
+    <ui:VisualElement class="block-button hei-center row-center">
+        <ui:VisualElement class="button-bg" />
+        <ui:VisualElement class="button-main" />
+        <ui:Label class="serif-bold-mid" text="北部居住区" />
+    </ui:VisualElement>
+
+    
+</ui:UXML>
