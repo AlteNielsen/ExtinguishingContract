@@ -2,12 +2,16 @@
     <ui:Style src="project:/Assets/Scenes/Home/HomeUSS.uss" />
     <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />
 
+    <ui:Template name="ReturnTemp" src="project:/Assets/Scenes/Common/ReturnButtonTemp.uxml" />
+    <ui:Template name="MemoTemp" src="project:/Assets/Scenes/Common/ContractMemoTemp.uxml" />
     <ui:Template name="BlockButton" src="project:/Assets/Scenes/Home/BlockButton.uxml" />
     <ui:Template name="IndicatorButton" src="project:/Assets/Scenes/Home/IndicatorButton.uxml" />
 
     <ui:VisualElement class="all">
         <ui:VisualElement class="row upper-screen">
-
+            <ui:Instance template="ReturnTemp" />
+            <ui:VisualElement class="wid-fourty" />
+            <ui:Instance template="MemoTemp" />
         </ui:VisualElement>
         <ui:VisualElement class="row lower-screen">
             <ui:VisualElement class="left-colomn hei-center">
@@ -38,26 +42,25 @@
                 <ui:VisualElement class="nine-plank">
                     <ui:VisualElement class="row row-center">
                         <ui:VisualElement>
-                            <ui:Label class="serif-light-small" text="▼Target Block▼" />
+                            <ui:Label class="serif-light-small color-white" text="▼Target Block▼" />
                             <ui:Label class="serif-bold-special one-left" text="ダム区画" />
                         </ui:VisualElement>
                         <ui:VisualElement class="wid-plank" />
                         <ui:VisualElement class="wid-plank" />
                         <ui:VisualElement>
-                            <ui:Label class="serif-light-small" text="▼Current Situation▼" />
+                            <ui:Label class="serif-light-small color-white" text="▼Current Situation▼" />
                             <ui:Label class="serif-bold-special one-left" text="火災発生" />
                         </ui:VisualElement>
                         <ui:VisualElement class="wid-plank" />
                         <ui:VisualElement class="wid-plank" />
                         <ui:VisualElement class="hei-center" >
-                            <ui:Label class="serif-light-small" text="▼Extinguish Chance▼" />
+                            <ui:Label class="serif-light-small color-white" text="▼Extinguish Chance▼" />
                             <ui:Label class="serif-bold-special one-left" text="75%" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="row row-center">
-                        <ui:Label class="serif-light-small" text="▼消火指標▼" />
-                        <ui:VisualElement class="wid-quarter-rest" />
-                        <ui:VisualElement class="wid-plank" />
+                        <ui:Label class="serif-light-small color-white" text="▼消火指標▼" />
+                        <ui:VisualElement class="plank-for-right" />
                     </ui:VisualElement>
                     <ui:VisualElement>
                         <ui:VisualElement class="row row-center">
@@ -87,12 +90,28 @@
                     <ui:VisualElement class="hei-plank" />
                     <ui:VisualElement class="row">
                         <ui:VisualElement class="wid-half" />
-                        <ui:VisualElement class="bg-white map-button" />
+                        <ui:VisualElement class="wid-plank" />
+                        <ui:VisualElement class="wid-plank-small" />
+                        <ui:VisualElement class="wid-plank-small" />
+                        <ui:VisualElement class="map-button" />
+                        <ui:VisualElement class="plank-mapb-db" />
+                        <ui:VisualElement class="decide-button">
+                            <ui:VisualElement class="all color-gradiation-red" />
+                            <ui:Label class="all-screen serif-bold-mid color-white middle-txt-base decide-button-txt" text="To Unit Select" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="line-horizontal" />
-            <ui:VisualElement class="right-colomn">
+            <ui:VisualElement class="right-colomn hei-center">
+                <ui:Label class="serif-light-small color-white multi-line middle-txt-base" text="他地区消火進捗" />
+                <ui:Label class="serif-light-small color-waterblue middle-txt-base" text="+30%" />
+                <ui:VisualElement class="hei-plank-small" />
+                <ui:VisualElement class="water-gauge">
+                    <ui:VisualElement class="water-gauge-plank" />
+                    <ui:VisualElement class="water-gauge-add" />
+                    <ui:VisualElement class="water-gauge-pool" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
