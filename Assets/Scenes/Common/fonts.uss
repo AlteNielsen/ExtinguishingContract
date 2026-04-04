@@ -1,0 +1,23 @@
+.text-small{
+    font-size: 28px;
+}
+
+.text-mid{
+    font-size: 36px;
+}
+
+.text-special{
+    font-size: 84px;
+}
+
+.serif-regular{
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
+}
+
+.serif-bold{
+    -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
+}
+
+.sans-bold{
+    -unity-font-definition: url('project:/Assets/Fonts/Sans_B.ttf');
+}

@@ -1,0 +1,89 @@
+.all{
+    width: 100%;
+    height: 100%;
+}
+
+.abs-all{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+.row{
+    flex-direction: row;
+}
+
+
+.center-row{
+    justify-content: center;
+}
+
+.center-line{
+    align-items: center;
+}
+
+
+.text-not-overflow{
+    overflow: hidden;
+}
+
+.text-overflow-ommission{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-multi-line{
+    white-space: normal;
+}
+
+.text-set-center{
+    -unity-text-align: middle-center;
+}
+
+
+.plank-row-small{
+    width: 1%;
+}
+
+.plank-row-mid{
+    width: 3%;
+}
+
+.plank-row-large{
+    width: 5%
+}
+
+.plank-line-small{
+    height: 1%;
+}
+
+.plank-line-mid{
+    height: 3%;
+}
+
+.plank-line-large{
+    height: 5%
+}
+
+
+.frame-row-quarter{
+    width: 25%;
+}
+
+.frame-row-half{
+    width: 50%;
+}
+
+.frame-line-quarter{
+    height: 25%;
+}
+
+.frame-line-half{
+    height: 50%;
+}
+
+.underbar{
+    width: 100%;
+    height: 1px;
+}

@@ -21,7 +21,7 @@
     background-color: black;
     opacity: 0.8;
     border-width: 1px;
-    border-color: #BB0000;
+    border-color: #990000;
 }
 
 .bg-white{
@@ -42,6 +42,10 @@
 
 .color-white{
     color: #BBBBBB;
+}
+
+.color-gray{
+    color: #808080
 }
 
 .color-blue{
@@ -66,7 +70,6 @@
 }
 
 .serif-light-small{
-    color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_R.ttf');
     font-size: 28px;
 }
@@ -95,7 +98,6 @@
 }
 
 .serif-bold-mid{
-    color: #BBBBBB;
     -unity-font-definition: url('project:/Assets/Fonts/Serif_B.ttf');
     font-size: 36px;
 }
@@ -119,6 +121,10 @@
 
 .anti-overflow{
     overflow: hidden;
+}
+
+.multi-line{
+    white-space: normal;
 }
 
 .wid-plank-small{
@@ -189,17 +195,25 @@
 }
 
 .contract-memo{
-    width: 320px;
+    width: 400px;
     height: 80px;
 }
 
 .contract-memo-logo{
-    position: absolute;
-    left: -35%;
-    width: 100%;
+    width: 30%;
     height: 100%;
     background-image: url('project:/Assets/Textures/logo.png');
     -unity-background-scale-mode: scale-to-fit;
+}
+
+.contract-memo-id{
+    position: absolute;
+    top: -15%;
+}
+
+.contract-memo-grade{
+    position: absolute;
+    top: 20%;
 }
 
 .middle-txt-base{
@@ -213,7 +227,7 @@
 
 .underbar{
     width: 100%;
-    height: 3%;
+    height: 1px;
 }
 
 .wid-over{
