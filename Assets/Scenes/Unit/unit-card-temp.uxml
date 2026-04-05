@@ -1,0 +1,63 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Unit/unit.uss" />
+
+    <ui:VisualElement class="unit-card center-line">
+        <ui:VisualElement class="abs-all bg-block" />
+        <ui:Label class="serif-regular text-small color-white" text="消火戦車「ゼーロウ」" />
+        <ui:VisualElement class="unit-card-icon" />
+        <ui:Label class="serif-regular text-small color-white" text="▼消火範囲▼" />
+        <ui:VisualElement class="row" >
+            <ui:VisualElement class="unit-level-button" >
+                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                <ui:VisualElement class="abs-all on-button bg-darkgray" />
+                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅰ" />
+            </ui:VisualElement>
+            <ui:VisualElement class="unit-level-button" >
+                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                <ui:VisualElement class="abs-all on-button bg-darkgray" />
+                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅱ" />
+            </ui:VisualElement>
+            <ui:VisualElement class="unit-level-button" >
+                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                <ui:VisualElement class="abs-all on-button bg-darkgray" />
+                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅲ" />
+            </ui:VisualElement>
+            <ui:VisualElement class="unit-level-button" >
+                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                <ui:VisualElement class="abs-all on-button bg-darkgray" />
+                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅳ" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="plank-line-mid" />
+        <ui:VisualElement class="range-grid center-line center-row">
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-on" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-on" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+            <ui:VisualElement class="grid-tile grid-tile-on" />
+            <ui:VisualElement class="grid-tile grid-tile-unit" />
+            <ui:VisualElement class="grid-tile grid-tile-on" />
+            <ui:VisualElement class="grid-tile grid-tile-off" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

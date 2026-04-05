@@ -1,0 +1,60 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Unit/unit.uss" />
+
+    <ui:Template name="UnitCardTemp" src="project:/Assets/Scenes/Unit/unit-card-temp.uxml" />
+
+    <ui:VisualElement class="all">
+        <ui:VisualElement class="row upper-screen">
+            <ui:VisualElement class="return-button" >
+                <ui:VisualElement class="all color-gradiation-black" />
+                <ui:VisualElement class="abs-all return-button-icon" />
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-alpha" />
+            <ui:VisualElement class="contract-memo" >
+                <ui:VisualElement class="all color-gradiation-black" />
+                <ui:VisualElement class="abs-all row">
+                    <ui:VisualElement class="plank-row-mid" />
+                    <ui:VisualElement class="contract-memo-logo" />
+                    <ui:VisualElement class="">
+                        <ui:Label class="serif-regular text-small color-gray contract-memo-id" text="ID 333-333-333" />
+                        <ui:Label class="serif-bold text-mid color-gray contract-memo-grade" text="Grade  6502" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-beta" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row lower-screen">
+            <ui:VisualElement class="unit-list">
+                <ui:ScrollView class="" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" >
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement class="partition center-line">
+                <ui:VisualElement class="partition-line bg-gray" />
+            </ui:VisualElement>
+            <ui:VisualElement class="displays">
+                <ui:VisualElement class="selected-units" />
+                <ui:VisualElement class="plank-line-small" />
+                <ui:VisualElement class="unit-pressure-disp" />
+                <ui:VisualElement class="plank-line-small" />
+                <ui:VisualElement class="condition row" >
+                    <ui:VisualElement class="deployment-count" />
+                    <ui:VisualElement class="plank-row-mid" />
+                    <ui:VisualElement class="using-pressure" />
+                </ui:VisualElement> 
+                <ui:VisualElement class="plank-line-small" />
+                <ui:VisualElement class="go-button" />
+            </ui:VisualElement> 
+        </ui:VisualElement>
+    </ui:VisualElement>
+    
+</ui:UXML>
