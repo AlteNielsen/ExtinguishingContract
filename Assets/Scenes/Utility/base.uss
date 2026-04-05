@@ -42,6 +42,19 @@
 }
 
 
+.non-display{
+    display: none;
+}
+
+.transparent{
+    opacity: 0;
+}
+
+.semi-transparent{
+    opacity: 0.5;
+}
+
+
 .plank-row-small{
     width: 1%;
 }
