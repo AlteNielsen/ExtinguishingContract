@@ -8,6 +8,10 @@
     --color-waterblue: #00D1FF;
 }
 
+.bg-white{
+    background-color: var(--color-white);
+}
+
 .bg-darkgray{
     background-color: var(--color-darkgray);
 }
@@ -28,8 +32,8 @@
     color: var(--color-gray);
 }
 
-.spray-half{
-    opacity: 0.5;
+.color-waterblue{
+    color: var(--color-waterblue);
 }
 
 .color-gradiation-red{

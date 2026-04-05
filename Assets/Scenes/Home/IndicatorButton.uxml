@@ -1,31 +1,28 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     
     <ui:Style src="project:/Assets/Scenes/Utility/base.uss" /> 
-    <ui:Style src="project:/Assets/Scenes/Common/CommonUSS.uss" />   
     <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Home/home.uss" />
 
     <ui:VisualElement class="indicator-button">
-        <ui:VisualElement class="abs-all bg-darkgray spray-half" />
+        <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
         <ui:VisualElement class="on-button bg-darkgray" />
         <ui:VisualElement class="on-button row">
             <ui:VisualElement class="indicator-icon" />
             <ui:VisualElement class="all">
                 <ui:VisualElement class="row">
-                    <ui:Label class="serif-bold-small color-waterblue" text="+88%" />
-                    <ui:VisualElement class="wid-plank" />
-                    <ui:Label class="serif-bold-small color-white anti-overflow" text="FuelRelease" />
+                    <ui:Label class="serif-bold text-small color-waterblue" text="+88%" />
+                    <ui:Label class="serif-bold text-small color-white text-not-overflow" text="FuelRelease" />
                 </ui:VisualElement>
                 <ui:VisualElement class="row">
-                    <ui:Label class="sans-bold-small color-white" text="水圧" />
-                    <ui:VisualElement class="wid-plank" />
-                    <ui:Label class="sans-bold-small color-white" text="-10" />
+                    <ui:Label class="sans-bold text-small color-white" text="水圧" />
+                    <ui:VisualElement class="plank-row-mid" />
+                    <ui:Label class="sans-bold text-small color-white" text="-10" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement class="wid-quarter" />
-            <ui:VisualElement class="wid-quarter" />
-            <ui:VisualElement class="wid-quarter" />
+            <ui:VisualElement class="frame-row-half" />
+            <ui:VisualElement class="frame-row-quarter" />
         </ui:VisualElement>
     </ui:VisualElement>
 

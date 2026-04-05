@@ -60,7 +60,14 @@
 .map-button{
     width: 120px;
     height: 80px;
+}
+
+.map-button-tex-off{
     background-image: url('project:/Assets/Textures/map_button_icon.png');
+}
+
+.map-button-tex-on{
+    background-image: url('project:/Assets/Textures/map_button_icon_on.png');
 }
 
 .decide-button{
@@ -155,4 +162,19 @@
 
 .block-button-text-offset{
     top: -4px;
+}
+
+.map-title{
+    width: 500px;
+    height: 80px;
+}
+
+.map-prev{
+    width: 1000px;
+    height: 610px;
+}
+
+.map-prev-tex{
+    background-image: url('project:/Assets/Textures/map_prev_test.png');
+    -unity-background-scale-mode: scale-to-fit;
 }
