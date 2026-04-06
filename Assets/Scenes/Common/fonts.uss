@@ -6,6 +6,10 @@
     font-size: 36px;
 }
 
+.text-large{
+    font-size: 48px;
+}
+
 .text-special{
     font-size: 84px;
 }

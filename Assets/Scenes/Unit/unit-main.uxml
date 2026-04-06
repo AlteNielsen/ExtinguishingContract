@@ -5,6 +5,7 @@
     <ui:Style src="project:/Assets/Scenes/Unit/unit.uss" />
 
     <ui:Template name="UnitCardTemp" src="project:/Assets/Scenes/Unit/unit-card-temp.uxml" />
+    <ui:Template name="SelectedUnitTemp" src="project:/Assets/Scenes/Unit/selected-unit-temp.uxml" />
 
     <ui:VisualElement class="all">
         <ui:VisualElement class="row upper-screen">
@@ -39,20 +40,63 @@
                 </ui:ScrollView>
             </ui:VisualElement>
             <ui:VisualElement class="partition center-line">
-                <ui:VisualElement class="partition-line bg-gray" />
+                <ui:VisualElement class="partition-line" />
             </ui:VisualElement>
             <ui:VisualElement class="displays">
-                <ui:VisualElement class="selected-units" />
+                <ui:VisualElement class="selected-units center-line">
+                    <ui:ScrollView class="selected-units-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                        <ui:Instance template="SelectedUnitTemp" />
+                    </ui:ScrollView>
+                </ui:VisualElement>    
                 <ui:VisualElement class="plank-line-small" />
-                <ui:VisualElement class="unit-pressure-disp" />
+                <ui:VisualElement class="unit-pressure-disp row center-row">
+                    <ui:VisualElement class="base-flex text-set-center">
+                        <ui:Label class="serif-regular text-small color-white" text="Ⅰ" />
+                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="5" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex text-set-center">
+                        <ui:Label class="serif-regular text-small color-white" text="Ⅱ" />
+                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="10" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex text-set-center">
+                        <ui:Label class="serif-regular text-small color-white" text="Ⅲ" />
+                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="20" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex text-set-center">
+                        <ui:Label class="serif-regular text-small color-white" text="Ⅳ" />
+                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="40" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 <ui:VisualElement class="plank-line-small" />
                 <ui:VisualElement class="condition row" >
-                    <ui:VisualElement class="deployment-count" />
+                    <ui:VisualElement class="deployment-count center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="編成数" />
+                        <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="1 / 5" />
+                    </ui:VisualElement>
                     <ui:VisualElement class="plank-row-mid" />
-                    <ui:VisualElement class="using-pressure" />
+                    <ui:VisualElement class="using-pressure center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="水圧" />
+                        <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="10 / 290" />
+                    </ui:VisualElement>
                 </ui:VisualElement> 
                 <ui:VisualElement class="plank-line-small" />
-                <ui:VisualElement class="go-button" />
+                <ui:VisualElement class="go-button">
+                    <ui:VisualElement class="on-button bg-red" >
+                        <ui:Label class="serif-bold text-large color-white text-set-center" text="出場" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
             </ui:VisualElement> 
         </ui:VisualElement>
     </ui:VisualElement>

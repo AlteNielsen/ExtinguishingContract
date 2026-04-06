@@ -43,27 +43,33 @@
 }
 
 .selected-units{
-    flex-grow: 21;
+    height: 59%;
+    width: 100%;
 }
 
 .unit-pressure-disp{
-    flex-grow: 4;
+    height: 11%;
+    width: 100%;
 }
 
 .condition{
-    flex-grow: 5;
+    height: 13%;
+    width: 100%;
 }
 
 .deployment-count{
-    flex-grow: 2;
+    height: 100%;
+    width: 40%;
 }
 
 .using-pressure{
-    flex-grow: 3;
+    height: 100%;
+    width: 60%;
 }
 
 .go-button{
-    flex-grow: 5;
+    height: 13%;
+    width: 100%;
 }
 
 
@@ -127,10 +133,6 @@
     margin: 5px;
 }
 
-.unit-level-button-text{
-    top: -6px;
-}
-
 .range-grid{
     width: 425px;
     height: 425px;
@@ -157,4 +159,23 @@
 
 .grid-tile-unit{
     background-color: var(--color-white);
+}
+
+.selected-unit-lv{
+    width: 35px;
+    height: 35px;
+}
+
+.text-adjust-alpha{
+    top: -6px;
+}
+
+.text-adjust-beta{
+    top: -12px;
+}
+
+.selected-units-scroll{
+    top: 15px;
+    width: 90%;
+    height: 500px;
 }
