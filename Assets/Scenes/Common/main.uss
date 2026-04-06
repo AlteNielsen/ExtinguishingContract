@@ -6,6 +6,7 @@
     --color-red: #990000;
     --color-blue: #000099;
     --color-waterblue: #00D1FF;
+    --color-green: #458958;
 }
 
 .bg-white{
@@ -40,6 +41,14 @@
     color: var(--color-waterblue);
 }
 
+.color-black{
+    color: var(--color-black);
+}
+
+.color-green{
+    color: var(--color-green);
+}
+
 .color-gradiation-red{
     background-image: url('project:/Assets/Textures/red_gradiation.png');
 }
@@ -59,4 +68,3 @@
     top: 10%;
     left: 4%;
 }
-

@@ -9,7 +9,7 @@
     height: 100%;
 }
 
-.rest-all{
+.base-flex{
     flex-grow: 1;
 }
 

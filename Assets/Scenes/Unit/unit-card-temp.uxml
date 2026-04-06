@@ -13,22 +13,22 @@
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
                 <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅰ" />
+                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅰ" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
                 <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅱ" />
+                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅱ" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
                 <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅲ" />
+                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅲ" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
                 <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white unit-level-button-text text-set-center" text="Ⅳ" />
+                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅳ" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="plank-line-mid" />
