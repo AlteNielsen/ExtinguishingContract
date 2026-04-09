@@ -38,6 +38,11 @@
                     <ui:Instance template="UnitCardTemp" />
                     <ui:Instance template="UnitCardTemp" />
                 </ui:ScrollView>
+                <ui:VisualElement class="scrollbar row">
+                    <ui:VisualElement class="scrollbar-truck-left" />
+                    <ui:VisualElement class="scrollbar-slider" />
+                    <ui:VisualElement class="scrollbar-truck-right" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="partition center-line">
                 <ui:VisualElement class="partition-line" />

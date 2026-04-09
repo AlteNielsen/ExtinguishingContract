@@ -1,0 +1,15 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Unit/unit.uss" />
+
+    <ui:VisualElement class="row">
+        <ui:VisualElement class="selected-unit-lv">
+            <ui:VisualElement class="all bg-white" />
+            <ui:Label class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha" text="Ⅱ" />
+        </ui:VisualElement>
+        <ui:VisualElement class="plank-row-mid" />
+        <ui:Label class="serif-regular text-small color-white text-adjust-beta" text="消火戦車ゼーロウ" />
+    </ui:VisualElement>    
+</ui:UXML>
