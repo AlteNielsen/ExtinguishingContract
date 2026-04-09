@@ -2,10 +2,10 @@
     <ui:Style src="project:/Assets/Scenes/Utility/base.uss" /> 
     <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
-    <ui:Style src="project:/Assets/Scenes/Home/home.uss" />
+    <ui:Style src="project:/Assets/Scenes/Result/result.uss" />
 
-    <ui:Template name="BlockButton" src="project:/Assets/Scenes/Home/BlockButton.uxml" />
-    <ui:Template name="IndicatorButton" src="project:/Assets/Scenes/Home/IndicatorButton.uxml" />
+    <ui:Template name="BlockButton" src="project:/Assets/Scenes/Result/BlockButton.uxml" />
+    <ui:Template name="SelectedUnitTemp" src="project:/Assets/Scenes/Result/selected-unit-temp.uxml" />
 
     <ui:VisualElement class="all">
         <ui:VisualElement class="row upper-screen">
@@ -19,7 +19,7 @@
                 <ui:VisualElement class="abs-all row">
                     <ui:VisualElement class="plank-row-mid" />
                     <ui:VisualElement class="contract-memo-logo" />
-                    <ui:VisualElement class="">
+                    <ui:VisualElement>
                         <ui:Label class="serif-regular text-small color-gray contract-memo-id" text="ID 000-000-000" />
                         <ui:Label class="serif-bold text-mid color-gray contract-memo-grade" text="契約等級  6502" />
                     </ui:VisualElement>
@@ -63,78 +63,87 @@
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement>
-                            <ui:Label class="serif-regular text-small color-white" text="▼Current Situation▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="火災発生" />
+                            <ui:Label class="serif-regular text-small color-white" text="▼Result▼" />
+                            <ui:Label class="serif-bold text-special color-waterblue text-offset-alpha" text="鎮火" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="center-line" >
-                            <ui:Label class="serif-regular text-small color-white" text="▼Extinguish Chance▼" />
-                            <ui:Label class="serif-bold text-special color-white" text="75%" />
+                            <ui:Label class="serif-regular text-small color-white" text="▼Extinguish Progress" />
+                            <ui:Label class="serif-bold text-special color-waterblue" text="+30%" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement class="row center-row">
-                        <ui:Label class="serif-regular text-small color-white" text="▼消火指標▼" />
-                        <ui:VisualElement class="text-offset-beta" />
-                    </ui:VisualElement>
-                    <ui:VisualElement>
-                        <ui:VisualElement class="row center-row">
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="result-screen row">
+                        <ui:VisualElement class="base-flex">
+                            <ui:Label class="serif-regular text-small color-white" text="▼消火環境▼" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="編成数" />
+                                <ui:Label class="serif-bold text-mid color-white" text="8" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="ユニット水圧" />
+                                <ui:Label class="serif-bold text-mid color-white" text="5" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="水圧強化倍率" />
+                                <ui:Label class="serif-bold text-mid color-white" text="x2" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="使用水圧" />
+                                <ui:Label class="serif-bold text-mid color-white" text="200" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="延焼速度" />
+                                <ui:Label class="serif-bold text-mid color-white" text="x3" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="初期経過ターン" />
+                                <ui:Label class="serif-bold text-mid color-white" text="3" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-gray semi-transparent" />
+                            <ui:VisualElement class="row" >
+                                <ui:Label class="serif-bold text-mid color-white base-flex" text="消火確率" />
+                                <ui:Label class="serif-bold text-mid color-waterblue" text="100%" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="underbar bg-waterblue semi-transparent" />
                         </ui:VisualElement>
-                        <ui:VisualElement class="plank-line-mid" />
-                        <ui:VisualElement class="row center-row">
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="plank-line-mid" />
-                        <ui:VisualElement class="row center-row">
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
-                            <ui:VisualElement class="plank-row-small" />
-                            <ui:Instance template="IndicatorButton" />
+                        <ui:VisualElement class="plank-beta" />
+                        <ui:VisualElement class="base-flex" >
+                            <ui:Label class="serif-regular text-small color-white" text="▼選択消火ユニット▼" />
+                            <ui:ScrollView class="unit-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                                <ui:Instance template="SelectedUnitTemp" />
+                            </ui:ScrollView>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement class="center-line non-display">
-                    <ui:VisualElement class="plank-line-small" />
-                    <ui:VisualElement class="row" >
-                        <ui:VisualElement class="map-title" >
-                            <ui:VisualElement class="all color-gradiation-red" />
-                            <ui:Label class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
-                        </ui:VisualElement>
-                        <ui:VisualElement class="map-title" />
-                    </ui:VisualElement>
-                    <ui:VisualElement class="map-prev" >
-                        <ui:VisualElement class="all map-prev-tex" />
-                    </ui:VisualElement>    
-                </ui:VisualElement>    
                 <ui:VisualElement class="plank-line-mid" />
                 <ui:VisualElement class="row">
                     <ui:VisualElement class="plank-alpha" />
-                    <ui:VisualElement class="map-button map-button-tex-off" />
-                    <ui:VisualElement class="plank-beta" />
                     <ui:VisualElement class="decide-button">
                         <ui:VisualElement class="abs-all color-gradiation-red" />
-                        <ui:Label class="all serif-bold text-mid color-white text-set-center decide-button-txt" text="To Unit Select" />
+                        <ui:Label class="all serif-bold text-mid color-white text-set-center decide-button-txt" text="To Next Turn" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="colomn-plank" />
             <ui:VisualElement class="right-colomn center-line">
                 <ui:Label class="serif-regular text-small color-white multi-line text-multi-line" text="他地区消火進捗" />
-                <ui:Label class="serif-regular text-small color-waterblue text-set-center" text="+30%" />
+                <ui:Label class="serif-regular text-small color-waterblue text-set-center" text="60%" />
                 <ui:VisualElement class="hei-plank-small" />
                 <ui:VisualElement class="water-gauge">
                     <ui:VisualElement class="water-gauge-plank" />
-                    <ui:VisualElement class="water-gauge-add" />
                     <ui:VisualElement class="water-gauge-pool" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-line-mid" /> 

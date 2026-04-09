@@ -42,32 +42,6 @@
     height: 80px;
 }
 
-.indicator-button{
-    width: 375px;
-    height: 150px
-}
-
-.indicator-icon{
-    height: 100%;
-    width: 100%;
-    background-image: url('project:/Assets/Textures/square_test_icon.png');
-    -unity-background-scale-mode: scale-to-fit;
-    background-position-x: left;
-}
-
-.map-button{
-    width: 120px;
-    height: 80px;
-}
-
-.map-button-tex-off{
-    background-image: url('project:/Assets/Textures/map_button_icon.png');
-}
-
-.map-button-tex-on{
-    background-image: url('project:/Assets/Textures/map_button_icon_on.png');
-}
-
 .decide-button{
     width: 300px;
     height: 80px;
@@ -89,15 +63,9 @@
     width: 100%
 }
 
-.water-gauge-add{
-    background-color: #0084ff;
-    height: 30%;
-    width: 100%
-}
-
 .water-gauge-pool{
     background-color: #003899;
-    height: 30%;
+    height: 60%;
     width: 100%
 }
 
@@ -113,15 +81,15 @@
 }
 
 .text-offset-beta{
-    width: 975px;
+    width: 950px;
 }
 
 .plank-alpha{
-    width: 55%;
+    width: 67%;
 }
 
 .plank-beta{
-    width: 80px;
+    width: 100px;
 }
 
 .return-button{
@@ -169,17 +137,15 @@
     top: -4px;
 }
 
-.map-title{
-    width: 500px;
-    height: 80px;
+.result-screen{
+    left: 5%;
+    width: 90%;
+    height: 500px;
 }
 
-.map-prev{
-    width: 1000px;
-    height: 610px;
-}
-
-.map-prev-tex{
-    background-image: url('project:/Assets/Textures/map_prev_test.png');
-    -unity-background-scale-mode: scale-to-fit;
+.unit-scroll{
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 80%;
 }

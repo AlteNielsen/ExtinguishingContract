@@ -141,8 +141,8 @@
 }
 
 .grid-tile{
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     margin: 5px;
 }
 
@@ -177,5 +177,32 @@
 .selected-units-scroll{
     top: 15px;
     width: 90%;
-    height: 500px;
+    height: 95%;
+}
+
+.scrollbar{
+    top: 10px;
+    left: 10px;
+    width: 99%;
+    height: 20px;
+}
+
+.scrollbar-truck-left{
+    width: 20%;
+    height: 100%;
+    background-color: var(--color-gray);
+    opacity: 0.25;
+}
+
+.scrollbar-slider{
+    width: 10%;
+    height: 100%;
+    background-color: var(--color-white);
+}
+
+.scrollbar-truck-right{
+    width: 70%;
+    height: 100%;
+    background-color: var(--color-gray);
+    opacity: 0.25;
 }
