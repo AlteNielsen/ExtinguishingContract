@@ -29,6 +29,10 @@
     background-color: var(--color-waterblue);
 }
 
+.bg-black{
+    background-color: var(--color-black);
+}
+
 .color-white{
     color: var(--color-white);
 }

@@ -10,6 +10,10 @@
     font-size: 48px;
 }
 
+.text-huge{
+    font-size: 60px;
+}
+
 .text-special{
     font-size: 84px;
 }
@@ -24,4 +28,8 @@
 
 .sans-bold{
     -unity-font-definition: url('project:/Assets/Fonts/Sans_B.ttf');
+}
+
+.sans-regular{
+    -unity-font-definition: url('project:/Assets/Fonts/Sans_R.ttf');
 }
