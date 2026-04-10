@@ -1,0 +1,28 @@
+.colomn{
+    width: 47.5%;
+    height: 90%;
+    top: 5%;
+}
+
+.center-plank{
+    width: 5%;
+}
+
+.logo{
+    width: 100%;
+    height: 200px;
+    background-image: url('project:/Assets/Textures/logo_help.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.prev{
+    width: 100%;
+}
+
+.prev-colomn{
+    width: 40%;
+}
+
+.contract-prev-left{
+    width: 63%;
+}
