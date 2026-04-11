@@ -1,11 +1,11 @@
 .colomn{
-    width: 47.5%;
-    height: 90%;
+    width: 47%;
+    height: 95%;
     top: 5%;
 }
 
 .center-plank{
-    width: 5%;
+    width: 10%;
 }
 
 .logo{
@@ -15,14 +15,62 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.prev{
-    width: 100%;
-}
-
 .prev-colomn{
     width: 40%;
 }
 
 .contract-prev-left{
     width: 63%;
+}
+
+.prev-title{
+    left: 3%;
+}
+
+.graph{
+    height: 240px;
+}
+
+.graph-scale{
+    width: 15%;
+    height: 100%;
+}
+
+.graph-bar{
+    width: 3%;
+    height: 90%;
+    top: 10%;
+}
+
+.graph-bar-value{
+    height: 50%;
+}
+
+.graph-underbar{
+    left: 12%;
+    width: 86%;
+    height: 2px;
+}
+
+.graph-scale-top{
+    top:10%;
+    width: 20%;
+    left: 80%;
+    height: 2px;
+}
+
+.graph-scale-mid{
+    top:55%;
+    width: 20%;
+    left: 80%;
+    height: 2px;
+}
+
+.next-button{
+    position: absolute;
+    width: 13%;
+    height: 13%;
+    left: 42%;
+    top: 86%;
+    color: #AAAAAA;
 }

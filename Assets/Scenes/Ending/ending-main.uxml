@@ -5,11 +5,11 @@
     <ui:Style src="project:/Assets/Scenes/Ending/ending.uss" />
 
     <ui:VisualElement class="abs-all bg-black" />
-    <ui:VisualElement class="all row" >
+    <ui:VisualElement class="all row center-row" >
         <ui:VisualElement class="colomn center-line" >
             <ui:VisualElement class="logo" />
             <ui:VisualElement class="plank-line-mid" />
-            <ui:VisualElement class="row prev center-row" >
+            <ui:VisualElement class="row wid-all center-row" >
                 <ui:VisualElement class="prev-colomn" >
                     <ui:Label class="serif-bold text-mid color-white" text="指標プレビュー" />
                     <ui:VisualElement class="row">
@@ -65,8 +65,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="plank-line-large" />
             <ui:VisualElement class="plank-line-large" />
-            <ui:VisualElement class="plank-line-small" />
-            <ui:VisualElement class="row prev">
+            <ui:VisualElement class="row wid-all">
                 <ui:VisualElement class="contract-prev-left">
                     <ui:VisualElement class="row">
                         <ui:VisualElement class="base-flex" />
@@ -90,7 +89,209 @@
         </ui:VisualElement>
         <ui:VisualElement class="center-plank" />
         <ui:VisualElement class="colomn">
-            
+            <ui:Label class="serif-bold text-huge color-white" text="統計" />
+            <ui:Label class="serif-bold text-mid color-white prev-title" text="全体統計" />
+            <ui:VisualElement class="row wid-all center-row" >
+                <ui:VisualElement class="prev-colomn" >
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="消火活動回数" />
+                        <ui:Label class="serif-regular text-small color-white" text="15" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="消火成功回数" />
+                        <ui:Label class="serif-regular text-small color-white" text="10" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="平均消火確率" />
+                        <ui:Label class="serif-regular text-small color-white" text="50%" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="鎮火回数" />
+                        <ui:Label class="serif-regular text-small color-white" text="6" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-large" />
+                <ui:VisualElement class="prev-colomn" >
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="鎮火確率" />
+                        <ui:Label class="serif-regular text-small color-white" text="60%" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="標準得点" />
+                        <ui:Label class="serif-regular text-small color-white" text="0.63" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="環境評価" />
+                        <ui:Label class="serif-regular text-small color-white" text="優良" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="他地区消火進捗合計" />
+                        <ui:Label class="serif-regular text-small color-white" text="230%" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-line-mid" />
+            <ui:Label class="serif-bold text-mid color-white prev-title" text="指標選択統計" />
+            <ui:VisualElement class="row wid-all center-row" >
+                <ui:VisualElement class="prev-colomn" >
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="編成数" />
+                        <ui:Label class="serif-regular text-small color-white" text="7" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="ユニット水圧" />
+                        <ui:Label class="serif-regular text-small color-white" text="5" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="水圧増加倍率" />
+                        <ui:Label class="serif-regular text-small color-white" text="2" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-large" />
+                <ui:VisualElement class="prev-colomn" >
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="使用可能水圧" />
+                        <ui:Label class="serif-regular text-small color-white" text="7" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="延焼速度" />
+                        <ui:Label class="serif-regular text-small color-white" text="5" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-small color-white base-flex" text="初期経過ターン" />
+                        <ui:Label class="serif-regular text-small color-white" text="3" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-line-mid" />
+            <ui:Label class="serif-bold text-mid color-white prev-title" text="状況推移" />
+            <ui:VisualElement class="row wid-all graph">
+                <ui:VisualElement class="graph-scale">
+                    <ui:VisualElement class="bg-white graph-scale-top" />
+                    <ui:VisualElement class="bg-white graph-scale-mid" />
+                </ui:VisualElement>
+                <ui:VisualElement class="bg-white partition" />
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-row-small" />
+                <ui:VisualElement class="graph-bar">
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="bg-white graph-underbar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement class="abs-all">
+        <ui:VisualElement class="next-button center-row center-line">
+            <ui:Label class="serif-regular text-mid" text="-Back To Title-" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

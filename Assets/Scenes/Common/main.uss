@@ -4,6 +4,7 @@
     --color-gray: #808080;
     --color-white: #BBBBBB;
     --color-red: #990000;
+    --color-darkred: #770000;
     --color-blue: #000099;
     --color-waterblue: #00D1FF;
     --color-green: #458958;
@@ -23,6 +24,10 @@
 
 .bg-red{
     background-color: var(--color-red);
+}
+
+.bg-darkred{
+    background-color: var(--color-darkred);
 }
 
 .bg-waterblue{
