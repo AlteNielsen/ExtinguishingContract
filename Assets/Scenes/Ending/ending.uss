@@ -11,7 +11,7 @@
 .logo{
     width: 100%;
     height: 200px;
-    background-image: url('project:/Assets/Textures/logo_help.png');
+    background-image: url('project://database/Assets/Textures/logo_help.png');
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -73,4 +73,54 @@
     left: 42%;
     top: 86%;
     color: #AAAAAA;
+}
+
+
+
+.ending-good{
+    background-image: url('project://database/Assets/Textures/good_end_bg.png');
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.ending-bad{
+    background-image: url('project://database/Assets/Textures/bad_end_bg.png');
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.screen-center-good{
+    border-color: var(--color-black);
+    border-width: 2px;
+    width: 105%;
+    height: 22%;
+}
+
+.screen-center-bad{
+    border-color: var(--color-red);
+    border-width: 2px;
+    width: 105%;
+    height: 22%;
+}
+
+.screen-center-bg-good{
+    background-color: #A9CEEC;
+    opacity: 0.2;
+}
+
+.screen-center-bg-bad{
+    background-color: var(--color-black);
+}
+
+.screen-next-button{
+    position: absolute;
+    width: 100%;
+    top: 85%;
+}
+
+.screen-next-button-bg-good{
+    background-color: var(--color-black);
+    opacity: 0.8;
+}
+
+.screen-next-button-bg-bad{
+    background-color: var(--color-black);
 }

@@ -59,15 +59,15 @@
 }
 
 .color-gradiation-red{
-    background-image: url('project:/Assets/Textures/red_gradiation.png');
+    background-image: url('project://database/Assets/Textures/red_gradiation.png');
 }
 
 .color-gradiation-gray{
-    background-image: url('project:/Assets/Textures/gray_gradiation.png');
+    background-image: url('project://database/Assets/Textures/gray_gradiation.png');
 }
 
 .color-gradiation-black{
-    background-image: url('project:/Assets/Textures/black_gradiation.png');
+    background-image: url('project://database/Assets/Textures/black_gradiation.png');
 }
 
 .on-button{
