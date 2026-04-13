@@ -1,5 +1,5 @@
 .sector-image{
-    background-image: url('project:/Assets/Textures/damu2.png');
+    background-image: url('project://database/Assets/Textures/damu2.png');
     -unity-background-scale-mode: scale-and-crop;
 }
 
@@ -98,7 +98,7 @@
 
 .return-button-icon{
     left: -30%;
-    background-image: url('project:/Assets/Textures/return_icon.png');
+    background-image: url('project://database/Assets/Textures/return_icon.png');
     -unity-background-scale-mode: scale-to-fit;
 }
 
@@ -110,7 +110,7 @@
     top: 2px;
     width: 75px;
     height: 75px;
-    background-image: url('project:/Assets/Textures/logo.png');
+    background-image: url('project://database/Assets/Textures/logo.png');
     -unity-background-scale-mode: scale-to-fit;
 }
 
