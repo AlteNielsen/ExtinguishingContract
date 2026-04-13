@@ -17,6 +17,27 @@
     height: 100%;
 }
 
+.padding-small{
+    width: 98%;
+    height: 98%;
+    top: 1%;
+    left: 1%;
+}
+
+.padding-mid{
+    width: 96%;
+    height: 96%;
+    top: 2%;
+    left: 2%;
+}
+
+.padding-large{
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+}
+
 .base-flex{
     flex-grow: 1;
 }

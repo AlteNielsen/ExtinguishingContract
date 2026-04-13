@@ -1,0 +1,92 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+    
+   <ui:Template name="ContractExplain" src="project:/Assets/Scenes/Help/contract-explain-temp.uxml" />
+
+    <ui:VisualElement class="abs-all bg-black" />
+    <ui:VisualElement class="all row padding-small" >
+        <ui:VisualElement class="side-colomn">
+            <ui:VisualElement class="logo" />
+            <ui:VisualElement class="plank-line-large" />
+            <ui:VisualElement class="row base-flex">
+                <ui:VisualElement class="selector-icon-range" >
+                    <ui:VisualElement class="selector-pos">
+                        <ui:VisualElement class="selector" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="base-flex center-line">
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="鎮火契約とは" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="契約の流れ" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="消火の流れ" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="契約リファレンス" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="消火リファレンス" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="設定" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-small color-white" text="クレジット" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex center-row center-line">
+                        <ui:Label class="serif-regular text-large color-white" text="EXIT" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="partition bg-darkgray" />
+        <ui:VisualElement class="center-colomn">
+            <ui:VisualElement class="plank-line-large" />
+            <ui:ScrollView class="padding-large" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                <ui:Instance template="ContractExplain" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement class="partition bg-darkgray" />
+        <ui:VisualElement class="side-colomn">
+            <ui:VisualElement class="plank-line-large" />
+            <ui:VisualElement class="plank-line-large" />
+            <ui:VisualElement class="center-line">
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-white" text="前文" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="設立までの経緯" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="指揮官の皆様へ" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="" />
+                </ui:VisualElement>
+                <ui:VisualElement class="tab center-line center-row">
+                    <ui:Label class="serif-regular text-small color-gray" text="" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-line-mid" />
+            <ui:VisualElement class="base-flex center-line center-row">
+                <ui:Label class="serif-regular text-small color-gray" text="ver 0.4.0" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+</ui:UXML>
