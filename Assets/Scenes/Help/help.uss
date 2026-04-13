@@ -1,0 +1,34 @@
+.side-colomn{
+    width: 20%;
+}
+
+.center-colomn{
+    width: 60%;
+}
+
+.logo{
+    top: 1%;
+    width: 100%;
+    height: 100px;
+    background-image: url('project://database/Assets/Textures/logo_help.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.selector-icon-range{
+    width: 7%;
+}
+
+.selector{
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Textures/selector.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.selector-pos{
+    top: 5%;
+}
+
+.tab{
+    height: 100px;
+}
