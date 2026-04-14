@@ -1,0 +1,127 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" /> 
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Contract/contract.uss" />
+
+    <ui:Template name="IndicatorButton" src="project://database/Assets/Scenes/Contract/indicator-button.uxml" />
+
+    <ui:VisualElement class="all bg-black">
+        <ui:VisualElement class="padding-large row">
+            <ui:VisualElement class="colomn">
+                <ui:VisualElement class="left-logo" />
+                <ui:VisualElement class="plank-line-large" />
+                <ui:VisualElement class="base-flex center-line">
+                    <ui:VisualElement class="row">
+                        <ui:Label class="serif-regular text-tiny color-white" text="▼契約内容▼" />
+                        <ui:VisualElement class="plank-alpha" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="plank-line-large" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+
+                    <ui:VisualElement class="indicator-center-plank" />
+
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                    <ui:VisualElement class="indicator-plank" />
+                    <ui:Instance template="IndicatorButton" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="center center-line">
+                <ui:VisualElement class="partition bg-white" />
+            </ui:VisualElement>
+            <ui:VisualElement class="colomn">
+                <ui:VisualElement class="right-logo" />
+                <ui:VisualElement class="plank-line-large" />
+                <ui:VisualElement class="row wid-all center-row">
+                    <ui:VisualElement class="prev-colomn" >
+                        <ui:Label class="serif-bold text-mid color-white" text="指標プレビュー" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="編成数" />
+                            <ui:Label class="serif-regular text-small color-white" text="-3" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="ユニット水圧" />
+                            <ui:Label class="serif-regular text-small color-white" text="+5" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="水圧増加倍率" />
+                            <ui:Label class="serif-regular text-small color-white" text="x3" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="使用可能水圧" />
+                            <ui:Label class="serif-regular text-small color-white" text="-20" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="延焼速度" />
+                            <ui:Label class="serif-regular text-small color-white" text="x2" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="初期経過ターン" />
+                            <ui:Label class="serif-regular text-small color-white" text="+3" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="plank-row-large" />
+                    <ui:VisualElement class="prev-colomn" >
+                        <ui:Label class="serif-bold text-mid color-white" text="環境プレビュー" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="初期消火率" />
+                            <ui:Label class="serif-regular text-small color-white" text="25%" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="初期炎上区画数" />
+                            <ui:Label class="serif-regular text-small color-white" text="5" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                        <ui:VisualElement class="row">
+                            <ui:Label class="serif-regular text-small color-white base-flex" text="区画間炎上速度" />
+                            <ui:Label class="serif-regular text-small color-white" text="2" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="underbar bg-gray" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="plank-line-large" />
+                <ui:VisualElement class="plank-line-mid" />
+                <ui:VisualElement class="row wid-all">
+                    <ui:VisualElement class="contract-prev-left">
+                        <ui:VisualElement class="row">
+                            <ui:VisualElement class="base-flex" />
+                            <ui:Label class="serif-regular text-small color-white" text="Contract ID" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="row">
+                            <ui:VisualElement class="base-flex" />
+                            <ui:Label class="serif-regular text-huge color-white" text="Contract Grade" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="plank-row-large row center-row">
+                        <ui:VisualElement class="base-flex" />
+                        <ui:VisualElement class="partition bg-white" />
+                        <ui:VisualElement class="base-flex" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex">
+                        <ui:Label class="serif-regular text-small color-white" text="000-000-000" />
+                        <ui:Label class="serif-bold text-huge color-white" text="6502" />
+                    </ui:VisualElement>
+                </ui:VisualElement>                
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
