@@ -86,6 +86,10 @@
     opacity: 0.5;
 }
 
+.reflect{
+    scale: -1 1;
+}
+
 
 .plank-row-small{
     width: 1%;

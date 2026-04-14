@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Clear/clear.uss" />
+    
+    <ui:VisualElement class="all bg-black center-line center-row">
+        <ui:VisualElement class="logo" />
+    </ui:VisualElement>
+</ui:UXML>

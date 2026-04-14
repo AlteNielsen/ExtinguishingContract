@@ -129,7 +129,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="colomn-plank" />
             <ui:VisualElement class="right-colomn center-line">
-                <ui:Label class="serif-regular text-small color-white multi-line text-multi-line" text="他地区消火進捗" />
+                <ui:Label class="serif-regular text-small color-white text-multi-line text-set-center" text="他地区消火進捗" />
                 <ui:Label class="serif-regular text-small color-waterblue text-set-center" text="+30%" />
                 <ui:VisualElement class="hei-plank-small" />
                 <ui:VisualElement class="water-gauge">
