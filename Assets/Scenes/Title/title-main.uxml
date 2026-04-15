@@ -136,6 +136,9 @@
                     <ui:VisualElement class="underbar" />
                 </ui:VisualElement>
             </ui:VisualElement>
+            <ui:VisualElement class="setting">
+                <ui:VisualElement class="all setting-icon" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

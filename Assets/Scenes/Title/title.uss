@@ -42,3 +42,16 @@
 .plank-gamma{
     width: 100px;
 }
+
+.setting{
+    position: absolute;
+    left: 90%;
+    top: -110%;
+    width: 100px;
+    height: 100px;
+}
+
+.setting-icon{
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
