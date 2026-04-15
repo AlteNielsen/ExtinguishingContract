@@ -13,8 +13,129 @@
         <ui:VisualElement class="base-flex center-line non-display">
             <ui:Label class="serif-bold text-mid color-white press-start" text="- Press Start -" />
         </ui:VisualElement>
-        <ui:VisualElement class="base-flex">
-            
+        <ui:VisualElement class="menu">
+            <ui:VisualElement class="row hei-all">
+                <ui:VisualElement class="contract-prev-species">
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-large color-white" text="進行中契約情報" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-small color-darkgray text-not-overflow" text="national-number : #70966091" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-small color-darkgray text-not-overflow" text="role : commander" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-small color-darkgray text-not-overflow" text="registration-number : #6502" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-small color-darkgray text-not-overflow" text="user-grade : sp" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="base-flex" />
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="base-flex" />
+                        <ui:Label class="serif-bold text-large color-white" text="過去最高契約情報" />
+                        <ui:VisualElement class="plank-row-large" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="contract-prev-frame">    
+                    <ui:VisualElement class="row wid-all">
+                        <ui:VisualElement class="contract-prev-left">
+                            <ui:VisualElement class="row">
+                                <ui:VisualElement class="base-flex" />
+                                <ui:Label class="serif-regular text-small color-white" text="Contract ID" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="row">
+                                <ui:VisualElement class="partition bg-white" />
+                                <ui:VisualElement class="base-flex" />
+                                <ui:VisualElement class="plank-row-small" />
+                                <ui:Label class="serif-regular text-huge color-white" text="Contract Grade" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="plank-row-large row center-row">
+                            <ui:VisualElement class="base-flex" />
+                            <ui:VisualElement class="partition bg-white" />
+                            <ui:VisualElement class="base-flex" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="base-flex">
+                            <ui:Label class="serif-regular text-small color-white" text="000-000-000" />
+                            <ui:VisualElement class="row">
+                                <ui:Label class="serif-bold text-huge color-white" text="6502" />
+                                <ui:VisualElement class="base-flex" />
+                                <ui:VisualElement class="partition bg-white" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="plank-alpha row">
+                        <ui:VisualElement class="partition bg-white" />
+                        <ui:VisualElement class="base-flex" />
+                        <ui:VisualElement class="partition bg-white" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-gray" />
+                    <ui:VisualElement class="row wid-all">
+                        <ui:VisualElement class="contract-prev-left">
+                            <ui:VisualElement class="row">
+                                <ui:VisualElement class="partition bg-white" />
+                                <ui:VisualElement class="base-flex" />
+                                <ui:VisualElement class="plank-row-small" />
+                                <ui:Label class="serif-regular text-huge color-white" text="Contract Grade" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="row">
+                                <ui:VisualElement class="base-flex" />
+                                <ui:Label class="serif-regular text-small color-white" text="Contract ID" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="plank-row-large row center-row">
+                            <ui:VisualElement class="base-flex" />
+                            <ui:VisualElement class="partition bg-white" />
+                            <ui:VisualElement class="base-flex" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="base-flex">
+                            <ui:VisualElement class="row">
+                                <ui:Label class="serif-bold text-huge color-white" text="634" />
+                                <ui:VisualElement class="base-flex" />
+                                <ui:VisualElement class="partition bg-white" />
+                            </ui:VisualElement>
+                            <ui:Label class="serif-regular text-small color-white" text="123-456-789" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="base-flex">
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="plank-gamma" />
+                        <ui:Label class="serif-bold text-large color-gray" text="新規契約" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar" />
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="plank-gamma" />
+                        <ui:Label class="serif-bold text-large color-red" text="契約継続" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar bg-red" />
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="plank-gamma" />
+                        <ui:Label class="serif-bold text-large color-gray" text="契約説明" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar" />
+                    <ui:VisualElement class="row" >
+                        <ui:VisualElement class="plank-gamma" />
+                        <ui:Label class="serif-bold text-large color-gray" text="終了" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="underbar" />
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

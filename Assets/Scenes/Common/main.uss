@@ -42,8 +42,20 @@
     color: var(--color-white);
 }
 
+.color-red{
+    color: var(--color-red);
+}
+
+.color-darkred{
+    color: var(--color-darkred);
+}
+
 .color-gray{
     color: var(--color-gray);
+}
+
+.color-darkgray{
+    color: var(--color-darkgray);
 }
 
 .color-waterblue{
