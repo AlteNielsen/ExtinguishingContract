@@ -8,3 +8,37 @@
 .press-start{
     top: 65%;
 }
+
+.menu{
+    top: 100px;
+}
+
+.contract-prev-species{
+    width: 28%;
+}
+
+.contract-prev-left{
+    width: 63%;
+}
+
+.contract-prev-frame{
+    width: 800px;
+}
+
+.plank-alpha{
+    height: 100px;
+}
+
+.plank-beta{
+    height: 245px;
+}
+
+.partition-top{
+    top: 83px;
+    height: 75px;
+    width: 2px;
+}
+
+.plank-gamma{
+    width: 100px;
+}
