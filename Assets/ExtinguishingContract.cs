@@ -1,3 +1,6 @@
+
+using UnityEngine.SceneManagement;
+
 public static class ExtinguishingContract
 {
     public static void GameSetup()
@@ -27,5 +30,18 @@ public static class ExtinguishingContract
 
         TextureDataBase.Load();
         SaveDataManager.Instance.Save();
+    }
+}
+
+public static class GameSceneManager
+{
+    public static void TitleToContract()
+    {
+        SceneManager.LoadScene("ContractScene");
+    }
+
+    public static void TitleToHome()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 }

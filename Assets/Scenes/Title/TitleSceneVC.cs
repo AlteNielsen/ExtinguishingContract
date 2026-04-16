@@ -21,6 +21,15 @@ public class TitleSceneView
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Title)[i];
         }
+        Label continueText = document.rootVisualElement.Q<Label>(className: "continue");
+        VisualElement continueUnderbar = document.rootVisualElement.Q<VisualElement>("ContinueUnderbar");
+        ReadOnlyMemory<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data;
+        if (now.Span[0] < 0)
+        {
+            continueText.RemoveFromClassList("button-text");
+            continueUnderbar.RemoveFromClassList("button-underbar");
+            continueText.AddToClassList("color-darkgray");
+        }
     }
 
     public void WriteValue()

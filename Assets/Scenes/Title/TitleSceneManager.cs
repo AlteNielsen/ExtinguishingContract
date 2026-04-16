@@ -18,14 +18,19 @@ public class TitleSceneManager : MonoBehaviour
             ExtinguishingContract.GameSetup();
         }
 
-        methods = new Action[] {StartGame, NewGame, Continue, Help, Exit, Setting};
+        TitleSceneController();
+
+        sceneView = new TitleSceneView(document);
+    }
+
+    private void TitleSceneController()
+    {
+        methods = new Action[] { StartGame, NewGame, Continue, Help, Exit, Setting };
         buttons = document.rootVisualElement.Query<Button>().ToList();
-        for(int i = 0; i < buttons.Count; i++)
+        for (int i = 0; i < buttons.Count; i++)
         {
             buttons[i].clicked += methods[i];
         }
-
-        sceneView = new TitleSceneView(document);
     }
 
     public void OnClicked(int index)
@@ -40,12 +45,17 @@ public class TitleSceneManager : MonoBehaviour
 
     private void NewGame()
     {
-
+        GameSceneManager.TitleToContract();
     }
 
     private void Continue()
     {
-
+        ReadOnlyMemory<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data;
+        if (now.Span[0] < 0)
+        {
+            return;
+        }
+        GameSceneManager.TitleToHome();
     }
 
     private void Help()
