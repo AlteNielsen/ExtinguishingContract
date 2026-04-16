@@ -69,6 +69,20 @@
     width: 40%;
 }
 
+.contract-prev{
+    left: 9%;
+    top: -5%;
+}
+
+.contract-prev{
+    width: 60%;
+}
+
 .contract-prev-left{
-    width: 63%;
+    width: 40%;
+}
+
+.contract-button{
+    width: 100%;
+    height: 75px;
 }

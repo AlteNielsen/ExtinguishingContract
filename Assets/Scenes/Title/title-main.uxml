@@ -71,9 +71,9 @@
                             <ui:VisualElement class="base-flex" />
                         </ui:VisualElement>
                         <ui:VisualElement class="base-flex">
-                            <ui:Label name="Value" class="serif-regular text-small color-white" text="000-000-000" />
+                            <ui:Label name="Value" class="sans-regular text-small color-white" text="000-000-000" />
                             <ui:VisualElement class="row">
-                                <ui:Label name="Value" class="serif-bold text-huge color-white" text="6502" />
+                                <ui:Label name="Value" class="sans-bold text-huge color-white" text="6502" />
                                 <ui:VisualElement class="base-flex" />
                                 <ui:VisualElement class="partition bg-white" />
                             </ui:VisualElement>
@@ -106,11 +106,11 @@
                         </ui:VisualElement>
                         <ui:VisualElement class="base-flex">
                             <ui:VisualElement class="row">
-                                <ui:Label name="Value" class="serif-bold text-huge color-white" text="634" />
+                                <ui:Label name="Value" class="sans-bold text-huge color-white" text="634" />
                                 <ui:VisualElement class="base-flex" />
                                 <ui:VisualElement class="partition bg-white" />
                             </ui:VisualElement>
-                            <ui:Label name="Value" class="serif-regular text-small color-white" text="123-456-790" />
+                            <ui:Label name="Value" class="sans-regular text-small color-white" text="123-456-790" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
