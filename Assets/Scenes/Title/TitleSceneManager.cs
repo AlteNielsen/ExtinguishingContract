@@ -21,6 +21,7 @@ public class TitleSceneManager : MonoBehaviour
         TitleSceneController();
 
         sceneView = new TitleSceneView(document);
+        SaveDataInitialize();
     }
 
     private void TitleSceneController()
@@ -31,6 +32,17 @@ public class TitleSceneManager : MonoBehaviour
         {
             buttons[i].clicked += methods[i];
         }
+    }
+
+    private void SaveDataInitialize()
+    {
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.MapSelect);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.IndicatorSelect);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.UnitSelect);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.UnitLevel);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.FireMap);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.UnitMap);
+        SaveDataManager.Instance.Initialize((int)SaveDataManager.SaveDataChunk.UnitFacing);
     }
 
     public void OnClicked(int index)
