@@ -44,4 +44,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("HomeScene");
     }
+
+    public static void TitleToHelp()
+    {
+        SceneManager.LoadScene("HelpScene");
+    }
 }
