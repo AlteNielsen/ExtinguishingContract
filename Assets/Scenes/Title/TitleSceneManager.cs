@@ -65,7 +65,7 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Exit()
     {
-
+        GameSceneManager.QuitGame();
     }
 
     private void Setting()

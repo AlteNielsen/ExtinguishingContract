@@ -1,4 +1,4 @@
-
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class ExtinguishingContract
@@ -48,5 +48,14 @@ public static class GameSceneManager
     public static void TitleToHelp()
     {
         SceneManager.LoadScene("HelpScene");
+    }
+
+    public static void QuitGame()
+    {
+        Application.Quit();
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
