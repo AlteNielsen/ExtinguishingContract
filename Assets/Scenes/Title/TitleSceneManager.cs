@@ -70,6 +70,6 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Setting()
     {
-
+        GameSceneManager.TitleToHelp();
     }
 }
