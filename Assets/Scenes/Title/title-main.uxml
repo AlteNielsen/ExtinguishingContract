@@ -110,7 +110,7 @@
                                 <ui:VisualElement class="base-flex" />
                                 <ui:VisualElement class="partition bg-white" />
                             </ui:VisualElement>
-                            <ui:Label name="Value" class="serif-regular text-small color-white" text="123-456-789" />
+                            <ui:Label name="Value" class="serif-regular text-small color-white" text="123-456-790" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>

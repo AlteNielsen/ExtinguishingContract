@@ -41,6 +41,7 @@ namespace Ray.Data
         {
             dataInterfaces[key].Initialize();
             SetData(key, dataInterfaces[key].Load());
+            Save();
         }
 
         protected void Setup()
