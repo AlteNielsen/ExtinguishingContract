@@ -51,7 +51,31 @@
     height: 100px;
 }
 
+.setting:hover{
+    position: absolute;
+    left: 89.5%;
+    top: -113%;
+    width: 120px;
+    height: 120px;
+}
+
 .setting-icon{
     background-image: url('project://database/Assets/Textures/setting_icon.png');
     -unity-background-scale-mode: scale-to-fit;
+}
+
+.button .button-text{
+    color: var(--color-gray);
+}
+
+.button:hover .button-text{
+    color: var(--color-red);
+}
+
+.button .button-underbar{
+    background-color: var(--color-black);
+}
+
+.button:hover .button-underbar{
+    background-color: var(--color-red);
 }

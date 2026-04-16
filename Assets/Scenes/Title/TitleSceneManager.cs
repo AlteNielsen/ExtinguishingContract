@@ -13,19 +13,19 @@ public class TitleSceneManager : MonoBehaviour
 
     void Awake()
     {
-        ExtinguishingContract.GameSetup();
+        if (SaveDataManager.Instance == null)
+        {
+            ExtinguishingContract.GameSetup();
+        }
+
         methods = new Action[] {StartGame, NewGame, Continue, Help, Exit, Setting};
         buttons = document.rootVisualElement.Query<Button>().ToList();
         for(int i = 0; i < buttons.Count; i++)
         {
             buttons[i].clicked += methods[i];
         }
+
         sceneView = new TitleSceneView(document);
-    }
-
-    void Update()
-    {
-
     }
 
     public void OnClicked(int index)
@@ -35,7 +35,7 @@ public class TitleSceneManager : MonoBehaviour
 
     private void StartGame()
     {
-        sceneView.Change(0, 1);
+        sceneView.SwitchScreen();
     }
 
     private void NewGame()
