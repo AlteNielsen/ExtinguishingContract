@@ -35,17 +35,17 @@ public static class ExtinguishingContract
 
 public static class GameSceneManager
 {
-    public static void TitleToContract()
+    public static void ToContract()
     {
         SceneManager.LoadScene("ContractScene");
     }
 
-    public static void TitleToHome()
+    public static void ToHome()
     {
         SceneManager.LoadScene("HomeScene");
     }
 
-    public static void TitleToHelp()
+    public static void ToHelp()
     {
         SceneManager.LoadScene("HelpScene");
     }

@@ -57,7 +57,7 @@ public class TitleSceneManager : MonoBehaviour
 
     private void NewGame()
     {
-        GameSceneManager.TitleToContract();
+        GameSceneManager.ToContract();
     }
 
     private void Continue()
@@ -67,12 +67,12 @@ public class TitleSceneManager : MonoBehaviour
         {
             return;
         }
-        GameSceneManager.TitleToHome();
+        GameSceneManager.ToHome();
     }
 
     private void Help()
     {
-        GameSceneManager.TitleToHelp();
+        GameSceneManager.ToHelp();
     }
 
     private void Exit()
@@ -82,6 +82,6 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Setting()
     {
-        GameSceneManager.TitleToHelp();
+        GameSceneManager.ToHelp();
     }
 }
