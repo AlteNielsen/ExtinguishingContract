@@ -6,8 +6,38 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StreamingAssets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Title/TitleScene.unity
+    guid: 151de20a0620ecb439bd47aab1d2f02d
+  - enabled: 1
+    path: Assets/Scenes/Contract/ContractScene.unity
+    guid: 42de9547b48d0544b84cea2e26d079a8
+  - enabled: 1
+    path: Assets/Scenes/GameLoading/GameLoadingScene.unity
+    guid: e1fac433880ce8744a5c19b3bf310277
+  - enabled: 1
+    path: Assets/Scenes/Help/HelpScene.unity
+    guid: 4cf4179a93093a34ba34752df39e5637
+  - enabled: 1
+    path: Assets/Scenes/Home/HomeScene.unity
+    guid: 454e68b9fc9cbf049be059af7d04f6eb
+  - enabled: 1
+    path: Assets/Scenes/Unit/UnitScene.unity
+    guid: 0a3a0302be02402408beaf230574714f
+  - enabled: 1
+    path: Assets/Scenes/StageLoading/StageLoadingScene.unity
+    guid: 9a11d91e0dbdce543a216334962b1ed3
+  - enabled: 1
+    path: Assets/Scenes/Stage/StageScene.unity
+    guid: dd0494da615ded7489dd08a1835503ab
+  - enabled: 1
+    path: Assets/Scenes/Result/ResultScene.unity
+    guid: 6e44960893a69184c89bf5f61f1ade3a
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingScene.unity
+    guid: 6ba10f2a2096b6e458cdb93d0ad87b89
+  - enabled: 1
+    path: Assets/Scenes/Clear/ClearScene.unity
+    guid: 29d26672be173e74dad207fb00db9350
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

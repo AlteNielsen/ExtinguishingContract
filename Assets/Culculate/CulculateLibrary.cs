@@ -38,4 +38,22 @@ public static class CulculateLibrary
         }
         return result;
     }
+
+    public static int ContractGrade(ReadOnlySpan<float> data)
+    {
+        int primaryValue = 11;
+        int counter = 0;
+        for(int i = 0; i < data.Length; i++)
+        {
+            if ((int)data[i] == 0)
+            {
+                counter += 10;
+            }
+            else
+            {
+                counter += (int)data[i];
+            }
+        }
+        return primaryValue * counter;
+    }
 }
