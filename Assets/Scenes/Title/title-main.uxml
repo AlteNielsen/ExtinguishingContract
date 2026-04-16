@@ -126,10 +126,10 @@
                     <ui:VisualElement class="button">
                         <ui:VisualElement class="row" >
                             <ui:VisualElement class="plank-gamma" />
-                            <ui:Label name="Text" class="serif-bold text-large button-text" text="契約継続" />
+                            <ui:Label name="Text" class="serif-bold text-large button-text continue" text="契約継続" />
                             <ui:Button class="abs-all transparent" />
                         </ui:VisualElement>
-                        <ui:VisualElement class="underbar button-underbar" />
+                        <ui:VisualElement name="ContinueUnderbar" class="underbar button-underbar" />
                     </ui:VisualElement>
                     <ui:VisualElement class="button">
                         <ui:VisualElement class="row" >
