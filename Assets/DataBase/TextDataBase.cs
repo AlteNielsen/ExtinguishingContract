@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using Ray.FileIO;
 
@@ -50,6 +49,7 @@ public static class TextDataBase
 
     public enum TextDictionary
     {
-        Title
+        Title,
+        Contract
     }
 }

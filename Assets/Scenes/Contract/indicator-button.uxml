@@ -6,7 +6,7 @@
 
     <ui:VisualElement class="row wid-all">
         <ui:VisualElement class="indicator-text-box">
-            <ui:Label class="serif-bold text-small color-white indicator-text" text="指標名を入力" />
+            <ui:Label name="Text" class="serif-bold text-small color-white indicator-text" text="指標名を入力" />
         </ui:VisualElement>
         <ui:VisualElement class="row">
             <ui:VisualElement class="indicator-button" >

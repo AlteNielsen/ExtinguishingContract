@@ -1,4 +1,4 @@
-16
+25
 ▼契約内容▼,▼Contract Info▼
 道路寸断,Road Disruption
 高地,Highland
@@ -9,8 +9,17 @@
 火災旋風,Fire Whirl
 太陽嵐,Solar Storm
 密結合,Tight Coupling
-指標プレビュー,Indicator Preview
-環境プレビュー,Environment Preview
+指標プレビュー,Indicators
+編成上限,Deploy Limit
+ユニット水圧,Unit Pressure
+水圧増加倍率,Press. Mult.
+使用可能水圧,Max Press
+延焼速度,Burn Speed
+初期経過ターン,Start Turn
+環境プレビュー,Env. Preview
+初期消火率,Base Success
+初期炎上区画数,Start Fires
+区画間延焼速度,Spread Rate
 Contract ID,Contract ID
 Grade,Grade
 契約締結,Sign
