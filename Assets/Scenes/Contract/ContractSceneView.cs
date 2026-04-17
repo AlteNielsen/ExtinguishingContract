@@ -7,6 +7,8 @@ public class ContractSceneView
     private UIDocument document;
     private List<VisualElement> indicatorButtonBG;
     private List<Label> indicatorButtonText;
+    private Label id;
+    private Label grade;
 
     public ContractSceneView(UIDocument doc) 
     {
@@ -14,6 +16,8 @@ public class ContractSceneView
         document = doc;
         indicatorButtonBG = document.rootVisualElement.Query<VisualElement>("IndicatorButtonBG").ToList();
         indicatorButtonText = document.rootVisualElement.Query<Label>("IndicatorButtonText").ToList();
+        id = document.rootVisualElement.Q<Label>("ID");
+        grade = document.rootVisualElement.Q<Label>("Grade");
         WriteText();
     }
 
@@ -40,5 +44,11 @@ public class ContractSceneView
         indicatorButtonBG[indicator * maxLv + lv].AddToClassList("bg-white");
         indicatorButtonText[indicator * maxLv + lv].RemoveFromClassList("color-white");
         indicatorButtonText[indicator * maxLv + lv].AddToClassList("color-black");
+    }
+    
+    public void UpdateContractView(ReadOnlySpan<float> indicatorLevels)
+    {
+        id.text = "" + indicatorLevels[0] + indicatorLevels[1] + indicatorLevels[2] + "-" + indicatorLevels[3] + indicatorLevels[4] + indicatorLevels[5] + "-" + indicatorLevels[6] + indicatorLevels[7] + indicatorLevels[8];
+        grade.text = "" + CulculateLibrary.ContractGrade(indicatorLevels);
     }
 }
