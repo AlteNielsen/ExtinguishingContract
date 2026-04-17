@@ -44,6 +44,7 @@ public class ContractSceneManager : MonoBehaviour
         }
         sceneView.IndicatorButtonChange(indicator, lv);
         ReadOnlySpan<float> data = indicatorLevels;
-        sceneView.UpdateContractView(data);
+        sceneView.UpdateContractPreview(data);
+        sceneView.UpdateContractInfo(data);
     }
 }
