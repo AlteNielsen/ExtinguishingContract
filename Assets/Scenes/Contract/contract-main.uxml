@@ -44,6 +44,7 @@
             <ui:VisualElement class="colomn">
                 <ui:VisualElement class="right-logo" />
                 <ui:VisualElement class="plank-line-mid" />
+                <ui:VisualElement class="plank-line-mid" />
                 <ui:VisualElement class="row wid-all center-row">
                     <ui:VisualElement class="prev-colomn" >
                         <ui:Label class="serif-bold text-mid color-white" text="指標プレビュー" />
@@ -99,7 +100,7 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-line-large" />
-                <ui:VisualElement class="plank-line-mid" />
+                <ui:VisualElement class="plank-line-large" />
                 <ui:VisualElement class="row">
                     <ui:VisualElement class="row contract-prev">
                         <ui:VisualElement class="contract-prev-left">
