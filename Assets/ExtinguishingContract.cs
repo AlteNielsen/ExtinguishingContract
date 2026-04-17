@@ -31,6 +31,14 @@ public static class ExtinguishingContract
         TextureDataBase.Load();
         SaveDataManager.Instance.Save();
     }
+
+    public static void DevelopOnlyGameSetup()
+    {
+        if (SaveDataManager.Instance == null)
+        {
+            GameSetup();
+        }
+    }
 }
 
 public static class GameSceneManager

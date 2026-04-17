@@ -8,7 +8,6 @@ public static class WordDataBase
     public static Dictionary<string, string> UnitName { get; private set; }
     public static Dictionary<string, string> MapTitle {  get; private set; }
     public static Dictionary<string, string> MapName {  get; private set; }
-    public static Dictionary<string, string> ContTitle {  get; private set; }
     public static Dictionary<string, string> ExtTitle {  get; private set; }
     public static Dictionary<string, string> ExtEffect {  get; private set; }
     public static string[] Language {  get; private set; }
@@ -17,7 +16,6 @@ public static class WordDataBase
     private static readonly string unitNamePath = Path.Combine("Contents", "Text", "Word", "Unit", "unit_name.csv");
     private static readonly string mapTitlePath = Path.Combine("Contents", "Text", "Word", "Map", "map_title.csv");
     private static readonly string mapNamePath = Path.Combine("Contents", "Text", "Word", "Map", "map_name.csv");
-    private static readonly string contTitlePath = Path.Combine("Contents", "Text", "Word", "Indicator", "cont_title.csv");
     private static readonly string extTitlePath = Path.Combine("Contents", "Text", "Word", "Indicator", "ext_title.csv");
     private static readonly string extEffectPath = Path.Combine("Contents", "Text", "Word", "Indicator", "ext_effect.csv");
     private static readonly string langPath = Path.Combine("Contents", "Text", "Word", "Language", "lang.csv");
@@ -28,7 +26,6 @@ public static class WordDataBase
         UnitName = new();
         MapTitle = new();
         MapName = new();
-        ContTitle = new();
         ExtTitle = new();
         ExtEffect = new();
         Language = RayFileLoader.LoadCSVAll(langPath);
@@ -40,7 +37,6 @@ public static class WordDataBase
         UNLoad(index);
         MTLoad(index);
         MNLoad(index);
-        CTLoad(index);
         ETLoad(index);
         EELoad(index);
     }
@@ -82,16 +78,6 @@ public static class WordDataBase
         for (int i = 0; i < mname.Length; i++)
         {
             MapName[mname[i]] = mnValue[i];
-        }
-    }
-
-    private static void CTLoad(int index)
-    {
-        string[] ctitle = RayFileLoader.LoadCSVVertical(contTitlePath, 0);
-        string[] ctValue = RayFileLoader.LoadCSVVertical(contTitlePath, index + 1);
-        for (int i = 0; i < ctitle.Length; i++)
-        {
-            ContTitle[ctitle[i]] = ctValue[i];
         }
     }
 
