@@ -11,72 +11,82 @@
         <ui:VisualElement class="row">
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅰ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅰ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅱ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅱ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅲ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅲ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅳ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅳ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅴ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅴ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅵ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅵ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅶ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅶ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅷ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅷ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅸ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅸ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="indicator-button-plank" />
             <ui:VisualElement class="indicator-button" >
                 <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="indicator-on-button bg-darkgray">
-                    <ui:Label class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅹ" />
+                <ui:VisualElement name="IndicatorButtonBG" class="indicator-on-button bg-darkgray">
+                    <ui:Label name="IndicatorButtonText" class="serif-regular text-small color-white text-set-center indicator-num" text="Ⅹ" />
                 </ui:VisualElement>
+                <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
