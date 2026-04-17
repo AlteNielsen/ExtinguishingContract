@@ -5,7 +5,7 @@
     },
     "unit_base_pressure": {
         "start_ratio": 1,
-        "final_ratio": 5
+        "final_ratio": 10
     },
     "lv_pressure_ratio": {
         "start_ratio": 1,
