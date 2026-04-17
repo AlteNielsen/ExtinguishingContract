@@ -9,7 +9,7 @@
     },
     "lv_pressure_ratio": {
         "start_ratio": 1,
-        "final_ratio": 2
+        "final_ratio": 5
     },
     "usable_pressure": {
         "start_ratio": 1,
@@ -21,7 +21,7 @@
     },
     "start_turn": {
         "start_ratio": 1,
-        "final_ratio": 5
+        "final_ratio": 10
     },
 
     "initial_chance": {
@@ -30,10 +30,10 @@
     },
     "start_burning_block": {
         "start_ratio": 1,
-        "final_ratio": 9
+        "final_ratio": 10
     },
     "burning_speed": {
         "start_ratio": 1,
-        "final_ratio": 9
+        "final_ratio": 10
     }
 }

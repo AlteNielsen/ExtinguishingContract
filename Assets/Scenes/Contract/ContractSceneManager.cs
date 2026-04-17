@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using System;
 
 public class ContractSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
     private ContractSceneView sceneView;
     private List<Button> indicatorButtons;
+    private float[] indicatorLevels = new float[9];
 
     void Awake()
     {
@@ -14,6 +16,7 @@ public class ContractSceneManager : MonoBehaviour
         ContractSceneController();
         for(int i = 0; i < 9; i++)
         {
+            indicatorLevels[i] = 1;
             IndicatorButtonClicked(i, 0);
         }
     }
@@ -31,6 +34,16 @@ public class ContractSceneManager : MonoBehaviour
 
     private void IndicatorButtonClicked(int indicator, int lv)
     {
+        if(lv + 1 == 10)
+        {
+            indicatorLevels[indicator] = 0;
+        }
+        else
+        {
+            indicatorLevels[indicator] = lv + 1;
+        }
         sceneView.IndicatorButtonChange(indicator, lv);
+        ReadOnlySpan<float> data = indicatorLevels;
+        sceneView.UpdateContractView(data);
     }
 }
