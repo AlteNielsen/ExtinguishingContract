@@ -50,4 +50,15 @@ public class SaveDataManager : RayAbstractDataManager
         ResultStats,
         TurnStats
     }
+
+    public void TitleSceneSaveDataInitialize()
+    {
+        Initialize((int)SaveDataChunk.MapSelect);
+        Initialize((int)SaveDataChunk.IndicatorSelect);
+        Initialize((int)SaveDataChunk.UnitSelect);
+        Initialize((int)SaveDataChunk.UnitLevel);
+        Initialize((int)SaveDataChunk.FireMap);
+        Initialize((int)SaveDataChunk.UnitMap);
+        Initialize((int)SaveDataChunk.UnitFacing);
+    }
 }
