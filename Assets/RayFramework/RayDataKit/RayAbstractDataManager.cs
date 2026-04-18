@@ -22,6 +22,7 @@ namespace Ray.Data
         public void SetData(int selector, float[] values)
         {
             Array.Copy(values, 0, masterBuffer, offsets[selector], values.Length);
+            dataInterfaces[selector].Save();
         }
 
         public T Access<T>(int key) where T : RayDataChunk
