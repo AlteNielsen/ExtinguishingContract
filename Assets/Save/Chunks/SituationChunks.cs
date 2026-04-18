@@ -49,8 +49,6 @@ public class BlockIndicatorChunk : RayDataChunk
     public override void Save()
     {
         BlockIndicatorData value = new BlockIndicatorData();
-        value.indicator_max_lv = Config.Data.IndicatorMaxLv;
-        value.block_num = MapDataBase.Datas.Length;
         value.block_indicators = CulculateLibrary.SwitchFloatToBool(data);
         RaySaveDataIO.SaveJson<BlockIndicatorData>(path, value);
     }
@@ -58,19 +56,17 @@ public class BlockIndicatorChunk : RayDataChunk
     public override float[] Load()
     {
         BlockIndicatorData value = RaySaveDataIO.LoadSaveData<BlockIndicatorData>(path);
-        bool[] result = new bool[MapDataBase.Datas.Length *  EIndicatorNum * Config.Data.IndicatorMaxLv];
-        for(int i = 0; i < value.block_num; i++)
+        bool[] result = new bool[EIndicatorNum * Config.Data.IndicatorMaxLv];
+        int beforeMaxLevel = value.block_indicators.Length / EIndicatorNum;
+        for(int i = 0; i < EIndicatorNum; i++)
         {
-            if (i < MapDataBase.Datas.Length)
+            if(beforeMaxLevel > Config.Data.IndicatorMaxLv)
             {
-                if (value.indicator_max_lv > Config.Data.IndicatorMaxLv)
-                {
-                    Array.Copy(value.block_indicators, EIndicatorNum * value.indicator_max_lv * i, result, EIndicatorNum * Config.Data.IndicatorMaxLv * i, EIndicatorNum * Config.Data.IndicatorMaxLv);
-                }
-                else
-                {
-                    Array.Copy(value.block_indicators, EIndicatorNum * value.indicator_max_lv * i, result, EIndicatorNum * Config.Data.IndicatorMaxLv * i, value.indicator_max_lv * EIndicatorNum);
-                }
+                Array.Copy(value.block_indicators, beforeMaxLevel * i, result, Config.Data.IndicatorMaxLv * i, Config.Data.IndicatorMaxLv);
+            }
+            else
+            {
+                Array.Copy(value.block_indicators, beforeMaxLevel * i, result, Config.Data.IndicatorMaxLv * i, beforeMaxLevel);
             }
         }
         return CulculateLibrary.SwitchBoolToFloat(result);
@@ -85,8 +81,6 @@ public class BlockIndicatorChunk : RayDataChunk
 [Serializable]
 public class BlockIndicatorData
 {
-    public int indicator_max_lv;
-    public int block_num;
     public bool[] block_indicators;
 }
 
