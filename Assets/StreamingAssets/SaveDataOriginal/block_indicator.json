@@ -1,6 +1,4 @@
 {
-    "indicator_max_lv": 1,
-    "block_num": 1,
     "block_indicators":[
         false, false, false, false, false, false
     ]
