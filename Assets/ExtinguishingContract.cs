@@ -43,6 +43,11 @@ public static class ExtinguishingContract
 
 public static class GameSceneManager
 {
+    public static void ToTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
     public static void ToContract()
     {
         SceneManager.LoadScene("ContractScene");
@@ -65,5 +70,10 @@ public static class GameSceneManager
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public static void ToGameLoading()
+    {
+        SceneManager.LoadScene("GameLoadingScene");
     }
 }

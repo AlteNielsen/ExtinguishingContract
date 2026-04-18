@@ -9,6 +9,8 @@ public class ContractSceneManager : MonoBehaviour
     private ContractSceneView sceneView;
     private List<Button> indicatorButtons;
     private float[] indicatorLevels = new float[9];
+    private Button sign;
+    private Button reconsider;
 
     void Awake()
     {
@@ -30,6 +32,10 @@ public class ContractSceneManager : MonoBehaviour
             int j = i;
             indicatorButtons[i].clicked += () => IndicatorButtonClicked(j / maxLv, j % maxLv);
         }
+        sign = document.rootVisualElement.Q<Button>("Sign");
+        sign.clicked += SignClicked;
+        reconsider = document.rootVisualElement.Q<Button>("Reconsider");
+        reconsider.clicked += ReconsiderClicked;
     }
 
     private void IndicatorButtonClicked(int indicator, int lv)
@@ -46,5 +52,16 @@ public class ContractSceneManager : MonoBehaviour
         ReadOnlySpan<float> data = indicatorLevels;
         sceneView.UpdateContractPreview(data);
         sceneView.UpdateContractInfo(data);
+    }
+
+    private void SignClicked()
+    {
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.NowID, indicatorLevels);
+        GameSceneManager.ToGameLoading();
+    }
+
+    private void ReconsiderClicked()
+    {
+        GameSceneManager.ToTitle();
     }
 }
