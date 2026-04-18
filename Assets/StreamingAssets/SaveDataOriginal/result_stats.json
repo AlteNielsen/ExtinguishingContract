@@ -1,6 +1,14 @@
 {
+    "go_times": 0,
     "success_times": 0,
     "average_extinguish_chance": 0,
     "extinguish_times": 0,
-    "average_extinguish_rate": 0
+    "sum_other_progress": 0,
+
+    "deployment_count": 0,
+    "base_press_count": 0,
+    "press_mult_count": 0,
+    "max_press_count": 0,
+    "burn_speed_count": 0,
+    "start_turn_count": 0
 }
