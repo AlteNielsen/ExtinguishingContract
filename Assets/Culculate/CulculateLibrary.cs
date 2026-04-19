@@ -84,4 +84,32 @@ public static class CulculateLibrary
         result[8] = ContractIndicatorDataBase.Data.BurningSpeed.start_ratio * lvs[8] * ((float)ContractIndicatorDataBase.Data.BurningSpeed.final_ratio / ContractIndicatorDataBase.Data.BurningSpeed.start_ratio) / 10;
         return result;
     }
+
+    public static bool[] GameSituationSetup()
+    {
+        int startBlockNum = (int)IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span)[7];
+        return nCrProcess(MapDataBase.Datas.Length, startBlockNum);
+    }
+
+    public static bool[] nCrProcess(int n, int r)
+    {
+        int[] ramdomizer = new int[n];
+        for(int i = 0; i < n; i++)
+        {
+            ramdomizer[i] = i;
+        }
+        for(int i = 0; i < n * 2; i++)
+        {
+            int target = UnityEngine.Random.Range(1, n);
+            int pool = ramdomizer[target];
+            ramdomizer[target] = ramdomizer[0];
+            ramdomizer[0] = pool;
+        }
+        bool[] result = new bool[n];
+        for (int i = 0; i < r; i++)
+        {
+            result[ramdomizer[i]] = true;
+        }
+        return result;
+    }
 }
