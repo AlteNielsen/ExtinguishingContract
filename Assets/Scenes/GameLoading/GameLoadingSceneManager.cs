@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Threading.Tasks;
 
 public class GameLoadingSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
 
-    void Awake()
+    async void Awake()
     {
         SaveDataInitialize();
         SetupBurningSituation();
         SetupBlockIndicator();
         GameLoadingSceneView();
+        await Task.Delay(3000);
+        GameSceneManager.ToHome();
     }
 
     private void SaveDataInitialize()
