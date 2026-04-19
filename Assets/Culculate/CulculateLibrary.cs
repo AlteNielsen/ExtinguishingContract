@@ -91,6 +91,20 @@ public static class CulculateLibrary
         return nCrProcess(MapDataBase.Datas.Length, startBlockNum);
     }
 
+    public static bool[] IndicatorUpdate()
+    {
+        int EIndicatorNum = 6;
+        int IndicatorSlotNum = 9;
+        if(EIndicatorNum * Config.Data.IndicatorMaxLv < IndicatorSlotNum)
+        {
+            return nCrProcess(IndicatorSlotNum, IndicatorSlotNum);
+        }
+        else
+        {
+            return nCrProcess(EIndicatorNum * Config.Data.IndicatorMaxLv, IndicatorSlotNum);
+        }
+    }
+
     public static bool[] nCrProcess(int n, int r)
     {
         int[] ramdomizer = new int[n];
