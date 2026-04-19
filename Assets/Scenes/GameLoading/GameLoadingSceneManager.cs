@@ -15,5 +15,17 @@ public class GameLoadingSceneManager : MonoBehaviour
             }
         }
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BurningSituation, pools);
+
+        int EIndicatorNum = 6;
+        float[] indicatorPools = new float[EIndicatorNum * Config.Data.IndicatorMaxLv];
+        bool[] indicatorData = CulculateLibrary.IndicatorUpdate();
+        for (int i = 0; i < indicatorPools.Length; i++)
+        {
+            if (indicatorData[i])
+            {
+                indicatorPools[i] = 1;
+            }
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BlockIndicator, indicatorPools);
     }
 }

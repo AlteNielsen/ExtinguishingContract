@@ -6,6 +6,6 @@
     "spread_speed": 1,
     "start_turn": 1,
     "initial_chance": 1,
-    "start_burning_block": 0,
+    "start_burning_block": 5,
     "burning_speed": 1
 }
