@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c22677d74f96ac409d6856bcc7d7f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameLoadingSceneManager
+  document: {fileID: 403764445}
 --- !u!4 &706138535
 Transform:
   m_ObjectHideFlags: 0

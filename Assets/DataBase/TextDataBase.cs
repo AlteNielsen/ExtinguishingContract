@@ -50,6 +50,7 @@ public static class TextDataBase
     public enum TextDictionary
     {
         Title,
-        Contract
+        Contract,
+        GameLoading
     }
 }
