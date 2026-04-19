@@ -4,28 +4,42 @@ public class GameLoadingSceneManager : MonoBehaviour
 {
     void Awake()
     {
+        SaveDataInitialize();
+        SetupBurningSituation();
+        SetupBlockIndicator();
+    }
+
+    private void SaveDataInitialize()
+    {
         SaveDataManager.Instance.GameLoadingSceneSaveDataInitialize();
+    }
+
+    private void SetupBurningSituation()
+    {
         float[] pools = new float[MapDataBase.Datas.Length];
-        bool[] situationData = CulculateLibrary.GameSituationSetup();
-        for(int i = 0; i < pools.Length; i++)
+        bool[] data = CulculateLibrary.GameSituationSetup();
+        for (int i = 0; i < pools.Length; i++)
         {
-            if (situationData[i])
+            if (data[i])
             {
                 pools[i] = 1;
             }
         }
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BurningSituation, pools);
+    }
 
+    private void SetupBlockIndicator()
+    {
         int EIndicatorNum = 6;
-        float[] indicatorPools = new float[EIndicatorNum * Config.Data.IndicatorMaxLv];
-        bool[] indicatorData = CulculateLibrary.IndicatorUpdate();
-        for (int i = 0; i < indicatorPools.Length; i++)
+        float[] pools = new float[EIndicatorNum * Config.Data.IndicatorMaxLv];
+        bool[] data = CulculateLibrary.IndicatorUpdate();
+        for (int i = 0; i < pools.Length; i++)
         {
-            if (indicatorData[i])
+            if (data[i])
             {
-                indicatorPools[i] = 1;
+                pools[i] = 1;
             }
         }
-        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BlockIndicator, indicatorPools);
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BlockIndicator, pools);
     }
 }
