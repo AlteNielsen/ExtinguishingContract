@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameLoadingSceneManager : MonoBehaviour
 {
+    [SerializeField] private UIDocument document;
+
     void Awake()
     {
         SaveDataInitialize();
         SetupBurningSituation();
         SetupBlockIndicator();
+        GameLoadingSceneView();
     }
 
     private void SaveDataInitialize()
@@ -41,5 +45,10 @@ public class GameLoadingSceneManager : MonoBehaviour
             }
         }
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BlockIndicator, pools);
+    }
+
+    private void GameLoadingSceneView()
+    {
+        document.rootVisualElement.Q<Label>().text = TextDataBase.GetTexts(TextDataBase.TextDictionary.GameLoading)[0];
     }
 }
