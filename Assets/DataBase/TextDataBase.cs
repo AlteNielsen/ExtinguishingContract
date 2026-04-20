@@ -51,6 +51,7 @@ public static class TextDataBase
     {
         Title,
         Contract,
-        GameLoading
+        GameLoading,
+        Home
     }
 }
