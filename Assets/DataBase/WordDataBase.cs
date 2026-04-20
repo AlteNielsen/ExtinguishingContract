@@ -1,16 +1,12 @@
-using System.Collections.Generic;
-using System.IO;
 using Ray.FileIO;
+using System;
+using System.IO;
+using UnityEngine.UIElements;
 
 public static class WordDataBase
 {
-    public static Dictionary<string, string> UnitCategory { get; private set; }
-    public static Dictionary<string, string> UnitName { get; private set; }
-    public static Dictionary<string, string> MapTitle {  get; private set; }
-    public static Dictionary<string, string> MapName {  get; private set; }
-    public static Dictionary<string, string> ExtTitle {  get; private set; }
-    public static Dictionary<string, string> ExtEffect {  get; private set; }
-    public static string[] Language {  get; private set; }
+    private static string[] words;
+    private static int[] offsets = new int[8];
 
     private static readonly string unitCategoryPath = Path.Combine("Contents", "Text", "Word", "Unit", "unit_category.csv");
     private static readonly string unitNamePath = Path.Combine("Contents", "Text", "Word", "Unit", "unit_name.csv");
@@ -22,82 +18,49 @@ public static class WordDataBase
 
     public static void Setup()
     {
-        UnitCategory = new();
-        UnitName = new();
-        MapTitle = new();
-        MapName = new();
-        ExtTitle = new();
-        ExtEffect = new();
-        Language = RayFileLoader.LoadCSVAll(langPath);
+        int lengthCounter = 0;
+        offsets[0] = 0;
+        lengthCounter += RayFileLoader.LoadCSVVertical(unitCategoryPath, 0).Length;
+        offsets[1] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVVertical(unitNamePath, 0).Length;
+        offsets[2] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVVertical(mapTitlePath, 0).Length;
+        offsets[3] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVVertical(mapNamePath, 0).Length;
+        offsets[4] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVVertical(extTitlePath, 0).Length;
+        offsets[5] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVVertical(extEffectPath, 0).Length;
+        offsets[6] = lengthCounter;
+        lengthCounter += RayFileLoader.LoadCSVAll(langPath).Length;
+        offsets[7] = lengthCounter;
+        words = new string[lengthCounter];
     }
 
     public static void Load(int index)
     {
-        UCLoad(index);
-        UNLoad(index);
-        MTLoad(index);
-        MNLoad(index);
-        ETLoad(index);
-        EELoad(index);
+        Array.Copy(RayFileLoader.LoadCSVVertical(unitCategoryPath, index), 0, words, offsets[0], offsets[1] - offsets[0]);
+        Array.Copy(RayFileLoader.LoadCSVVertical(unitNamePath, index), 0, words, offsets[1], offsets[2] - offsets[1]);
+        Array.Copy(RayFileLoader.LoadCSVVertical(mapTitlePath, index), 0, words, offsets[2], offsets[3] - offsets[2]);
+        Array.Copy(RayFileLoader.LoadCSVVertical(mapNamePath, index), 0, words, offsets[3], offsets[4] - offsets[3]);
+        Array.Copy(RayFileLoader.LoadCSVVertical(extTitlePath, index), 0, words, offsets[4], offsets[5] - offsets[4]);
+        Array.Copy(RayFileLoader.LoadCSVVertical(extEffectPath, index), 0, words, offsets[5], offsets[6] - offsets[5]);
+        Array.Copy(RayFileLoader.LoadCSVAll(langPath), 0, words, offsets[6], offsets[7] - offsets[6]);
     }
 
-    private static void UCLoad(int index)
+    public static ReadOnlySpan<string> Word(WordSelector selector)
     {
-        string[] ucategory = RayFileLoader.LoadCSVVertical(unitCategoryPath, 0);
-        string[] ucValue = RayFileLoader.LoadCSVVertical(unitCategoryPath, index + 1);
-        for (int i = 0; i < ucategory.Length; i++)
-        {
-            UnitCategory[ucategory[i]] = ucValue[i];
-        }
+        return words.AsSpan<string>().Slice(offsets[(int)selector], offsets[(int)selector + 1] - offsets[(int)selector]);
     }
 
-    private static void UNLoad(int index)
+    public enum WordSelector
     {
-        string[] uname = RayFileLoader.LoadCSVVertical(unitNamePath, 0);
-        string[] unValue = RayFileLoader.LoadCSVVertical(unitNamePath, index + 1);
-        for (int i = 0; i < uname.Length; i++)
-        {
-            UnitName[uname[i]] = unValue[i];
-        }
-    }
-
-    private static void MTLoad(int index)
-    {
-        string[] mtitle = RayFileLoader.LoadCSVVertical(mapTitlePath, 0);
-        string[] mtValue = RayFileLoader.LoadCSVVertical(mapTitlePath, index + 1);
-        for (int i = 0; i < mtitle.Length; i++)
-        {
-            MapTitle[mtitle[i]] = mtValue[i];
-        }
-    }
-
-    private static void MNLoad(int index)
-    {
-        string[] mname = RayFileLoader.LoadCSVVertical(mapNamePath, 0);
-        string[] mnValue = RayFileLoader.LoadCSVVertical(mapNamePath, index + 1);
-        for (int i = 0; i < mname.Length; i++)
-        {
-            MapName[mname[i]] = mnValue[i];
-        }
-    }
-
-    private static void ETLoad(int index)
-    {
-        string[] etitle = RayFileLoader.LoadCSVVertical(extTitlePath, 0);
-        string[] etValue = RayFileLoader.LoadCSVVertical(extTitlePath, index + 1);
-        for (int i = 0; i < etitle.Length; i++)
-        {
-            ExtTitle[etitle[i]] = etValue[i];
-        }
-    }
-
-    private static void EELoad(int index)
-    {
-        string[] eeffect = RayFileLoader.LoadCSVVertical(extEffectPath, 0);
-        string[] eeValue = RayFileLoader.LoadCSVVertical(extEffectPath, index + 1);
-        for (int i = 0; i < eeffect.Length; i++)
-        {
-            ExtEffect[eeffect[i]] = eeValue[i];
-        }
+        UnitCategory,
+        UnitName,
+        MapTitle,
+        MapName,
+        EIndicatorTitle,
+        EIndicatorEffect,
+        Language
     }
 }
