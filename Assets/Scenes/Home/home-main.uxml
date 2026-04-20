@@ -22,11 +22,11 @@
                     <ui:VisualElement class="">
                         <ui:VisualElement class="row contract-memo-id">
                             <ui:Label name="Text" class="serif-regular text-small color-gray" text="ID" />
-                            <ui:Label class="serif-regular text-small color-gray" text="000-000-000" />
+                            <ui:Label name="ID" class="serif-regular text-small color-gray" text="000-000-000" />
                         </ui:VisualElement>
                         <ui:VisualElement class="row contract-memo-grade">
                             <ui:Label name="Text" class="serif-bold text-mid color-gray" text="Grade" />
-                            <ui:Label class="serif-bold text-mid color-gray" text="6502" />
+                            <ui:Label name="Grade" class="serif-bold text-mid color-gray" text="6502" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
