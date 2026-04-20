@@ -15,6 +15,16 @@ public class HomeSceneView
     private void WriteText()
     {
         WriteBlockSelector();
+        WriteSceneText();
+    }
+
+    private void WriteSceneText()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("Text").ToList();
+        for (int i = 0; i < labels.Count; i++)
+        {
+            labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Home)[i];
+        }
     }
 
     private void WriteBlockSelector()
