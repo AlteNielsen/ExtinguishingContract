@@ -5,10 +5,14 @@ using UnityEngine.UIElements;
 public class HomeSceneView
 {
     private UIDocument document;
+    private List<VisualElement> blockButtonBGs;
+    private List<Label> mapInfo;
 
     public HomeSceneView(UIDocument doc)
     {
         document = doc;
+        blockButtonBGs = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
+        mapInfo = document.rootVisualElement.Query<Label>("MapInfo").ToList();
         WriteText();
         SetupValues();
     }
@@ -56,14 +60,13 @@ public class HomeSceneView
 
     private void SetupBlockSelectorDisplay()
     {
-        List<VisualElement> ves = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
-        for(int i = 0; i < ves.Count; i++)
+        for(int i = 0; i < blockButtonBGs.Count; i++)
         {
             if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[i] > 0.5f)
             {
-                ves[i].RemoveFromClassList("bg-darkgray");
-                ves[i].AddToClassList("bg-red");
-                ves[i].AddToClassList("semi-transparent");
+                blockButtonBGs[i].RemoveFromClassList("bg-darkgray");
+                blockButtonBGs[i].AddToClassList("bg-red");
+                blockButtonBGs[i].AddToClassList("semi-transparent");
             }
         }
     }
@@ -98,5 +101,29 @@ public class HomeSceneView
                 buttonCounter++;
             }
         }
+    }
+
+    public void BlockSelect(int index)
+    {
+        for(int i = 0; i < blockButtonBGs.Count; i++)
+        {
+            blockButtonBGs[i].RemoveFromClassList("indicator-button-selected");
+        }
+        blockButtonBGs[index].AddToClassList("indicator-button-selected");
+
+        mapInfo[0].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index];
+        if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[index] > 0.5f)
+        {
+            mapInfo[1].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Home)[8];
+            mapInfo[1].RemoveFromClassList("color-white");
+            mapInfo[1].AddToClassList("color-red");
+        }
+        else
+        {
+            mapInfo[1].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Home)[9];
+            mapInfo[1].RemoveFromClassList("color-red");
+            mapInfo[1].AddToClassList("color-white");
+        }
+        mapInfo[3].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[index];
     }
 }

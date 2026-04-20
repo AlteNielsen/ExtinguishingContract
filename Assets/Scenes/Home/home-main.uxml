@@ -64,19 +64,19 @@
                     <ui:VisualElement class="row center-row">
                         <ui:VisualElement>
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Target Block▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement>
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Current Situation▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="火災発生" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-white text-offset-alpha" text="火災発生" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="center-line" >
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Extinguish Chance▼" />
-                            <ui:Label class="serif-bold text-special color-white" text="75%" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-white" text="75%" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="row center-row">
@@ -114,7 +114,7 @@
                     <ui:VisualElement class="row" >
                         <ui:VisualElement class="map-title" >
                             <ui:VisualElement class="all color-gradiation-red" />
-                            <ui:Label class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
+                            <ui:Label name="MapInfo" class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
                         </ui:VisualElement>
                         <ui:VisualElement class="map-title" />
                     </ui:VisualElement>
