@@ -31,7 +31,7 @@ public class HomeSceneView
         List<VisualElement> ves = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
         for(int i = 0; i < ves.Count; i++)
         {
-            if (CulculateLibrary.FloatToBoolConverter(SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span[i]))
+            if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[i] > 0.5f)
             {
                 ves[i].RemoveFromClassList("bg-darkgray");
                 ves[i].AddToClassList("bg-red");
