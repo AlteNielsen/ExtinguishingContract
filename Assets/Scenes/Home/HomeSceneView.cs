@@ -9,6 +9,7 @@ public class HomeSceneView
     {
         document = doc;
         WriteText();
+        SetupBlockSelectorDisplay();
     }
 
     private void WriteText()
@@ -22,6 +23,20 @@ public class HomeSceneView
         for(int i = 0; i < labels.Count; i++)
         {
             labels[i].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[i];
+        }
+    }
+
+    private void SetupBlockSelectorDisplay()
+    {
+        List<VisualElement> ves = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
+        for(int i = 0; i < ves.Count; i++)
+        {
+            if (CulculateLibrary.FloatToBoolConverter(SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span[i]))
+            {
+                ves[i].RemoveFromClassList("bg-darkgray");
+                ves[i].AddToClassList("bg-red");
+                ves[i].AddToClassList("semi-transparent");
+            }
         }
     }
 }
