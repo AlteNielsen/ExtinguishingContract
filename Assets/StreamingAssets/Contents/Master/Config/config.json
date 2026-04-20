@@ -9,5 +9,6 @@
     "burning_speed": 1,
 
     "unit_max_lv": 4,
-    "indicator_max_lv": 3
+    "indicator_max_lv": 3,
+    "indicator_base_chance": 0.1
 }
