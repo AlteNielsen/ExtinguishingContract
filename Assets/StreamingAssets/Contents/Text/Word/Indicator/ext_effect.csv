@@ -1,7 +1,7 @@
 6
-編成上限,Deployment
-ユニット水圧,Unit Pressure
-水圧増加倍率,Pressure Increase
-使用可能水圧,Usable Pressure
-延焼速度,Spread Speed
-初期経過ターン,Initial Turn
+編成数,Deploy
+基礎水圧,Base P
+増加倍率,Mult. P
+全水圧,Total P
+延焼速度,Fire Spd
+初期経過,Start

@@ -12,13 +12,13 @@
             <ui:VisualElement class="indicator-icon" />
             <ui:VisualElement class="all">
                 <ui:VisualElement class="row">
-                    <ui:Label class="serif-bold text-small color-waterblue" text="+88%" />
-                    <ui:Label class="serif-bold text-small color-white text-not-overflow" text="FuelRelease" />
+                    <ui:Label name="IndicatorChance" class="serif-bold text-small color-waterblue" text="+88%" />
+                    <ui:Label name="IndicatorName" class="serif-bold text-small color-white text-not-overflow" text="Collapse" />
                 </ui:VisualElement>
                 <ui:VisualElement class="row">
-                    <ui:Label class="sans-bold text-small color-white" text="水圧" />
+                    <ui:Label name="IndicatorType" class="sans-bold text-small color-white" text="Fire Spd" />
                     <ui:VisualElement class="plank-row-mid" />
-                    <ui:Label class="sans-bold text-small color-white" text="-10" />
+                    <ui:Label name="IndicatorValue" class="sans-bold text-small color-white" text="-10" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="frame-row-half" />
