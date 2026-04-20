@@ -47,6 +47,11 @@
     height: 150px
 }
 
+.indicator-button-selected{
+    border-width: 2px;
+    border-color: yellow;
+}
+
 .indicator-icon{
     height: 100%;
     width: 100%;
