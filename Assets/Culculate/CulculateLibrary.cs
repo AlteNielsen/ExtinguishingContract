@@ -2,6 +2,18 @@ using System;
 
 public static class CulculateLibrary
 {
+    public static bool FloatToBoolConverter(float value)
+    {
+        if(value > 0.5f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static float[] SwitchBoolToFloat(bool[] value)
     {
         float[] result = new float[value.Length];
