@@ -126,4 +126,11 @@ public static class CulculateLibrary
         }
         return result;
     }
+
+    public static int FloatToPercent(float value)
+    {
+        float result = value * 1000;
+        result += 5;
+        return (int)(result / 10);
+    }
 }

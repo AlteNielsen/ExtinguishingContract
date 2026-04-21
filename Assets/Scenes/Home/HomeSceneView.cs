@@ -7,14 +7,20 @@ public class HomeSceneView
     private UIDocument document;
     private List<VisualElement> blockButtonBGs;
     private List<Label> mapInfo;
+    private List<VisualElement> indicatorButtonBGs;
+    private List<VisualElement> waterGauge;
 
     public HomeSceneView(UIDocument doc)
     {
         document = doc;
         blockButtonBGs = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
         mapInfo = document.rootVisualElement.Query<Label>("MapInfo").ToList();
+        indicatorButtonBGs = document.rootVisualElement.Query<VisualElement>("IndicatorButtonBG").ToList();
+        waterGauge = document.rootVisualElement.Query<VisualElement>("WaterGauge").ToList();
         WriteText();
         SetupValues();
+        mapInfo[2].text = "" + CulculateLibrary.FloatToPercent(Config.Data.InitialChance) + "%";
+        OtherBlockProgressDisplay(Config.Data.InitialChance - 1);
     }
 
     private void WriteText()
@@ -87,7 +93,7 @@ public class HomeSceneView
                 int type = i / Config.Data.IndicatorMaxLv;
                 int level = i % Config.Data.IndicatorMaxLv + 1;
                 
-                chances[buttonCounter].text = "+" + (Config.Data.IndicatorBaseChance * level) * 100 + "%";
+                chances[buttonCounter].text = "+" + CulculateLibrary.FloatToPercent(Config.Data.IndicatorBaseChance * level) + "%";
                 names[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[type];
                 types[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorEffect)[type];
                 if (baseValue[type] > 0)
@@ -107,9 +113,9 @@ public class HomeSceneView
     {
         for(int i = 0; i < blockButtonBGs.Count; i++)
         {
-            blockButtonBGs[i].RemoveFromClassList("indicator-button-selected");
+            blockButtonBGs[i].RemoveFromClassList("block-button-selected");
         }
-        blockButtonBGs[index].AddToClassList("indicator-button-selected");
+        blockButtonBGs[index].AddToClassList("block-button-selected");
 
         mapInfo[0].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index];
         if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[index] > 0.5f)
@@ -125,5 +131,76 @@ public class HomeSceneView
             mapInfo[1].AddToClassList("color-white");
         }
         mapInfo[3].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[index];
+    }
+
+    public void IndicatorSelect(int index, Span<bool> indicatorCondition)
+    {
+        if (indicatorCondition[index])
+        {
+            indicatorButtonBGs[index].RemoveFromClassList("bg-darkgray");
+            indicatorButtonBGs[index].AddToClassList("indicator-button-selected");
+        }
+        else
+        {
+            indicatorButtonBGs[index].RemoveFromClassList("indicator-button-selected");
+            indicatorButtonBGs[index].AddToClassList("bg-darkgray");
+        }
+        float chance = CulculateChance(indicatorCondition);
+        if (chance > 1)
+        {
+            mapInfo[2].text = "" + 100 + "%";
+        }
+        else
+        {
+            mapInfo[2].text = "" + CulculateLibrary.FloatToPercent(chance) + "%";
+        }
+        OtherBlockProgressDisplay(chance - 1);
+    }
+
+    private float CulculateChance(Span<bool> indicatorCondition)
+    {
+        float result = 0;
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
+        int counter = 0;
+        for (int i = 0; i < indicators.Length; i++)
+        {
+            if (indicators[i] > 0.5f)
+            {
+                if (indicatorCondition[counter])
+                {
+                    int level = i % Config.Data.IndicatorMaxLv + 1;
+                    result += Config.Data.IndicatorBaseChance * level;
+                }
+                counter++;
+            }
+        }
+        result += Config.Data.InitialChance;
+        return result;
+    }
+
+    private void OtherBlockProgressDisplay(float value)
+    {
+        float other = SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0];
+        waterGauge[2].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(other)));
+        if(value <= 0)
+        {
+            mapInfo[4].text = "" + 0 + "%";
+            waterGauge[0].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(1 - other)));
+            waterGauge[1].style.height = new StyleLength(Length.Percent(0));
+        }
+        else
+        {
+            if(other + value > 1)
+            {
+                waterGauge[0].style.height = new StyleLength(Length.Percent(0));
+                waterGauge[1].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(1 - other)));
+            }
+            else
+            {
+                waterGauge[0].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(1 - other - value)));
+                waterGauge[1].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(value)));
+            }
+            mapInfo[4].text = "+" + CulculateLibrary.FloatToPercent(value) + "%";
+        }
     }
 }

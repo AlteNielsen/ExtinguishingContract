@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System;
 
 public class HomeSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
     private HomeSceneView sceneView;
     private int blockSelector;
+    private bool[] isIndicatorSelected = new bool[ExtinguishingContract.IndicatorChoicesNum];
 
     void Awake()
     {
@@ -24,11 +26,23 @@ public class HomeSceneManager : MonoBehaviour
             int j = i;
             blockButtons[i].clicked += () => BlockSelect(j);
         }
+        List<Button> indicatorButtons = document.rootVisualElement.Query<Button>("IndicatorButton").ToList();
+        for (int i = 0; i < indicatorButtons.Count; i++)
+        {
+            int j = i;
+            indicatorButtons[i].clicked += () => IndicatorSelect(j);
+        }
     }
 
     private void BlockSelect(int index)
     {
         blockSelector = index;
         sceneView.BlockSelect(blockSelector);
+    }
+
+    private void IndicatorSelect(int index)
+    {
+        isIndicatorSelected[index] = !isIndicatorSelected[index];
+        sceneView.IndicatorSelect(index, isIndicatorSelected.AsSpan());
     }
 }
