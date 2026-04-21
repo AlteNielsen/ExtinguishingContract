@@ -34,7 +34,6 @@ public class MapSelectData
 public class IndicatorSelectChunk : RayDataChunk
 {
     private const string path = "indicator_select.json";
-    private const int EIndicatorNum = 6;
 
     public override void Save()
     {
@@ -46,9 +45,9 @@ public class IndicatorSelectChunk : RayDataChunk
     public override float[] Load()
     {
         IndicatorSelectData value = RaySaveDataIO.LoadSaveData<IndicatorSelectData>(path);
-        bool[] result = new bool[Config.Data.IndicatorMaxLv * EIndicatorNum];
-        int dataLv = value.selected_indicator_data.Length / EIndicatorNum;
-        for(int i = 0; i < EIndicatorNum; i++)
+        bool[] result = new bool[Config.Data.IndicatorMaxLv * ExtinguishingContract.EIndicatorNum];
+        int dataLv = value.selected_indicator_data.Length / ExtinguishingContract.EIndicatorNum;
+        for(int i = 0; i < ExtinguishingContract.EIndicatorNum; i++)
         {
             if(value.selected_indicator_data.Length > result.Length)
             {

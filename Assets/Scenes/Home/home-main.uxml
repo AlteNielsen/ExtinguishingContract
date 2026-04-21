@@ -12,6 +12,7 @@
             <ui:VisualElement class="return-button" >
                 <ui:VisualElement class="all color-gradiation-black" />
                 <ui:VisualElement class="abs-all return-button-icon" />
+                <ui:Button name="BackButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="plank-gamma" />
             <ui:VisualElement class="contract-memo" >
@@ -20,8 +21,14 @@
                     <ui:VisualElement class="plank-row-mid" />
                     <ui:VisualElement class="contract-memo-logo" />
                     <ui:VisualElement class="">
-                        <ui:Label class="serif-regular text-small color-gray contract-memo-id" text="ID 000-000-000" />
-                        <ui:Label class="serif-bold text-mid color-gray contract-memo-grade" text="契約等級  6502" />
+                        <ui:VisualElement class="row contract-memo-id">
+                            <ui:Label name="Text" class="serif-regular text-small color-gray" text="ID" />
+                            <ui:Label name="ID" class="serif-regular text-small color-gray" text="000-000-000" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="row contract-memo-grade">
+                            <ui:Label name="Text" class="serif-bold text-mid color-gray" text="Grade" />
+                            <ui:Label name="Grade" class="serif-bold text-mid color-gray" text="6502" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -54,27 +61,27 @@
             <ui:VisualElement class="colomn-plank" />
             <ui:VisualElement class="center-colomn">
                 <ui:VisualElement class="plank-line-small" />
-                <ui:VisualElement class="">
+                <ui:VisualElement name="IndicatorPanel" class="">
                     <ui:VisualElement class="row center-row">
                         <ui:VisualElement>
-                            <ui:Label class="serif-regular text-small color-white" text="▼Target Block▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
+                            <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Target Block▼" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement>
-                            <ui:Label class="serif-regular text-small color-white" text="▼Current Situation▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="火災発生" />
+                            <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Current Situation▼" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-white text-offset-alpha" text="火災発生" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="center-line" >
-                            <ui:Label class="serif-regular text-small color-white" text="▼Extinguish Chance▼" />
-                            <ui:Label class="serif-bold text-special color-white" text="75%" />
+                            <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Extinguish Chance▼" />
+                            <ui:Label name="MapInfo" class="serif-bold text-special color-waterblue" text="75%" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="row center-row">
-                        <ui:Label class="serif-regular text-small color-white" text="▼消火指標▼" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white" text="▼消火指標▼" />
                         <ui:VisualElement class="text-offset-beta" />
                     </ui:VisualElement>
                     <ui:VisualElement>
@@ -103,12 +110,12 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement class="center-line non-display">
+                <ui:VisualElement name="MapPanel" class="center-line non-display">
                     <ui:VisualElement class="plank-line-small" />
                     <ui:VisualElement class="row" >
                         <ui:VisualElement class="map-title" >
                             <ui:VisualElement class="all color-gradiation-red" />
-                            <ui:Label class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
+                            <ui:Label name="MapInfo" class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
                         </ui:VisualElement>
                         <ui:VisualElement class="map-title" />
                     </ui:VisualElement>
@@ -119,23 +126,27 @@
                 <ui:VisualElement class="plank-line-mid" />
                 <ui:VisualElement class="row">
                     <ui:VisualElement class="plank-alpha" />
-                    <ui:VisualElement class="map-button map-button-tex-off" />
+                    <ui:VisualElement class="map-button">
+                        <ui:VisualElement name="MapButtonTex" class="all map-button-tex-off" />
+                        <ui:Button name="MapButton" class="abs-all button-initialize transparent" />
+                    </ui:VisualElement>
                     <ui:VisualElement class="plank-beta" />
                     <ui:VisualElement class="decide-button">
-                        <ui:VisualElement class="abs-all color-gradiation-red" />
-                        <ui:Label class="all serif-bold text-mid color-white text-set-center decide-button-txt" text="To Unit Select" />
+                        <ui:VisualElement name="NextButtonBG" class="abs-all color-gradiation-red" />
+                        <ui:Label name="Text" class="all serif-bold text-mid color-white text-set-center decide-button-txt" text="To Unit Select" />
+                        <ui:Button name="NextButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="colomn-plank" />
             <ui:VisualElement class="right-colomn center-line">
-                <ui:Label class="serif-regular text-small color-white text-multi-line text-set-center" text="他地区消火進捗" />
-                <ui:Label class="serif-regular text-small color-waterblue text-set-center" text="+30%" />
+                <ui:Label name="Text" class="serif-regular text-small color-white text-multi-line text-set-center" text="他地区消火進捗" />
+                <ui:Label name="MapInfo" class="serif-regular text-small color-waterblue text-set-center" text="+30%" />
                 <ui:VisualElement class="hei-plank-small" />
                 <ui:VisualElement class="water-gauge">
-                    <ui:VisualElement class="water-gauge-plank" />
-                    <ui:VisualElement class="water-gauge-add" />
-                    <ui:VisualElement class="water-gauge-pool" />
+                    <ui:VisualElement name="WaterGauge" class="water-gauge-plank" />
+                    <ui:VisualElement name="WaterGauge" class="water-gauge-add semi-transparent" />
+                    <ui:VisualElement name="WaterGauge" class="water-gauge-pool semi-transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-line-mid" /> 
             </ui:VisualElement>

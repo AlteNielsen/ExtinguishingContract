@@ -47,6 +47,15 @@
     height: 150px
 }
 
+.indicator-button-selected{
+    background-color: #003899;
+}
+
+.block-button-selected{
+    border-width: 2px;
+    border-color: yellow;
+}
+
 .indicator-icon{
     height: 100%;
     width: 100%;

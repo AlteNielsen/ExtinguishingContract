@@ -3,6 +3,11 @@ using UnityEngine.SceneManagement;
 
 public static class ExtinguishingContract
 {
+    public const int EIndicatorNum = 6;
+    public const int CIndicatorNum = 9;
+    public const int CIndicatorMaxLv = 10;
+    public const int IndicatorChoicesNum = 9;
+
     public static void GameSetup()
     {
         DataBaseSetup();
@@ -75,5 +80,10 @@ public static class GameSceneManager
     public static void ToGameLoading()
     {
         SceneManager.LoadScene("GameLoadingScene");
+    }
+
+    public static void ToUnit()
+    {
+        SceneManager.LoadScene("UnitScene");
     }
 }

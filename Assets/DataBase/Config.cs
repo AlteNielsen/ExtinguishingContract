@@ -29,6 +29,7 @@ public class ConfigData
 
     [SerializeField] private int unit_max_lv;
     [SerializeField] private int indicator_max_lv;
+    [SerializeField] private float indicator_base_chance;
 
 
     public int UnitBasePressure { get; private set; }
@@ -42,6 +43,7 @@ public class ConfigData
 
     public int UnitMaxLv {  get; private set; }
     public int IndicatorMaxLv { get; private set; }
+    public float IndicatorBaseChance { get; private set; }
 
     public void Setup()
     {
@@ -56,5 +58,6 @@ public class ConfigData
 
         UnitMaxLv = unit_max_lv;
         IndicatorMaxLv = indicator_max_lv;
+        IndicatorBaseChance = indicator_base_chance;
     }
 }

@@ -44,7 +44,6 @@ public class BurningSituationData
 public class BlockIndicatorChunk : RayDataChunk
 {
     private const string path = "block_indicator.json";
-    private const int EIndicatorNum = 6;
 
     public override void Save()
     {
@@ -56,9 +55,9 @@ public class BlockIndicatorChunk : RayDataChunk
     public override float[] Load()
     {
         BlockIndicatorData value = RaySaveDataIO.LoadSaveData<BlockIndicatorData>(path);
-        bool[] result = new bool[EIndicatorNum * Config.Data.IndicatorMaxLv];
-        int beforeMaxLevel = value.block_indicators.Length / EIndicatorNum;
-        for(int i = 0; i < EIndicatorNum; i++)
+        bool[] result = new bool[ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv];
+        int beforeMaxLevel = value.block_indicators.Length / ExtinguishingContract.EIndicatorNum;
+        for(int i = 0; i < ExtinguishingContract.EIndicatorNum; i++)
         {
             if(beforeMaxLevel > Config.Data.IndicatorMaxLv)
             {
