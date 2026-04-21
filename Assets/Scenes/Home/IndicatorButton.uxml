@@ -7,7 +7,7 @@
 
     <ui:VisualElement class="indicator-button">
         <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-        <ui:VisualElement class="on-button bg-darkgray" />
+        <ui:VisualElement name="IndicatorButtonBG" class="on-button bg-darkgray" />
         <ui:VisualElement class="on-button row">
             <ui:VisualElement class="indicator-icon" />
             <ui:VisualElement class="all">
@@ -24,6 +24,7 @@
             <ui:VisualElement class="frame-row-half" />
             <ui:VisualElement class="frame-row-quarter" />
         </ui:VisualElement>
+        <ui:Button name="IndicatorButton" class="abs-all button-initialize transparent" />
     </ui:VisualElement>
 
     

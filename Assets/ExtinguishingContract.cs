@@ -5,7 +5,8 @@ public static class ExtinguishingContract
 {
     public const int EIndicatorNum = 6;
     public const int CIndicatorNum = 9;
-    public const int CIndicatorMaxLv = 10; 
+    public const int CIndicatorMaxLv = 10;
+    public const int IndicatorChoicesNum = 9;
 
     public static void GameSetup()
     {
