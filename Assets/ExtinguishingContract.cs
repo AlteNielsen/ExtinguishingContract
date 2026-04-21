@@ -81,4 +81,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("GameLoadingScene");
     }
+
+    public static void ToUnit()
+    {
+        SceneManager.LoadScene("UnitScene");
+    }
 }
