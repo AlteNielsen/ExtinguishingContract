@@ -34,18 +34,17 @@ public class ContractSceneView
 
     public void IndicatorButtonChange(int indicator, int lv)
     {
-        int maxLv = 10;
-        for(int i = 0; i < maxLv; i++)
+        for(int i = 0; i < ExtinguishingContract.CIndicatorMaxLv; i++)
         {
-            indicatorButtonBG[indicator * maxLv + i].RemoveFromClassList("bg-white");
-            indicatorButtonBG[indicator * maxLv + i].AddToClassList("bg-darkgray");
-            indicatorButtonText[indicator * maxLv + i].RemoveFromClassList("color-black");
-            indicatorButtonText[indicator * maxLv + i].AddToClassList("color-white");
+            indicatorButtonBG[indicator * ExtinguishingContract.CIndicatorMaxLv + i].RemoveFromClassList("bg-white");
+            indicatorButtonBG[indicator * ExtinguishingContract.CIndicatorMaxLv + i].AddToClassList("bg-darkgray");
+            indicatorButtonText[indicator * ExtinguishingContract.CIndicatorMaxLv + i].RemoveFromClassList("color-black");
+            indicatorButtonText[indicator * ExtinguishingContract.CIndicatorMaxLv + i].AddToClassList("color-white");
         }
-        indicatorButtonBG[indicator * maxLv + lv].RemoveFromClassList("bg-darkgray");
-        indicatorButtonBG[indicator * maxLv + lv].AddToClassList("bg-white");
-        indicatorButtonText[indicator * maxLv + lv].RemoveFromClassList("color-white");
-        indicatorButtonText[indicator * maxLv + lv].AddToClassList("color-black");
+        indicatorButtonBG[indicator * ExtinguishingContract.CIndicatorMaxLv + lv].RemoveFromClassList("bg-darkgray");
+        indicatorButtonBG[indicator * ExtinguishingContract.CIndicatorMaxLv + lv].AddToClassList("bg-white");
+        indicatorButtonText[indicator * ExtinguishingContract.CIndicatorMaxLv + lv].RemoveFromClassList("color-white");
+        indicatorButtonText[indicator * ExtinguishingContract.CIndicatorMaxLv + lv].AddToClassList("color-black");
     }
     
     public void UpdateContractPreview(ReadOnlySpan<float> indicatorLevels)
@@ -53,10 +52,11 @@ public class ContractSceneView
         float[] values = CulculateLibrary.IndicatorBaseValues(indicatorLevels);
         previews[0].text = "" + values[0];
         previews[1].text = "+" + values[1];
-        previews[2].text = "x " + values[2];
+        previews[2].text = "+" + values[2];
         previews[3].text = "" + values[3];
-        previews[4].text = "x " + values[4];
+        previews[4].text = "+ " + values[4];
         previews[5].text = "+" + values[5];
+
         previews[6].text = "" + (int)(values[6] * 100) + "%";
         previews[7].text = "" + values[7];
         previews[8].text = "" + values[8];

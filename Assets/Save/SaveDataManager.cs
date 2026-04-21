@@ -53,8 +53,6 @@ public class SaveDataManager : RayAbstractDataManager
 
     public void TitleSceneSaveDataInitialize()
     {
-        Initialize((int)SaveDataChunk.MapSelect);
-        Initialize((int)SaveDataChunk.IndicatorSelect);
         Initialize((int)SaveDataChunk.UnitSelect);
         Initialize((int)SaveDataChunk.UnitLevel);
         Initialize((int)SaveDataChunk.FireMap);

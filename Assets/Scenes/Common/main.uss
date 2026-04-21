@@ -30,6 +30,10 @@
     background-color: var(--color-darkred);
 }
 
+.bg-blue{
+    background-color: var(--color-blue);
+}
+
 .bg-waterblue{
     background-color: var(--color-waterblue);
 }

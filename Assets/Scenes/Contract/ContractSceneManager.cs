@@ -16,7 +16,7 @@ public class ContractSceneManager : MonoBehaviour
     {
         sceneView = new ContractSceneView(document);
         ContractSceneController();
-        for(int i = 0; i < 9; i++)
+        for(int i = 0; i < ExtinguishingContract.CIndicatorNum; i++)
         {
             indicatorLevels[i] = 1;
             IndicatorButtonClicked(i, 0);
@@ -26,11 +26,10 @@ public class ContractSceneManager : MonoBehaviour
     private void ContractSceneController()
     {
         indicatorButtons = document.rootVisualElement.Query<Button>("IndicatorButton").ToList();
-        int maxLv = 10;
         for(int i = 0; i < indicatorButtons.Count; i++)
         {
             int j = i;
-            indicatorButtons[i].clicked += () => IndicatorButtonClicked(j / maxLv, j % maxLv);
+            indicatorButtons[i].clicked += () => IndicatorButtonClicked(j / ExtinguishingContract.CIndicatorMaxLv, j % ExtinguishingContract.CIndicatorMaxLv);
         }
         sign = document.rootVisualElement.Q<Button>("Sign");
         sign.clicked += SignClicked;
