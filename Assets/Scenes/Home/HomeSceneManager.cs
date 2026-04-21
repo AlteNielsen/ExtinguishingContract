@@ -36,6 +36,8 @@ public class HomeSceneManager : MonoBehaviour
         mapButton.clicked += MapDisplaySwitch;
         Button nextButton = document.rootVisualElement.Q<Button>("NextButton");
         nextButton.clicked += ToUnitScene;
+        Button backButton = document.rootVisualElement.Q<Button>("BackButton");
+        backButton.clicked += BackToTitle;
     }
 
     private void RestoreSituationFromSaveData()
@@ -78,12 +80,24 @@ public class HomeSceneManager : MonoBehaviour
         sceneView.MapDisplay();
     }
 
+    private void BackToTitle()
+    {
+        SaveProcess();
+        GameSceneManager.ToTitle();
+    }
+
     private void ToUnitScene()
     {
         if (SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[blockSelector] < 0.5f)
         {
             return;
         }
+        SaveProcess();
+        GameSceneManager.ToUnit();
+    }
+
+    private void SaveProcess()
+    {
         float[] result = new float[ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv];
         ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
         int counter = 0;
@@ -99,7 +113,6 @@ public class HomeSceneManager : MonoBehaviour
             }
         }
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.IndicatorSelect, result);
-        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.MapSelect, new float[] {blockSelector} );
-        GameSceneManager.ToUnit();
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.MapSelect, new float[] { blockSelector });
     }
 }
