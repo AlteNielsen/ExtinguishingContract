@@ -9,6 +9,11 @@ public class HomeSceneView
     private List<Label> mapInfo;
     private List<VisualElement> indicatorButtonBGs;
     private List<VisualElement> waterGauge;
+    private VisualElement indicatorPanel;
+    private VisualElement mapPanel;
+    private VisualElement mapButtonTex;
+
+    private bool centerColomnCondition;//false: indicator true: map
 
     public HomeSceneView(UIDocument doc)
     {
@@ -17,6 +22,9 @@ public class HomeSceneView
         mapInfo = document.rootVisualElement.Query<Label>("MapInfo").ToList();
         indicatorButtonBGs = document.rootVisualElement.Query<VisualElement>("IndicatorButtonBG").ToList();
         waterGauge = document.rootVisualElement.Query<VisualElement>("WaterGauge").ToList();
+        indicatorPanel = document.rootVisualElement.Q<VisualElement>("IndicatorPanel");
+        mapPanel = document.rootVisualElement.Q<VisualElement>("MapPanel");
+        mapButtonTex = document.rootVisualElement.Q<VisualElement>("MapButtonTex");
         WriteText();
         SetupValues();
         mapInfo[2].text = "" + CulculateLibrary.FloatToPercent(Config.Data.InitialChance) + "%";
@@ -201,6 +209,25 @@ public class HomeSceneView
                 waterGauge[1].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(value)));
             }
             mapInfo[4].text = "+" + CulculateLibrary.FloatToPercent(value) + "%";
+        }
+    }
+
+    public void MapDisplay()
+    {
+        centerColomnCondition = !centerColomnCondition;
+        if(centerColomnCondition)
+        {
+            mapPanel.RemoveFromClassList("non-display");
+            indicatorPanel.AddToClassList("non-display");
+            mapButtonTex.RemoveFromClassList("map-button-tex-off");
+            mapButtonTex.AddToClassList("map-button-tex-on");
+        }
+        else
+        {
+            mapPanel.AddToClassList("non-display");
+            indicatorPanel.RemoveFromClassList("non-display");
+            mapButtonTex.RemoveFromClassList("map-button-tex-on");
+            mapButtonTex.AddToClassList("map-button-tex-off");
         }
     }
 }
