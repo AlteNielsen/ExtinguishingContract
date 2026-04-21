@@ -32,6 +32,8 @@ public class HomeSceneManager : MonoBehaviour
             int j = i;
             indicatorButtons[i].clicked += () => IndicatorSelect(j);
         }
+        Button mapButton = document.rootVisualElement.Q<Button>("MapButton");
+        mapButton.clicked += MapDisplaySwitch;
     }
 
     private void BlockSelect(int index)
@@ -44,5 +46,10 @@ public class HomeSceneManager : MonoBehaviour
     {
         isIndicatorSelected[index] = !isIndicatorSelected[index];
         sceneView.IndicatorSelect(index, isIndicatorSelected.AsSpan());
+    }
+
+    private void MapDisplaySwitch()
+    {
+        sceneView.MapDisplay();
     }
 }
