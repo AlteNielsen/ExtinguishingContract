@@ -12,6 +12,7 @@
             <ui:VisualElement class="return-button" >
                 <ui:VisualElement class="all color-gradiation-black" />
                 <ui:VisualElement class="abs-all return-button-icon" />
+                <ui:Button name="BackButton" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="plank-gamma" />
             <ui:VisualElement class="contract-memo" >
