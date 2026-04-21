@@ -15,7 +15,7 @@ public class HomeSceneManager : MonoBehaviour
         ExtinguishingContract.DevelopOnlyGameSetup();
         sceneView = new HomeSceneView(document);
         HomeSceneController();
-        BlockSelect(0);
+        RestoreSituationFromSaveData();
     }
 
     private void HomeSceneController()
@@ -34,6 +34,31 @@ public class HomeSceneManager : MonoBehaviour
         }
         Button mapButton = document.rootVisualElement.Q<Button>("MapButton");
         mapButton.clicked += MapDisplaySwitch;
+        Button nextButton = document.rootVisualElement.Q<Button>("NextButton");
+        nextButton.clicked += ToUnitScene;
+    }
+
+    private void RestoreSituationFromSaveData()
+    {
+        BlockSelect((int)SaveDataManager.Instance.Access<MapSelectChunk>(((int)SaveDataManager.SaveDataChunk.MapSelect)).data.Span[0]);
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
+        ReadOnlySpan<float> selected = SaveDataManager.Instance.Access<IndicatorSelectChunk>(((int)SaveDataManager.SaveDataChunk.IndicatorSelect)).data.Span;
+        int counter = 0;
+        for(int i = 0; i < indicators.Length; i++)
+        {
+            if (indicators[i] > 0.5f)
+            {
+                if (selected[i]  < 0.5f)
+                {
+                    isIndicatorSelected[counter] = true;
+                }
+                counter++;
+            }
+        }
+        for(int i = 0; i < isIndicatorSelected.Length; i++)
+        {
+            IndicatorSelect(i);
+        }
     }
 
     private void BlockSelect(int index)
@@ -51,5 +76,30 @@ public class HomeSceneManager : MonoBehaviour
     private void MapDisplaySwitch()
     {
         sceneView.MapDisplay();
+    }
+
+    private void ToUnitScene()
+    {
+        if (SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[blockSelector] < 0.5f)
+        {
+            return;
+        }
+        float[] result = new float[ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv];
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
+        int counter = 0;
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (indicators[i] > 0.5f)
+            {
+                if (isIndicatorSelected[counter])
+                {
+                    result[i] = 1;
+                }
+                counter++;
+            }
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.IndicatorSelect, result);
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.MapSelect, new float[] {blockSelector} );
+        GameSceneManager.ToUnit();
     }
 }

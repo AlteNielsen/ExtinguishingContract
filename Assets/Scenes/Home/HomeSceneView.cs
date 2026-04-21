@@ -12,6 +12,7 @@ public class HomeSceneView
     private VisualElement indicatorPanel;
     private VisualElement mapPanel;
     private VisualElement mapButtonTex;
+    private VisualElement nextButtonBG;
 
     private bool centerColomnCondition;//false: indicator true: map
 
@@ -25,6 +26,7 @@ public class HomeSceneView
         indicatorPanel = document.rootVisualElement.Q<VisualElement>("IndicatorPanel");
         mapPanel = document.rootVisualElement.Q<VisualElement>("MapPanel");
         mapButtonTex = document.rootVisualElement.Q<VisualElement>("MapButtonTex");
+        nextButtonBG = document.rootVisualElement.Q<VisualElement>("NextButtonBG");
         WriteText();
         SetupValues();
         mapInfo[2].text = "" + CulculateLibrary.FloatToPercent(Config.Data.InitialChance) + "%";
@@ -131,12 +133,18 @@ public class HomeSceneView
             mapInfo[1].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Home)[8];
             mapInfo[1].RemoveFromClassList("color-white");
             mapInfo[1].AddToClassList("color-red");
+
+            nextButtonBG.RemoveFromClassList("color-gradiation-gray");
+            nextButtonBG.AddToClassList("color-gradiation-red");
         }
         else
         {
             mapInfo[1].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Home)[9];
             mapInfo[1].RemoveFromClassList("color-red");
             mapInfo[1].AddToClassList("color-white");
+
+            nextButtonBG.RemoveFromClassList("color-gradiation-red");
+            nextButtonBG.AddToClassList("color-gradiation-gray");
         }
         mapInfo[3].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[index];
     }
