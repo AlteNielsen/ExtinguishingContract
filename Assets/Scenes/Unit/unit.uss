@@ -141,19 +141,19 @@
 }
 
 .grid-tile{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin: 5px;
 }
 
 .grid-tile-off{
-    border-width: 3px;
+    border-width: 2px;
     border-color: var(--color-darkgray);
     opacity: 0.5;
 }
 
 .grid-tile-on{
-    border-width: 2px;
+    border-width: 3px;
     border-color: var(--color-white);
 }
 

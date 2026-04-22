@@ -35,7 +35,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="plank-line-mid" />
-        <ui:VisualElement class="range-grid center-line center-row">
+        <ui:VisualElement name="UnitRange" class="range-grid center-line center-row">
             <ui:VisualElement class="grid-tile" />
             <ui:VisualElement class="grid-tile grid-tile-off" />
             <ui:VisualElement class="grid-tile grid-tile-off" />
