@@ -6,9 +6,12 @@
 
     <ui:VisualElement class="unit-card center-line">
         <ui:VisualElement class="abs-all bg-block" />
-        <ui:Label class="serif-regular text-small color-white" text="消火戦車「ゼーロウ」" />
+        <ui:VisualElement class="row">
+            <ui:Label name="UnitCategory" class="serif-regular text-small color-white" text="消火戦車" />
+            <ui:Label name="UnitName" class="serif-regular text-small color-white" text="「ゼーロウ」" />
+        </ui:VisualElement>
         <ui:VisualElement class="unit-card-icon" />
-        <ui:Label class="serif-regular text-small color-white" text="▼消火範囲▼" />
+        <ui:Label name="UnitText" class="serif-regular text-small color-white" text="▼消火範囲▼" />
         <ui:VisualElement class="row" >
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />

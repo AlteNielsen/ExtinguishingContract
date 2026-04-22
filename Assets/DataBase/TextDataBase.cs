@@ -52,6 +52,7 @@ public static class TextDataBase
         Title,
         Contract,
         GameLoading,
-        Home
+        Home,
+        Unit
     }
 }
