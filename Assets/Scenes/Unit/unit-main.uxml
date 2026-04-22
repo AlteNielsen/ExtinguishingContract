@@ -20,8 +20,14 @@
                     <ui:VisualElement class="plank-row-mid" />
                     <ui:VisualElement class="contract-memo-logo" />
                     <ui:VisualElement class="">
-                        <ui:Label class="serif-regular text-small color-gray contract-memo-id" text="ID 333-333-333" />
-                        <ui:Label class="serif-bold text-mid color-gray contract-memo-grade" text="Grade  6502" />
+                        <ui:VisualElement class="row contract-memo-id">
+                            <ui:Label name="Text" class="serif-regular text-small color-gray" text="ID" />
+                            <ui:Label name="ID" class="serif-regular text-small color-gray" text="000-000-000" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="row contract-memo-grade">
+                            <ui:Label name="Text" class="serif-bold text-mid color-gray" text="Grade" />
+                            <ui:Label name="Grade" class="serif-bold text-mid color-gray" text="6502" />
+                        </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -29,13 +35,7 @@
         </ui:VisualElement>
         <ui:VisualElement class="row lower-screen">
             <ui:VisualElement class="unit-list">
-                <ui:ScrollView class="" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" >
-                    <ui:Instance template="UnitCardTemp" />
-                    <ui:Instance template="UnitCardTemp" />
-                    <ui:Instance template="UnitCardTemp" />
-                    <ui:Instance template="UnitCardTemp" />
-                    <ui:Instance template="UnitCardTemp" />
-                    <ui:Instance template="UnitCardTemp" />
+                <ui:ScrollView name="UnitScrollView" class="" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" >
                     <ui:Instance template="UnitCardTemp" />
                 </ui:ScrollView>
                 <ui:VisualElement class="scrollbar row">
@@ -87,19 +87,19 @@
                 <ui:VisualElement class="plank-line-small" />
                 <ui:VisualElement class="condition row" >
                     <ui:VisualElement class="deployment-count center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="編成数" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white" text="編成数" />
                         <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="1 / 5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="plank-row-mid" />
                     <ui:VisualElement class="using-pressure center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="水圧" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white" text="水圧" />
                         <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="10 / 290" />
                     </ui:VisualElement>
                 </ui:VisualElement> 
                 <ui:VisualElement class="plank-line-small" />
                 <ui:VisualElement class="go-button">
                     <ui:VisualElement class="on-button bg-red" >
-                        <ui:Label class="serif-bold text-large color-white text-set-center" text="出場" />
+                        <ui:Label name="Text" class="serif-bold text-large color-white text-set-center" text="出場" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement> 
