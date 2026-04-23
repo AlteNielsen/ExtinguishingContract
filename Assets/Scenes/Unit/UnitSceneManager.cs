@@ -43,11 +43,18 @@ public class UnitSceneManager : MonoBehaviour
             int level = i % maxLv;
             levelSelectors[i].clicked += () => UnitLevelSelect(index, level);
         }
+        Button back = document.rootVisualElement.Q<Button>("BackButton");
+        back.clicked += BackToHome;
     }
 
     private void UnitLevelSelect(int index, int level)
     {
         unitLevels[index] = level;
         sceneView.UnitLevelChange(index, level);
+    }
+
+    private void BackToHome()
+    {
+        GameSceneManager.ToHome();
     }
 }
