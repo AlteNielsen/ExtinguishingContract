@@ -479,6 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitSceneManager
   document: {fileID: 968458573}
   unitCard: {fileID: 9197481963319205126, guid: 6745b1f6661fdcb4da9437d8cddaceef, type: 3}
+  selectCard: {fileID: 9197481963319205126, guid: 820c513ecc68be049844d6087f9d9d0c, type: 3}
 --- !u!4 &2095928162
 Transform:
   m_ObjectHideFlags: 0
