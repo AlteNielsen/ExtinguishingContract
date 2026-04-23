@@ -122,15 +122,13 @@ public class UnitSceneView
         for(int i = 0; i < unitRangeTiles.Length; i++)
         {
             unitRangeDisplays[i].contentContainer.Clear();
-            float displaySize = 425;
             int size = GetUnitRangeDisplaySize(i);
-            float tileSize = (displaySize / size) - 1;
             for (int j = 0; j < unitRangeTiles[i].Length; j++)
             {
                 unitRangeTiles[i][j] = new VisualElement();
                 unitRangeTiles[i][j].AddToClassList("grid-tile");
-                unitRangeTiles[i][j].style.width = tileSize - 10;
-                unitRangeTiles[i][j].style.height = tileSize - 10;
+                unitRangeTiles[i][j].style.width = Length.Percent((100 - size - 1) / size);
+                unitRangeTiles[i][j].style.height = Length.Percent((100 - size - 1) / size);
                 unitRangeDisplays[i].Add(unitRangeTiles[i][j]);
             }
         }
