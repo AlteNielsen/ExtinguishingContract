@@ -4,12 +4,15 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Unit/unit.uss" />
 
-    <ui:VisualElement class="row">
+    <ui:VisualElement name="SelectedCard" class="row">
         <ui:VisualElement class="selected-unit-lv">
             <ui:VisualElement class="all bg-white" />
-            <ui:Label class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha" text="Ⅱ" />
+            <ui:Label name="SelectedCardLevel" class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha non-display" text="Ⅰ" />
+            <ui:Label name="SelectedCardLevel" class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha" text="Ⅱ" />
+            <ui:Label name="SelectedCardLevel" class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha non-display" text="Ⅲ" />
+            <ui:Label name="SelectedCardLevel" class="abs-all serif-regular text-small color-black text-set-center text-adjust-alpha non-display" text="Ⅳ" />
         </ui:VisualElement>
         <ui:VisualElement class="plank-row-mid" />
-        <ui:Label class="serif-regular text-small color-white text-adjust-beta" text="消火戦車ゼーロウ" />
+        <ui:Label name="SelectedCardName" class="serif-regular text-small color-white text-adjust-beta" text="消火戦車ゼーロウ" />
     </ui:VisualElement>    
 </ui:UXML>

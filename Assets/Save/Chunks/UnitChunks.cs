@@ -16,17 +16,8 @@ public class UnitSelectChunk : RayDataChunk
     public override float[] Load()
     {
         UnitSelectData value = RaySaveDataIO.LoadSaveData<UnitSelectData>(path);
-        int maxHeight = 0;
-        for(int i = 0; i < MapDataBase.Datas.Length; i++)
-        {
-            if(maxHeight < MapDataBase.Datas[i].Data.height)
-            {
-                maxHeight = MapDataBase.Datas[i].Data.height;
-            }
-        }
-        float[] result = new float[maxHeight];
-        Array.Fill<float>(result, -1);
-        if(value.selected_units.Length > maxHeight)
+        float[] result = new float[UnitDataBase.Datas.Length];
+        if(value.selected_units.Length > UnitDataBase.Datas.Length)
         {
             Array.Copy(value.selected_units, result, result.Length);
         }
@@ -63,16 +54,8 @@ public class UnitLevelChunk : RayDataChunk
     public override float[] Load()
     {
         UnitLevelData value = RaySaveDataIO.LoadSaveData<UnitLevelData>(path);
-        int maxHeight = 0;
-        for (int i = 0; i < MapDataBase.Datas.Length; i++)
-        {
-            if (maxHeight < MapDataBase.Datas[i].Data.height)
-            {
-                maxHeight = MapDataBase.Datas[i].Data.height;
-            }
-        }
-        float[] result = new float[maxHeight];
-        if (value.unit_lvs.Length > maxHeight)
+        float[] result = new float[UnitDataBase.Datas.Length];
+        if (value.unit_lvs.Length > UnitDataBase.Datas.Length)
         {
             Array.Copy(value.unit_lvs, result, result.Length);
         }

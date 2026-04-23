@@ -6,33 +6,43 @@
 
     <ui:VisualElement class="unit-card center-line">
         <ui:VisualElement class="abs-all bg-block" />
-        <ui:Label class="serif-regular text-small color-white" text="消火戦車「ゼーロウ」" />
-        <ui:VisualElement class="unit-card-icon" />
-        <ui:Label class="serif-regular text-small color-white" text="▼消火範囲▼" />
+        <ui:VisualElement class="row">
+            <ui:Label name="UnitCategory" class="serif-regular text-small color-white" text="消火戦車" />
+            <ui:Label name="UnitName" class="serif-regular text-small color-white" text="「ゼーロウ」" />
+        </ui:VisualElement>
+        <ui:VisualElement class="unit-card-icon" >
+            <ui:VisualElement name="UnitIcon" class="all unit-card-icon-not" />
+            <ui:Button name="UnitSelector" class="abs-all button-initialize transparent" />
+        </ui:VisualElement>
+        <ui:Label name="UnitText" class="serif-regular text-small color-white" text="▼消火範囲▼" />
         <ui:VisualElement class="row" >
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅰ" />
+                <ui:VisualElement name="LevelSelectorBG" class="abs-all on-button bg-darkgray" />
+                <ui:Label name="LevelSelectorLabel" class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅰ" />
+                <ui:Button name="LevelSelector" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅱ" />
+                <ui:VisualElement name="LevelSelectorBG" class="abs-all on-button bg-darkgray" />
+                <ui:Label name="LevelSelectorLabel" class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅱ" />
+                <ui:Button name="LevelSelector" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅲ" />
+                <ui:VisualElement name="LevelSelectorBG" class="abs-all on-button bg-darkgray" />
+                <ui:Label name="LevelSelectorLabel" class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅲ" />
+                <ui:Button name="LevelSelector" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
             <ui:VisualElement class="unit-level-button" >
                 <ui:VisualElement class="all bg-darkgray semi-transparent" />
-                <ui:VisualElement class="abs-all on-button bg-darkgray" />
-                <ui:Label class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅳ" />
+                <ui:VisualElement name="LevelSelectorBG" class="abs-all on-button bg-darkgray" />
+                <ui:Label name="LevelSelectorLabel" class="abs-all serif-regular text-mid color-white text-adjust-alpha text-set-center" text="Ⅳ" />
+                <ui:Button name="LevelSelector" class="abs-all button-initialize transparent" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement class="plank-line-mid" />
-        <ui:VisualElement class="range-grid center-line center-row">
+        <ui:VisualElement name="UnitRange" class="range-grid center-line center-row">
             <ui:VisualElement class="grid-tile" />
             <ui:VisualElement class="grid-tile grid-tile-off" />
             <ui:VisualElement class="grid-tile grid-tile-off" />
