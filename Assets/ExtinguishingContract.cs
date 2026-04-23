@@ -65,7 +65,7 @@ public static class GameSceneManager
 
     public static void ToHelp()
     {
-        SceneManager.LoadScene("HelpScene");
+        //SceneManager.LoadScene("HelpScene");
     }
 
     public static void QuitGame()
