@@ -16,6 +16,10 @@ public class UnitSceneView
     private List<VisualElement> unitIcons;
     private List<VisualElement> selectCards;
     private List<Label> selectCardLevels;
+    private List<Label> unitPressureDisplays;
+    private Label deployNumDisplay;
+    private Label totalPressureDisplay;
+    private VisualElement goButtonBG;
 
     public UnitSceneView(UIDocument doc)
     {
@@ -28,6 +32,10 @@ public class UnitSceneView
         unitIcons = document.rootVisualElement.Query<VisualElement>("UnitIcon").ToList();
         selectCards = document.rootVisualElement.Query<VisualElement>("SelectedCard").ToList();
         selectCardLevels = document.rootVisualElement.Query<Label>("SelectedCardLevel").ToList();
+        unitPressureDisplays = document.rootVisualElement.Query<Label>("UnitPressureDisplay").ToList();
+        deployNumDisplay = document.rootVisualElement.Q<Label>("DeployNumDisplay");
+        totalPressureDisplay = document.rootVisualElement.Q<Label>("TotalPressureDisplay");
+        goButtonBG = document.rootVisualElement.Q<VisualElement>("GoButtonBG");
 
         cardScroll.horizontalScroller.valueChanged += ScrollBarDraw;
         cardScroll.RegisterCallback<GeometryChangedEvent>(evt => { ScrollBarDraw(0); });
@@ -81,6 +89,14 @@ public class UnitSceneView
         for(int i = 0; i < UnitDataBase.Datas.Length; i++)
         {
             UnitRangeDisplay(i, 0);
+        }
+    }
+
+    public void WriteUnitPressure(int baseValue, int increaseValue)
+    {
+        for(int i = 0; i < unitPressureDisplays.Count; i++)
+        {
+            unitPressureDisplays[i].text = "" + (baseValue + increaseValue * i);
         }
     }
 
@@ -371,6 +387,50 @@ public class UnitSceneView
                 selectCardLevels[maxLv * i + j].AddToClassList("non-display");
             }
             selectCardLevels[maxLv * i + (int)lebel[i]].RemoveFromClassList("non-display");
+        }
+    }
+
+    public void DisplayDeployPanel(int now, int limit)
+    {
+        deployNumDisplay.text = now + " / " + limit;
+        if(now > limit)
+        {
+            deployNumDisplay.RemoveFromClassList("color-green");
+            deployNumDisplay.AddToClassList("color-red");
+        }
+        else
+        {
+            deployNumDisplay.RemoveFromClassList("color-red");
+            deployNumDisplay.AddToClassList("color-green");
+        }
+    }
+
+    public void DisplayTotalPressurePanel(int now, int limit)
+    {
+        totalPressureDisplay.text = now + " / " + limit;
+        if (now > limit)
+        {
+            totalPressureDisplay.RemoveFromClassList("color-green");
+            totalPressureDisplay.AddToClassList("color-red");
+        }
+        else
+        {
+            totalPressureDisplay.RemoveFromClassList("color-red");
+            totalPressureDisplay.AddToClassList("color-green");
+        }
+    }
+
+    public void DisplayGoButton(bool canGo)
+    {
+        if (canGo)
+        {
+            goButtonBG.RemoveFromClassList("color-gradiation-gray");
+            goButtonBG.AddToClassList("color-gradiation-red");
+        }
+        else
+        {
+            goButtonBG.RemoveFromClassList("color-gradiation-red");
+            goButtonBG.AddToClassList("color-gradiation-gray");
         }
     }
 }

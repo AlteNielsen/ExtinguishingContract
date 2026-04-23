@@ -70,36 +70,36 @@
                 <ui:VisualElement class="unit-pressure-disp row center-row">
                     <ui:VisualElement class="base-flex text-set-center">
                         <ui:Label class="serif-regular text-small color-white" text="Ⅰ" />
-                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="5" />
+                        <ui:Label name="UnitPressureDisplay" class="sans-bold text-small color-white text-adjust-beta" text="5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex text-set-center">
                         <ui:Label class="serif-regular text-small color-white" text="Ⅱ" />
-                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="10" />
+                        <ui:Label name="UnitPressureDisplay" class="sans-bold text-small color-white text-adjust-beta" text="10" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex text-set-center">
                         <ui:Label class="serif-regular text-small color-white" text="Ⅲ" />
-                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="20" />
+                        <ui:Label name="UnitPressureDisplay" class="sans-bold text-small color-white text-adjust-beta" text="20" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex text-set-center">
                         <ui:Label class="serif-regular text-small color-white" text="Ⅳ" />
-                        <ui:Label class="sans-bold text-small color-white text-adjust-beta" text="40" />
+                        <ui:Label name="UnitPressureDisplay" class="sans-bold text-small color-white text-adjust-beta" text="40" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-line-small" />
                 <ui:VisualElement class="condition row" >
                     <ui:VisualElement class="deployment-count center-line">
                         <ui:Label name="Text" class="serif-regular text-small color-white" text="編成数" />
-                        <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="1 / 5" />
+                        <ui:Label name="DeployNumDisplay" class="sans-bold text-mid color-green text-adjust-beta" text="1 / 5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="plank-row-mid" />
                     <ui:VisualElement class="using-pressure center-line">
                         <ui:Label name="Text" class="serif-regular text-small color-white" text="水圧" />
-                        <ui:Label class="sans-bold text-mid color-green text-adjust-beta" text="10 / 290" />
+                        <ui:Label name="TotalPressureDisplay" class="sans-bold text-mid color-green text-adjust-beta" text="10 / 290" />
                     </ui:VisualElement>
                 </ui:VisualElement> 
                 <ui:VisualElement class="plank-line-small" />
                 <ui:VisualElement class="go-button">
-                    <ui:VisualElement class="on-button bg-red" >
+                    <ui:VisualElement name="GoButtonBG" class="on-button color-gradiation-gray" >
                         <ui:Label name="Text" class="serif-bold text-large color-white text-set-center" text="出場" />
                     </ui:VisualElement>
                 </ui:VisualElement>
