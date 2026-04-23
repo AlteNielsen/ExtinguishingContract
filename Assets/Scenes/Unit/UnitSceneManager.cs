@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System;
 
 public class UnitSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
     [SerializeField] private VisualTreeAsset unitCard;
+    [SerializeField] private VisualTreeAsset selectCard;
     private UnitSceneView sceneView;
     private int[] unitLevels;
+    private bool[] unitIsSelected;
 
     void Awake()
     {
@@ -15,6 +18,7 @@ public class UnitSceneManager : MonoBehaviour
         ScrollViewSetup();
         sceneView = new UnitSceneView(document);
         unitLevels = new int[UnitDataBase.Datas.Length];
+        unitIsSelected = new bool[UnitDataBase.Datas.Length];
         UnitSceneController();
         for(int i = 0; i < UnitDataBase.Datas.Length; i++)
         {
@@ -31,6 +35,14 @@ public class UnitSceneManager : MonoBehaviour
             VisualElement card = unitCard.Instantiate();
             unitScrollView.contentContainer.Add(card);
         }
+
+        ScrollView selectedScrollView = document.rootVisualElement.Q<ScrollView>("SelectedScrollView");
+        selectedScrollView.contentContainer.Clear();
+        for(int i = 0; i < UnitDataBase.Datas.Length;i++)
+        {
+            VisualElement card = selectCard.Instantiate();
+            selectedScrollView.contentContainer.Add(card);
+        }
     }
 
     private void UnitSceneController()
@@ -45,12 +57,25 @@ public class UnitSceneManager : MonoBehaviour
         }
         Button back = document.rootVisualElement.Q<Button>("BackButton");
         back.clicked += BackToHome;
+        List<Button> unitSelectors = document.rootVisualElement.Query<Button>("UnitSelector").ToList();
+        for(int i = 0; i < unitSelectors.Count;i++)
+        {
+            int index = i;
+            unitSelectors[i].clicked += () => UnitSelect(index);
+        }
+    }
+
+    private void UnitSelect(int index)
+    {
+        unitIsSelected[index] = !unitIsSelected[index];
+        sceneView.UnitSelect(index, unitLevels.AsSpan(), unitIsSelected.AsSpan());
     }
 
     private void UnitLevelSelect(int index, int level)
     {
         unitLevels[index] = level;
         sceneView.UnitLevelChange(index, level);
+        sceneView.UnitSelect(index, unitLevels.AsSpan(), unitIsSelected.AsSpan());
     }
 
     private void BackToHome()

@@ -13,6 +13,9 @@ public class UnitSceneView
     private List<Label> levelSelectorLabels;
     private ScrollView cardScroll;
     private List<VisualElement> scrollbar;
+    private List<VisualElement> unitIcons;
+    private List<VisualElement> selectCards;
+    private List<Label> selectCardLevels;
 
     public UnitSceneView(UIDocument doc)
     {
@@ -22,12 +25,18 @@ public class UnitSceneView
         levelSelectorLabels = document.rootVisualElement.Query<Label>("LevelSelectorLabel").ToList();
         cardScroll = document.rootVisualElement.Q<ScrollView>("UnitScrollView");
         scrollbar = document.rootVisualElement.Query<VisualElement>("CardScrollBar").ToList();
+        unitIcons = document.rootVisualElement.Query<VisualElement>("UnitIcon").ToList();
+        selectCards = document.rootVisualElement.Query<VisualElement>("SelectedCard").ToList();
+        selectCardLevels = document.rootVisualElement.Query<Label>("SelectedCardLevel").ToList();
+
         cardScroll.horizontalScroller.valueChanged += ScrollBarDraw;
         cardScroll.RegisterCallback<GeometryChangedEvent>(evt => { ScrollBarDraw(0); });
+
         ScrollBarDraw(0);
         UnitRangeDataSetup();
         UnitRangeTileSetup();
         WriteText();
+        SelectCardSetup();
     }
 
     private void WriteText()
@@ -305,5 +314,63 @@ public class UnitSceneView
         float now = scroller.value;
         scrollbar[0].style.width = Length.Percent(100 * (now / (max + display)));
         scrollbar[1].style.width = Length.Percent(100 * (display / (max + display)));
+    }
+
+    private void SelectCardSetup()
+    {
+        for(int i = 0; i < selectCards.Count; i++)
+        {
+            selectCards[i].AddToClassList("non-display");
+        }
+        List<Label> selectCardNames = document.rootVisualElement.Query<Label>("SelectedCardName").ToList();
+        for(int i = 0; i < selectCardNames.Count; i++)
+        {
+            selectCardNames[i].text = WordDataBase.Word(WordDataBase.WordSelector.UnitName)[i];
+        }
+    }
+
+    public void UnitSelect(int index, ReadOnlySpan<int> lebel, ReadOnlySpan<bool> situation)
+    {
+        UnitIconChange(index, situation[index]);
+        DisplaySelectedUnit(lebel, situation);
+    }
+
+    private void UnitIconChange(int index, bool isSelected)
+    {
+        if (isSelected)
+        {
+            unitIcons[index].RemoveFromClassList("unit-card-icon-not");
+            unitIcons[index].AddToClassList("unit-card-icon-selected");
+        }
+        else
+        {
+            unitIcons[index].RemoveFromClassList("unit-card-icon-selected");
+            unitIcons[index].AddToClassList("unit-card-icon-not");
+        }
+    }
+
+    private void DisplaySelectedUnit(ReadOnlySpan<int> lebel, ReadOnlySpan<bool> situation)
+    {
+        int maxLv = selectCardLevels.Count / selectCards.Count;
+        for (int i = 0; i < selectCards.Count; i++)
+        {
+            if(situation[i])
+            {
+                selectCards[i].RemoveFromClassList("non-display");
+            }
+            else
+            {
+                selectCards[i].AddToClassList("non-display");
+            }
+        }
+
+        for (int i = 0; i < selectCards.Count; i++)
+        {
+            for (int j = 0; j < maxLv; j++)
+            {
+                selectCardLevels[maxLv * i + j].AddToClassList("non-display");
+            }
+            selectCardLevels[maxLv * i + lebel[i]].RemoveFromClassList("non-display");
+        }
     }
 }

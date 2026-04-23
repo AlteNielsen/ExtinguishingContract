@@ -50,7 +50,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="displays">
                 <ui:VisualElement class="selected-units center-line">
-                    <ui:ScrollView class="selected-units-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                    <ui:ScrollView name="SelectedScrollView" class="selected-units-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
                         <ui:Instance template="SelectedUnitTemp" />
                         <ui:Instance template="SelectedUnitTemp" />
                         <ui:Instance template="SelectedUnitTemp" />

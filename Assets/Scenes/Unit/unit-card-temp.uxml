@@ -11,7 +11,8 @@
             <ui:Label name="UnitName" class="serif-regular text-small color-white" text="「ゼーロウ」" />
         </ui:VisualElement>
         <ui:VisualElement class="unit-card-icon" >
-            <ui:VisualElement class="all unit-card-icon-not" />
+            <ui:VisualElement name="UnitIcon" class="all unit-card-icon-not" />
+            <ui:Button name="UnitSelector" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
         <ui:Label name="UnitText" class="serif-regular text-small color-white" text="▼消火範囲▼" />
         <ui:VisualElement class="row" >
