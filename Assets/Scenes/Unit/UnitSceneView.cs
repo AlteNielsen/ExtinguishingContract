@@ -329,7 +329,7 @@ public class UnitSceneView
         }
     }
 
-    public void UnitSelect(int index, ReadOnlySpan<int> lebel, ReadOnlySpan<bool> situation)
+    public void UnitSelect(int index, ReadOnlySpan<float> lebel, ReadOnlySpan<bool> situation)
     {
         UnitIconChange(index, situation[index]);
         DisplaySelectedUnit(lebel, situation);
@@ -349,7 +349,7 @@ public class UnitSceneView
         }
     }
 
-    private void DisplaySelectedUnit(ReadOnlySpan<int> lebel, ReadOnlySpan<bool> situation)
+    private void DisplaySelectedUnit(ReadOnlySpan<float> lebel, ReadOnlySpan<bool> situation)
     {
         int maxLv = selectCardLevels.Count / selectCards.Count;
         for (int i = 0; i < selectCards.Count; i++)
@@ -370,7 +370,7 @@ public class UnitSceneView
             {
                 selectCardLevels[maxLv * i + j].AddToClassList("non-display");
             }
-            selectCardLevels[maxLv * i + lebel[i]].RemoveFromClassList("non-display");
+            selectCardLevels[maxLv * i + (int)lebel[i]].RemoveFromClassList("non-display");
         }
     }
 }

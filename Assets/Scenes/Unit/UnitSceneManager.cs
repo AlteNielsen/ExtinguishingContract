@@ -9,7 +9,7 @@ public class UnitSceneManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset unitCard;
     [SerializeField] private VisualTreeAsset selectCard;
     private UnitSceneView sceneView;
-    private int[] unitLevels;
+    private float[] unitLevels;
     private bool[] unitIsSelected;
 
     void Awake()
@@ -17,13 +17,10 @@ public class UnitSceneManager : MonoBehaviour
         ExtinguishingContract.DevelopOnlyGameSetup();
         ScrollViewSetup();
         sceneView = new UnitSceneView(document);
-        unitLevels = new int[UnitDataBase.Datas.Length];
+        unitLevels = new float[UnitDataBase.Datas.Length];
         unitIsSelected = new bool[UnitDataBase.Datas.Length];
         UnitSceneController();
-        for(int i = 0; i < UnitDataBase.Datas.Length; i++)
-        {
-            UnitLevelSelect(i, 0);
-        }
+        Load();
     }
 
     private void ScrollViewSetup()
@@ -80,6 +77,39 @@ public class UnitSceneManager : MonoBehaviour
 
     private void BackToHome()
     {
+        Save();
         GameSceneManager.ToHome();
+    }
+
+    private void Load()
+    {
+        SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.UnitLevel, unitLevels);
+        float[] isSelected = new float[UnitDataBase.Datas.Length];
+        SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.UnitSelect, isSelected);
+        for(int i = 0; i < isSelected.Length; i++)
+        {
+            if (isSelected[i] > 0.5f)
+            {
+                unitIsSelected[i] = false;
+            }
+            else
+            {
+                unitIsSelected[i] = true;
+            }
+        }
+        for(int i = 0; i < unitIsSelected.Length; i++)
+        {
+            UnitSelect(i);
+        }
+        for(int i = 0; i < unitLevels.Length; i++)
+        {
+            UnitLevelSelect(i, (int)unitLevels[i]);
+        }
+    }
+
+    private void Save()
+    {
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.UnitSelect, CulculateLibrary.SwitchBoolToFloat(unitIsSelected));
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.UnitLevel, unitLevels);
     }
 }
