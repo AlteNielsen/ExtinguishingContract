@@ -9,11 +9,15 @@ public class UnitSceneView
     private List<VisualElement> unitRangeDisplays;
     private TileType[][][] unitRanges;//unitIndex, Level, slotNum
     private VisualElement[][] unitRangeTiles;
+    private List<VisualElement> levelSelectorBGs;
+    private List<Label> levelSelectorLabels;
 
     public UnitSceneView(UIDocument doc)
     {
         document = doc;
         unitRangeDisplays = document.rootVisualElement.Query<VisualElement>("UnitRange").ToList();
+        levelSelectorBGs = document.rootVisualElement.Query<VisualElement>("LevelSelectorBG").ToList();
+        levelSelectorLabels = document.rootVisualElement.Query<Label>("LevelSelectorLabel").ToList();
         UnitRangeDataSetup();
         UnitRangeTileSetup();
         WriteText();
@@ -57,6 +61,23 @@ public class UnitSceneView
         }
     }
 
+    public void UnitLevelChange(int index, int level)
+    {
+        int maxLv = levelSelectorBGs.Count / UnitDataBase.Datas.Length;
+        for(int i = 0; i < maxLv; i++)
+        {
+            levelSelectorBGs[maxLv * index + i].RemoveFromClassList("bg-white");
+            levelSelectorBGs[maxLv * index + i].AddToClassList("bg-darkgray");
+            levelSelectorLabels[maxLv * index + i].RemoveFromClassList("color-black");
+            levelSelectorLabels[maxLv * index + i].AddToClassList("color-white");
+        }
+        levelSelectorBGs[maxLv * index + level].RemoveFromClassList("bg-darkgray");
+        levelSelectorBGs[maxLv * index + level].AddToClassList("bg-white");
+        levelSelectorLabels[maxLv * index + level].RemoveFromClassList("color-white");
+        levelSelectorLabels[maxLv * index + level].AddToClassList("color-black");
+        UnitRangeDisplay(index, level);
+    }
+
     private void UnitRangeDisplay(int index, int level)
     {
         for(int i = 0; i < unitRangeTiles[index].Length; i++)
@@ -64,18 +85,29 @@ public class UnitSceneView
             switch (unitRanges[index][level][i])
             {
                 case TileType.None:
+                    UnitRangeDisplayReset(index, i);
                     break;
                 case TileType.Off:
+                    UnitRangeDisplayReset(index, i);
                     unitRangeTiles[index][i].AddToClassList("grid-tile-off");
                     break;
                 case TileType.On:
+                    UnitRangeDisplayReset(index, i);
                     unitRangeTiles[index][i].AddToClassList("grid-tile-on");
                     break;
                 case TileType.Unit:
+                    UnitRangeDisplayReset(index, i);
                     unitRangeTiles[index][i].AddToClassList("grid-tile-unit");
                     break;
             }
         }
+    }
+
+    private void UnitRangeDisplayReset(int index, int num)
+    {
+        unitRangeTiles[index][num].RemoveFromClassList("grid-tile-off");
+        unitRangeTiles[index][num].RemoveFromClassList("grid-tile-on");
+        unitRangeTiles[index][num].RemoveFromClassList("grid-tile-unit");
     }
 
     private void UnitRangeTileSetup()

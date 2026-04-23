@@ -123,7 +123,15 @@
 .unit-card-icon{
     width: 90%;
     height: 200px;
+}
+
+.unit-card-icon-not{
     background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.unit-card-icon-selected{
+    background-image: url('project://database/Assets/Textures/test_unit_icon_selected.png');
     -unity-background-scale-mode: scale-to-fit;
 }
 
