@@ -39,8 +39,8 @@
                     <ui:Instance template="UnitCardTemp" />
                 </ui:ScrollView>
                 <ui:VisualElement class="scrollbar row">
-                    <ui:VisualElement class="scrollbar-truck-left" />
-                    <ui:VisualElement class="scrollbar-slider" />
+                    <ui:VisualElement name="CardScrollBar" class="scrollbar-truck-left" />
+                    <ui:VisualElement name="CardScrollBar" class="scrollbar-slider" />
                     <ui:VisualElement class="scrollbar-truck-right" />
                 </ui:VisualElement>
             </ui:VisualElement>

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +10,8 @@ public class UnitSceneView
     private VisualElement[][] unitRangeTiles;
     private List<VisualElement> levelSelectorBGs;
     private List<Label> levelSelectorLabels;
+    private ScrollView cardScroll;
+    private List<VisualElement> scrollbar;
 
     public UnitSceneView(UIDocument doc)
     {
@@ -18,6 +19,11 @@ public class UnitSceneView
         unitRangeDisplays = document.rootVisualElement.Query<VisualElement>("UnitRange").ToList();
         levelSelectorBGs = document.rootVisualElement.Query<VisualElement>("LevelSelectorBG").ToList();
         levelSelectorLabels = document.rootVisualElement.Query<Label>("LevelSelectorLabel").ToList();
+        cardScroll = document.rootVisualElement.Q<ScrollView>("UnitScrollView");
+        scrollbar = document.rootVisualElement.Query<VisualElement>("CardScrollBar").ToList();
+        cardScroll.horizontalScroller.valueChanged += ScrollBarDraw;
+        cardScroll.RegisterCallback<GeometryChangedEvent>(evt => { ScrollBarDraw(0); });
+        ScrollBarDraw(0);
         UnitRangeDataSetup();
         UnitRangeTileSetup();
         WriteText();
@@ -281,5 +287,15 @@ public class UnitSceneView
         Off,
         On,
         Unit
+    }
+
+    private void ScrollBarDraw(float newValue)
+    {
+        Scroller scroller = cardScroll.horizontalScroller;
+        float max = scroller.highValue;
+        float display = cardScroll.contentViewport.layout.width;
+        float now = scroller.value;
+        scrollbar[0].style.width = Length.Percent(100 * (now / (max + display)));
+        scrollbar[1].style.width = Length.Percent(100 * (display / (max + display)));
     }
 }
