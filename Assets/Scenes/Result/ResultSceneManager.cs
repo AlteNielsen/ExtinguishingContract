@@ -1,16 +1,26 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ResultSceneManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private UIDocument document;
+    [SerializeField] private VisualTreeAsset unitPlate;
+    private ResultSceneView sceneView;
+    void Awake()
     {
-        
+        ExtinguishingContract.DevelopOnlyGameSetup();
+        UnitPlateSetup();
+        sceneView = new ResultSceneView(document);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UnitPlateSetup()
     {
-        
+        ScrollView scroll = document.rootVisualElement.Q<ScrollView>("UnitScrollView");
+        scroll.contentContainer.Clear();
+        for(int i = 0; i < UnitDataBase.Datas.Length; i++)
+        {
+            VisualElement plate = unitPlate.Instantiate();
+            scroll.contentContainer.Add(plate);
+        }
     }
 }
