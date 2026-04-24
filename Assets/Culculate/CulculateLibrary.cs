@@ -72,16 +72,16 @@ public static class CulculateLibrary
                 lvs[i] = (int)indicatorLevels[i];
             }
         }
-        result[0] = ExtinguishingIndicatorDataBase.Data.Deployment.base_value * (ContractIndicatorDataBase.Data.Deployment.start_ratio * lvs[0] * ((float)ContractIndicatorDataBase.Data.Deployment.final_ratio / ContractIndicatorDataBase.Data.Deployment.start_ratio) / 10);
-        result[1] = ExtinguishingIndicatorDataBase.Data.UnitBasePressure.base_value * (ContractIndicatorDataBase.Data.UnitBasePressure.start_ratio * lvs[1] * ((float)ContractIndicatorDataBase.Data.UnitBasePressure.final_ratio / ContractIndicatorDataBase.Data.UnitBasePressure.start_ratio) / 10);
-        result[2] = ExtinguishingIndicatorDataBase.Data.LvPressureRatio.base_value * (ContractIndicatorDataBase.Data.LvPressureRatio.start_ratio * lvs[2] * ((float)ContractIndicatorDataBase.Data.LvPressureRatio.final_ratio / ContractIndicatorDataBase.Data.LvPressureRatio.start_ratio) / 10);
-        result[3] = ExtinguishingIndicatorDataBase.Data.UsablePressure.base_value * (ContractIndicatorDataBase.Data.UsablePressure.start_ratio * lvs[3] * ((float)ContractIndicatorDataBase.Data.UsablePressure.final_ratio / ContractIndicatorDataBase.Data.UsablePressure.start_ratio) / 10);
-        result[4] = ExtinguishingIndicatorDataBase.Data.SpreadSpeed.base_value * (ContractIndicatorDataBase.Data.SpreadSpeed.start_ratio * lvs[4] * ((float)ContractIndicatorDataBase.Data.SpreadSpeed.final_ratio / ContractIndicatorDataBase.Data.SpreadSpeed.start_ratio) / 10);
-        result[5] = ExtinguishingIndicatorDataBase.Data.StartTurn.base_value * (ContractIndicatorDataBase.Data.StartTurn.start_ratio * lvs[5] * ((float)ContractIndicatorDataBase.Data.StartTurn.final_ratio / ContractIndicatorDataBase.Data.StartTurn.start_ratio) / 10);
+        result[0] = ExtinguishingIndicatorDataBase.Data.Deployment.base_value * (ContractIndicatorDataBase.Data.Deployment.start_ratio * lvs[0] * ((float)ContractIndicatorDataBase.Data.Deployment.final_ratio / ContractIndicatorDataBase.Data.Deployment.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
+        result[1] = ExtinguishingIndicatorDataBase.Data.UnitBasePressure.base_value * (ContractIndicatorDataBase.Data.UnitBasePressure.start_ratio * lvs[1] * ((float)ContractIndicatorDataBase.Data.UnitBasePressure.final_ratio / ContractIndicatorDataBase.Data.UnitBasePressure.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
+        result[2] = ExtinguishingIndicatorDataBase.Data.LvPressureRatio.base_value * (ContractIndicatorDataBase.Data.LvPressureRatio.start_ratio * lvs[2] * ((float)ContractIndicatorDataBase.Data.LvPressureRatio.final_ratio / ContractIndicatorDataBase.Data.LvPressureRatio.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
+        result[3] = ExtinguishingIndicatorDataBase.Data.UsablePressure.base_value * (ContractIndicatorDataBase.Data.UsablePressure.start_ratio * lvs[3] * ((float)ContractIndicatorDataBase.Data.UsablePressure.final_ratio / ContractIndicatorDataBase.Data.UsablePressure.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
+        result[4] = ExtinguishingIndicatorDataBase.Data.SpreadSpeed.base_value * (ContractIndicatorDataBase.Data.SpreadSpeed.start_ratio * lvs[4] * ((float)ContractIndicatorDataBase.Data.SpreadSpeed.final_ratio / ContractIndicatorDataBase.Data.SpreadSpeed.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
+        result[5] = ExtinguishingIndicatorDataBase.Data.StartTurn.base_value * (ContractIndicatorDataBase.Data.StartTurn.start_ratio * lvs[5] * ((float)ContractIndicatorDataBase.Data.StartTurn.final_ratio / ContractIndicatorDataBase.Data.StartTurn.start_ratio) / ExtinguishingContract.CIndicatorMaxLv);
 
-        result[6] = Config.Data.InitialChance - (Config.Data.InitialChance * (lvs[6] - 1) / 10);
-        result[7] = ContractIndicatorDataBase.Data.StartBurningBlock.start_ratio * lvs[7] * ((float)ContractIndicatorDataBase.Data.StartBurningBlock.final_ratio / ContractIndicatorDataBase.Data.StartBurningBlock.start_ratio) / 10;
-        result[8] = ContractIndicatorDataBase.Data.BurningSpeed.start_ratio * lvs[8] * ((float)ContractIndicatorDataBase.Data.BurningSpeed.final_ratio / ContractIndicatorDataBase.Data.BurningSpeed.start_ratio) / 10;
+        result[6] = Config.Data.InitialChance - (Config.Data.InitialChance * (lvs[6] - 1) / ExtinguishingContract.CIndicatorMaxLv);
+        result[7] = ContractIndicatorDataBase.Data.StartBurningBlock.start_ratio * lvs[7] * ((float)ContractIndicatorDataBase.Data.StartBurningBlock.final_ratio / ContractIndicatorDataBase.Data.StartBurningBlock.start_ratio) / ExtinguishingContract.CIndicatorMaxLv;
+        result[8] = ContractIndicatorDataBase.Data.BurningSpeed.start_ratio * lvs[8] * ((float)ContractIndicatorDataBase.Data.BurningSpeed.final_ratio / ContractIndicatorDataBase.Data.BurningSpeed.start_ratio) / ExtinguishingContract.CIndicatorMaxLv;
         return result;
     }
 
