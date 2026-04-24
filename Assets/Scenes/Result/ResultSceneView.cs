@@ -1,16 +1,68 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
 
-public class ResultSceneView : MonoBehaviour
+public class ResultSceneView
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private UIDocument document;
+
+    public ResultSceneView(UIDocument doc)
     {
-        
+        document = doc;
+        WriteSelectedUnit();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void WriteSelectedUnit()
     {
-        
+        WriteUnitName();
+        WriteUnitLevel();
+        DisplayUnit();
+    }
+
+    private void WriteUnitName()
+    {
+        List<Label> names = document.rootVisualElement.Query<Label>("UnitName").ToList();
+        for(int i = 0; i < UnitDataBase.Datas.Length; i++)
+        {
+            names[i].text = WordDataBase.Word(WordDataBase.WordSelector.UnitName)[i];
+        }
+    }
+
+    private void WriteUnitLevel()
+    {
+        List<Label> levels = document.rootVisualElement.Query<Label>("UnitLevel").ToList();
+        int maxLv = levels.Count / UnitDataBase.Datas.Length;
+        ReadOnlySpan<float> save = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+        for(int i = 0; i < UnitDataBase.Datas.Length; i++)
+        {
+            for(int j = 0; j < maxLv; j++)
+            {
+                if(j == (int)save[i])
+                {
+                    levels[i * maxLv + j].RemoveFromClassList("non-display");
+                }
+                else
+                {
+                    levels[i * maxLv + j].AddToClassList("non-display");
+                }
+            }
+        }
+    }
+
+    private void DisplayUnit()
+    {
+        List<VisualElement> plates = document.rootVisualElement.Query<VisualElement>("UnitPlate").ToList();
+        ReadOnlySpan<float> save = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+        for(int i = 0; i < plates.Count; i++)
+        {
+            if (save[i] > 0.5f)
+            {
+                plates[i].RemoveFromClassList("non-display");
+            }
+            else
+            {
+                plates[i].AddToClassList("non-display");
+            }
+        }
     }
 }
