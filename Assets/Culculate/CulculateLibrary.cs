@@ -133,4 +133,54 @@ public static class CulculateLibrary
         result += 5;
         return (int)(result / 10);
     }
+
+    public static float CulculateChance(Span<bool> indicatorCondition)
+    {
+        float result = 0;
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
+        int counter = 0;
+        for (int i = 0; i < indicators.Length; i++)
+        {
+            if (indicators[i] > 0.5f)
+            {
+                if (indicatorCondition[counter])
+                {
+                    int level = i % Config.Data.IndicatorMaxLv + 1;
+                    result += Config.Data.IndicatorBaseChance * level;
+                }
+                counter++;
+            }
+        }
+        result += Config.Data.InitialChance;
+        return result;
+    }
+
+    public static void GetEIndicatorsInfo(Span<EIndicatorInfo> values)
+    {
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
+        Span<float> baseValue = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        int buttonCounter = 0;
+        for (int i = 0; i < indicators.Length; i++)
+        {
+            if (indicators[i] > 0.5f)
+            {
+                int type = i / Config.Data.IndicatorMaxLv;
+                int level = i % Config.Data.IndicatorMaxLv + 1;
+
+                values[buttonCounter].type = type;
+                values[buttonCounter].level = level;
+                values[buttonCounter].chance = Config.Data.IndicatorBaseChance * level;
+                values[buttonCounter].value = baseValue[type] * level;
+                buttonCounter++;
+            }
+        }
+    }
+}
+
+public struct EIndicatorInfo
+{
+    public float type;
+    public float level;
+    public float chance;
+    public float value;
 }
