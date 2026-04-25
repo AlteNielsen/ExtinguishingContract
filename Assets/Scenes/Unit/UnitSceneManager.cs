@@ -135,23 +135,13 @@ public class UnitSceneManager : MonoBehaviour
 
     private void CulculateControllValues()
     {
-        basePressure = Config.Data.UnitBasePressure;
-        basePressureIncrease = Config.Data.UnitLvIncreaseRatio;
+
         ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
         float[] baseValue = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
         int maxIndicatorLv = indicators.Length / ExtinguishingContract.EIndicatorNum;
-        for (int i = 0; i < maxIndicatorLv; i++)
-        {
-            if (indicators[maxIndicatorLv + i] > 0.5f)
-            {
-                basePressure += (int)baseValue[1] * (i + 1);
-            }
-
-            if (indicators[(maxIndicatorLv * 2) + i] > 0.5f)
-            {
-                basePressureIncrease += (int)baseValue[2] * (i + 1);
-            }
-        }
+        var (bs, increase) = CulculateLibrary.CulculatePressures();
+        basePressure = bs;
+        basePressureIncrease = increase;
         
         ReadOnlySpan<float> map = SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span;
         deployLimit = MapDataBase.Datas[(int)map[0]].Data.height;

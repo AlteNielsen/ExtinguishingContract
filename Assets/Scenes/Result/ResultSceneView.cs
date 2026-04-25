@@ -71,6 +71,7 @@ public class ResultSceneView
     {
         WriteBlockNames();
         WriteSceneTexts();
+        WriteEnvPreview();
     }
 
     private void WriteBlockNames()
@@ -89,5 +90,56 @@ public class ResultSceneView
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Result)[i];
         }
+    }
+
+    private void WriteEnvPreview()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("EnvPreview").ToList();
+        WriteDeployInfo(labels[0]);
+        var (bs, increase) = CulculateLibrary.CulculatePressures();
+        labels[1].text = "" + bs;
+        labels[2].text = "+" + increase;
+        WriteUsePressure(labels[3]);
+        labels[4].text = "" + CulculateLibrary.CulculateFireSpreadSpeed();
+        labels[5].text = "" + CulculateLibrary.CulculateStartTurn();
+        int chacne = (int)(CulculateLibrary.CulculateChance() * 100);
+        if(chacne > 100)
+        {
+            labels[6].text = "" + 100 + "%";
+        }
+        else
+        {
+            labels[6].text = "" + chacne + "%";
+        }
+    }
+
+    private void WriteDeployInfo(Label target)
+    {
+        int deploy = 0;
+        ReadOnlySpan<float> info = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+        for (int i = 0; i < info.Length; i++)
+        {
+            if (info[i] > 0.5f)
+            {
+                deploy++;
+            }
+        }
+        target.text = "" + deploy;
+    }
+
+    private void WriteUsePressure(Label target)
+    {
+        int pressure = 0;
+        ReadOnlySpan<float> unitInfo = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+        ReadOnlySpan<float> pressInfo = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+        var (bs, increase) = CulculateLibrary.CulculatePressures();
+        for (int i = 0; i < unitInfo.Length; i++)
+        {
+            if (unitInfo[i] > 0.5f)
+            {
+                pressure += (int)(bs + (increase * pressInfo[i]));
+            }
+        }
+        target.text = "" + pressure;
     }
 }
