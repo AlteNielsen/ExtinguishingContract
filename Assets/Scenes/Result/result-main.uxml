@@ -83,37 +83,37 @@
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼消火環境▼" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="編成数" />
-                                <ui:Label class="serif-bold text-mid color-white" text="8" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="8" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="ユニット水圧" />
-                                <ui:Label class="serif-bold text-mid color-white" text="5" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="5" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="水圧強化倍率" />
-                                <ui:Label class="serif-bold text-mid color-white" text="x2" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="x2" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="使用水圧" />
-                                <ui:Label class="serif-bold text-mid color-white" text="200" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="200" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="延焼速度" />
-                                <ui:Label class="serif-bold text-mid color-white" text="x3" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="x3" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="初期経過ターン" />
-                                <ui:Label class="serif-bold text-mid color-white" text="3" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-white" text="3" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-gray semi-transparent" />
                             <ui:VisualElement class="row" >
                                 <ui:Label name="Text" class="serif-bold text-mid color-white base-flex" text="消火確率" />
-                                <ui:Label class="serif-bold text-mid color-waterblue" text="100%" />
+                                <ui:Label name="EnvPreview" class="serif-bold text-mid color-waterblue" text="100%" />
                             </ui:VisualElement>
                             <ui:VisualElement class="underbar bg-waterblue semi-transparent" />
                         </ui:VisualElement>

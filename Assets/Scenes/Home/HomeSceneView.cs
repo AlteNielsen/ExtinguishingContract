@@ -161,7 +161,7 @@ public class HomeSceneView
             indicatorButtonBGs[index].RemoveFromClassList("indicator-button-selected");
             indicatorButtonBGs[index].AddToClassList("bg-darkgray");
         }
-        float chance = CulculateChance(indicatorCondition);
+        float chance = CulculateLibrary.CulculateChance(indicatorCondition);
         if (chance > 1)
         {
             mapInfo[2].text = "" + 100 + "%";
@@ -171,27 +171,6 @@ public class HomeSceneView
             mapInfo[2].text = "" + CulculateLibrary.FloatToPercent(chance) + "%";
         }
         OtherBlockProgressDisplay(chance - 1);
-    }
-
-    private float CulculateChance(Span<bool> indicatorCondition)
-    {
-        float result = 0;
-        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
-        int counter = 0;
-        for (int i = 0; i < indicators.Length; i++)
-        {
-            if (indicators[i] > 0.5f)
-            {
-                if (indicatorCondition[counter])
-                {
-                    int level = i % Config.Data.IndicatorMaxLv + 1;
-                    result += Config.Data.IndicatorBaseChance * level;
-                }
-                counter++;
-            }
-        }
-        result += Config.Data.InitialChance;
-        return result;
     }
 
     private void OtherBlockProgressDisplay(float value)
