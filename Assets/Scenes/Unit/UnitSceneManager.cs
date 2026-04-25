@@ -16,7 +16,6 @@ public class UnitSceneManager : MonoBehaviour
     private float basePressureIncrease;
     private int deployLimit;
     private int pressureLimit;
-    private bool canGoStage;
 
     void Awake()
     {
