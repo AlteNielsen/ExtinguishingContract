@@ -63,7 +63,7 @@
                     <ui:VisualElement class="row center-row">
                         <ui:VisualElement>
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Target Block▼" />
-                            <ui:Label class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
+                            <ui:Label name="SelectedBlockName" class="serif-bold text-special color-white text-offset-alpha" text="ダム区画" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />

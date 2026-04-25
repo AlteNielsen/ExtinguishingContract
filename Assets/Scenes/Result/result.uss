@@ -149,3 +149,13 @@
     width: 90%;
     height: 80%;
 }
+
+.selected-map-success{
+    border-width: 3px;
+    border-color: var(--color-waterblue);
+}
+
+.selected-map-continue{
+    border-width: 3px;
+    border-color: yellow;
+}

@@ -142,4 +142,24 @@ public class ResultSceneView
         }
         target.text = "" + pressure;
     }
+
+    public void DisplaySelectedMap(bool isSuccess)
+    {
+        Label selected = document.rootVisualElement.Q<Label>("SelectedBlockName");
+        ReadOnlySpan<float> map = SaveDataManager.Instance.Access<MapSelectChunk>(((int)SaveDataManager.SaveDataChunk.MapSelect)).data.Span;
+        selected.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[(int)map[0]];
+        List<VisualElement> bgs = document.rootVisualElement.Query<VisualElement>("BlockDisplayBG").ToList();
+        bgs[(int)map[0]].RemoveFromClassList("bg-darkgray");
+        bgs[(int)map[0]].AddToClassList("semi-transparent");
+        if (isSuccess)
+        {
+            bgs[(int)map[0]].AddToClassList("selected-map-success");
+            bgs[(int)map[0]].AddToClassList("bg-blue");
+        }
+        else
+        {
+            bgs[(int)map[0]].AddToClassList("selected-map-continue");
+            bgs[(int)map[0]].AddToClassList("bg-red");
+        }
+    }
 }

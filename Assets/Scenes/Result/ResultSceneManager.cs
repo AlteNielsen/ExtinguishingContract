@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System;
 
 public class ResultSceneManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ResultSceneManager : MonoBehaviour
         ExtinguishingContract.DevelopOnlyGameSetup();
         UnitPlateSetup();
         sceneView = new ResultSceneView(document);
+        bool result = IsStageSuccess();
+        sceneView.DisplaySelectedMap(result);
     }
 
     private void UnitPlateSetup()
@@ -22,5 +25,18 @@ public class ResultSceneManager : MonoBehaviour
             VisualElement plate = unitPlate.Instantiate();
             scroll.contentContainer.Add(plate);
         }
+    }
+
+    private bool IsStageSuccess()
+    {
+        ReadOnlySpan<float> result = SaveDataManager.Instance.Access<FireMapChunk>((int)SaveDataManager.SaveDataChunk.FireMap).data.Span;
+        for(int i = 0; i < result.Length; i++)
+        {
+            if(result[i] > 0.5f)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
