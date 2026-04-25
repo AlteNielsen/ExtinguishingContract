@@ -10,6 +10,7 @@ public class ResultSceneView
     {
         document = doc;
         WriteSelectedUnit();
+        WriteLabels();
     }
 
     private void WriteSelectedUnit()
@@ -63,6 +64,20 @@ public class ResultSceneView
             {
                 plates[i].AddToClassList("non-display");
             }
+        }
+    }
+
+    private void WriteLabels()
+    {
+        WriteBlockNames();
+    }
+
+    private void WriteBlockNames()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("BlockName").ToList();
+        for(int i = 0; i < labels.Count; i++)
+        {
+            labels[i].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[i];
         }
     }
 }
