@@ -70,6 +70,7 @@ public class ResultSceneView
     private void WriteLabels()
     {
         WriteBlockNames();
+        WriteSceneTexts();
     }
 
     private void WriteBlockNames()
@@ -78,6 +79,15 @@ public class ResultSceneView
         for(int i = 0; i < labels.Count; i++)
         {
             labels[i].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[i];
+        }
+    }
+
+    private void WriteSceneTexts()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("Text").ToList();
+        for(int i = 0; i < labels.Count; i++)
+        {
+            labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Result)[i];
         }
     }
 }
