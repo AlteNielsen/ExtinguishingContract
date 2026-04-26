@@ -117,6 +117,8 @@ public class ResultSceneManager : MonoBehaviour
     private void BlockBurn()
     {
         int burningCount = (int)CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span)[8];
+        float[] copy = new float[blockSituations.Length];
+        Array.Copy(blockSituations, copy, blockSituations.Length);
         while (burningCount > 0)
         {
             for (int i = 0; i < blockSituations.Length; i++)
@@ -132,7 +134,7 @@ public class ResultSceneManager : MonoBehaviour
                     afterIndex = 0;
                 }
 
-                if (blockSituations[i] > 0.5f)
+                if (copy[i] > 0.5f)
                 {
                     if (blockSituations[beforeIndex] > -0.5f)
                     {

@@ -202,16 +202,14 @@ public class ResultSceneView
         List<VisualElement> bgs = document.rootVisualElement.Query<VisualElement>("BlockDisplayBG").ToList();
         for (int i = 0; i < blockSituations.Length; i++)
         {
+            bgs[i].RemoveFromClassList("bg-darkgray");
+            bgs[i].AddToClassList("semi-transparent");
             if (blockSituations[i] > 0.5f)
             {
-                bgs[i].RemoveFromClassList("bg-darkgray");
-                bgs[i].AddToClassList("semi-transparent");
                 bgs[i].AddToClassList("bg-red");
             }
             if (blockSituations[i] < -1.5f)
             {
-                bgs[i].RemoveFromClassList("bg-darkgray");
-                bgs[i].AddToClassList("semi-transparent");
                 bgs[i].AddToClassList("bg-blue");
             }
         }
