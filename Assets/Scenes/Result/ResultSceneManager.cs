@@ -70,7 +70,7 @@ public class ResultSceneManager : MonoBehaviour
         SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.BurningSituation, blockSituations);
         for(int i = 0; i < blockSituations.Length; i++)
         {
-            if(blockSituations[i] < 0.5f)
+            if(blockSituations[i] < -0.5f)
             {
                 blockSituations[i] += 1f;
             }
