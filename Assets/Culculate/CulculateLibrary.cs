@@ -93,15 +93,13 @@ public static class CulculateLibrary
 
     public static bool[] IndicatorUpdate()
     {
-        int EIndicatorNum = 6;
-        int IndicatorSlotNum = 9;
-        if(EIndicatorNum * Config.Data.IndicatorMaxLv < IndicatorSlotNum)
+        if(ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv < ExtinguishingContract.IndicatorChoicesNum)
         {
-            return nCrProcess(IndicatorSlotNum, IndicatorSlotNum);
+            return nCrProcess(ExtinguishingContract.IndicatorChoicesNum, ExtinguishingContract.IndicatorChoicesNum);
         }
         else
         {
-            return nCrProcess(EIndicatorNum * Config.Data.IndicatorMaxLv, IndicatorSlotNum);
+            return nCrProcess(ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv, ExtinguishingContract.IndicatorChoicesNum);
         }
     }
 

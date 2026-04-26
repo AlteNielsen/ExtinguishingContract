@@ -19,6 +19,10 @@ public class ResultSceneManager : MonoBehaviour
         BlockBurn();
         sceneView.DisplayBlockSituation(blockSituations.AsSpan());
         sceneView.DisplayProgress(other);
+        UpdateResultStats(isSuccess, isExtinguish, other);
+        UpdateTurnStats();
+        UpdateSituation(other);
+        SaveDataManager.Instance.ResultSceneSaveDataInitialize();
     }
 
     private void UnitPlateSetup()
@@ -148,5 +152,80 @@ public class ResultSceneManager : MonoBehaviour
             }
             burningCount--;
         }
+    }
+
+    private void UpdateSituation(float other)
+    {
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BurningSituation, blockSituations);
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.BlockIndicator, CulculateLibrary.SwitchBoolToFloat(CulculateLibrary.IndicatorUpdate()));
+        float value = other + SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0];
+        while (value > 1f)
+        {
+            value -= 1f;
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.OtherProgress, new float[] { value });
+    }
+
+    private void UpdateResultStats(bool isSuccess, bool isExtinguish, float other)
+    {
+        float[] datas = new float[SaveDataManager.Instance.Access<ResultStatsChunk>((int)SaveDataManager.SaveDataChunk.ResultStats).data.Length];
+        SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.ResultStats, datas);
+        datas[0]++;
+        if(isSuccess)
+        {
+            float all = datas[2] * datas[1];
+            all += CulculateLibrary.CulculateChance(); ;
+            datas[1]++;
+            datas[2] = all / datas[1];
+        }
+        if(isExtinguish)
+        {
+            datas[3]++;
+            datas[4] += other;
+        }
+
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        for(int i = 0; i < ExtinguishingContract.EIndicatorNum; i++)
+        {
+            for(int j = 0; j < Config.Data.IndicatorMaxLv; j++)
+            {
+                if (indicators[i * Config.Data.IndicatorMaxLv + j] > 0.5f)
+                {
+                    datas[5 + i]++;
+                }
+            }
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.ResultStats, datas);
+    }
+
+    private void UpdateTurnStats()
+    {
+        float[] datas = new float[SaveDataManager.Instance.Access<TurnStatsChunk>((int)SaveDataManager.SaveDataChunk.TurnStats).data.Length];
+        SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.TurnStats, datas);
+        int counter = 0;
+        for(int i = 0; i < blockSituations.Length; i++)
+        {
+            if (blockSituations[i] > 0.5f)
+            {
+                counter++;
+            }
+        }
+        for(int i = 0; i < datas.Length; i++)
+        {
+            if(datas[i] == 0)
+            {
+                if(i == 0)
+                {
+                    datas[0] = (int)CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span)[7];
+                    datas[1] = counter;
+                }
+                else
+                {
+                    datas[i] = counter;
+                }
+                break;
+            }
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.TurnStats, datas);
     }
 }
