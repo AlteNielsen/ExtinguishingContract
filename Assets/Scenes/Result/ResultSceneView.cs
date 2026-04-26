@@ -1,16 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine.UIElements;
 
 public class ResultSceneView
 {
     private UIDocument document;
 
-    public ResultSceneView(UIDocument doc)
+    public ResultSceneView(UIDocument doc, bool isSuccess)
     {
         document = doc;
         WriteSelectedUnit();
         WriteLabels();
+        Display(isSuccess);
     }
 
     private void WriteSelectedUnit()
@@ -143,7 +145,13 @@ public class ResultSceneView
         target.text = "" + pressure;
     }
 
-    public void DisplaySelectedMap(bool isSuccess)
+    private void Display(bool isSuccess)
+    {
+        DisplayIsSuccess(isSuccess);
+        DisplayProgress(isSuccess);
+    }
+
+    private void DisplaySelectedMap(bool isSuccess)
     {
         Label selected = document.rootVisualElement.Q<Label>("SelectedBlockName");
         ReadOnlySpan<float> map = SaveDataManager.Instance.Access<MapSelectChunk>(((int)SaveDataManager.SaveDataChunk.MapSelect)).data.Span;
@@ -161,5 +169,49 @@ public class ResultSceneView
             bgs[(int)map[0]].AddToClassList("selected-map-continue");
             bgs[(int)map[0]].AddToClassList("bg-red");
         }
+    }
+
+    private void DisplayIsSuccess(bool isSuccess)
+    {
+        Label label = document.rootVisualElement.Q<Label>("IsSuccessText");
+        if (isSuccess)
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Result)[16];
+            label.AddToClassList("color-waterblue");
+        }
+        else
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Result)[17];
+            label.AddToClassList("color-red");
+        }
+    }
+
+    private void DisplayProgress(bool isSuccess)
+    {
+        Label increase = document.rootVisualElement.Q<Label>("OtherProgressIncrease");
+        float baseChance = SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0];
+        float chance = CulculateLibrary.CulculateChance();
+        if (isSuccess && chance > 1)
+        {
+            increase.text = "+" + CulculateLibrary.FloatToPercent(chance - 1) + "%";
+            increase.AddToClassList("color-waterblue");
+        }
+        else
+        {
+            increase.text = "Å}" + 0 + "%";
+            increase.AddToClassList("color-white");
+        }
+        Label valueLabel = document.rootVisualElement.Q<Label>("OtherProgressValue");
+        float value = baseChance + (chance - 1);
+        if (chance > 1)
+        {
+            while (value >= 1)
+            {
+                value -= 1;
+            }
+        }
+        valueLabel.text = CulculateLibrary.FloatToPercent(value) + "%";
+        VisualElement gaugePool = document.rootVisualElement.Q<VisualElement>("Gauge");
+        gaugePool.style.height = Length.Percent(value * 100);
     }
 }

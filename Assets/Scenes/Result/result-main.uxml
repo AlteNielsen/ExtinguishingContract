@@ -69,13 +69,13 @@
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement>
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Result▼" />
-                            <ui:Label class="serif-bold text-special color-waterblue text-offset-alpha" text="鎮火" />
+                            <ui:Label name="IsSuccessText" class="serif-bold text-special text-offset-alpha" text="鎮火" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="plank-row-mid" />
                         <ui:VisualElement class="center-line" >
                             <ui:Label name="Text" class="serif-regular text-small color-white" text="▼Extinguish Progress" />
-                            <ui:Label class="serif-bold text-special color-waterblue" text="+30%" />
+                            <ui:Label name="OtherProgressIncrease" class="serif-bold text-special" text="+30%" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="result-screen row">
@@ -145,11 +145,11 @@
             <ui:VisualElement class="colomn-plank" />
             <ui:VisualElement class="right-colomn center-line">
                 <ui:Label name="Text" class="serif-regular text-small color-white multi-line text-multi-line text-set-center" text="他地区消火進捗" />
-                <ui:Label class="serif-regular text-small color-waterblue text-set-center" text="60%" />
+                <ui:Label name="OtherProgressValue" class="serif-regular text-small color-waterblue text-set-center" text="60%" />
                 <ui:VisualElement class="hei-plank-small" />
                 <ui:VisualElement class="water-gauge">
-                    <ui:VisualElement class="water-gauge-plank" />
-                    <ui:VisualElement class="water-gauge-pool" />
+                    <ui:VisualElement class="water-gauge-plank base-flex" />
+                    <ui:VisualElement name="Gauge" class="water-gauge-pool" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-line-mid" /> 
             </ui:VisualElement>
