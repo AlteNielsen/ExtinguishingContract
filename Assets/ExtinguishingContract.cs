@@ -86,4 +86,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("UnitScene");
     }
+
+    public static void ToEnding()
+    {
+        SceneManager.LoadScene("EndingScene");
+    }
 }

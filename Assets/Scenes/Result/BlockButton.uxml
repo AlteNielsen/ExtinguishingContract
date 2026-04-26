@@ -6,8 +6,8 @@
 
     <ui:VisualElement class="block-button center-line center-row">
         <ui:VisualElement class="abs-all bg-darkgray semi-transparent" />
-        <ui:VisualElement class="on-button bg-darkgray" />
-        <ui:Label class="serif-bold text-mid color-white block-button-text-offset" text="北部居住区" />
+        <ui:VisualElement name="BlockDisplayBG" class="on-button bg-darkgray " />
+        <ui:Label name="BlockName" class="serif-bold text-mid color-white block-button-text-offset" text="北部居住区" />
     </ui:VisualElement>
 
     
