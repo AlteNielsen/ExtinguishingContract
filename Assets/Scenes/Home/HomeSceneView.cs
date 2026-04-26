@@ -93,28 +93,20 @@ public class HomeSceneView
         List<Label> names = document.rootVisualElement.Query<Label>("IndicatorName").ToList();
         List<Label> types = document.rootVisualElement.Query<Label>("IndicatorType").ToList();
         List<Label> values = document.rootVisualElement.Query<Label>("IndicatorValue").ToList();
-        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
-        float[] baseValue = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
-        int buttonCounter = 0;
-        for (int i = 0; i < indicators.Length; i++)
+        Span<EIndicatorInfo> infos = stackalloc EIndicatorInfo[ExtinguishingContract.IndicatorChoicesNum]; ;
+        CulculateLibrary.GetEIndicatorsInfo(infos);
+        for(int i = 0; i < ExtinguishingContract.IndicatorChoicesNum; i++)
         {
-            if (indicators[i] > 0.5f)
+            chances[i].text = "+" + CulculateLibrary.FloatToPercent(infos[i].chance) + "%";
+            names[i].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[(int)infos[i].type];
+            types[i].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[(int)infos[i].type];
+            if (infos[i].value > 0)
             {
-                int type = i / Config.Data.IndicatorMaxLv;
-                int level = i % Config.Data.IndicatorMaxLv + 1;
-                
-                chances[buttonCounter].text = "+" + CulculateLibrary.FloatToPercent(Config.Data.IndicatorBaseChance * level) + "%";
-                names[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[type];
-                types[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorEffect)[type];
-                if (baseValue[type] > 0)
-                {
-                    values[buttonCounter].text = "+" + (baseValue[type] * level);
-                }
-                else
-                {
-                    values[buttonCounter].text = "" + (baseValue[type] * level);
-                }
-                buttonCounter++;
+                values[i].text = "+" + infos[i].value;
+            }
+            else
+            {
+                values[i].text = "" + infos[i].value;
             }
         }
     }
