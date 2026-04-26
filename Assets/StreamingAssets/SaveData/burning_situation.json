@@ -1,14 +1,14 @@
 {
     "burning_situation": [
+        true,
+        true,
+        true,
+        true,
         false,
         true,
         false,
         false,
         false,
-        false,
-        false,
-        false,
-        false,
-        false
+        true
     ]
 }

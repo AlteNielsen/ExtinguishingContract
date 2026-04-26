@@ -12,7 +12,7 @@ public class ResultSceneView
         document = doc;
         WriteSelectedUnit();
         WriteLabels();
-        Display(isSuccess);
+        DisplayIsSuccess(isSuccess);
     }
 
     private void WriteSelectedUnit()
@@ -116,14 +116,7 @@ public class ResultSceneView
         labels[4].text = "" + CulculateLibrary.CulculateFireSpreadSpeed();
         labels[5].text = "" + CulculateLibrary.CulculateStartTurn();
         int chacne = (int)(CulculateLibrary.CulculateChance() * 100);
-        if(chacne > 100)
-        {
-            labels[6].text = "" + 100 + "%";
-        }
-        else
-        {
-            labels[6].text = "" + chacne + "%";
-        }
+        labels[6].text = "" + chacne + "%";
     }
 
     private void WriteDeployInfo(Label target)
@@ -156,36 +149,10 @@ public class ResultSceneView
         target.text = "" + pressure;
     }
 
-    private void Display(bool isSuccess)
-    {
-        DisplayIsSuccess(isSuccess);
-        DisplayProgress(isSuccess);
-    }
-
-    private void DisplaySelectedMap(bool isSuccess)
-    {
-        Label selected = document.rootVisualElement.Q<Label>("SelectedBlockName");
-        ReadOnlySpan<float> map = SaveDataManager.Instance.Access<MapSelectChunk>(((int)SaveDataManager.SaveDataChunk.MapSelect)).data.Span;
-        selected.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[(int)map[0]];
-        List<VisualElement> bgs = document.rootVisualElement.Query<VisualElement>("BlockDisplayBG").ToList();
-        bgs[(int)map[0]].RemoveFromClassList("bg-darkgray");
-        bgs[(int)map[0]].AddToClassList("semi-transparent");
-        if (isSuccess)
-        {
-            bgs[(int)map[0]].AddToClassList("selected-map-success");
-            bgs[(int)map[0]].AddToClassList("bg-blue");
-        }
-        else
-        {
-            bgs[(int)map[0]].AddToClassList("selected-map-continue");
-            bgs[(int)map[0]].AddToClassList("bg-red");
-        }
-    }
-
-    private void DisplayIsSuccess(bool isSuccess)
+    private void DisplayIsSuccess(bool isExtinguish)
     {
         Label label = document.rootVisualElement.Q<Label>("IsSuccessText");
-        if (isSuccess)
+        if (isExtinguish)
         {
             label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Result)[16];
             label.AddToClassList("color-waterblue");
@@ -197,14 +164,13 @@ public class ResultSceneView
         }
     }
 
-    private void DisplayProgress(bool isSuccess)
+    public void DisplayProgress(float chance)
     {
         Label increase = document.rootVisualElement.Q<Label>("OtherProgressIncrease");
         float baseChance = SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0];
-        float chance = CulculateLibrary.CulculateChance();
-        if (isSuccess && chance > 1)
+        if (chance > 1)
         {
-            increase.text = "+" + CulculateLibrary.FloatToPercent(chance - 1) + "%";
+            increase.text = "+" + CulculateLibrary.FloatToPercent(chance) + "%";
             increase.AddToClassList("color-waterblue");
         }
         else
@@ -213,7 +179,7 @@ public class ResultSceneView
             increase.AddToClassList("color-white");
         }
         Label valueLabel = document.rootVisualElement.Q<Label>("OtherProgressValue");
-        float value = baseChance + (chance - 1);
+        float value = baseChance + chance;
         if (chance > 1)
         {
             while (value >= 1)
@@ -224,5 +190,39 @@ public class ResultSceneView
         valueLabel.text = CulculateLibrary.FloatToPercent(value) + "%";
         VisualElement gaugePool = document.rootVisualElement.Q<VisualElement>("Gauge");
         gaugePool.style.height = Length.Percent(value * 100);
+    }
+
+    public void DisplayBlockSituation(Span<float> blockSituations)
+    {
+        int map = (int)SaveDataManager.Instance.Access<MapSelectChunk>(((int)SaveDataManager.SaveDataChunk.MapSelect)).data.Span[0];
+
+        Label selected = document.rootVisualElement.Q<Label>("SelectedBlockName");
+        selected.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[map];
+        
+        List<VisualElement> bgs = document.rootVisualElement.Query<VisualElement>("BlockDisplayBG").ToList();
+        for (int i = 0; i < blockSituations.Length; i++)
+        {
+            if (blockSituations[i] > 0.5f)
+            {
+                bgs[i].RemoveFromClassList("bg-darkgray");
+                bgs[i].AddToClassList("semi-transparent");
+                bgs[i].AddToClassList("bg-red");
+            }
+            if (blockSituations[i] < -1.5f)
+            {
+                bgs[i].RemoveFromClassList("bg-darkgray");
+                bgs[i].AddToClassList("semi-transparent");
+                bgs[i].AddToClassList("bg-blue");
+            }
+        }
+
+        if (blockSituations[map] > 0.5f)
+        {
+            bgs[map].AddToClassList("selected-map-continue");
+        }
+        if (blockSituations[map] < -1.5f)
+        {
+            bgs[map].AddToClassList("selected-map-success");
+        }
     }
 }
