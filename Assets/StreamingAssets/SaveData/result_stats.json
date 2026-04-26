@@ -1,8 +1,8 @@
 {
-    "go_times": 0,
-    "success_times": 0,
-    "average_extinguish_chance": 0.0,
-    "extinguish_times": 0,
+    "go_times": 6,
+    "success_times": 6,
+    "average_extinguish_chance": 0.5,
+    "extinguish_times": 4,
     "sum_other_progress": 0,
     "deployment_count": 0,
     "base_press_count": 0,
