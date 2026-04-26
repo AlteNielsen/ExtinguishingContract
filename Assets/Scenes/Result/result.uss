@@ -59,7 +59,6 @@
 .water-gauge-plank{
     background-color: #505050;
     opacity: 0.5;
-    height: 40%;
     width: 100%
 }
 

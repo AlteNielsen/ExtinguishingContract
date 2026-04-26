@@ -11,9 +11,7 @@ public class ResultSceneManager : MonoBehaviour
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
         UnitPlateSetup();
-        sceneView = new ResultSceneView(document);
-        bool result = IsStageSuccess();
-        sceneView.DisplaySelectedMap(result);
+        sceneView = new ResultSceneView(document, IsStageSuccess());
     }
 
     private void UnitPlateSetup()

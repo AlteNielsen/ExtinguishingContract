@@ -1,4 +1,4 @@
-16
+18
 ID,ID
 Grade,Grade
 ▼Target Block▼,▼Target Block▼
@@ -15,3 +15,5 @@ Grade,Grade
 ▼選択ユニット▼,▼Selected Unit▼
 次のターンへ,To Next Turn
 他地区消火進捗,Other Block Progress
+鎮火,Extinguish
+炎上中,Burning
