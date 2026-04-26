@@ -139,6 +139,7 @@
                     <ui:VisualElement class="decide-button">
                         <ui:VisualElement class="abs-all color-gradiation-red" />
                         <ui:Label name="Text" class="all serif-bold text-mid color-white text-set-center decide-button-txt" text="To Next Turn" />
+                        <ui:Button name="NextButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>

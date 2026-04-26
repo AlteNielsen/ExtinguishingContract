@@ -23,6 +23,13 @@ public class ResultSceneManager : MonoBehaviour
         UpdateTurnStats();
         UpdateSituation(other);
         SaveDataManager.Instance.ResultSceneSaveDataInitialize();
+        ResultSceneCotroller();
+    }
+
+    private void ResultSceneCotroller()
+    {
+        Button nextButton = document.rootVisualElement.Q<Button>("NextButton");
+        nextButton.clicked += NextScene;
     }
 
     private void UnitPlateSetup()
@@ -227,5 +234,27 @@ public class ResultSceneManager : MonoBehaviour
             }
         }
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.TurnStats, datas);
+    }
+
+    private void NextScene()
+    {
+        bool isFinish = true;
+        int counter = 0;
+        for(int i = 0; i < blockSituations.Length; i++)
+        {
+            if (blockSituations[i] > 0.5f)
+            {
+                isFinish = false;
+                counter++;
+            }
+        }
+        if(isFinish || counter == blockSituations.Length)
+        {
+            GameSceneManager.ToEnding();
+        }
+        else
+        {
+            GameSceneManager.ToHome();
+        }
     }
 }
