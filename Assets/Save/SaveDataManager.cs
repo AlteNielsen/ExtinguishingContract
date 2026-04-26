@@ -53,8 +53,6 @@ public class SaveDataManager : RayAbstractDataManager
 
     public void TitleSceneSaveDataInitialize()
     {
-        Initialize((int)SaveDataChunk.UnitSelect);
-        Initialize((int)SaveDataChunk.UnitLevel);
         Initialize((int)SaveDataChunk.FireMap);
         Initialize((int)SaveDataChunk.UnitMap);
         Initialize((int)SaveDataChunk.UnitFacing);
@@ -74,5 +72,16 @@ public class SaveDataManager : RayAbstractDataManager
         Initialize((int)SaveDataChunk.UnitFacing);
         Initialize((int)SaveDataChunk.ResultStats);
         Initialize((int)SaveDataChunk.TurnStats);
+    }
+
+    public void ResultSceneSaveDataInitialize()
+    {
+        Initialize((int)SaveDataChunk.MapSelect);
+        Initialize((int)SaveDataChunk.IndicatorSelect);
+        Initialize((int)SaveDataChunk.UnitSelect);
+        Initialize((int)SaveDataChunk.UnitLevel);
+        Initialize((int)SaveDataChunk.FireMap);
+        Initialize((int)SaveDataChunk.UnitMap);
+        Initialize((int)SaveDataChunk.UnitFacing);
     }
 }

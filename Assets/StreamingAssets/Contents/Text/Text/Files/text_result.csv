@@ -1,0 +1,19 @@
+18
+ID,ID
+Grade,Grade
+▼Target Block▼,▼Target Block▼
+▼Result▼,▼Result▼
+▼Extinguish Progress▼,▼Extinguish Progress▼
+▼消火環境▼,▼Extinguish Env.▼
+編成数,Deploy
+基礎水圧,Base Press
+増加水圧,Increase Press
+使用水圧,Used Press
+延焼速度,Spread Speed
+初期経過,Start Turn
+消火確率,Ext. Chance
+▼選択ユニット▼,▼Selected Unit▼
+次のターンへ,To Next Turn
+他地区消火進捗,Other Block Progress
+鎮火,Extinguish
+炎上中,Burning

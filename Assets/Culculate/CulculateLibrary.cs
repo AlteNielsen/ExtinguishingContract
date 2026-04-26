@@ -93,15 +93,13 @@ public static class CulculateLibrary
 
     public static bool[] IndicatorUpdate()
     {
-        int EIndicatorNum = 6;
-        int IndicatorSlotNum = 9;
-        if(EIndicatorNum * Config.Data.IndicatorMaxLv < IndicatorSlotNum)
+        if(ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv < ExtinguishingContract.IndicatorChoicesNum)
         {
-            return nCrProcess(IndicatorSlotNum, IndicatorSlotNum);
+            return nCrProcess(ExtinguishingContract.IndicatorChoicesNum, ExtinguishingContract.IndicatorChoicesNum);
         }
         else
         {
-            return nCrProcess(EIndicatorNum * Config.Data.IndicatorMaxLv, IndicatorSlotNum);
+            return nCrProcess(ExtinguishingContract.EIndicatorNum * Config.Data.IndicatorMaxLv, ExtinguishingContract.IndicatorChoicesNum);
         }
     }
 
@@ -134,6 +132,76 @@ public static class CulculateLibrary
         return (int)(result / 10);
     }
 
+    public static (int basePressure, int increasePressure) CulculatePressures()
+    {
+        float bs = Config.Data.UnitBasePressure;
+        float increase = Config.Data.UnitLvIncreaseRatio;
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        float[] baseValue = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        int maxIndicatorLv = indicators.Length / ExtinguishingContract.EIndicatorNum;
+        for (int i = 0; i < maxIndicatorLv; i++)
+        {
+            if (indicators[maxIndicatorLv + i] > 0.5f)
+            {
+                bs += (int)baseValue[1] * (i + 1);
+            }
+
+            if (indicators[(maxIndicatorLv * 2) + i] > 0.5f)
+            {
+                increase += (int)baseValue[2] * (i + 1);
+            }
+        }
+        return ((int)bs, (int)increase);
+    }
+
+    public static int CulculateFireSpreadSpeed()
+    {
+        int result = Config.Data.SpreadSpeed;
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        float[] baseValue = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        int maxIndicatorLv = indicators.Length / ExtinguishingContract.EIndicatorNum;
+        for (int i = 0; i < maxIndicatorLv; i++)
+        {
+            if (indicators[(maxIndicatorLv * 4) + i] > 0.5f)
+            {
+                result += (int)baseValue[4] * (i + 1);
+            }
+        }
+        return result;
+    }
+
+    public static int CulculateStartTurn()
+    {
+        int result = 0;
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        float[] baseValue = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        int maxIndicatorLv = indicators.Length / ExtinguishingContract.EIndicatorNum;
+        for (int i = 0; i < maxIndicatorLv; i++)
+        {
+            if (indicators[(maxIndicatorLv * 5) + i] > 0.5f)
+            {
+                result += (int)baseValue[5] * (i + 1);
+            }
+        }
+        return result;
+    }
+
+    public static float CulculateChance()
+    {
+        float result = 0;
+        ReadOnlySpan<float> selected = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        for (int i = 0; i < selected.Length; i++)
+        {
+            if (selected[i] > 0.5f)
+            {
+                int level = i % Config.Data.IndicatorMaxLv + 1;
+                result += Config.Data.IndicatorBaseChance * level;
+            }
+        }
+        result += Config.Data.InitialChance;
+        return result;
+    }
+
     public static float CulculateChance(Span<bool> indicatorCondition)
     {
         float result = 0;
@@ -154,33 +222,4 @@ public static class CulculateLibrary
         result += Config.Data.InitialChance;
         return result;
     }
-
-    public static void GetEIndicatorsInfo(Span<EIndicatorInfo> values)
-    {
-        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<BlockIndicatorChunk>(((int)SaveDataManager.SaveDataChunk.BlockIndicator)).data.Span;
-        Span<float> baseValue = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
-        int buttonCounter = 0;
-        for (int i = 0; i < indicators.Length; i++)
-        {
-            if (indicators[i] > 0.5f)
-            {
-                int type = i / Config.Data.IndicatorMaxLv;
-                int level = i % Config.Data.IndicatorMaxLv + 1;
-
-                values[buttonCounter].type = type;
-                values[buttonCounter].level = level;
-                values[buttonCounter].chance = Config.Data.IndicatorBaseChance * level;
-                values[buttonCounter].value = baseValue[type] * level;
-                buttonCounter++;
-            }
-        }
-    }
-}
-
-public struct EIndicatorInfo
-{
-    public float type;
-    public float level;
-    public float chance;
-    public float value;
 }
