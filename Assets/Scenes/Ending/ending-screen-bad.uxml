@@ -8,8 +8,8 @@
     <ui:VisualElement class="all center-row" >
         <ui:VisualElement class="screen-center-bad center-line">
             <ui:VisualElement class="abs-all screen-center-bg-bad" />
-            <ui:Label class="serif-bold text-special color-white" text="履 行 不 能" />
-            <ui:Label class="serif-bold text-large color-white" text="- 契約対象の完全な焼失を確認 -" />
+            <ui:Label name="Text" class="serif-bold text-special color-white" text="履 行 不 能" />
+            <ui:Label name="Text" class="serif-bold text-large color-white" text="- 契約対象の完全な焼失を確認 -" />
         </ui:VisualElement>
         <ui:VisualElement class="screen-next-button">
             <ui:VisualElement class="abs-all screen-next-button-bg-bad" />
@@ -17,9 +17,10 @@
                 <ui:VisualElement class="frame-row-half" />
                 <ui:VisualElement class="plank-row-large" />
                 <ui:VisualElement class="plank-row-large" />
-                <ui:Label class="serif-regular text-large color-white" text="View Results" />
+                <ui:Label name="Text" class="serif-regular text-large color-white" text="View Results" />
             </ui:VisualElement>
             <ui:VisualElement class="underbar bg-white" />
+            <ui:Button name="NextButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
