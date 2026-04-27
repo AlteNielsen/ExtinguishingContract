@@ -54,6 +54,8 @@ public static class TextDataBase
         GameLoading,
         Home,
         Unit,
-        Result
+        Result,
+        EndingScreen,
+        EndingView
     }
 }
