@@ -292,6 +292,7 @@
     <ui:VisualElement class="abs-all">
         <ui:VisualElement class="next-button center-row center-line">
             <ui:Label name="Text" class="serif-regular text-mid" text="-Back To Title-" />
+            <ui:Button name="BackButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

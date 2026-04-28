@@ -91,4 +91,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("EndingScene");
     }
+
+    public static void ToClear()
+    {
+        SceneManager.LoadScene("ClearScene");
+    }
 }

@@ -24,6 +24,8 @@ public class EndingSceneManager : MonoBehaviour
         goodNext.clicked += sceneView.SwitchMainScreen;
         Button badNext = badDocument.rootVisualElement.Q<Button>("NextButton");
         badNext.clicked += sceneView.SwitchMainScreen;
+        Button backButton = mainDocument.rootVisualElement.Q<Button>("BackButton");
+        backButton.clicked += GameSceneManager.ToClear;
     }
 
     private void UpdateMaxID()
