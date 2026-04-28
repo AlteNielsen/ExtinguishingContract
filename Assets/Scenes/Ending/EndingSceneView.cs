@@ -14,6 +14,7 @@ public class EndingSceneView
         goodDocument = good;
         badDocument = bad;
         WriteTexts();
+        DisplayDatas();
         DisplayEndingScreen();
     }
 
@@ -81,5 +82,27 @@ public class EndingSceneView
         goodDocument.sortingOrder = -10;
         badDocument.sortingOrder = -11;
         mainDocument.sortingOrder = 10;
+    }
+
+    private void DisplayDatas()
+    {
+        DisplayIndicatorValues();
+    }
+
+    private void DisplayIndicatorValues()
+    {
+        float[] values = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        List<Label> labels = mainDocument.rootVisualElement.Query<Label>("IndicatorLabel").ToList();
+        for(int i = 0; i < labels.Count;i++)
+        {
+            if (values[i] > 0)
+            {
+                labels[i].text = "+" + values[i];
+            }
+            else
+            {
+                labels[i].text = "" + values[i];
+            }
+        }
     }
 }
