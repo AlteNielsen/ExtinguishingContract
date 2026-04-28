@@ -48,17 +48,17 @@
                     <ui:Label name="Text" class="serif-bold text-mid color-white" text="環境プレビュー" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="初期消火率" />
-                        <ui:Label class="serif-regular text-small color-white" text="25%" />
+                        <ui:Label name="EnvLabel" class="serif-regular text-small color-white" text="25%" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="初期炎上区画数" />
-                        <ui:Label class="serif-regular text-small color-white" text="5" />
+                        <ui:Label name="EnvLabel" class="serif-regular text-small color-white" text="5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="区画間炎上速度" />
-                        <ui:Label class="serif-regular text-small color-white" text="2" />
+                        <ui:Label name="EnvLabel" class="serif-regular text-small color-white" text="2" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                 </ui:VisualElement>

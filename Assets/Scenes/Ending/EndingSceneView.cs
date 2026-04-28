@@ -87,6 +87,7 @@ public class EndingSceneView
     private void DisplayDatas()
     {
         DisplayIndicatorValues();
+        DisplayEnvValues();
     }
 
     private void DisplayIndicatorValues()
@@ -104,5 +105,14 @@ public class EndingSceneView
                 labels[i].text = "" + values[i];
             }
         }
+    }
+
+    private void DisplayEnvValues()
+    {
+        float[] values = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        List<Label> labels = mainDocument.rootVisualElement.Query<Label>("EnvLabel").ToList();
+        labels[0].text = "" + (int)(values[6] * 100) + "%";
+        labels[1].text = "" + values[7];
+        labels[2].text = "" + values[8];
     }
 }
