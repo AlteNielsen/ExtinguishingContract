@@ -1,13 +1,13 @@
 {
-    "go_times": 12,
-    "success_times": 7,
-    "average_extinguish_chance": 0.5,
-    "extinguish_times": 4,
-    "sum_other_progress": 4,
-    "deployment_count": 3,
-    "base_press_count": 4,
-    "press_mult_count": 5,
-    "max_press_count": 7,
-    "burn_speed_count": 8,
-    "start_turn_count": 3
+    "go_times": 0,
+    "success_times": 0,
+    "average_extinguish_chance": 0.0,
+    "extinguish_times": 0,
+    "sum_other_progress": 0,
+    "deployment_count": 0,
+    "base_press_count": 0,
+    "press_mult_count": 0,
+    "max_press_count": 0,
+    "burn_speed_count": 0,
+    "start_turn_count": 0
 }
