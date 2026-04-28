@@ -44,7 +44,11 @@ public class EndingSceneView
 
     private void WriteMainTexts()
     {
-
+        List<Label> labels = mainDocument.rootVisualElement.Query<Label>("Text").ToList();
+        for(int i = 0; i < labels.Count;i++)
+        {
+            labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.EndingView)[i];
+        }
     }
 
     private void DisplayEndingScreen()
