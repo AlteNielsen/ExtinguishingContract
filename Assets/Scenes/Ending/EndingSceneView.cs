@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
 using UnityEngine.UIElements;
 
 public class EndingSceneView
@@ -90,6 +89,7 @@ public class EndingSceneView
         DisplayIndicatorValues();
         DisplayEnvValues();
         DisplayContractInfo();
+        DisplayOverallStats();
     }
 
     private void DisplayIndicatorValues()
@@ -126,5 +126,57 @@ public class EndingSceneView
 
         Label grade = mainDocument.rootVisualElement.Q<Label>("Grade");
         grade.text = "" + CulculateLibrary.ContractGrade(now.Span);
+    }
+
+    private void DisplayOverallStats()
+    {
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<ResultStatsChunk>((int)SaveDataManager.SaveDataChunk.ResultStats).data.Span;
+        List<Label> labels = mainDocument.rootVisualElement.Query<Label>("OverallStats").ToList();
+        labels[0].text = "" + (int)datas[0];
+        labels[1].text = "" + (int)datas[1];
+        labels[2].text = CulculateLibrary.FloatToPercent(datas[2]) + "%";
+        labels[3].text = "" + (int)datas[3];
+        labels[4].text = CulculateLibrary.FloatToPercent(datas[3] / datas[1]) + "%";
+        float zscore = CulculateLibrary.CulculateZScore((int)datas[1], (int)datas[3], datas[2]);
+        labels[5].text = "" + (int)(zscore * 100) / 100f;
+        labels[6].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.EndingView)[ZScoreConclude(zscore)];
+        labels[7].text = CulculateLibrary.FloatToPercent(datas[4]) + "%";
+    }
+
+    private int ZScoreConclude(float zscore)
+    {
+        float greatStandard = 1.65f;
+        float goodStandard = 1.0f;
+        float standard = 0.5f;
+        int offset = 32;
+
+        if(zscore > greatStandard)
+        {
+            return offset + 6;
+        }
+        else if(zscore > goodStandard)
+        {
+            return offset + 5;
+        }
+        else if(zscore > standard)
+        {
+            return offset + 4;
+        }
+        else if(zscore > -standard)
+        {
+             return offset + 3;
+        }
+        else if(zscore > -goodStandard)
+        {
+            return offset + 2;
+        }
+        else if(zscore > -greatStandard)
+        {
+            return offset + 1;
+        }
+        else
+        {
+            return offset;
+        }
     }
 }

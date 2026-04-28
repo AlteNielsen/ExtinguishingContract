@@ -95,22 +95,22 @@
                 <ui:VisualElement class="prev-colomn" >
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="消火活動回数" />
-                        <ui:Label class="serif-regular text-small color-white" text="15" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="15" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="消火成功回数" />
-                        <ui:Label class="serif-regular text-small color-white" text="10" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="10" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="平均消火確率" />
-                        <ui:Label class="serif-regular text-small color-white" text="50%" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="50%" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="鎮火回数" />
-                        <ui:Label class="serif-regular text-small color-white" text="6" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="6" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                 </ui:VisualElement>
@@ -118,22 +118,22 @@
                 <ui:VisualElement class="prev-colomn" >
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="鎮火確率" />
-                        <ui:Label class="serif-regular text-small color-white" text="60%" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="60%" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="標準得点" />
-                        <ui:Label class="serif-regular text-small color-white" text="0.63" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="0.63" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="環境評価" />
-                        <ui:Label class="serif-regular text-small color-white" text="優良" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="優良" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="他地区消火進捗合計" />
-                        <ui:Label class="serif-regular text-small color-white" text="230%" />
+                        <ui:Label name="OverallStats" class="serif-regular text-small color-white" text="230%" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                 </ui:VisualElement>
