@@ -11,11 +11,11 @@
 密結合,Tight Coupling
 指標プレビュー,Indicators
 編成上限,Deploy Limit
-ユニット水圧,Unit Pressure
-水圧増加倍率,Press. Mult.
-使用可能水圧,Max Press
+基礎水圧,Unit Pressure
+増加水圧,Press. Mult.
+使用水圧,Max Press
 延焼速度,Burn Speed
-初期経過ターン,Start Turn
+初期経過,Start Turn
 環境プレビュー,Env. Preview
 初期消火率,Base Success
 初期炎上区画数,Start Fires
