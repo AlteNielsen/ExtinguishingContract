@@ -222,4 +222,11 @@ public static class CulculateLibrary
         result += Config.Data.InitialChance;
         return result;
     }
+
+    public static float CulculateZScore(int baseTimes, int actualTimes, float theoreticalChance)
+    {
+        float upper = actualTimes - (baseTimes * theoreticalChance);
+        float lower = baseTimes * theoreticalChance * (1 - theoreticalChance);
+        return upper / MathF.Sqrt(lower);
+    }
 }
