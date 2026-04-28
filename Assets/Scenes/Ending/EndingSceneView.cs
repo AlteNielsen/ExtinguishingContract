@@ -91,6 +91,7 @@ public class EndingSceneView
         DisplayContractInfo();
         DisplayOverallStats();
         DisplayIndicatorStats();
+        DisplayBurningSituation();
     }
 
     private void DisplayIndicatorValues()
@@ -152,6 +153,47 @@ public class EndingSceneView
         for(int i = 0;  i < labels.Count; i++)
         {
             labels[i].text = "" + (int)datas[offset + i];
+        }
+    }
+
+    private void DisplayBurningSituation()
+    {
+        List<VisualElement> bars = mainDocument.rootVisualElement.Query<VisualElement>("GraphBar").ToList();
+        int dataPerBar = DataPerGraphBar(bars.Count);
+        Span<float> datas = stackalloc float[bars.Count];
+        CalculateDisplayValue(dataPerBar, datas);
+        for(int i = 0;i < bars.Count;i++)
+        {
+            bars[i].style.height = Length.Percent(datas[i] * 100);
+        }
+    }
+
+    private int DataPerGraphBar(int barNum)
+    {
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<TurnStatsChunk>((int)SaveDataManager.SaveDataChunk.TurnStats).data.Span;
+        int counter = 0;
+        for(int i = 0; i < datas.Length; i++)
+        {
+            if (datas[i] < 0.5f)
+            {
+                counter = i;
+                break;
+            }
+        }
+        return (counter / barNum) + 1;
+    }
+
+    private void CalculateDisplayValue(int dataPerBar, Span<float> result)
+    {
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<TurnStatsChunk>((int)SaveDataManager.SaveDataChunk.TurnStats).data.Span;
+        for (int i = 0; i < result.Length; i++)
+        {
+            for(int j = 0; j < dataPerBar; j++)
+            {
+                result[i] += datas[i * dataPerBar + j];
+            }
+            result[i] /= dataPerBar;
+            result[i] /= MapDataBase.Datas.Length;
         }
     }
 

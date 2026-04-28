@@ -188,102 +188,102 @@
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
                 <ui:VisualElement class="plank-row-small" />
                 <ui:VisualElement class="graph-bar">
                     <ui:VisualElement class="base-flex" />
-                    <ui:VisualElement class="graph-bar-value bg-darkred" />
+                    <ui:VisualElement name="GraphBar" class="graph-bar-value bg-darkred" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="bg-white graph-underbar" />
