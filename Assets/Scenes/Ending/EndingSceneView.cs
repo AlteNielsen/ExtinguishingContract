@@ -1,6 +1,7 @@
-using UnityEngine.UIElements;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEngine.UIElements;
 
 public class EndingSceneView
 {
@@ -88,6 +89,7 @@ public class EndingSceneView
     {
         DisplayIndicatorValues();
         DisplayEnvValues();
+        DisplayContractInfo();
     }
 
     private void DisplayIndicatorValues()
@@ -114,5 +116,15 @@ public class EndingSceneView
         labels[0].text = "" + (int)(values[6] * 100) + "%";
         labels[1].text = "" + values[7];
         labels[2].text = "" + values[8];
+    }
+
+    private void DisplayContractInfo()
+    {
+        Label id = mainDocument.rootVisualElement.Q<Label>("ID");
+        ReadOnlyMemory<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data;
+        id.text = "" + now.Span[0] + now.Span[1] + now.Span[2] + "-" + now.Span[3] + now.Span[4] + now.Span[5] + "-" + now.Span[6] + now.Span[7] + now.Span[8];
+
+        Label grade = mainDocument.rootVisualElement.Q<Label>("Grade");
+        grade.text = "" + CulculateLibrary.ContractGrade(now.Span);
     }
 }
