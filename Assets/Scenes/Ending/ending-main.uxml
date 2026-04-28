@@ -144,17 +144,17 @@
                 <ui:VisualElement class="prev-colomn" >
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="編成数" />
-                        <ui:Label class="serif-regular text-small color-white" text="7" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="7" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="ユニット水圧" />
-                        <ui:Label class="serif-regular text-small color-white" text="5" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="水圧増加倍率" />
-                        <ui:Label class="serif-regular text-small color-white" text="2" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="2" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                 </ui:VisualElement>
@@ -162,17 +162,17 @@
                 <ui:VisualElement class="prev-colomn" >
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="使用可能水圧" />
-                        <ui:Label class="serif-regular text-small color-white" text="7" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="7" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="延焼速度" />
-                        <ui:Label class="serif-regular text-small color-white" text="5" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="5" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                     <ui:VisualElement class="row">
                         <ui:Label name="Text" class="serif-regular text-small color-white base-flex" text="初期経過ターン" />
-                        <ui:Label class="serif-regular text-small color-white" text="3" />
+                        <ui:Label name="IndicatorStats" class="serif-regular text-small color-white" text="3" />
                     </ui:VisualElement>
                     <ui:VisualElement class="underbar bg-gray" />
                 </ui:VisualElement>

@@ -90,6 +90,7 @@ public class EndingSceneView
         DisplayEnvValues();
         DisplayContractInfo();
         DisplayOverallStats();
+        DisplayIndicatorStats();
     }
 
     private void DisplayIndicatorValues()
@@ -141,6 +142,17 @@ public class EndingSceneView
         labels[5].text = "" + (int)(zscore * 100) / 100f;
         labels[6].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.EndingView)[ZScoreConclude(zscore)];
         labels[7].text = CulculateLibrary.FloatToPercent(datas[4]) + "%";
+    }
+
+    private void DisplayIndicatorStats()
+    {
+        List<Label> labels = mainDocument.rootVisualElement.Query<Label>("IndicatorStats").ToList();
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<ResultStatsChunk>((int)SaveDataManager.SaveDataChunk.ResultStats).data.Span;
+        int offset = 5;
+        for(int i = 0;  i < labels.Count; i++)
+        {
+            labels[i].text = "" + (int)datas[offset + i];
+        }
     }
 
     private int ZScoreConclude(float zscore)
