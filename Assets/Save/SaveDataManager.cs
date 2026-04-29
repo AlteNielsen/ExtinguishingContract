@@ -101,4 +101,11 @@ public class SaveDataManager : RayAbstractDataManager
         Initialize((int)SaveDataChunk.ResultStats);
         Initialize((int)SaveDataChunk.TurnStats);
     }
+
+    public void StageLoadingSceneSaveDataInitialize()
+    {
+        Initialize((int)SaveDataChunk.FireMap);
+        Initialize((int)SaveDataChunk.UnitMap);
+        Initialize((int)SaveDataChunk.UnitFacing);
+    }
 }

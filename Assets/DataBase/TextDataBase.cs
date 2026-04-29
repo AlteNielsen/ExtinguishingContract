@@ -56,6 +56,7 @@ public static class TextDataBase
         Unit,
         Result,
         EndingScreen,
-        EndingView
+        EndingView,
+        StageLoading
     }
 }
