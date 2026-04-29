@@ -96,4 +96,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("ClearScene");
     }
+
+    public static void ToStage()
+    {
+        SceneManager.LoadScene("StageScene");
+    }
 }
