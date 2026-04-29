@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Stage/stage.uss" />
+    
+    <ui:VisualElement class="all bg-color">
+        <ui:VisualElement class="base-flex">
+
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:VisualElement class="base-flex">
+
+            </ui:VisualElement>
+            <ui:VisualElement name="Board" class="board">
+                <ui:VisualElement class="grid-tile">
+                    <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                    <ui:VisualElement class="on-grid bg-darkgray" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="board-right">
+
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="base-flex">
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
