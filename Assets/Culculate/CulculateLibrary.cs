@@ -29,6 +29,14 @@ public static class CulculateLibrary
         return result;
     }
 
+    public static void SwitchFloatToBool(Span<bool> result, ReadOnlySpan<float> value)
+    {
+        for (int i = 0; i < result.Length; i++)
+        {
+            result[i] = value[i] > 0.5f;
+        }
+    }
+
     public static int[] SwitchFloatToInt(ReadOnlyMemory<float> value)
     {
         int[] result = new int[value.Length];
@@ -37,6 +45,14 @@ public static class CulculateLibrary
             result[i] = (int)value.Span[i];
         }
         return result;
+    }
+
+    public static void SwitchFloatToInt(Span<int> result,  ReadOnlySpan<float> value)
+    {
+        for (int i = 0; i < result.Length; i++)
+        {
+            result[i] = (int)value[i];
+        }
     }
 
     public static int ContractGrade(ReadOnlySpan<float> data)
