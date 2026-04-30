@@ -5,7 +5,7 @@
     <ui:Style src="project:/Assets/Scenes/Stage/stage.uss" />
     
     <ui:VisualElement class="grid-tile">
-        <ui:VisualElement class="all bg-darkgray semi-transparent" />
-        <ui:VisualElement class="on-grid bg-darkgray" />
+        <ui:VisualElement class="all bg-black" />
+        <ui:VisualElement name="GridPanel" class="on-grid bg-darkgray semi-transparent" />
     </ui:VisualElement>
 </ui:UXML>

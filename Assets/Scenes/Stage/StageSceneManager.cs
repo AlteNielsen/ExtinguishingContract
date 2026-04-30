@@ -6,10 +6,13 @@ public class StageSceneManager : MonoBehaviour
     private const int tileNum = 96;
     [SerializeField] private UIDocument document;
     [SerializeField] private VisualTreeAsset tile;
+    private StageSceneView sceneView; 
 
     void Awake()
     {
+        ExtinguishingContract.DevelopOnlyGameSetup();
         BoardSetup();
+        sceneView = new StageSceneView(document);
     }
 
     private void BoardSetup()
