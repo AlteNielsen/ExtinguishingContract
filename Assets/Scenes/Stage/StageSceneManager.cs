@@ -231,6 +231,39 @@ public class WaterCalculator
         height = hei;
     }
 
+    private void UnitWaterCalc(int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing, Span<bool> result)
+    {
+        RangeData[] range = UnitDataBase.Datas[unitID].RangeData;
+        for(int i = 0; i < unitLevel; i++)
+        {
+            for(int j = 0; j < range[i].range.Length; j++)
+            {
+                var (relTargetX, relTargetY) = RotatePos(range[i].range[j].relativeX, range[i].range[j].relativeY, facing);
+                bool isValid = !CheckIsBlocked(unitPosX, unitPosY, unitPosX + relTargetX, unitPosY + relTargetY);
+                if (isValid)
+                {
+                    result[(unitPosY + relTargetY) * width + unitPosX + relTargetX] = true;
+                }
+            }
+        }
+    }
+
+    private (int relRangePosX, int relRangePosY) RotatePos(int relPosX, int relPosY, UnitFacing facing)
+    {
+        switch(facing)
+        {
+            case UnitFacing.North:
+                return(relPosX, relPosY);
+            case UnitFacing.East:
+                return(relPosY, -relPosX);
+            case UnitFacing.South:
+                return(-relPosX, -relPosY);
+            case UnitFacing.West:
+                return(-relPosY, relPosX);
+        }
+        return (relPosX, relPosY);
+    }
+
     private bool CheckIsBlocked(int unitPosX, int unitPosY, int targetPosX, int targetPosY)
     {
         var (wid, hei, startX, startY)= GetCheckRange(unitPosX, unitPosY, targetPosX, targetPosY);
@@ -327,4 +360,12 @@ public class WaterCalculator
         }
         return 0;
     }
+}
+
+public enum UnitFacing
+{
+    North,
+    East,
+    South,
+    West
 }
