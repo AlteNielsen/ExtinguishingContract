@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class StageSceneManager : MonoBehaviour
@@ -11,8 +12,9 @@ public class StageSceneManager : MonoBehaviour
     private int spreadSpeed;
     private int width;
     private int height;
-    private bool[] fireMap;
     private bool[] mapLayout;
+
+    private bool[] fireMap;
     private int[] unitMap;
     private int[] unitFacing;
 
@@ -141,6 +143,77 @@ public class StageSceneManager : MonoBehaviour
                 {
                     fireMap[i] = false;
                 }
+            }
+        }
+    }
+}
+
+public class FireCalculator
+{
+    private bool[] mapLayout;
+    private int width;
+    private int height;
+
+    public FireCalculator(bool[] map, int wid, int hei)
+    {
+        mapLayout = map;
+        width = wid;
+        height = hei;
+    }
+
+    public void FireSpread(Span<bool> result, Span<bool> original, Span<bool> water)
+    {
+        FireSpreadUnit(result, original);
+        BlockFireByMap(result);
+        BlockFireByWater(result, water);
+    }
+
+    private void FireSpreadUnit(Span<bool> result, Span<bool> original)
+    {
+        for (int i = 0; i < result.Length; i++)
+        {
+            if (original[i])
+            {
+                int posX = i % width;
+                int posY = i / width;
+                if (0 < posX)
+                {
+                    result[i - 1] = true;
+                }
+                if ((posX + 1) < width)
+                {
+                    result[i + 1] = true;
+                }
+                if (0 < posY)
+                {
+                    result[i - width] = true;
+                }
+                if ((posY + 1) < height)
+                {
+                    result[i + width] = true;
+                }
+            }
+        }
+    }
+
+    private void BlockFireByMap(Span<bool> result)
+    {
+        for (int i = 0; i < result.Length; ++i)
+        {
+            if (mapLayout[i])
+            {
+                result[i] = false;
+            }
+        }
+    }
+
+    private void BlockFireByWater(Span<bool> result, Span<bool> water)
+    {
+        for (int i = 0; i < result.Length; ++i)
+        {
+            if (water[i])
+            {
+                result[i] = false;
             }
         }
     }
