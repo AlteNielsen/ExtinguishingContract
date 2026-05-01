@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Stage/stage.uss" />
+    
+    <ui:VisualElement class="grid-tile">
+        <ui:VisualElement class="all bg-black" />
+        <ui:VisualElement name="GridPanel" class="on-grid bg-darkgray semi-transparent" />
+    </ui:VisualElement>
+</ui:UXML>
