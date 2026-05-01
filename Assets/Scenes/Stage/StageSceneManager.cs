@@ -8,6 +8,8 @@ public class StageSceneManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset tile;
     private StageSceneView sceneView; 
     private StageBoardView boardView;
+    private WaterCalculator waterCalc;
+    private FireCalculator fireCalc;
     private int spreadSpeed;
     private int width;
     private int height;
@@ -142,6 +144,56 @@ public class StageSceneManager : MonoBehaviour
                 {
                     fireMap[i] = false;
                 }
+            }
+        }
+    }
+
+    private void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<UnitFacing> facing)
+    {
+        Span<bool> fireA = stackalloc bool[fireMapResult.Length];
+        Span<bool> fireB = stackalloc bool[fireMapResult.Length];
+        fireMapResult.CopyTo(fireA);
+        fireB.Clear();
+        Span<int> unit = stackalloc int[unitMapResult.Length];
+        Span<bool> water = stackalloc bool[fireMapResult.Length];
+        unitMapResult.CopyTo(unit);
+        bool switcher = true;
+        for(int i = 0; i < spreadSpeed; i++)
+        {
+            water.Clear();
+            if(switcher)
+            {
+                waterCalc.WaterCalculate(water, unit, facing);
+                fireCalc.FireSpread(fireB, fireA, water);
+                UnitRemove(fireB, unit);
+            }
+            else
+            {
+                waterCalc.WaterCalculate(water, unit, facing);
+                fireCalc.FireSpread(fireA, fireB, water);
+                UnitRemove(fireA, unit);
+            }
+            switcher = !switcher;
+        }
+
+        if(switcher)
+        {
+            fireB.CopyTo(fireMapResult);
+        }
+        else
+        {
+            fireA.CopyTo(fireMapResult);
+        }
+        unit.CopyTo(unitMapResult);
+    }
+
+    private void UnitRemove(Span<bool> fire, Span<int> unitMapResult)
+    {
+        for(int i = 0; i < fire.Length; i++)
+        {
+            if (fire[i])
+            {
+                unitMapResult[i] = -1;
             }
         }
     }
