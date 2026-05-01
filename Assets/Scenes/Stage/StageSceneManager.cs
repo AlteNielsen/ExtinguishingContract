@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
 public class StageSceneManager : MonoBehaviour
@@ -216,5 +215,116 @@ public class FireCalculator
                 result[i] = false;
             }
         }
+    }
+}
+
+public class WaterCalculator
+{
+    private bool[] mapLayout;
+    private int width;
+    private int height;
+
+    public WaterCalculator(bool[] map, int wid, int hei)
+    {
+        mapLayout = map;
+        width = wid;
+        height = hei;
+    }
+
+    private bool CheckIsBlocked(int unitPosX, int unitPosY, int targetPosX, int targetPosY)
+    {
+        var (wid, hei, startX, startY)= GetCheckRange(unitPosX, unitPosY, targetPosX, targetPosY);
+        for(int i = 0; i < hei; i++)
+        {
+            for(int j = 0; j < wid; j++)
+            {
+                if(CheckIsThrough(startX + j, startY + i, unitPosX, unitPosY, targetPosX, targetPosY) && mapLayout[(startX + j) + (width * (i + startY))])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private (int wid, int hei, int startX, int startY) GetCheckRange(int unitPosX, int unitPosY, int targetPosX, int targetPosY)
+    {
+        int wid = Math.Abs(targetPosX - unitPosX) + 1;
+        int hei = Math.Abs(targetPosY - unitPosY) + 1;
+        int startX = 0;
+        if(unitPosX > targetPosX)
+        {
+            startX = targetPosX;
+        }
+        else
+        {
+            startX = unitPosX;
+        }
+        int startY = 0;
+        if(unitPosY > targetPosY)
+        {
+            startY = targetPosY;
+        }
+        else
+        {
+            startY = unitPosY;
+        }
+        return (wid, hei, startX, startY);
+    }
+
+    private bool CheckIsThrough(int checkPosX, int checkPosY, int unitPosX, int unitPosY, int targetPosX, int targetPosY)
+    {
+        int vecX = targetPosX - unitPosX;
+        int vecY = targetPosY - unitPosY;
+        int posX = unitPosX * 2 + 1;
+        int posY = unitPosY * 2 + 1;
+        Span<int> result = stackalloc int[4];
+        result[0] = CalcCrossProduct(vecX * 2, vecY * 2, posX, posY, checkPosX * 2, checkPosY * 2);
+        result[1] = CalcCrossProduct(vecX * 2, vecY * 2, posX, posY, (checkPosX + 1) * 2, checkPosY * 2);
+        result[2] = CalcCrossProduct(vecX * 2, vecY * 2, posX, posY, checkPosX * 2, (checkPosY + 1) * 2);
+        result[3] = CalcCrossProduct(vecX * 2, vecY * 2, posX, posY, (checkPosX + 1) * 2, (checkPosY + 1) * 2);
+        int max = -1000;
+        int min = 1000;
+        if (result[0] * result[1] * result[2] * result[3]  == 0)
+        {
+            return true;
+        }
+        for(int i = 0; i < 4; i++)
+        {
+            if(max < result[i])
+            {
+                max = result[i];
+            }
+            if(min > result[i])
+            {
+                min = result[i];
+            }
+        }
+        if(max > 0 && min < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private int CalcCrossProduct(int vecX, int vecY, int posX, int posY, int checkPosX, int checkPosY)
+    {
+        long result = vecX * (checkPosY - posY) - vecY * (checkPosX - posX);
+        if(result < 0)
+        {
+            return -1;
+        }
+        if(result == 0)
+        {
+            return 0;
+        }
+        if(result > 0)
+        {
+            return 1;
+        }
+        return 0;
     }
 }
