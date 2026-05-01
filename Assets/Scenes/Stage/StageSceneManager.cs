@@ -231,7 +231,20 @@ public class WaterCalculator
         height = hei;
     }
 
-    private void UnitWaterCalc(int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing, Span<bool> result)
+    public void WaterCalculate(Span<bool> result, Span<int> unitMap, Span<UnitFacing> unitFacing)
+    {
+        ReadOnlySpan<float> levels = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+        for(int i = 0; i < unitMap.Length; i++)
+        {
+            if (unitMap[i] >= 0)
+            {
+                UnitWaterCalc(result, i % width, i / width, unitMap[i], (int)levels[unitMap[i]], unitFacing[unitMap[i]]);
+
+            }
+        }
+    }
+
+    private void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
     {
         RangeData[] range = UnitDataBase.Datas[unitID].RangeData;
         for(int i = 0; i < unitLevel; i++)
