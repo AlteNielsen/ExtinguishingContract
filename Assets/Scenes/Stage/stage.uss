@@ -1,0 +1,72 @@
+.unit-icon{
+    background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+    -unity-background-scale-mode: scale-and-crop;
+    opacity: 0.95;
+    -unity-background-image-tint-color: black;
+    max-width: 500px;
+}
+
+.the-black{
+    background-color: black;
+}
+
+.row-under{
+    height: 7.5%;
+}
+
+.board{
+    width: 1200px;
+    height: 800px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-tile{
+    width: 100px;
+    height: 100px;
+}
+
+.on-grid{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 96px;
+    height: 96px;
+}
+
+.board-left{
+    width: 2%;
+}
+
+.board-right{
+    width: 8%;
+}
+
+.on-unit-selector{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 96px;
+}
+
+.setting{
+    width: 125px;
+    height: 125px;
+    border-color: var(--color-darkred);
+    border-width: 2px;
+}
+
+.setting-icon{
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.map-title{
+    height: 80px;
+    width: 75%;
+    top: 15%;
+}
