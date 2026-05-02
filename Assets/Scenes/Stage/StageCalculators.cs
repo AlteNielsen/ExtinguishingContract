@@ -111,6 +111,11 @@ public class WaterCalculator
             for (int j = 0; j < range[i].range.Length; j++)
             {
                 var (relTargetX, relTargetY) = RotatePos(range[i].range[j].relativeX, range[i].range[j].relativeY, facing);
+
+                int absX = unitPosX + relTargetX;
+                int absY = unitPosY + relTargetY;
+                if (absX < 0 || absX >= width || absY < 0 || absY >= height) continue;
+
                 bool isValid = !CheckIsBlocked(unitPosX, unitPosY, unitPosX + relTargetX, unitPosY + relTargetY);
                 if (isValid)
                 {
