@@ -1,4 +1,6 @@
 using System;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FireCalculator
 {
@@ -23,12 +25,14 @@ public class FireCalculator
 
     private void FireSpreadUnit(Span<bool> result, Span<bool> original)
     {
+        result.Clear();
         for (int i = 0; i < result.Length; i++)
         {
             if (original[i])
             {
                 int posX = i % width;
                 int posY = i / width;
+                result[i] = true;
                 if (0 < posX)
                 {
                     result[i - 1] = true;

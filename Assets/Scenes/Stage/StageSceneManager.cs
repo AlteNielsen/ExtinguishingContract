@@ -15,16 +15,16 @@ public class StageSceneManager : MonoBehaviour
 
     private bool[] fireMapA;
     private int[] unitMapA;
-    private UnitFacing[] unitFacingA;
+    private UnitFacing[] unitFacing;
     private bool[] fireMapB;
     private int[] unitMapB;
-    private UnitFacing[] unitFacingB;
 
-    private bool[] FireMap { get { if (bufferingSwitch) { return fireMapA; } else { return fireMapB; } } set { if (bufferingSwitch) { fireMapB = value; } else { fireMapA = value; } } }
-    private int[] UnitMap { get { if (bufferingSwitch) { return unitMapA; } else { return unitMapB; } } set{ if (bufferingSwitch){ unitMapB = value; } else { unitMapA = value; } } }
-    private UnitFacing[] UnitFacing { get { if (bufferingSwitch) { return unitFacingA; } else { return unitFacingB; } } set { if (bufferingSwitch) { unitFacingB = value; } else { unitFacingA = value; } } }
+    private bool[] FireMap => bufferingSwitch ? fireMapA : fireMapB;
+    private bool[] NextFireMap => bufferingSwitch ? fireMapB : fireMapA;
+    private int[] UnitMap => bufferingSwitch ? unitMapA : unitMapB;
+    private int[] NextUnitMap => bufferingSwitch ? unitMapB : unitMapA;
 
-    private bool bufferingSwitch = false;
+    private bool bufferingSwitch = true;
 
     void Awake()
     {
@@ -38,13 +38,14 @@ public class StageSceneManager : MonoBehaviour
         DataRestore(index);
         fireCalc = new FireCalculator(layout, width, height);
         waterCalc = new WaterCalculator(layout, width, height);
+        StartProcess(index ,start);
     }
 
     private (int speed, int start, int mapIndex, int width, int height) GetParameter()
     {
         float[] data = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
         ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
-        int speed = 0;
+        int speed = 1;
         for(int i = 0; i < Config.Data.IndicatorMaxLv; i++)
         {
             if(indicators[Config.Data.IndicatorMaxLv * 4 + i] > 0.5f)
@@ -57,7 +58,7 @@ public class StageSceneManager : MonoBehaviour
         {
             if (indicators[Config.Data.IndicatorMaxLv * 5 + i] > 0.5f)
             {
-                speed += (int)(data[5] * (i + 1));
+                start += (int)(data[5] * (i + 1));
             }
         }
         int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
@@ -95,20 +96,48 @@ public class StageSceneManager : MonoBehaviour
         CulculateLibrary.SwitchFloatToInt(unitMapA, SaveDataManager.Instance.Access<UnitMapChunk>((int)SaveDataManager.SaveDataChunk.UnitMap).data.Span);
         Array.Copy(unitMapA, unitMapB, unitMapA.Length);
 
-        unitFacingA = new UnitFacing[UnitDataBase.Datas.Length];
-        unitFacingB = new UnitFacing[UnitDataBase.Datas.Length];
+        unitFacing = new UnitFacing[UnitDataBase.Datas.Length];
         Span<int> facingMemo = stackalloc int[UnitDataBase.Datas.Length];
         CulculateLibrary.SwitchFloatToInt(facingMemo, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
-        MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacingA);
-        Array.Copy(unitFacingA, unitFacingB, unitFacingA.Length);
+        MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacing);
     }
+
+    private void StartProcess(int mapIndex, int count)
+    {
+        bool isInitial = true;
+        for(int i = 0; i < FireMap.Length; i++)
+        {
+            if (FireMap[i])
+            {
+                isInitial = false;
+                break;
+            }
+        }
+
+        if (isInitial)
+        {
+            int firePoint = MapDataBase.Datas[mapIndex].Data.fire_point;
+            fireMapA[firePoint] = true;
+            fireMapB[firePoint] = true;
+            for(int i = 0; i < count; i++)
+            {
+                TurnProcess();
+            }
+            SynchronizeSituation();
+        }
+    }
+
 
     private void TurnProcess()
     {
         Span<bool> water = stackalloc bool[FireMap.Length];
-        StageCalculate(FireMap, UnitMap, water, UnitFacing, spreadSpeed);
+        Span<bool> nextFire = NextFireMap;
+        FireMap.CopyTo(nextFire);
+        Span<int> unitMap = NextUnitMap;
+        UnitMap.CopyTo(unitMap);
+        StageCalculate(nextFire, unitMap, water, unitFacing, spreadSpeed);
         SwitchBuffer();
-        boardView.DisplayBoard(FireMap, water, UnitMap, UnitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
     }
 
     private void UndoProcess()
@@ -116,8 +145,8 @@ public class StageSceneManager : MonoBehaviour
         SwitchBuffer();
         Span<bool> water = stackalloc bool[FireMap.Length];
         water.Clear();
-        waterCalc.WaterCalculate(water, UnitMap, UnitFacing);
-        boardView.DisplayBoard(FireMap, water, UnitMap, UnitFacing);
+        waterCalc.WaterCalculate(water, UnitMap, unitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
     }
 
     private void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<bool> waterResult, Span<UnitFacing> facing, int speed)
@@ -150,11 +179,11 @@ public class StageSceneManager : MonoBehaviour
 
         if(switcher)
         {
-            fireB.CopyTo(fireMapResult);
+            fireA.CopyTo(fireMapResult);
         }
         else
         {
-            fireA.CopyTo(fireMapResult);
+            fireB.CopyTo(fireMapResult);
         }
         unit.CopyTo(unitMapResult);
 
@@ -176,5 +205,19 @@ public class StageSceneManager : MonoBehaviour
     private void SwitchBuffer()
     {
         bufferingSwitch = !bufferingSwitch;
+    }
+
+    private void SynchronizeSituation()
+    {
+        if(bufferingSwitch)
+        {
+            Array.Copy(fireMapA, fireMapB, fireMapA.Length);
+            Array.Copy(unitMapA, unitMapB, unitMapA.Length);
+        }
+        else
+        {
+            Array.Copy(fireMapB, fireMapA, fireMapA.Length);
+            Array.Copy(unitMapB, unitMapA, unitMapA.Length);
+        }
     }
 }
