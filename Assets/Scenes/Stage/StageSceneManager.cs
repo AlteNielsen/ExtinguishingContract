@@ -6,18 +6,28 @@ public class StageSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
     [SerializeField] private VisualTreeAsset tile;
-    private StageSceneView sceneView; 
+    private StageSceneView sceneView;
     private StageBoardView boardView;
     private WaterCalculator waterCalc;
     private FireCalculator fireCalc;
     private int spreadSpeed;
+
     private int width;
     private int height;
     private bool[] mapLayout;
 
-    private bool[] fireMap;
-    private int[] unitMap;
-    private int[] unitFacing;
+    private bool[] fireMapA;
+    private int[] unitMapA;
+    private UnitFacing[] unitFacingA;
+    private bool[] fireMapB;
+    private int[] unitMapB;
+    private UnitFacing[] unitFacingB;
+
+    private bool[] FireMap { get { if (bufferingSwitch) { return fireMapA; } else { return fireMapB; } } set { if (bufferingSwitch) { fireMapB = value; } else { fireMapA = value; } } }
+    private int[] UnitMap { get { if (bufferingSwitch) { return unitMapA; } else { return unitMapB; } } set{ if (bufferingSwitch){ unitMapB = value; } else { unitMapA = value; } } }
+    private UnitFacing[] UnitFacing { get { if (bufferingSwitch) { return unitFacingA; } else { return unitFacingB; } } set { if (bufferingSwitch) { unitFacingB = value; } else { unitFacingA = value; } } }
+
+    private bool bufferingSwitch = false;
 
     void Awake()
     {
@@ -27,7 +37,6 @@ public class StageSceneManager : MonoBehaviour
         var (speed, start) = GetParameter();
         spreadSpeed = speed;
         DataSetup();
-        StartProcess(start);
     }
 
     private (int speed, int start) GetParameter()
@@ -55,7 +64,7 @@ public class StageSceneManager : MonoBehaviour
 
     private void DataSetup()
     {
-        int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+        /*int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
         MapLayout datas = MapDataBase.Datas[selected].Data;
         width = datas.width;
         height = datas.height;
@@ -75,80 +84,19 @@ public class StageSceneManager : MonoBehaviour
         }
         unitMap = new int[datas.layout.Length];
         CulculateLibrary.SwitchFloatToInt(unitMap, SaveDataManager.Instance.Access<UnitMapChunk>((int)SaveDataManager.SaveDataChunk.UnitMap).data.Span);
-        unitFacing = new int[height];
-        CulculateLibrary.SwitchFloatToInt(unitFacing, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
+        *///unitFacing = new int[height];
+        //CulculateLibrary.SwitchFloatToInt(unitFacing, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
     }
 
-    private void StartProcess(int start)
+    private void TurnProcess()
     {
-        bool isStart = false;
-        for(int i = 0; i < fireMap.Length; i++)
-        {
-            if (fireMap[i])
-            {
-                isStart = true;
-                break;
-            }
-        }
-
-        if(isStart)
-        {
-            return;
-        }
-        else
-        {
-            int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
-            MapLayout datas = MapDataBase.Datas[selected].Data;
-            fireMap[datas.fire_point] = true;
-            for(int i = 0; i < start; i++)
-            {
-                FireSpread();
-            }
-        }
-        boardView.DisplayBurning(fireMap);
+        Span<bool> water = stackalloc bool[FireMap.Length];
+        StageCalculate(FireMap, UnitMap, water, UnitFacing, spreadSpeed);
+        SwitchBuffer();
+        boardView.DisplayBoard(FireMap, water, UnitMap);
     }
 
-    private void FireSpread()
-    {
-        for (int j = 0; j < spreadSpeed; j++)
-        {
-            Span<bool> original = stackalloc bool[fireMap.Length];
-            fireMap.CopyTo(original);
-            for (int i = 0; i < fireMap.Length; i++)
-            {
-                if (original[i])
-                {
-                    int posX = i % width;
-                    int posY = i / width;
-                    if (0 < posX)
-                    {
-                        fireMap[i - 1] = true;
-                    }
-                    if ((posX + 1) < width)
-                    {
-                        fireMap[i + 1] = true;
-                    }
-                    if (0 < posY)
-                    {
-                        fireMap[i - width] = true;
-                    }
-                    if ((posY + 1) < height)
-                    {
-                        fireMap[i + width] = true;
-                    }
-                }
-            }
-            for (int i = 0; i < fireMap.Length; ++i)
-            {
-                if (mapLayout[i])
-                {
-                    fireMap[i] = false;
-                }
-            }
-        }
-    }
-
-    private void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<UnitFacing> facing)
+    private void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<bool> waterResult, Span<UnitFacing> facing, int speed)
     {
         Span<bool> fireA = stackalloc bool[fireMapResult.Length];
         Span<bool> fireB = stackalloc bool[fireMapResult.Length];
@@ -158,7 +106,7 @@ public class StageSceneManager : MonoBehaviour
         Span<bool> water = stackalloc bool[fireMapResult.Length];
         unitMapResult.CopyTo(unit);
         bool switcher = true;
-        for(int i = 0; i < spreadSpeed; i++)
+        for(int i = 0; i < speed; i++)
         {
             water.Clear();
             if(switcher)
@@ -185,6 +133,9 @@ public class StageSceneManager : MonoBehaviour
             fireA.CopyTo(fireMapResult);
         }
         unit.CopyTo(unitMapResult);
+
+        waterCalc.WaterCalculate(water, unit, facing);
+        water.CopyTo(waterResult);
     }
 
     private void UnitRemove(Span<bool> fire, Span<int> unitMapResult)
@@ -196,6 +147,11 @@ public class StageSceneManager : MonoBehaviour
                 unitMapResult[i] = -1;
             }
         }
+    }
+
+    private void SwitchBuffer()
+    {
+        bufferingSwitch = !bufferingSwitch;
     }
 }
 
