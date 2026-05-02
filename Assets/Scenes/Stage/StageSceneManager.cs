@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,10 +12,6 @@ public class StageSceneManager : MonoBehaviour
     private WaterCalculator waterCalc;
     private FireCalculator fireCalc;
     private int spreadSpeed;
-
-    private int width;
-    private int height;
-    private bool[] mapLayout;
 
     private bool[] fireMapA;
     private int[] unitMapA;
@@ -34,12 +31,14 @@ public class StageSceneManager : MonoBehaviour
         ExtinguishingContract.DevelopOnlyGameSetup();
         boardView = new StageBoardView(document, tile);
         sceneView = new StageSceneView(document);
-        var (speed, start) = GetParameter();
+        var (speed, start, index, width, height) = GetParameter();
         spreadSpeed = speed;
-        DataSetup();
+        Span<bool> layout = stackalloc bool[width * height];
+        GetMapLayout(index, layout);
+        DataRestore(index);
     }
 
-    private (int speed, int start) GetParameter()
+    private (int speed, int start, int mapIndex, int width, int height) GetParameter()
     {
         float[] data = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
         ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
@@ -59,33 +58,47 @@ public class StageSceneManager : MonoBehaviour
                 speed += (int)(data[5] * (i + 1));
             }
         }
-        return (speed, start);
+        int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+
+        return (speed, start, selected, MapDataBase.Datas[selected].Data.width, MapDataBase.Datas[selected].Data.height);
     }
 
-    private void DataSetup()
+    private void GetMapLayout(int index, Span<bool> result)
     {
-        /*int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
-        MapLayout datas = MapDataBase.Datas[selected].Data;
-        width = datas.width;
-        height = datas.height;
-        fireMap = new bool[datas.layout.Length];
-        CulculateLibrary.SwitchFloatToBool(fireMap, SaveDataManager.Instance.Access<FireMapChunk>((int)SaveDataManager.SaveDataChunk.FireMap).data.Span);
-        mapLayout = new bool[datas.layout.Length];
-        for(int i = 0; i < mapLayout.Length; i++)
+        Span<int> layout = MapDataBase.Datas[index].Data.layout;
+        for(int i = 0; i < layout.Length; i++)
         {
-            if (datas.layout[i] == 1)
+            if (layout[i] == 1)
             {
-                mapLayout[i] = true;
+                result[i] = true;
             }
             else
             {
-                mapLayout[i] = false;
+                result[i] = false;
             }
         }
-        unitMap = new int[datas.layout.Length];
-        CulculateLibrary.SwitchFloatToInt(unitMap, SaveDataManager.Instance.Access<UnitMapChunk>((int)SaveDataManager.SaveDataChunk.UnitMap).data.Span);
-        *///unitFacing = new int[height];
-        //CulculateLibrary.SwitchFloatToInt(unitFacing, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
+    }
+
+    private void DataRestore(int index)
+    {
+        MapLayout datas = MapDataBase.Datas[index].Data;
+
+        fireMapA = new bool[datas.layout.Length];
+        fireMapB = new bool[datas.layout.Length];
+        CulculateLibrary.SwitchFloatToBool(fireMapA, SaveDataManager.Instance.Access<FireMapChunk>((int)SaveDataManager.SaveDataChunk.FireMap).data.Span);
+        Array.Copy(fireMapA, fireMapB, fireMapA.Length);
+
+        unitMapA = new int[datas.layout.Length];
+        unitMapB = new int[datas.layout.Length];
+        CulculateLibrary.SwitchFloatToInt(unitMapA, SaveDataManager.Instance.Access<UnitMapChunk>((int)SaveDataManager.SaveDataChunk.UnitMap).data.Span);
+        Array.Copy(unitMapA, unitMapB, unitMapA.Length);
+
+        unitFacingA = new UnitFacing[UnitDataBase.Datas.Length];
+        unitFacingB = new UnitFacing[UnitDataBase.Datas.Length];
+        Span<int> facingMemo = stackalloc int[UnitDataBase.Datas.Length];
+        CulculateLibrary.SwitchFloatToInt(facingMemo, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
+        MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacingA);
+        Array.Copy(unitFacingA, unitFacingB, unitFacingA.Length);
     }
 
     private void TurnProcess()

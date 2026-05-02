@@ -58,7 +58,7 @@ public class StageBoardView
             {
                 gridPanels[i].RemoveFromClassList("bg-darkgray");
                 gridPanels[i].RemoveFromClassList("bg-blue");
-                gridPanels[i].RemoveFromClassList("bg-white");
+                gridPanels[i].RemoveFromClassList("bg-gray");
                 gridPanels[i].AddToClassList("bg-red");
             }
         }
@@ -72,7 +72,7 @@ public class StageBoardView
             {
                 gridPanels[i].RemoveFromClassList("bg-darkgray");
                 gridPanels[i].RemoveFromClassList("bg-red");
-                gridPanels[i].RemoveFromClassList("bg-white");
+                gridPanels[i].RemoveFromClassList("bg-gray");
                 gridPanels[i].AddToClassList("bg-blue");
             }
         }
@@ -87,7 +87,7 @@ public class StageBoardView
                 gridPanels[i].RemoveFromClassList("bg-darkgray");
                 gridPanels[i].RemoveFromClassList("bg-blue");
                 gridPanels[i].RemoveFromClassList("bg-red");
-                gridPanels[i].AddToClassList("bg-white");
+                gridPanels[i].AddToClassList("bg-gray");
             }
         }
     }
