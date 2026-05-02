@@ -39,6 +39,8 @@ public class StageSceneManager : MonoBehaviour
         fireCalc = new FireCalculator(layout, width, height);
         waterCalc = new WaterCalculator(layout, width, height);
         StartProcess(index ,start);
+        Span<bool> water = stackalloc bool[FireMap.Length];
+        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
     }
 
     private (int speed, int start, int mapIndex, int width, int height) GetParameter()
