@@ -111,16 +111,8 @@ public class UnitFacingChunk : RayDataChunk
     public override float[] Load()
     {
         UnitFacingData value = RaySaveDataIO.LoadSaveData<UnitFacingData>(path);
-        int maxNum = 0;
-        for(int i = 0; i < MapDataBase.Datas.Length; i++)
-        {
-            if(maxNum < MapDataBase.Datas[i].Data.height)
-            {
-                maxNum = MapDataBase.Datas[i].Data.height;
-            }
-        }
-        float[] result = new float[maxNum];
-        if(result.Length < value.unit_facing.Length)
+        float[] result = new float[UnitDataBase.Datas.Length];
+        if (value.unit_facing.Length > UnitDataBase.Datas.Length)
         {
             Array.Copy(value.unit_facing, result, result.Length);
         }
