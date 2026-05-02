@@ -43,7 +43,15 @@ public class StageBoardView
         }
     }
 
-    public void DisplayBurning(Span<bool> data)
+    public void DisplayBoard(Span<bool> fire, Span<bool> water, Span<int> unit, Span<UnitFacing> facing)
+    {
+        DisplayBurning(fire);
+        DisplayWater(water);
+        DisplayUnit(unit);
+        DisplayOther(fire, water, unit);
+    }
+
+    private void DisplayBurning(Span<bool> data)
     {
         for(int i = 0; i < data.Length; i++)
         {
@@ -51,8 +59,50 @@ public class StageBoardView
             {
                 gridPanels[i].RemoveFromClassList("bg-darkgray");
                 gridPanels[i].RemoveFromClassList("bg-blue");
-                gridPanels[i].RemoveFromClassList("bg-white");
+                gridPanels[i].RemoveFromClassList("bg-gray");
                 gridPanels[i].AddToClassList("bg-red");
+            }
+        }
+    }
+
+    private void DisplayWater(Span<bool> data)
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (data[i])
+            {
+                gridPanels[i].RemoveFromClassList("bg-darkgray");
+                gridPanels[i].RemoveFromClassList("bg-red");
+                gridPanels[i].RemoveFromClassList("bg-gray");
+                gridPanels[i].AddToClassList("bg-blue");
+            }
+        }
+    }
+
+    private void DisplayUnit(Span<int> data)
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (data[i] > -1)
+            {
+                gridPanels[i].RemoveFromClassList("bg-darkgray");
+                gridPanels[i].RemoveFromClassList("bg-blue");
+                gridPanels[i].RemoveFromClassList("bg-red");
+                gridPanels[i].AddToClassList("bg-gray");
+            }
+        }
+    }
+
+    private void DisplayOther(Span<bool> fire, Span<bool> water, Span<int> unit)
+    {
+        for (int i = 0; i < fire.Length; i++)
+        {
+            if(!fire[i] && !water[i] && !(unit[i] > -1))
+            {
+                gridPanels[i].RemoveFromClassList("bg-gray");
+                gridPanels[i].RemoveFromClassList("bg-blue");
+                gridPanels[i].RemoveFromClassList("bg-red");
+                gridPanels[i].AddToClassList("bg-darkgray");
             }
         }
     }
