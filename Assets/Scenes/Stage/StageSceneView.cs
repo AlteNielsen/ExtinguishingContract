@@ -43,7 +43,7 @@ public class StageBoardView
         }
     }
 
-    public void DisplayBoard(Span<bool> fire, Span<bool> water, Span<int> unit)
+    public void DisplayBoard(Span<bool> fire, Span<bool> water, Span<int> unit, Span<UnitFacing> facing)
     {
         DisplayBurning(fire);
         DisplayWater(water);

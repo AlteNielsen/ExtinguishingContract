@@ -93,7 +93,16 @@ public class StageSceneManager : MonoBehaviour
         Span<bool> water = stackalloc bool[FireMap.Length];
         StageCalculate(FireMap, UnitMap, water, UnitFacing, spreadSpeed);
         SwitchBuffer();
-        boardView.DisplayBoard(FireMap, water, UnitMap);
+        boardView.DisplayBoard(FireMap, water, UnitMap, UnitFacing);
+    }
+
+    private void UndoProcess()
+    {
+        SwitchBuffer();
+        Span<bool> water = stackalloc bool[FireMap.Length];
+        water.Clear();
+        waterCalc.WaterCalculate(water, UnitMap, UnitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, UnitFacing);
     }
 
     private void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<bool> waterResult, Span<UnitFacing> facing, int speed)
