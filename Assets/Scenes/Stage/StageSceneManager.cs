@@ -36,6 +36,7 @@ public class StageSceneManager : MonoBehaviour
 
     private InputAction clockwiseRotate;
     private InputAction counterClockwiseRotate;
+    private InputAction rightClick;
 
     void Awake()
     {
@@ -70,6 +71,9 @@ public class StageSceneManager : MonoBehaviour
         counterClockwiseRotate = new InputAction(binding: "<Keyboard>/e");
         counterClockwiseRotate.performed += ctx => RotateUnitCounterClockwise(width);
         counterClockwiseRotate.Enable();
+        rightClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightClick.performed += ctx => RightClicked(width);
+        rightClick.Enable();
     }
 
     private void DataRestore(int index)
@@ -154,7 +158,7 @@ public class StageSceneManager : MonoBehaviour
             if (selectedUnitPos == index)
             {
                 boardView.UnitSelectCancel(selectedUnitPos, water);
-                RemoveSelectedUnit();
+                CancelUnitSelect();
                 return;
             }
 
@@ -165,7 +169,7 @@ public class StageSceneManager : MonoBehaviour
                 unit[selectedUnitPos] = -1;
                 unit[index] = selectedUnitID;
                 boardView.UnitSelectCancel(selectedUnitPos, water);
-                RemoveSelectedUnit();
+                CancelUnitSelect();
                 TurnProcess(unit, NowUnitFacing);
             }
         }
@@ -207,7 +211,7 @@ public class StageSceneManager : MonoBehaviour
         }
         else
         {
-            RemoveSelectedUnit();
+            CancelUnitSelect();
         }
     }
 
@@ -247,7 +251,19 @@ public class StageSceneManager : MonoBehaviour
         }
         else
         {
-            RemoveSelectedUnit();
+            CancelUnitSelect();
+        }
+    }
+
+    private void RightClicked(int width)
+    {
+        if(selectedUnitID >= 0)
+        {
+            TileOnClicked(selectedUnitPos, width);
+        }
+        else
+        {
+            UndoProcess();
         }
     }
 
@@ -272,6 +288,7 @@ public class StageSceneManager : MonoBehaviour
         water.Clear();
         calcManager.WaterCalculate(water, UnitMap, NowUnitFacing);
         boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
+        SynchronizeSituation();
     }
 
     private void SwitchBuffer()
@@ -295,7 +312,7 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
-    private void RemoveSelectedUnit()
+    private void CancelUnitSelect()
     {
         selectedUnitID = -1;
         selectedUnitPos = -1;
