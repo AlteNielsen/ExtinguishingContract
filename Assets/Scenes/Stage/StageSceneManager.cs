@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class StageSceneManager : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class StageSceneManager : MonoBehaviour
 
     private bool[] fireMapA;
     private int[] unitMapA;
-    private UnitFacing[] unitFacing;
+    private UnitFacing[] unitFacingA;
+    private UnitFacing[] unitFacingB;
     private bool[] fireMapB;
     private int[] unitMapB;
 
@@ -23,11 +25,17 @@ public class StageSceneManager : MonoBehaviour
     private bool[] NextFireMap => bufferingSwitch ? fireMapB : fireMapA;
     private int[] UnitMap => bufferingSwitch ? unitMapA : unitMapB;
     private int[] NextUnitMap => bufferingSwitch ? unitMapB : unitMapA;
+    private UnitFacing[] NowUnitFacing => bufferingSwitch ? unitFacingA : unitFacingB;
+    private UnitFacing[] NextUnitFacing => bufferingSwitch ? unitFacingB : unitFacingA;
+
 
     private bool bufferingSwitch = true;
 
     private int selectedUnitID = -1;
     private int selectedUnitPos = -1;
+
+    private InputAction clockwiseRotate;
+    private InputAction counterClockwiseRotate;
 
     void Awake()
     {
@@ -42,8 +50,8 @@ public class StageSceneManager : MonoBehaviour
         calcManager = new CalculatorManager(layout, width, height);
         StartProcess(index ,start, width);
         Span<bool> water = stackalloc bool[FireMap.Length];
-        calcManager.WaterCalculate(water, UnitMap, unitFacing);
-        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
+        calcManager.WaterCalculate(water, UnitMap, NowUnitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
         StageSceneController(width);
     }
 
@@ -56,6 +64,12 @@ public class StageSceneManager : MonoBehaviour
             int wid = width;
             tiles[i].clicked += () => TileOnClicked(index, wid); 
         }
+        clockwiseRotate = new InputAction(binding: "<Keyboard>/r");
+        clockwiseRotate.performed += ctx => RotateUnitClockwise(width);
+        clockwiseRotate.Enable();
+        counterClockwiseRotate = new InputAction(binding: "<Keyboard>/e");
+        counterClockwiseRotate.performed += ctx => RotateUnitCounterClockwise(width);
+        counterClockwiseRotate.Enable();
     }
 
     private void DataRestore(int index)
@@ -72,10 +86,12 @@ public class StageSceneManager : MonoBehaviour
         CulculateLibrary.SwitchFloatToInt(unitMapA, SaveDataManager.Instance.Access<UnitMapChunk>((int)SaveDataManager.SaveDataChunk.UnitMap).data.Span);
         Array.Copy(unitMapA, unitMapB, unitMapA.Length);
 
-        unitFacing = new UnitFacing[UnitDataBase.Datas.Length];
+        unitFacingA = new UnitFacing[UnitDataBase.Datas.Length];
+        unitFacingB = new UnitFacing[UnitDataBase.Datas.Length];
         Span<int> facingMemo = stackalloc int[UnitDataBase.Datas.Length];
         CulculateLibrary.SwitchFloatToInt(facingMemo, SaveDataManager.Instance.Access<UnitFacingChunk>((int)SaveDataManager.SaveDataChunk.UnitFacing).data.Span);
-        MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacing);
+        MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacingA);
+        Array.Copy(unitFacingA, unitFacingB, unitFacingA.Length);
     }
 
     private void StartProcess(int mapIndex, int count, int width)
@@ -96,7 +112,8 @@ public class StageSceneManager : MonoBehaviour
             int counter = 0;
             for(int i = 0; i < unitData.Length; i++)
             {
-                unitFacing[i] = UnitFacing.East;
+                NowUnitFacing[i] = UnitFacing.East;
+                NextUnitFacing[i] = UnitFacing.East;
                 if(unitData[i] > 0.5f)
                 {
                     UnitMap[counter * width] = i;
@@ -108,7 +125,7 @@ public class StageSceneManager : MonoBehaviour
             fireMapB[firePoint] = true;
             for(int i = 0; i < count; i++)
             {
-                TurnProcess(UnitMap);
+                TurnProcess(UnitMap, NowUnitFacing);
             }
             SynchronizeSituation();
         }
@@ -124,7 +141,7 @@ public class StageSceneManager : MonoBehaviour
                 selectedUnitPos = index;
                 Span<bool> water = stackalloc bool[UnitMap.Length];
                 water.Clear();
-                calcManager.UnitWaterCalc(water, index, width, selectedUnitID, unitFacing[selectedUnitID]);
+                calcManager.UnitWaterCalc(water, index, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
                 boardView.UnitSelect(index, water);
                 return;
             }
@@ -133,12 +150,11 @@ public class StageSceneManager : MonoBehaviour
         {
             Span<bool> water = stackalloc bool[UnitMap.Length];
             water.Clear();
-            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, unitFacing[selectedUnitID]);
+            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
             if (selectedUnitPos == index)
             {
                 boardView.UnitSelectCancel(selectedUnitPos, water);
-                selectedUnitID = -1;
-                selectedUnitPos = -1;
+                RemoveSelectedUnit();
                 return;
             }
 
@@ -149,23 +165,104 @@ public class StageSceneManager : MonoBehaviour
                 unit[selectedUnitPos] = -1;
                 unit[index] = selectedUnitID;
                 boardView.UnitSelectCancel(selectedUnitPos, water);
-                selectedUnitID = -1;
-                selectedUnitPos = -1;
-                TurnProcess(unit);
+                RemoveSelectedUnit();
+                TurnProcess(unit, NowUnitFacing);
             }
         }
     }
 
-    private void TurnProcess(Span<int> unit)
+    private void RotateUnitClockwise(int width)
+    {
+        if(selectedUnitID < 0)
+        {
+            return;
+        }
+        Span<UnitFacing> unitFacing = stackalloc UnitFacing[NowUnitFacing.Length];
+        NowUnitFacing.CopyTo(unitFacing);
+        switch(NowUnitFacing[selectedUnitID])
+        {
+            case UnitFacing.North:
+                unitFacing[selectedUnitID] = UnitFacing.East;
+                break;
+            case UnitFacing.East:
+                unitFacing[selectedUnitID] = UnitFacing.South;
+                break;
+            case UnitFacing.South:
+                unitFacing[selectedUnitID] = UnitFacing.West;
+                break;
+            case UnitFacing.West:
+                unitFacing[selectedUnitID] = UnitFacing.North;
+                break;
+        }
+        Span<bool> water = stackalloc bool[UnitMap.Length];
+        water.Clear();
+        calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+        boardView.UnitSelectCancel(selectedUnitPos, water);
+        TurnProcess(UnitMap, unitFacing);
+        if(IsSelectedUnitAlive())
+        {
+            water.Clear();
+            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+            boardView.UnitSelect(selectedUnitPos, water);
+        }
+        else
+        {
+            RemoveSelectedUnit();
+        }
+    }
+
+    private void RotateUnitCounterClockwise(int width)
+    {
+        if (selectedUnitID < 0)
+        {
+            return;
+        }
+        Span<UnitFacing> unitFacing = stackalloc UnitFacing[NowUnitFacing.Length];
+        NowUnitFacing.CopyTo(unitFacing);
+        switch (NowUnitFacing[selectedUnitID])
+        {
+            case UnitFacing.North:
+                unitFacing[selectedUnitID] = UnitFacing.West;
+                break;
+            case UnitFacing.East:
+                unitFacing[selectedUnitID] = UnitFacing.North;
+                break;
+            case UnitFacing.South:
+                unitFacing[selectedUnitID] = UnitFacing.East;
+                break;
+            case UnitFacing.West:
+                unitFacing[selectedUnitID] = UnitFacing.South;
+                break;
+        }
+        Span<bool> water = stackalloc bool[UnitMap.Length];
+        water.Clear();
+        calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+        boardView.UnitSelectCancel(selectedUnitPos, water);
+        TurnProcess(UnitMap, unitFacing);
+        if (IsSelectedUnitAlive())
+        {
+            water.Clear();
+            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+            boardView.UnitSelect(selectedUnitPos, water);
+        }
+        else
+        {
+            RemoveSelectedUnit();
+        }
+    }
+
+    private void TurnProcess(Span<int> unit, Span<UnitFacing> facing)
     {
         Span<bool> water = stackalloc bool[FireMap.Length];
         Span<bool> nextFire = NextFireMap;
         FireMap.CopyTo(nextFire);
         Span<int> unitMap = NextUnitMap;
         unit.CopyTo(unitMap);
+        Span<UnitFacing> unitFacing = NextUnitFacing;
+        facing.CopyTo(unitFacing);
         calcManager.StageCalculate(nextFire, unitMap, water, unitFacing, spreadSpeed);
         SwitchBuffer();
-        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
     }
 
     private void UndoProcess()
@@ -173,8 +270,8 @@ public class StageSceneManager : MonoBehaviour
         SwitchBuffer();
         Span<bool> water = stackalloc bool[FireMap.Length];
         water.Clear();
-        calcManager.WaterCalculate(water, UnitMap, unitFacing);
-        boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
+        calcManager.WaterCalculate(water, UnitMap, NowUnitFacing);
+        boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
     }
 
     private void SwitchBuffer()
@@ -188,11 +285,24 @@ public class StageSceneManager : MonoBehaviour
         {
             Array.Copy(fireMapA, fireMapB, fireMapA.Length);
             Array.Copy(unitMapA, unitMapB, unitMapA.Length);
+            Array.Copy(unitFacingA, unitFacingB, unitFacingA.Length);
         }
         else
         {
             Array.Copy(fireMapB, fireMapA, fireMapA.Length);
             Array.Copy(unitMapB, unitMapA, unitMapA.Length);
+            Array.Copy(unitFacingB, unitFacingA, unitFacingA.Length);
         }
+    }
+
+    private void RemoveSelectedUnit()
+    {
+        selectedUnitID = -1;
+        selectedUnitPos = -1;
+    }
+
+    private bool IsSelectedUnitAlive()
+    {
+        return UnitMap[selectedUnitPos] == selectedUnitID;
     }
 }
