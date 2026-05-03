@@ -103,7 +103,7 @@ public class WaterCalculator
         }
     }
 
-    private void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
+    public void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
     {
         RangeData[] range = UnitDataBase.Datas[unitID].RangeData;
         for (int i = 0; i <= unitLevel; i++)

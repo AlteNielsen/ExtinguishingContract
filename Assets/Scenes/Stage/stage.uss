@@ -80,3 +80,11 @@
     width: 75%;
     top: 15%;
 }
+
+.water-not-selected{
+    background-color: #1A4472;
+}
+
+.water-selected{
+    background-color: #6495ED;
+}

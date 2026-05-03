@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -26,6 +27,9 @@ public class StageSceneManager : MonoBehaviour
 
     private bool bufferingSwitch = true;
 
+    private int selectedUnitID = -1;
+    private int selectedUnitPos = -1;
+
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
@@ -42,6 +46,18 @@ public class StageSceneManager : MonoBehaviour
         Span<bool> water = stackalloc bool[FireMap.Length];
         waterCalc.WaterCalculate(water, UnitMap, unitFacing);
         boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
+        StageSceneController(width);
+    }
+
+    private void StageSceneController(int width)
+    {
+        List<Button> tiles = document.rootVisualElement.Query<Button>("GridTileButton").ToList();
+        for(int i = 0; i < tiles.Count; i++)
+        {
+            int index = i;
+            int wid = width;
+            tiles[i].clicked += () => TileOnClicked(index, wid); 
+        }
     }
 
     private (int speed, int start, int mapIndex, int width, int height) GetParameter()
@@ -141,6 +157,26 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
+    private void TileOnClicked(int index, int width)
+    {
+        if(selectedUnitID < 0)
+        {
+            if (UnitMap[index] >= 0)
+            {
+                selectedUnitID = UnitMap[index];
+                selectedUnitPos = index;
+                Span<bool> water = stackalloc bool[UnitMap.Length];
+                water.Clear();
+                ReadOnlySpan<float> levels = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+                waterCalc.UnitWaterCalc(water, index % width, index / width, selectedUnitID, (int)levels[selectedUnitID], unitFacing[selectedUnitID]);
+                boardView.UnitSelect(index, water);
+            }
+        }
+        else
+        {
+
+        }
+    }
 
     private void TurnProcess()
     {
