@@ -56,7 +56,7 @@ public class StageBoardView
         for (int i = 0; i < fire.Length; i++)
         {
             gridPanels[i].RemoveFromClassList("bg-darkgray");
-            gridPanels[i].RemoveFromClassList("bg-blue");
+            gridPanels[i].RemoveFromClassList("water-not-selected");
             gridPanels[i].RemoveFromClassList("bg-red");
             if (fire[i])
             {
@@ -64,7 +64,7 @@ public class StageBoardView
             }
             else if (water[i])
             {
-                gridPanels[i].AddToClassList("bg-blue");
+                gridPanels[i].AddToClassList("water-not-selected");
             }
             else
             {
@@ -99,6 +99,23 @@ public class StageBoardView
             else
             {
                 unitTiles[i].AddToClassList("transparent");
+            }
+        }
+    }
+
+    public void UnitSelect(int unitPos, Span<bool> unitWater)
+    {
+        if(unitPos >= 0)
+        {
+            unitTiles[unitPos].RemoveFromClassList("bg-gray");
+            unitTiles[unitPos].AddToClassList("bg-white");
+            for(int i = 0; i < unitWater.Length; i++)
+            {
+                if(unitWater[i])
+                {
+                    gridPanels[i].RemoveFromClassList("water-not-selected");
+                    gridPanels[i].AddToClassList("water-selected");
+                }
             }
         }
     }
