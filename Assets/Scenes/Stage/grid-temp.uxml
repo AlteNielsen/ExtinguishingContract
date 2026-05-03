@@ -7,5 +7,7 @@
     <ui:VisualElement class="grid-tile">
         <ui:VisualElement class="all bg-black" />
         <ui:VisualElement name="GridPanel" class="on-grid bg-darkgray semi-transparent" />
+        <ui:VisualElement name="UnitTile" class="unit bg-gray transparent" />
+        <ui:Button name="GridTileButton" class="abs-all button-initialize transparent" />
     </ui:VisualElement>
 </ui:UXML>
