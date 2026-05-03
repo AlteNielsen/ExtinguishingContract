@@ -210,11 +210,11 @@ public class WaterCalculator
         switch (facing)
         {
             case UnitFacing.North:
-                return (relPosX, -relPosY);
+                return (relPosX, relPosY);
             case UnitFacing.East:
                 return (-relPosY, -relPosX);
             case UnitFacing.South:
-                return (-relPosX, relPosY);
+                return (-relPosX, -relPosY);
             case UnitFacing.West:
                 return (relPosY, relPosX);
         }
