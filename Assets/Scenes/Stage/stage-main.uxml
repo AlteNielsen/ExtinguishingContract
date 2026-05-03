@@ -105,8 +105,9 @@
                 <ui:VisualElement class="underbar bg-darkred" />
                 <ui:VisualElement name="Board" class="board">
                     <ui:VisualElement class="grid-tile">
-                        <ui:VisualElement class="all" />
-                        <ui:VisualElement class="on-grid bg-darkgray semi-transparent" />
+                        <ui:VisualElement class="all bg-black" />
+                        <ui:VisualElement name="GridPanel" class="on-grid bg-darkgray semi-transparent" />
+                        <ui:VisualElement name="UnitTile" class="unit bg-gray" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkred" />

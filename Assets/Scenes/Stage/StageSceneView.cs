@@ -15,7 +15,7 @@ public class StageSceneView
 public class StageBoardView
 {
     private VisualElement[] gridPanels;
-
+    private VisualElement[] unitTiles;
     public StageBoardView(UIDocument document, VisualTreeAsset temp)
     {
         VisualElement board = document.rootVisualElement.Q<VisualElement>("Board");
@@ -26,6 +26,7 @@ public class StageBoardView
         {
             VisualElement ve = temp.Instantiate();
             gridPanels[i] = ve.Q<VisualElement>("GridPanel");
+            unitTiles[i] = ve.Q<VisualElement>("UnitTile");
             board.contentContainer.Add(ve);
         }
         MapSetup(selected);
@@ -45,64 +46,58 @@ public class StageBoardView
 
     public void DisplayBoard(Span<bool> fire, Span<bool> water, Span<int> unit, Span<UnitFacing> facing)
     {
-        DisplayBurning(fire);
-        DisplayWater(water);
-        DisplayUnit(unit);
-        DisplayOther(fire, water, unit);
+        DisplaySituation(fire, water);
+        DisplayUnit(unit, facing);
     }
 
-    private void DisplayBurning(Span<bool> data)
+    private void DisplaySituation(Span<bool> fire, Span<bool> water)
     {
-        for(int i = 0; i < data.Length; i++)
+        for (int i = 0; i < fire.Length; i++)
         {
-            if (data[i])
+            gridPanels[i].RemoveFromClassList("bg-darkgray");
+            gridPanels[i].RemoveFromClassList("bg-blue");
+            gridPanels[i].RemoveFromClassList("bg-red");
+            if (fire[i])
             {
-                gridPanels[i].RemoveFromClassList("bg-darkgray");
-                gridPanels[i].RemoveFromClassList("bg-blue");
-                gridPanels[i].RemoveFromClassList("bg-gray");
                 gridPanels[i].AddToClassList("bg-red");
             }
-        }
-    }
-
-    private void DisplayWater(Span<bool> data)
-    {
-        for (int i = 0; i < data.Length; i++)
-        {
-            if (data[i])
+            else if (water[i])
             {
-                gridPanels[i].RemoveFromClassList("bg-darkgray");
-                gridPanels[i].RemoveFromClassList("bg-red");
-                gridPanels[i].RemoveFromClassList("bg-gray");
                 gridPanels[i].AddToClassList("bg-blue");
+            }
+            else
+            {
+                gridPanels[i].AddToClassList("bg-darkgray");
             }
         }
     }
 
-    private void DisplayUnit(Span<int> data)
+    private void DisplayUnit(Span<int> data, Span<UnitFacing> facing)
     {
         for (int i = 0; i < data.Length; i++)
         {
             if (data[i] > -1)
             {
-                gridPanels[i].RemoveFromClassList("bg-darkgray");
-                gridPanels[i].RemoveFromClassList("bg-blue");
-                gridPanels[i].RemoveFromClassList("bg-red");
-                gridPanels[i].AddToClassList("bg-gray");
+                unitTiles[i].RemoveFromClassList("transparent");
+                switch (facing[data[i]])
+                {
+                    case UnitFacing.North:
+                        unitTiles[i].style.rotate = new Rotate(Angle.Degrees(0));
+                        break;
+                    case UnitFacing.East:
+                        unitTiles[i].style.rotate = new Rotate(Angle.Degrees(90));
+                        break;
+                    case UnitFacing.South:
+                        unitTiles[i].style.rotate = new Rotate(Angle.Degrees(180));
+                        break;
+                    case UnitFacing.West:
+                        unitTiles[i].style.rotate = new Rotate(Angle.Degrees(270));
+                        break;
+                }
             }
-        }
-    }
-
-    private void DisplayOther(Span<bool> fire, Span<bool> water, Span<int> unit)
-    {
-        for (int i = 0; i < fire.Length; i++)
-        {
-            if(!fire[i] && !water[i] && !(unit[i] > -1))
+            else
             {
-                gridPanels[i].RemoveFromClassList("bg-gray");
-                gridPanels[i].RemoveFromClassList("bg-blue");
-                gridPanels[i].RemoveFromClassList("bg-red");
-                gridPanels[i].AddToClassList("bg-darkgray");
+                unitTiles[i].AddToClassList("transparent");
             }
         }
     }
