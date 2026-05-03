@@ -245,4 +245,45 @@ public static class CulculateLibrary
         float lower = baseTimes * theoreticalChance * (1 - theoreticalChance);
         return upper / MathF.Sqrt(lower);
     }
+
+    public static (int speed, int start, int mapIndex, int width, int height) GetParameter()
+    {
+        float[] data = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        int speed = 1;
+        for (int i = 0; i < Config.Data.IndicatorMaxLv; i++)
+        {
+            if (indicators[Config.Data.IndicatorMaxLv * 4 + i] > 0.5f)
+            {
+                speed += (int)(data[4] * (i + 1));
+            }
+        }
+        int start = 0;
+        for (int i = 0; i < Config.Data.IndicatorMaxLv; i++)
+        {
+            if (indicators[Config.Data.IndicatorMaxLv * 5 + i] > 0.5f)
+            {
+                start += (int)(data[5] * (i + 1));
+            }
+        }
+        int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+
+        return (speed, start, selected, MapDataBase.Datas[selected].Data.width, MapDataBase.Datas[selected].Data.height);
+    }
+
+    public static void GetMapLayout(int index, Span<bool> result)
+    {
+        Span<int> layout = MapDataBase.Datas[index].Data.layout;
+        for (int i = 0; i < layout.Length; i++)
+        {
+            if (layout[i] == 1)
+            {
+                result[i] = true;
+            }
+            else
+            {
+                result[i] = false;
+            }
+        }
+    }
 }

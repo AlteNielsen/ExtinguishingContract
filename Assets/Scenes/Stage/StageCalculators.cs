@@ -1,6 +1,85 @@
 using System;
-using UnityEngine;
-using UnityEngine.Tilemaps;
+
+public class CalculatorManager
+{
+    private FireCalculator fireCalc;
+    private WaterCalculator waterCalc;
+
+    public CalculatorManager(Span<bool> map, int width, int height)
+    {
+        fireCalc = new FireCalculator(map, width, height);
+        waterCalc = new WaterCalculator(map, width, height);
+    }
+
+    public void StageCalculate(Span<bool> fireMapResult, Span<int> unitMapResult, Span<bool> waterResult, Span<UnitFacing> facing, int speed)
+    {
+        Span<bool> fireA = stackalloc bool[fireMapResult.Length];
+        Span<bool> fireB = stackalloc bool[fireMapResult.Length];
+        fireMapResult.CopyTo(fireA);
+        fireB.Clear();
+        Span<int> unit = stackalloc int[unitMapResult.Length];
+        Span<bool> water = stackalloc bool[fireMapResult.Length];
+        unitMapResult.CopyTo(unit);
+        bool switcher = true;
+        for (int i = 0; i < speed; i++)
+        {
+            water.Clear();
+            if (switcher)
+            {
+                waterCalc.WaterCalculate(water, unit, facing);
+                fireCalc.FireSpread(fireB, fireA, water);
+                UnitRemove(fireB, unit);
+            }
+            else
+            {
+                waterCalc.WaterCalculate(water, unit, facing);
+                fireCalc.FireSpread(fireA, fireB, water);
+                UnitRemove(fireA, unit);
+            }
+            switcher = !switcher;
+        }
+
+        if (switcher)
+        {
+            fireA.CopyTo(fireMapResult);
+        }
+        else
+        {
+            fireB.CopyTo(fireMapResult);
+        }
+        unit.CopyTo(unitMapResult);
+
+        waterCalc.WaterCalculate(water, unit, facing);
+        water.CopyTo(waterResult);
+    }
+
+    private void UnitRemove(Span<bool> fire, Span<int> unitMapResult)
+    {
+        for (int i = 0; i < fire.Length; i++)
+        {
+            if (fire[i])
+            {
+                unitMapResult[i] = -1;
+            }
+        }
+    }
+
+    public void FireSpread(Span<bool> result, Span<bool> original, Span<bool> water)
+    {
+        fireCalc.FireSpread(result, original, water);
+    }
+
+    public void WaterCalculate(Span<bool> result, Span<int> unitMap, Span<UnitFacing> unitFacing)
+    {
+        waterCalc.WaterCalculate(result, unitMap, unitFacing);
+    }
+
+    public void UnitWaterCalc(Span<bool> result, int index, int width, int unitID, UnitFacing facing)
+    {
+        ReadOnlySpan<float> levels = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+        waterCalc.UnitWaterCalc(result, index % width, index / width, unitID, (int)levels[unitID], facing);
+    }
+}
 
 public class FireCalculator
 {
@@ -18,6 +97,7 @@ public class FireCalculator
 
     public void FireSpread(Span<bool> result, Span<bool> original, Span<bool> water)
     {
+        BlockFireByWater(original, water);
         FireSpreadUnit(result, original);
         BlockFireByMap(result);
         BlockFireByWater(result, water);
@@ -103,10 +183,10 @@ public class WaterCalculator
         }
     }
 
-    private void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
+    public void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
     {
         RangeData[] range = UnitDataBase.Datas[unitID].RangeData;
-        for (int i = 0; i < unitLevel; i++)
+        for (int i = 0; i <= unitLevel; i++)
         {
             for (int j = 0; j < range[i].range.Length; j++)
             {
@@ -132,11 +212,11 @@ public class WaterCalculator
             case UnitFacing.North:
                 return (relPosX, relPosY);
             case UnitFacing.East:
-                return (relPosY, -relPosX);
+                return (-relPosY, -relPosX);
             case UnitFacing.South:
                 return (-relPosX, -relPosY);
             case UnitFacing.West:
-                return (-relPosY, relPosX);
+                return (relPosY, relPosX);
         }
         return (relPosX, relPosY);
     }
