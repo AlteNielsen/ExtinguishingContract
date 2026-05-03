@@ -106,7 +106,7 @@ public class WaterCalculator
     private void UnitWaterCalc(Span<bool> result, int unitPosX, int unitPosY, int unitID, int unitLevel, UnitFacing facing)
     {
         RangeData[] range = UnitDataBase.Datas[unitID].RangeData;
-        for (int i = 0; i < unitLevel; i++)
+        for (int i = 0; i <= unitLevel; i++)
         {
             for (int j = 0; j < range[i].range.Length; j++)
             {
@@ -130,13 +130,13 @@ public class WaterCalculator
         switch (facing)
         {
             case UnitFacing.North:
-                return (relPosX, relPosY);
+                return (relPosX, -relPosY);
             case UnitFacing.East:
-                return (relPosY, -relPosX);
+                return (-relPosY, -relPosX);
             case UnitFacing.South:
-                return (-relPosX, -relPosY);
+                return (-relPosX, relPosY);
             case UnitFacing.West:
-                return (-relPosY, relPosX);
+                return (relPosY, relPosX);
         }
         return (relPosX, relPosY);
     }

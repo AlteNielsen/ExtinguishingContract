@@ -38,8 +38,9 @@ public class StageSceneManager : MonoBehaviour
         DataRestore(index);
         fireCalc = new FireCalculator(layout, width, height);
         waterCalc = new WaterCalculator(layout, width, height);
-        StartProcess(index ,start);
+        StartProcess(index ,start, width);
         Span<bool> water = stackalloc bool[FireMap.Length];
+        waterCalc.WaterCalculate(water, UnitMap, unitFacing);
         boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
     }
 
@@ -104,7 +105,7 @@ public class StageSceneManager : MonoBehaviour
         MemoryMarshal.Cast<int, UnitFacing>(facingMemo).CopyTo(unitFacing);
     }
 
-    private void StartProcess(int mapIndex, int count)
+    private void StartProcess(int mapIndex, int count, int width)
     {
         bool isInitial = true;
         for(int i = 0; i < FireMap.Length; i++)
@@ -118,6 +119,17 @@ public class StageSceneManager : MonoBehaviour
 
         if (isInitial)
         {
+            ReadOnlySpan<float> unitData = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+            int counter = 0;
+            for(int i = 0; i < unitData.Length; i++)
+            {
+                unitFacing[i] = UnitFacing.East;
+                if(unitData[i] > 0.5f)
+                {
+                    UnitMap[counter * width] = i;
+                    counter++;
+                }
+            }
             int firePoint = MapDataBase.Datas[mapIndex].Data.fire_point;
             fireMapA[firePoint] = true;
             fireMapB[firePoint] = true;
