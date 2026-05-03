@@ -22,6 +22,7 @@ public class StageBoardView
         int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
         board.contentContainer.Clear();
         gridPanels = new VisualElement[MapDataBase.Datas[selected].Data.layout.Length];
+        unitTiles = new VisualElement[MapDataBase.Datas[selected].Data.layout.Length];
         for (int i = 0; i < MapDataBase.Datas[selected].Data.layout.Length; i++)
         {
             VisualElement ve = temp.Instantiate();
