@@ -174,7 +174,16 @@ public class StageSceneManager : MonoBehaviour
         }
         else
         {
-
+            if(selectedUnitPos == index)
+            {
+                Span<bool> water = stackalloc bool[UnitMap.Length];
+                water.Clear();
+                ReadOnlySpan<float> levels = SaveDataManager.Instance.Access<UnitLevelChunk>((int)SaveDataManager.SaveDataChunk.UnitLevel).data.Span;
+                waterCalc.UnitWaterCalc(water, selectedUnitPos % width, selectedUnitPos / width, selectedUnitID, (int)levels[selectedUnitID], unitFacing[selectedUnitID]);
+                boardView.UnitSelectCancel(selectedUnitPos, water);
+                selectedUnitID = -1;
+                selectedUnitPos = -1;
+            }
         }
     }
 
