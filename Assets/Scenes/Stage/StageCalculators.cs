@@ -97,6 +97,7 @@ public class FireCalculator
 
     public void FireSpread(Span<bool> result, Span<bool> original, Span<bool> water)
     {
+        BlockFireByWater(original, water);
         FireSpreadUnit(result, original);
         BlockFireByMap(result);
         BlockFireByWater(result, water);

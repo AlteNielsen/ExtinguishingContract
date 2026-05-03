@@ -108,7 +108,7 @@ public class StageSceneManager : MonoBehaviour
             fireMapB[firePoint] = true;
             for(int i = 0; i < count; i++)
             {
-                TurnProcess();
+                TurnProcess(UnitMap);
             }
             SynchronizeSituation();
         }
@@ -126,29 +126,43 @@ public class StageSceneManager : MonoBehaviour
                 water.Clear();
                 calcManager.UnitWaterCalc(water, index, width, selectedUnitID, unitFacing[selectedUnitID]);
                 boardView.UnitSelect(index, water);
+                return;
             }
         }
         else
         {
-            if(selectedUnitPos == index)
+            Span<bool> water = stackalloc bool[UnitMap.Length];
+            water.Clear();
+            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, unitFacing[selectedUnitID]);
+            if (selectedUnitPos == index)
             {
-                Span<bool> water = stackalloc bool[UnitMap.Length];
-                water.Clear();
-                calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, unitFacing[selectedUnitID]);
                 boardView.UnitSelectCancel(selectedUnitPos, water);
                 selectedUnitID = -1;
                 selectedUnitPos = -1;
+                return;
+            }
+
+            if (water[index] && UnitMap[index] < 0)
+            {
+                Span<int> unit = stackalloc int[UnitMap.Length];
+                UnitMap.CopyTo(unit);
+                unit[selectedUnitPos] = -1;
+                unit[index] = selectedUnitID;
+                boardView.UnitSelectCancel(selectedUnitPos, water);
+                selectedUnitID = -1;
+                selectedUnitPos = -1;
+                TurnProcess(unit);
             }
         }
     }
 
-    private void TurnProcess()
+    private void TurnProcess(Span<int> unit)
     {
         Span<bool> water = stackalloc bool[FireMap.Length];
         Span<bool> nextFire = NextFireMap;
         FireMap.CopyTo(nextFire);
         Span<int> unitMap = NextUnitMap;
-        UnitMap.CopyTo(unitMap);
+        unit.CopyTo(unitMap);
         calcManager.StageCalculate(nextFire, unitMap, water, unitFacing, spreadSpeed);
         SwitchBuffer();
         boardView.DisplayBoard(FireMap, water, UnitMap, unitFacing);
