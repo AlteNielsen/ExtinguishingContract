@@ -105,17 +105,28 @@ public class StageBoardView
 
     public void UnitSelect(int unitPos, Span<bool> unitWater)
     {
-        if(unitPos >= 0)
+        unitTiles[unitPos].RemoveFromClassList("bg-gray");
+        unitTiles[unitPos].AddToClassList("bg-white");
+        for (int i = 0; i < unitWater.Length; i++)
         {
-            unitTiles[unitPos].RemoveFromClassList("bg-gray");
-            unitTiles[unitPos].AddToClassList("bg-white");
-            for(int i = 0; i < unitWater.Length; i++)
+            if (unitWater[i])
             {
-                if(unitWater[i])
-                {
-                    gridPanels[i].RemoveFromClassList("water-not-selected");
-                    gridPanels[i].AddToClassList("water-selected");
-                }
+                gridPanels[i].RemoveFromClassList("water-not-selected");
+                gridPanels[i].AddToClassList("water-selected");
+            }
+        }
+    }
+
+    public void UnitSelectCancel(int unitPos, Span<bool> unitWater)
+    {
+        unitTiles[unitPos].RemoveFromClassList("bg-white");
+        unitTiles[unitPos].AddToClassList("bg-gray");
+        for (int i = 0; i < unitWater.Length; i++)
+        {
+            if (unitWater[i])
+            {
+                gridPanels[i].RemoveFromClassList("water-selected");
+                gridPanels[i].AddToClassList("water-not-selected");
             }
         }
     }
