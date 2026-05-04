@@ -14,8 +14,7 @@
     opacity: 0.5;
 }
 
-.unit-icon-plank
-{
+.unit-icon-plank{
     width: 50px;
 }
 
@@ -84,6 +83,15 @@
     top: 10%;
     width: 80%;
     height: 80%;
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.setting:hover .setting-icon{
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
     background-image: url('project://database/Assets/Textures/setting_icon.png');
     -unity-background-scale-mode: scale-to-fit;
 }
