@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public static class CulculateLibrary
 {
@@ -285,5 +286,73 @@ public static class CulculateLibrary
                 result[i] = false;
             }
         }
+    }
+
+    public static int GetUnitRangeDisplaySize(int index, int level)
+    {
+        var (maxX, maxY, minX, minY) = GetUnitRangeInfo(index, level);
+        int wid = maxX + Mathf.Abs(minX) + 1;
+        int hei = maxY + Mathf.Abs(minY) + 1;
+        if (wid > hei)
+        {
+            return wid;
+        }
+        else
+        {
+            return hei;
+        }
+    }
+
+    public static (int centerX, int cetnerY) GetUnitRangeCenterPos(int index, int level)
+    {
+        var (maxX, maxY, minX, minY) = GetUnitRangeInfo(index, level);
+        int wid = maxX + Mathf.Abs(minX) + 1;
+        int hei = maxY + Mathf.Abs(minY) + 1;
+        int offsetX = 0;
+        int offsetY = 0;
+        if (wid - hei > 0)
+        {
+            offsetY = (wid - hei) / 2;
+        }
+        if (hei - wid > 0)
+        {
+            offsetX = (hei - wid) / 2;
+        }
+        return (Mathf.Abs(minX) + offsetX, Mathf.Abs(minY) + offsetY);
+    }
+
+    public static (int frameMaxX, int frameMaxY, int frameMinX, int frameMinY) GetUnitRangeInfo(int index, int level)
+    {
+        UnitData target = UnitDataBase.Datas[index];
+        int maxX = 0;
+        int minX = 0;
+        int maxY = 0;
+        int minY = 0;
+        for (int i = 0; i < level; i++)
+        {
+            for (int j = 0; j < target.RangeData[i].range.Length; j++)
+            {
+                int x = target.RangeData[i].range[j].relativeX;
+                if (maxX < x)
+                {
+                    maxX = x;
+                }
+                if (x < minX)
+                {
+                    minX = x;
+                }
+
+                int y = target.RangeData[i].range[j].relativeY;
+                if (maxY < y)
+                {
+                    maxY = y;
+                }
+                if (y < minY)
+                {
+                    minY = y;
+                }
+            }
+        }
+        return (maxX, maxY, minX, minY);
     }
 }

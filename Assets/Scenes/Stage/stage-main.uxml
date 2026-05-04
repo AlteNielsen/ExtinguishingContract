@@ -46,51 +46,119 @@
             <ui:VisualElement class="base-flex">
                 <ui:VisualElement class="underbar bg-darkred" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
+                <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
-                    <ui:VisualElement class="all bg-black"/>
-                    <ui:VisualElement class="wid-all on-unit-selector bg-darkgray semi-transparent"/>
-                    <ui:VisualElement class="abs-all unit-icon"/>
+                    <ui:VisualElement class="all the-black"/>
+                    <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
+                    <ui:VisualElement class="abs-all row">
+                        <ui:VisualElement class="base-flex"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
+                        <ui:VisualElement class="unit-icon-plank"/>
+                    </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkred" />
             </ui:VisualElement>
             <ui:VisualElement class="partition bg-darkred" />
             <ui:VisualElement>
-                <ui:VisualElement class="grid-tile semi-transparent">
-
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
+                </ui:VisualElement>
+                <ui:VisualElement class="range-display-frame" >
+                    <ui:VisualElement name="UnitRangeDisplay" class="range-display" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="partition bg-darkred" />
