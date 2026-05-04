@@ -1,9 +1,21 @@
-.unit-icon{
-    background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+.unit-icon-frame{
     -unity-background-scale-mode: scale-and-crop;
-    opacity: 0.95;
-    -unity-background-image-tint-color: black;
-    max-width: 500px;
+    opacity: 0.3;
+    -unity-background-image-tint-color: white;
+    max-width: 300px;
+}
+
+.unit-icon-not-selected{
+    background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+}
+
+.unit-icon-selected{
+    background-image: url('project://database/Assets/Textures/test_unit_icon_selected.png');
+    opacity: 0.5;
+}
+
+.unit-icon-plank{
+    width: 50px;
 }
 
 .the-black{
@@ -75,6 +87,15 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
+.setting:hover .setting-icon{
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
 .map-title{
     height: 80px;
     width: 75%;
@@ -87,4 +108,31 @@
 
 .water-selected{
     background-color: #6495ED;
+}
+
+.range-display-frame{
+    width: 100px;
+    height: 100px;
+}
+
+.range-display{
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 96px;
+    height: 96px;
+    top: 2px;
+    left: 2px;
+}
+
+.display-tile-range{
+    border-width: 1px;
+    border-color: var(--color-white);
+}
+
+.display-tile-unit{
+    background-color: var(--color-white);
+}
+
+.display-tile-range-not-selected{
+    opacity: 0.2;
 }

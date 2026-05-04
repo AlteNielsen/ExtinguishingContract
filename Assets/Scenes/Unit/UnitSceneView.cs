@@ -154,14 +154,14 @@ public class UnitSceneView
         unitRangeTiles = new VisualElement[UnitDataBase.Datas.Length][];
         for (int i = 0; i < UnitDataBase.Datas.Length; i++)
         {
-            int size = GetUnitRangeDisplaySize(i);
+            int size = CulculateLibrary.GetUnitRangeDisplaySize(i, UnitDataBase.Datas[i].RangeData.Length);
             unitRangeTiles[i] = new VisualElement[size * size];
         }
 
         for(int i = 0; i < unitRangeTiles.Length; i++)
         {
             unitRangeDisplays[i].contentContainer.Clear();
-            int size = GetUnitRangeDisplaySize(i);
+            int size = CulculateLibrary.GetUnitRangeDisplaySize(i, UnitDataBase.Datas[i].RangeData.Length);
             for (int j = 0; j < unitRangeTiles[i].Length; j++)
             {
                 unitRangeTiles[i][j] = new VisualElement();
@@ -185,15 +185,15 @@ public class UnitSceneView
         {
             for(int j = 0; j < UnitDataBase.Datas[i].RangeData.Length; j++)
             {
-                int size = GetUnitRangeDisplaySize(i);
+                int size = CulculateLibrary.GetUnitRangeDisplaySize(i, UnitDataBase.Datas[i].RangeData.Length);
                 unitRanges[i][j] = new TileType[size * size];
             }
         }
 
         for (int i = 0; i < unitRanges.Length; i++)
         {
-            var (centerX, centerY) = GetCenterPos(i);
-            int size = GetUnitRangeDisplaySize(i);
+            var (centerX, centerY) = CulculateLibrary.GetUnitRangeCenterPos(i, UnitDataBase.Datas[i].RangeData.Length);
+            int size = CulculateLibrary.GetUnitRangeDisplaySize(i, UnitDataBase.Datas[i].RangeData.Length);
             for (int j = 0; j < unitRanges[i].Length; j++)
             {
                 for(int k = 0; k < unitRanges[i][j].Length; k++)
@@ -203,21 +203,6 @@ public class UnitSceneView
                     unitRanges[i][j][k] = DecideTileType(i, j, x, y, centerX, centerY);
                 }
             }
-        }
-    }
-
-    private int GetUnitRangeDisplaySize(int index)
-    {
-        var (maxX, maxY, minX, minY) = GetUnitRangeInfo(index);
-        int wid = maxX + Mathf.Abs(minX) + 1;
-        int hei = maxY + Mathf.Abs(minY) + 1;
-        if(wid > hei)
-        {
-            return wid;
-        }
-        else
-        {
-            return hei;
         }
     }
 
@@ -259,59 +244,6 @@ public class UnitSceneView
         }
 
         return TileType.None;
-    }
-
-    private (int centerX, int cetnerY) GetCenterPos(int index)
-    {
-        var (maxX, maxY, minX, minY) = GetUnitRangeInfo(index);
-        int wid = maxX + Mathf.Abs(minX) + 1;
-        int hei = maxY + Mathf.Abs(minY) + 1;
-        int offsetX = 0;
-        int offsetY = 0;
-        if(wid - hei > 0)
-        {
-            offsetY = (wid - hei) / 2;
-        }
-        if(hei - wid > 0)
-        {
-            offsetX = (hei - wid) / 2;
-        }
-        return (Mathf.Abs(minX) + offsetX, Mathf.Abs(minY) + offsetY);
-    }
-
-    private (int frameMaxX, int frameMaxY, int frameMinX, int frameMinY) GetUnitRangeInfo(int index)
-    {
-        UnitData target = UnitDataBase.Datas[index];
-        int maxX = 0;
-        int minX = 0;
-        int maxY = 0;
-        int minY = 0;
-        for (int i = 0; i < target.RangeData.Length; i++)
-        {
-            for (int j = 0; j < target.RangeData[i].range.Length; j++)
-            {
-                int x = target.RangeData[i].range[j].relativeX;
-                if (maxX < x)
-                {
-                    maxX = x;
-                }
-                if (x < minX)
-                {
-                    minX = x;
-                }
-
-                int y = target.RangeData[i].range[j].relativeY;
-                if (maxY < y)
-                {
-                    maxY = y;
-                }
-                if (y < minY)
-                {
-                    minY = y;
-                }
-            }
-        }
-        return (maxX, maxY, minX, minY);
     }
 
     private enum TileType
