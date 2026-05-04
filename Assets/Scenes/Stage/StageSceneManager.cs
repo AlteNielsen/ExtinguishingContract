@@ -65,6 +65,7 @@ public class StageSceneManager : MonoBehaviour
             int wid = width;
             tiles[i].clicked += () => TileOnClicked(index, wid); 
         }
+
         clockwiseRotate = new InputAction(binding: "<Keyboard>/r");
         clockwiseRotate.performed += ctx => RotateUnit(width, true);
         clockwiseRotate.Enable();
@@ -74,6 +75,14 @@ public class StageSceneManager : MonoBehaviour
         rightClick = new InputAction(binding: "<Mouse>/rightButton");
         rightClick.performed += ctx => RightClicked(width);
         rightClick.Enable();
+
+        List<Button> iconButtons = document.rootVisualElement.Query<Button>("UnitIconButton").ToList();
+        for(int i = 0; i < iconButtons.Count; i++)
+        {
+            int order = i;
+            int wid = width;
+            iconButtons[i].clicked += () => SelectUnitByIcon(order, wid);
+        }
     }
 
     private void DataRestore(int index)
@@ -163,12 +172,57 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
+    private void SelectUnitByIcon(int order, int width)
+    {
+        int unit = GetUnitIndexByOrder(order);
+        if (unit < 0) return;
+        int pos = SearchUnitPos(unit);
+        if(pos < 0) return;
+        if (selectedUnitID < 0)
+        {
+            SelectUnit(pos, width);
+        }
+        else
+        {
+            Span<bool> water = stackalloc bool[UnitMap.Length];
+            water.Clear();
+            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+            CancelUnitSelect(water);
+        }
+    }
+
+    private int GetUnitIndexByOrder(int order)
+    {
+        ReadOnlySpan<float> unitData = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+        int counter = 0;
+        for (int i = 0; i < unitData.Length; i++)
+        {
+            if (unitData[i] < 0.5f) continue;
+            if (counter == order)
+            {
+                return i;
+            }
+            counter++;
+        }
+        return -1;
+    }
+
+    private int SearchUnitPos(int unitIndex)
+    {
+        for(int i = 0; i < UnitMap.Length; i++)
+        {
+            if(UnitMap[i] == unitIndex)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     private void CancelUnitSelect(Span<bool> water)
     {
         boardView.UnitSelectCancel(selectedUnitPos, water);
         UnitSelectReset();
-        sceneView.LightUpSelectUnitRange(-1);
-        sceneView.LightUpSelectUnitIcon(-1);
     }
 
     private void SelectUnit(int index, int width)
@@ -323,6 +377,8 @@ public class StageSceneManager : MonoBehaviour
     {
         selectedUnitID = -1;
         selectedUnitPos = -1;
+        sceneView.LightUpSelectUnitIcon(-1);
+        sceneView.LightUpSelectUnitRange(-1);
     }
 
     private bool IsSelectedUnitAlive()
