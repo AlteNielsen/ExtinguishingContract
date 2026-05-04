@@ -66,10 +66,10 @@ public class StageSceneManager : MonoBehaviour
             tiles[i].clicked += () => TileOnClicked(index, wid); 
         }
         clockwiseRotate = new InputAction(binding: "<Keyboard>/r");
-        clockwiseRotate.performed += ctx => RotateUnitClockwise(width);
+        clockwiseRotate.performed += ctx => RotateUnit(width, true);
         clockwiseRotate.Enable();
         counterClockwiseRotate = new InputAction(binding: "<Keyboard>/e");
-        counterClockwiseRotate.performed += ctx => RotateUnitCounterClockwise(width);
+        counterClockwiseRotate.performed += ctx => RotateUnit(width, false);
         counterClockwiseRotate.Enable();
         rightClick = new InputAction(binding: "<Mouse>/rightButton");
         rightClick.performed += ctx => RightClicked(width);
@@ -188,47 +188,7 @@ public class StageSceneManager : MonoBehaviour
         TurnProcess(unit, NowUnitFacing);
     }
 
-    private void RotateUnitClockwise(int width)
-    {
-        if(selectedUnitID < 0)
-        {
-            return;
-        }
-        Span<UnitFacing> unitFacing = stackalloc UnitFacing[NowUnitFacing.Length];
-        NowUnitFacing.CopyTo(unitFacing);
-        switch(NowUnitFacing[selectedUnitID])
-        {
-            case UnitFacing.North:
-                unitFacing[selectedUnitID] = UnitFacing.East;
-                break;
-            case UnitFacing.East:
-                unitFacing[selectedUnitID] = UnitFacing.South;
-                break;
-            case UnitFacing.South:
-                unitFacing[selectedUnitID] = UnitFacing.West;
-                break;
-            case UnitFacing.West:
-                unitFacing[selectedUnitID] = UnitFacing.North;
-                break;
-        }
-        Span<bool> water = stackalloc bool[UnitMap.Length];
-        water.Clear();
-        calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
-        boardView.UnitSelectCancel(selectedUnitPos, water);
-        TurnProcess(UnitMap, unitFacing);
-        if(IsSelectedUnitAlive())
-        {
-            water.Clear();
-            calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
-            boardView.UnitSelect(selectedUnitPos, water);
-        }
-        else
-        {
-            CancelUnitSelect();
-        }
-    }
-
-    private void RotateUnitCounterClockwise(int width)
+    private void RotateUnit(int width, bool isClockwise)
     {
         if (selectedUnitID < 0)
         {
@@ -236,20 +196,13 @@ public class StageSceneManager : MonoBehaviour
         }
         Span<UnitFacing> unitFacing = stackalloc UnitFacing[NowUnitFacing.Length];
         NowUnitFacing.CopyTo(unitFacing);
-        switch (NowUnitFacing[selectedUnitID])
+        if(isClockwise)
         {
-            case UnitFacing.North:
-                unitFacing[selectedUnitID] = UnitFacing.West;
-                break;
-            case UnitFacing.East:
-                unitFacing[selectedUnitID] = UnitFacing.North;
-                break;
-            case UnitFacing.South:
-                unitFacing[selectedUnitID] = UnitFacing.East;
-                break;
-            case UnitFacing.West:
-                unitFacing[selectedUnitID] = UnitFacing.South;
-                break;
+            unitFacing[selectedUnitID] = GetUnitFacingClockwise(NowUnitFacing[selectedUnitID]);
+        }
+        else
+        {
+            unitFacing[selectedUnitID] = GetUnitFacingCounterClockwise(NowUnitFacing[selectedUnitID]);
         }
         Span<bool> water = stackalloc bool[UnitMap.Length];
         water.Clear();
@@ -267,6 +220,39 @@ public class StageSceneManager : MonoBehaviour
             CancelUnitSelect();
         }
     }
+
+    private UnitFacing GetUnitFacingClockwise(UnitFacing facing)
+    {
+        switch (facing)
+        {
+            case UnitFacing.North:
+                return UnitFacing.East;
+            case UnitFacing.East:
+                return UnitFacing.South;
+            case UnitFacing.South:
+                return UnitFacing.West;
+            case UnitFacing.West:
+                return UnitFacing.North;
+        }
+        return UnitFacing.North;
+    }
+
+    private UnitFacing GetUnitFacingCounterClockwise(UnitFacing facing)
+    {
+        switch (facing)
+        {
+            case UnitFacing.North:
+                return UnitFacing.West;
+            case UnitFacing.East:
+                return UnitFacing.North;
+            case UnitFacing.South:
+                return UnitFacing.East;
+            case UnitFacing.West:
+                return UnitFacing.South;
+        }
+        return UnitFacing.North;
+    }
+
 
     private void RightClicked(int width)
     {
