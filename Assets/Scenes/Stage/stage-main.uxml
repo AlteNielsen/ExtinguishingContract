@@ -50,7 +50,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -60,7 +60,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -70,7 +70,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -80,7 +80,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -90,7 +90,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -100,7 +100,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -110,7 +110,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -120,7 +120,7 @@
                     <ui:VisualElement class="wid-all on-unit-selector the-black semi-transparent"/>
                     <ui:VisualElement class="abs-all row">
                         <ui:VisualElement class="base-flex"/>
-                        <ui:VisualElement class="all unit-icon"/>
+                        <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
                 </ui:VisualElement>
