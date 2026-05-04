@@ -7,13 +7,31 @@ public class StageSceneView
 {
     private UIDocument document;
     private List<VisualElement> rangeDisplays;
+    private List<VisualElement> unitIconDisplays;
     private int[] unitIndices;
 
     public StageSceneView(UIDocument doc)
     {
         document = doc;
         DisplayUnitRanges();
+        unitIconDisplays = document.rootVisualElement.Query<VisualElement>("UnitIconDisplay").ToList();
     }
+
+    public void LightUpSelectUnitIcon(int index)
+    {
+        for (int i = 0; i < unitIconDisplays.Count; i++)
+        {
+            unitIconDisplays[i].RemoveFromClassList("unit-icon-selected");
+            unitIconDisplays[i].AddToClassList("unit-icon-not-selected");
+        }
+
+        if (index >= 0)
+        {
+            unitIconDisplays[unitIndices[index]].RemoveFromClassList("unit-icon-not-selected");
+            unitIconDisplays[unitIndices[index]].AddToClassList("unit-icon-selected");
+        }
+    }
+
 
     public void LightUpSelectUnitRange(int index)
     {

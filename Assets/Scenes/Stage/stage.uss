@@ -1,9 +1,17 @@
-.unit-icon{
-    background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+.unit-icon-frame{
     -unity-background-scale-mode: scale-and-crop;
-    opacity: 0.5;
+    opacity: 0.3;
     -unity-background-image-tint-color: white;
     max-width: 300px;
+}
+
+.unit-icon-not-selected{
+    background-image: url('project://database/Assets/Textures/test_unit_icon.png');
+}
+
+.unit-icon-selected{
+    background-image: url('project://database/Assets/Textures/test_unit_icon_selected.png');
+    opacity: 0.5;
 }
 
 .unit-icon-plank

@@ -152,9 +152,7 @@ public class StageSceneManager : MonoBehaviour
             calcManager.UnitWaterCalc(water, selectedUnitPos, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
             if (selectedUnitPos == index)
             {
-                boardView.UnitSelectCancel(selectedUnitPos, water);
-                CancelUnitSelect();
-                sceneView.LightUpSelectUnitRange(-1);
+                CancelUnitSelect(water);
                 return;
             }
 
@@ -163,6 +161,14 @@ public class StageSceneManager : MonoBehaviour
                 UnitMove(index, water);
             }
         }
+    }
+
+    private void CancelUnitSelect(Span<bool> water)
+    {
+        boardView.UnitSelectCancel(selectedUnitPos, water);
+        UnitSelectReset();
+        sceneView.LightUpSelectUnitRange(-1);
+        sceneView.LightUpSelectUnitIcon(-1);
     }
 
     private void SelectUnit(int index, int width)
@@ -174,6 +180,7 @@ public class StageSceneManager : MonoBehaviour
         calcManager.UnitWaterCalc(water, index, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
         boardView.UnitSelect(index, water);
         sceneView.LightUpSelectUnitRange(UnitMap[index]);
+        sceneView.LightUpSelectUnitIcon(UnitMap[index]);
     }
 
     private void UnitMove(int index, Span<bool> water)
@@ -183,8 +190,9 @@ public class StageSceneManager : MonoBehaviour
         unit[selectedUnitPos] = -1;
         unit[index] = selectedUnitID;
         boardView.UnitSelectCancel(selectedUnitPos, water);
-        CancelUnitSelect();
+        UnitSelectReset();
         sceneView.LightUpSelectUnitRange(-1);
+        sceneView.LightUpSelectUnitIcon(-1);
         TurnProcess(unit, NowUnitFacing);
     }
 
@@ -217,7 +225,7 @@ public class StageSceneManager : MonoBehaviour
         }
         else
         {
-            CancelUnitSelect();
+            UnitSelectReset();
         }
     }
 
@@ -311,7 +319,7 @@ public class StageSceneManager : MonoBehaviour
         }
     }
 
-    private void CancelUnitSelect()
+    private void UnitSelectReset()
     {
         selectedUnitID = -1;
         selectedUnitPos = -1;
