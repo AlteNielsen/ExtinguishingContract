@@ -53,6 +53,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -63,6 +64,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -73,6 +75,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -83,6 +86,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -93,6 +97,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -103,6 +108,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -113,6 +119,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkgray semi-transparent" />
                 <ui:VisualElement class="base-flex">
@@ -123,6 +130,7 @@
                         <ui:VisualElement name="UnitIconDisplay" class="all unit-icon-not-selected unit-icon-frame"/>
                         <ui:VisualElement class="unit-icon-plank"/>
                     </ui:VisualElement>
+                    <ui:Button name="UnitIconButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="underbar bg-darkred" />
             </ui:VisualElement>
