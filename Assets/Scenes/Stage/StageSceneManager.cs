@@ -141,12 +141,7 @@ public class StageSceneManager : MonoBehaviour
         {
             if (UnitMap[index] >= 0)
             {
-                selectedUnitID = UnitMap[index];
-                selectedUnitPos = index;
-                Span<bool> water = stackalloc bool[UnitMap.Length];
-                water.Clear();
-                calcManager.UnitWaterCalc(water, index, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
-                boardView.UnitSelect(index, water);
+                SelectUnit(index, width);
                 return;
             }
         }
@@ -159,20 +154,38 @@ public class StageSceneManager : MonoBehaviour
             {
                 boardView.UnitSelectCancel(selectedUnitPos, water);
                 CancelUnitSelect();
+                sceneView.LightUpSelectUnitRange(-1);
                 return;
             }
 
             if (water[index] && UnitMap[index] < 0)
             {
-                Span<int> unit = stackalloc int[UnitMap.Length];
-                UnitMap.CopyTo(unit);
-                unit[selectedUnitPos] = -1;
-                unit[index] = selectedUnitID;
-                boardView.UnitSelectCancel(selectedUnitPos, water);
-                CancelUnitSelect();
-                TurnProcess(unit, NowUnitFacing);
+                UnitMove(index, water);
             }
         }
+    }
+
+    private void SelectUnit(int index, int width)
+    {
+        selectedUnitID = UnitMap[index];
+        selectedUnitPos = index;
+        Span<bool> water = stackalloc bool[UnitMap.Length];
+        water.Clear();
+        calcManager.UnitWaterCalc(water, index, width, selectedUnitID, NowUnitFacing[selectedUnitID]);
+        boardView.UnitSelect(index, water);
+        sceneView.LightUpSelectUnitRange(UnitMap[index]);
+    }
+
+    private void UnitMove(int index, Span<bool> water)
+    {
+        Span<int> unit = stackalloc int[UnitMap.Length];
+        UnitMap.CopyTo(unit);
+        unit[selectedUnitPos] = -1;
+        unit[index] = selectedUnitID;
+        boardView.UnitSelectCancel(selectedUnitPos, water);
+        CancelUnitSelect();
+        sceneView.LightUpSelectUnitRange(-1);
+        TurnProcess(unit, NowUnitFacing);
     }
 
     private void RotateUnitClockwise(int width)

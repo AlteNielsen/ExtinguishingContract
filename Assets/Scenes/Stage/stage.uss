@@ -1,9 +1,14 @@
 .unit-icon{
     background-image: url('project://database/Assets/Textures/test_unit_icon.png');
     -unity-background-scale-mode: scale-and-crop;
-    opacity: 0.95;
-    -unity-background-image-tint-color: black;
-    max-width: 500px;
+    opacity: 0.5;
+    -unity-background-image-tint-color: white;
+    max-width: 300px;
+}
+
+.unit-icon-plank
+{
+    width: 50px;
 }
 
 .the-black{
@@ -87,4 +92,31 @@
 
 .water-selected{
     background-color: #6495ED;
+}
+
+.range-display-frame{
+    width: 100px;
+    height: 100px;
+}
+
+.range-display{
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 96px;
+    height: 96px;
+    top: 2px;
+    left: 2px;
+}
+
+.display-tile-range{
+    border-width: 1px;
+    border-color: var(--color-white);
+}
+
+.display-tile-unit{
+    background-color: var(--color-white);
+}
+
+.display-tile-range-not-selected{
+    opacity: 0.2;
 }
