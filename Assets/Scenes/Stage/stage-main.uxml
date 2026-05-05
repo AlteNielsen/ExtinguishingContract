@@ -17,7 +17,7 @@
                 <ui:VisualElement class="base-flex">
                     <ui:VisualElement class="map-title">
                         <ui:VisualElement class="abs-all color-gradiation-red semi-transparent" />
-                        <ui:Label class="serif-bold text-mid color-white" text="北部居住区 - スラム地区" />
+                        <ui:Label name="MapTitle" class="serif-bold text-mid color-white" text="北部居住区 - スラム地区" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement>
