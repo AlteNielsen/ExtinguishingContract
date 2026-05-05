@@ -9,12 +9,65 @@ public class StageSceneView
     private List<VisualElement> rangeDisplays;
     private List<VisualElement> unitIconDisplays;
     private int[] unitIndices;
+    private VisualElement pauseScreen;
+    private bool isPause = false;
 
     public StageSceneView(UIDocument doc)
     {
         document = doc;
         DisplayUnitRanges();
         unitIconDisplays = document.rootVisualElement.Query<VisualElement>("UnitIconDisplay").ToList();
+        WriteTexts();
+        SetupPauseScreen();
+    }
+
+    private void SetupPauseScreen()
+    {
+        pauseScreen = document.rootVisualElement.Q<VisualElement>("PauseScreen");
+        pauseScreen.Q<Label>("RetreatText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[7];
+        pauseScreen.Q<Label>("SettingText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[8];
+        pauseScreen.Q<Label>("ResumeText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[9];
+    }
+
+    private void WriteTexts()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("Text").ToList();
+        for(int i = 0; i < labels.Count; i++)
+        {
+            labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[i];
+        }
+
+        Label title = document.rootVisualElement.Q<Label>("MapTitle");
+        int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+        title.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[selected] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[selected];
+    }
+
+    public void DisplayFinishScreen(bool result)
+    {
+        VisualElement screen = document.rootVisualElement.Q<VisualElement>("FinishScreen");
+        screen.RemoveFromClassList("non-display");
+        Label label = document.rootVisualElement.Q<Label>("FinishText");
+        if(result)
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[5]; 
+        }
+        else
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[6];
+        }
+    }
+
+    public void SwitchPauseScreen()
+    {
+        if(isPause)
+        {
+            pauseScreen.RemoveFromClassList("non-display");
+        }
+        else
+        {
+            pauseScreen.AddToClassList("non-display");
+        }
+        isPause = !isPause;
     }
 
     public void LightUpSelectUnitIcon(int index)
