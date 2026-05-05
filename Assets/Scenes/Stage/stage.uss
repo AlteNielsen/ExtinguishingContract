@@ -136,3 +136,13 @@
 .display-tile-range-not-selected{
     opacity: 0.2;
 }
+
+.screen-bg{
+    opacity: 0.85;
+    background-color: black;
+}
+
+.screen-center{
+    width: 105%;
+    height: 15%;
+}
