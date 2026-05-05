@@ -36,6 +36,10 @@ public class StageSceneView
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[i];
         }
+
+        Label title = document.rootVisualElement.Q<Label>("MapTitle");
+        int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+        title.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[selected] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[selected];
     }
 
     public void DisplayFinishScreen(bool result)
