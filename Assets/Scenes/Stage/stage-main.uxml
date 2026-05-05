@@ -21,17 +21,17 @@
                 </ui:VisualElement>
                 <ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="選択" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="選択" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
-                        <ui:Label class="serif-regular text-tiny color-white" text="左クリック" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="左クリック" />
                     </ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="選択解除/Undo" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="選択解除/Undo" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
-                        <ui:Label class="serif-regular text-tiny color-white" text="右クリック" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="右クリック" />
                     </ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="回転" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="回転" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
                         <ui:Label class="serif-regular text-tiny color-white" text="←e / r→" />
                     </ui:VisualElement>

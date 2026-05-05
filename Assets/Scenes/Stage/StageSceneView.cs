@@ -15,6 +15,16 @@ public class StageSceneView
         document = doc;
         DisplayUnitRanges();
         unitIconDisplays = document.rootVisualElement.Query<VisualElement>("UnitIconDisplay").ToList();
+        WriteTexts();
+    }
+
+    private void WriteTexts()
+    {
+        List<Label> labels = document.rootVisualElement.Query<Label>("Text").ToList();
+        for(int i = 0; i < labels.Count; i++)
+        {
+            labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[i];
+        }
     }
 
     public void LightUpSelectUnitIcon(int index)
