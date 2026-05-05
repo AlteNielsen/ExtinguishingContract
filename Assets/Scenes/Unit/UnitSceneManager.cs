@@ -71,6 +71,8 @@ public class UnitSceneManager : MonoBehaviour
             int index = i;
             unitSelectors[i].clicked += () => UnitSelect(index);
         }
+        Button go = document.rootVisualElement.Q<Button>("GoButton");
+        go.clicked += GoToStage;
     }
 
     private void UnitSelect(int index)
@@ -98,6 +100,14 @@ public class UnitSceneManager : MonoBehaviour
     {
         Save();
         GameSceneManager.ToHome();
+    }
+
+    private void GoToStage()
+    {
+        var (_, _, canGo) = JudgeCanGoStage();
+        if (!canGo) return;
+        Save(); 
+        GameSceneManager.ToStageLoading();
     }
 
     private void Load()
