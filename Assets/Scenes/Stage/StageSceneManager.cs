@@ -84,6 +84,17 @@ public class StageSceneManager : MonoBehaviour
             int wid = width;
             iconButtons[i].clicked += () => SelectUnitByIcon(order, wid);
         }
+
+        Button pause = document.rootVisualElement.Q<Button>("PauseButton");
+        pause.clicked += sceneView.SwitchPauseScreen;
+
+        Button retreat = document.rootVisualElement.Q<Button>("RetreatButton");
+        retreat.clicked += () => { sceneView.SwitchPauseScreen(); LoseProcess(); };
+
+        Button setting = document.rootVisualElement.Q<Button>("SettingButton");
+
+        Button resume = document.rootVisualElement.Q<Button>("ResumeButton");
+        resume.clicked += sceneView.SwitchPauseScreen;
     }
 
     private void DataRestore(int index)
