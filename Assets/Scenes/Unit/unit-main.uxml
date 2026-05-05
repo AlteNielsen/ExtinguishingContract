@@ -101,6 +101,7 @@
                 <ui:VisualElement class="go-button">
                     <ui:VisualElement name="GoButtonBG" class="on-button color-gradiation-gray" >
                         <ui:Label name="Text" class="serif-bold text-large color-white text-set-center" text="出場" />
+                        <ui:Button name="GoButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement> 
