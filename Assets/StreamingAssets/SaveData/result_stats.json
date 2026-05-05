@@ -1,5 +1,5 @@
 {
-    "go_times": 0,
+    "go_times": 1,
     "success_times": 0,
     "average_extinguish_chance": 0.0,
     "extinguish_times": 0,
@@ -8,6 +8,6 @@
     "base_press_count": 0,
     "press_mult_count": 0,
     "max_press_count": 0,
-    "burn_speed_count": 0,
+    "burn_speed_count": 1,
     "start_turn_count": 0
 }

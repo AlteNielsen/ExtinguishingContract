@@ -9,6 +9,8 @@ public class StageSceneView
     private List<VisualElement> rangeDisplays;
     private List<VisualElement> unitIconDisplays;
     private int[] unitIndices;
+    private VisualElement pauseScreen;
+    private bool isPause = false;
 
     public StageSceneView(UIDocument doc)
     {
@@ -16,6 +18,15 @@ public class StageSceneView
         DisplayUnitRanges();
         unitIconDisplays = document.rootVisualElement.Query<VisualElement>("UnitIconDisplay").ToList();
         WriteTexts();
+        SetupPauseScreen();
+    }
+
+    private void SetupPauseScreen()
+    {
+        pauseScreen = document.rootVisualElement.Q<VisualElement>("PauseScreen");
+        pauseScreen.Q<Label>("RetreatText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[7];
+        pauseScreen.Q<Label>("SettingText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[8];
+        pauseScreen.Q<Label>("ResumeText").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[9];
     }
 
     private void WriteTexts()
@@ -40,6 +51,19 @@ public class StageSceneView
         {
             label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[6];
         }
+    }
+
+    public void SwitchPauseScreen()
+    {
+        if(isPause)
+        {
+            pauseScreen.RemoveFromClassList("non-display");
+        }
+        else
+        {
+            pauseScreen.AddToClassList("non-display");
+        }
+        isPause = !isPause;
     }
 
     public void LightUpSelectUnitIcon(int index)
