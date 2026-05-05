@@ -12,26 +12,27 @@
                 <ui:VisualElement class="plank-row-mid" />
                 <ui:VisualElement class="setting">
                     <ui:VisualElement class="setting-icon" />
+                    <ui:Button name="PauseButton" class="abs-all button-initialize transparent" />
                 </ui:VisualElement>
                 <ui:VisualElement class="base-flex">
                     <ui:VisualElement class="map-title">
                         <ui:VisualElement class="abs-all color-gradiation-red semi-transparent" />
-                        <ui:Label class="serif-bold text-mid color-white" text="北部居住区 - スラム地区" />
+                        <ui:Label name="MapTitle" class="serif-bold text-mid color-white" text="北部居住区 - スラム地区" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="選択" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="選択" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
-                        <ui:Label class="serif-regular text-tiny color-white" text="左クリック" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="左クリック" />
                     </ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="選択解除/Undo" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="選択解除/Undo" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
-                        <ui:Label class="serif-regular text-tiny color-white" text="右クリック" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="右クリック" />
                     </ui:VisualElement>
                     <ui:VisualElement class="row">
-                        <ui:Label class="serif-regular text-tiny color-white" text="回転" />
+                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="回転" />
                         <ui:Label class="serif-regular text-tiny color-white" text="：" />
                         <ui:Label class="serif-regular text-tiny color-white" text="←e / r→" />
                     </ui:VisualElement>
@@ -204,5 +205,43 @@
         <ui:VisualElement class="row-under">
 
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="FinishScreen" class="abs-all center-row non-display" >
+        <ui:VisualElement class="abs-all screen-bg" />
+        <ui:VisualElement class="underbar bg-darkred" />
+        <ui:VisualElement class="screen-center center-line center-row">
+            <ui:VisualElement class="abs-all the-black" />
+            <ui:Label name="FinishText" class="serif-bold text-big color-white" text="消 火 完 了" />
+        </ui:VisualElement>
+        <ui:VisualElement class="underbar bg-darkred" />
+    </ui:VisualElement>
+    <ui:VisualElement name="PauseScreen" class="abs-all center-row non-display" >
+        <ui:VisualElement class="abs-all screen-bg" />
+        <ui:VisualElement class="underbar bg-darkred" />
+        <ui:VisualElement class="pause-screen-center center-line center-row row">
+            <ui:VisualElement class="abs-all the-black" />
+            <ui:VisualElement class="center-line">
+                <ui:VisualElement class="retreat-icon" />
+                <ui:Label name="RetreatText" class="serif-bold text-large color-red" text="総撤退" />
+                <ui:Button name="RetreatButton" class="abs-all button-initialize transparent" />
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-row-large" />
+            <ui:VisualElement class="pause-partition bg-white" />
+            <ui:VisualElement class="plank-row-large" />
+            <ui:VisualElement class="center-line">
+                <ui:VisualElement class="pause-setting-icon" />
+                <ui:Label name="SettingText" class="serif-bold text-large color-white" text="設定/ヘルプ" />
+                <ui:Button name="SettingButton" class="abs-all button-initialize transparent" />
+            </ui:VisualElement>
+            <ui:VisualElement class="plank-row-large" />
+            <ui:VisualElement class="pause-partition bg-white" />
+            <ui:VisualElement class="plank-row-large" />
+            <ui:VisualElement class="center-line">
+                <ui:VisualElement class="pause-resume-icon" />
+                <ui:Label name="ResumeText" class="serif-bold text-large color-white" text="再開" />
+                <ui:Button name="ResumeButton" class="abs-all button-initialize transparent" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="underbar bg-darkred" />
     </ui:VisualElement>
 </ui:UXML>

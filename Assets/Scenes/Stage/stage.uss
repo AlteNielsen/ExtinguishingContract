@@ -136,3 +136,46 @@
 .display-tile-range-not-selected{
     opacity: 0.2;
 }
+
+.screen-bg{
+    opacity: 0.85;
+    background-color: black;
+}
+
+.screen-center{
+    width: 105%;
+    height: 15%;
+}
+
+.pause-screen-center{
+    width: 105%;
+    height: 22%;
+}
+
+.retreat-icon{
+    width: 125px;
+    height: 125px;
+    background-image: url('project://database/Assets/Textures/retreat_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 0.4;
+}
+
+.pause-partition{
+    height: 75%;
+    width: 2px;
+}
+
+.pause-setting-icon{
+    width: 125px;
+    height: 125px;
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.pause-resume-icon{
+    width: 120px;
+    height: 120px;
+    background-image: url('project://database/Assets/Textures/selector.png');
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 0.5;
+}
