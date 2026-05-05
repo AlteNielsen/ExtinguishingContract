@@ -27,6 +27,21 @@ public class StageSceneView
         }
     }
 
+    public void DisplayFinishScreen(bool result)
+    {
+        VisualElement screen = document.rootVisualElement.Q<VisualElement>("FinishScreen");
+        screen.RemoveFromClassList("non-display");
+        Label label = document.rootVisualElement.Q<Label>("FinishText");
+        if(result)
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[5]; 
+        }
+        else
+        {
+            label.text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Stage)[6];
+        }
+    }
+
     public void LightUpSelectUnitIcon(int index)
     {
         for (int i = 0; i < unitIconDisplays.Count; i++)

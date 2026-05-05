@@ -101,4 +101,9 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("StageScene");
     }
+
+    public static void ToResult()
+    {
+        SceneManager.LoadScene("ResultScene");
+    }
 }

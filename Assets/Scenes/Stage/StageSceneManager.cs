@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using System.Threading.Tasks;
 
 public class StageSceneManager : MonoBehaviour
 {
@@ -340,6 +341,7 @@ public class StageSceneManager : MonoBehaviour
         calcManager.StageCalculate(nextFire, unitMap, water, unitFacing, spreadSpeed);
         SwitchBuffer();
         boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
+        CheckBoardSituation();
     }
 
     private void UndoProcess()
@@ -384,5 +386,59 @@ public class StageSceneManager : MonoBehaviour
     private bool IsSelectedUnitAlive()
     {
         return UnitMap[selectedUnitPos] == selectedUnitID;
+    }
+
+    private void CheckBoardSituation()
+    {
+        bool isWin = true;
+        for(int i = 0; i < FireMap.Length; i++)
+        {
+            if (FireMap[i])
+            {
+                isWin = false;
+                break;
+            }
+        }
+        if (isWin)
+        {
+            WinProcess();
+        }
+
+        bool isLose = true;
+        for(int i = 0; i < UnitMap.Length; i++)
+        {
+            if (UnitMap[i] >= 0)
+            {
+                isLose = false;
+                break;
+            }
+        }
+        if(isLose)
+        {
+            LoseProcess();
+        }
+    }
+
+    async private void WinProcess()
+    {
+        sceneView.DisplayFinishScreen(true);
+        Save();
+        await Task.Delay(3000);
+        GameSceneManager.ToResult();
+    }
+
+    async private void LoseProcess()
+    {
+        sceneView.DisplayFinishScreen(false);
+        Save();
+        await Task.Delay(3000);
+        GameSceneManager.ToResult();
+    }
+
+    private void Save()
+    {
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.FireMap, CulculateLibrary.SwitchBoolToFloat(FireMap));
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.UnitMap, CulculateLibrary.SwitchIntToFloat(UnitMap));
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.UnitFacing, CulculateLibrary.SwitchFacingToFloat(NowUnitFacing));
     }
 }

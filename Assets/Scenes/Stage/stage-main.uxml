@@ -205,4 +205,13 @@
 
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="FinishScreen" class="abs-all center-row non-display" >
+        <ui:VisualElement class="abs-all screen-bg" />
+        <ui:VisualElement class="underbar bg-darkred" />
+        <ui:VisualElement class="screen-center center-line center-row">
+            <ui:VisualElement class="abs-all the-black" />
+            <ui:Label name="FinishText" class="serif-bold text-big color-white" text="消 火 完 了" />
+        </ui:VisualElement>
+        <ui:VisualElement class="underbar bg-darkred" />
+    </ui:VisualElement>
 </ui:UXML>
