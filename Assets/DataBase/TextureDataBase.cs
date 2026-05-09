@@ -28,9 +28,9 @@ public static class TextureDataBase
 
     public static void Load()
     {
-        UnitLoad();
+        /*UnitLoad();
         MapLoad();
-        IndicatorLoad();
+        IndicatorLoad();*/
     }
 
     private static void UnitLoad()

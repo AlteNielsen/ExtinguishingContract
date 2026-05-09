@@ -57,7 +57,7 @@ public class ContractSceneView
         previews[4].text = "+ " + values[4];
         previews[5].text = "+" + values[5];
 
-        previews[6].text = "" + (int)(values[6] * 100) + "%";
+        previews[6].text = "" + CulculateLibrary.FloatToPercent(values[6]) + "%";
         previews[7].text = "" + values[7];
         previews[8].text = "" + values[8];
     }
