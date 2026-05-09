@@ -1,5 +1,5 @@
 .sector-image{
-    background-image: url('project://database/Assets/Textures/damu2.png');
+    background-image: url('project://database/Assets/Textures/slum_normal.png');
     -unity-background-scale-mode: scale-and-crop;
 }
 
