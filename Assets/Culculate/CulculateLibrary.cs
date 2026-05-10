@@ -235,7 +235,8 @@ public static class CulculateLibrary
                 result += Config.Data.IndicatorBaseChance * level;
             }
         }
-        result += Config.Data.InitialChance;
+        float initialChance = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span)[6];
+        result += initialChance;
         return result;
     }
 
@@ -256,7 +257,8 @@ public static class CulculateLibrary
                 counter++;
             }
         }
-        result += Config.Data.InitialChance;
+        float initialChance = IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span)[6];
+        result += initialChance;
         return result;
     }
 

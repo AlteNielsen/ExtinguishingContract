@@ -115,8 +115,7 @@ public class ResultSceneView
         WriteUsePressure(labels[3]);
         labels[4].text = "" + CulculateLibrary.CulculateFireSpreadSpeed();
         labels[5].text = "" + CulculateLibrary.CulculateStartTurn();
-        int chacne = (int)(CulculateLibrary.CulculateChance() * 100);
-        labels[6].text = "" + chacne + "%";
+        labels[6].text = "" + CulculateLibrary.FloatToPercent(CulculateLibrary.CulculateChance()) + "%";
     }
 
     private void WriteDeployInfo(Label target)
