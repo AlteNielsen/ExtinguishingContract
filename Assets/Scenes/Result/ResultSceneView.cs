@@ -167,16 +167,8 @@ public class ResultSceneView
     {
         Label increase = document.rootVisualElement.Q<Label>("OtherProgressIncrease");
         float baseChance = SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0];
-        if (chance > 1)
-        {
-            increase.text = "+" + CulculateLibrary.FloatToPercent(chance) + "%";
-            increase.AddToClassList("color-waterblue");
-        }
-        else
-        {
-            increase.text = "Å}" + 0 + "%";
-            increase.AddToClassList("color-white");
-        }
+        increase.text = "+" + CulculateLibrary.FloatToPercent(chance) + "%";
+        increase.AddToClassList("color-waterblue");
         Label valueLabel = document.rootVisualElement.Q<Label>("OtherProgressValue");
         float value = baseChance + chance;
         if (chance > 1)
