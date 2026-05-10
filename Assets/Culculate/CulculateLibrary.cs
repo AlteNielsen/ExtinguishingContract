@@ -97,7 +97,7 @@ public static class CulculateLibrary
     public static float[] IndicatorBaseValues(ReadOnlySpan<float> indicatorLevels)
     {
         float[] result = new float[9];
-        int[] lvs = new int[9];
+        Span<int> lvs = stackalloc int[9];
         for(int i = 0; i < 9;i++)
         {
             if(indicatorLevels[i] == 0)
