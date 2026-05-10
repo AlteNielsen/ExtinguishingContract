@@ -127,7 +127,17 @@ public class EndingSceneView
         labels[1].text = "" + (int)datas[1];
         labels[2].text = CulculateLibrary.FloatToPercent(datas[2]) + "%";
         labels[3].text = "" + (int)datas[3];
-        labels[4].text = CulculateLibrary.FloatToPercent(datas[3] / datas[1]) + "%";
+
+        float extChance = 0;
+        if (datas[1] != 0)
+        {
+            extChance = datas[3] / datas[1];
+        }
+        else
+        {
+            extChance = 0;
+        }
+        labels[4].text = CulculateLibrary.FloatToPercent(extChance) + "%";
         float zscore = CulculateLibrary.CulculateZScore((int)datas[1], (int)datas[3], datas[2]);
         labels[5].text = "" + (int)(zscore * 100) / 100f;
         labels[6].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.EndingView)[ZScoreConclude(zscore)];
