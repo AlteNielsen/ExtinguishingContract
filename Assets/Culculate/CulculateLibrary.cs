@@ -266,6 +266,10 @@ public static class CulculateLibrary
         {
             return 0;
         }
+        if(theoreticalChance <= 0.001f)
+        {
+            return 0;
+        }
         float upper = actualTimes - (baseTimes * theoreticalChance);
         float lower = baseTimes * theoreticalChance * (1 - theoreticalChance);
         return upper / MathF.Sqrt(lower);
