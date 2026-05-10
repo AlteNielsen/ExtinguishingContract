@@ -107,8 +107,7 @@ public class ResultSceneManager : MonoBehaviour
         }
         if (extCount >= burningCounter)
         {
-            Array.Fill(blockSituations, 0);
-            return;
+            extCount = burningCounter;
         }
         bool[] extResult = CulculateLibrary.nCrProcess(burningCounter, extCount);
         int counter = 0;
