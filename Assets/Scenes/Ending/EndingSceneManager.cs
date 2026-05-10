@@ -12,9 +12,10 @@ public class EndingSceneManager : MonoBehaviour
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
-        sceneView = new EndingSceneView(mainDocument, goodDocument, badDocument);
+        bool isGoodEnding = IsGoodEnding();
+        sceneView = new EndingSceneView(mainDocument, goodDocument, badDocument, isGoodEnding);
         EndingSceneController();
-        UpdateMaxID();
+        UpdateMaxID(isGoodEnding);
         SaveDataManager.Instance.EndingSceneSaveDataInitialize();
     }
 
@@ -28,8 +29,12 @@ public class EndingSceneManager : MonoBehaviour
         backButton.clicked += GameSceneManager.ToClear;
     }
 
-    private void UpdateMaxID()
+    private void UpdateMaxID(bool isGoodEnding)
     {
+        if(!isGoodEnding)
+        {
+            return;
+        }
         ReadOnlySpan<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span;
         int nowGrade = CulculateLibrary.ContractGrade(now);
         ReadOnlySpan<float> max = SaveDataManager.Instance.Access<MaxIDChunk>((int)SaveDataManager.SaveDataChunk.MaxID).data.Span;
@@ -38,5 +43,20 @@ public class EndingSceneManager : MonoBehaviour
         {
             SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.MaxID, now.ToArray());
         }
+    }
+
+    private bool IsGoodEnding()
+    {
+        ReadOnlySpan<float> blockSituation = SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span;
+        bool isGoodEnding = true;
+        for (int i = 0; i < blockSituation.Length; i++)
+        {
+            if (blockSituation[i] > 0.5f)
+            {
+                isGoodEnding = false;
+                break;
+            }
+        }
+        return isGoodEnding;
     }
 }

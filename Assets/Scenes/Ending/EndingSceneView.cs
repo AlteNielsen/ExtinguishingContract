@@ -8,14 +8,14 @@ public class EndingSceneView
     private UIDocument goodDocument;
     private UIDocument badDocument;
 
-    public EndingSceneView(UIDocument doc, UIDocument good, UIDocument bad)
+    public EndingSceneView(UIDocument doc, UIDocument good, UIDocument bad, bool isGoodEnding)
     {
         mainDocument = doc;
         goodDocument = good;
         badDocument = bad;
         WriteTexts();
         DisplayDatas();
-        DisplayEndingScreen();
+        DisplayEndingScreen(isGoodEnding);
     }
 
     private void WriteTexts()
@@ -52,19 +52,8 @@ public class EndingSceneView
         }
     }
 
-    private void DisplayEndingScreen()
+    private void DisplayEndingScreen(bool isGoodEnding)
     {
-        ReadOnlySpan<float> blockSituation = SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span;
-        bool isGoodEnding = true;
-        for(int i = 0; i < blockSituation.Length; i++)
-        {
-            if(blockSituation[i] > 0.5f)
-            {
-                isGoodEnding = false;
-                break;
-            }
-        }
-
         if(isGoodEnding)
         {
             goodDocument.sortingOrder = 10;
