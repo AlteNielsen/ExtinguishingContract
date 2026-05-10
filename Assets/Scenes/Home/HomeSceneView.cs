@@ -179,7 +179,7 @@ public class HomeSceneView
         waterGauge[2].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(other)));
         if(value <= 0)
         {
-            mapInfo[4].text = "" + 0 + "%";
+            mapInfo[4].text = "+" + 0 + "%";
             waterGauge[0].style.height = new StyleLength(Length.Percent(CulculateLibrary.FloatToPercent(1 - other)));
             waterGauge[1].style.height = new StyleLength(Length.Percent(0));
         }
