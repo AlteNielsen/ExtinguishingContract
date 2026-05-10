@@ -262,6 +262,10 @@ public static class CulculateLibrary
 
     public static float CulculateZScore(int baseTimes, int actualTimes, float theoreticalChance)
     {
+        if(theoreticalChance >= 1.0f)
+        {
+            return 0;
+        }
         float upper = actualTimes - (baseTimes * theoreticalChance);
         float lower = baseTimes * theoreticalChance * (1 - theoreticalChance);
         return upper / MathF.Sqrt(lower);
