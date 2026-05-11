@@ -101,18 +101,18 @@ public class HomeSceneView
             if (indicators[i] > 0.5f)
             {
                 int type = i / Config.Data.IndicatorMaxLv;
-                int level = i % Config.Data.IndicatorMaxLv + 1;
+                int level = i % Config.Data.IndicatorMaxLv;
                 
-                chances[buttonCounter].text = "+" + CulculateLibrary.FloatToPercent(Config.Data.IndicatorBaseChance * level) + "%";
+                chances[buttonCounter].text = "+" + CulculateLibrary.FloatToPercent(Config.Data.IndicatorBaseChance * (level + 1)) + "%";
                 names[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[type];
                 types[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorEffect)[type];
                 if (baseValue[type] > 0)
                 {
-                    values[buttonCounter].text = "+" + (baseValue[type] * level);
+                    values[buttonCounter].text = "+" + (baseValue[type] + CulculateLibrary.GetIndicatorLevelIncrease(type, level));
                 }
                 else
                 {
-                    values[buttonCounter].text = "" + (baseValue[type] * level);
+                    values[buttonCounter].text = "" + (baseValue[type] + CulculateLibrary.GetIndicatorLevelIncrease(type, level));
                 }
                 buttonCounter++;
             }

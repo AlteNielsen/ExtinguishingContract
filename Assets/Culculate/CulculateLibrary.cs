@@ -180,12 +180,12 @@ public static class CulculateLibrary
         {
             if (indicators[maxIndicatorLv + i] > 0.5f)
             {
-                bs += (int)baseValue[1] * (i + 1);
+                bs += (int)baseValue[1] + GetIndicatorLevelIncrease(1, i);
             }
 
             if (indicators[(maxIndicatorLv * 2) + i] > 0.5f)
             {
-                increase += (int)baseValue[2] * (i + 1);
+                increase += (int)baseValue[2] + GetIndicatorLevelIncrease(2, i);
             }
         }
         return ((int)bs, (int)increase);
@@ -201,7 +201,7 @@ public static class CulculateLibrary
         {
             if (indicators[(maxIndicatorLv * 4) + i] > 0.5f)
             {
-                result += (int)baseValue[4] * (i + 1);
+                result += (int)baseValue[4] + GetIndicatorLevelIncrease(4, i);
             }
         }
         return result;
@@ -217,7 +217,7 @@ public static class CulculateLibrary
         {
             if (indicators[(maxIndicatorLv * 5) + i] > 0.5f)
             {
-                result += (int)baseValue[5] * (i + 1);
+                result += (int)baseValue[5] + GetIndicatorLevelIncrease(5, i);
             }
         }
         return result;
@@ -286,7 +286,7 @@ public static class CulculateLibrary
         {
             if (indicators[Config.Data.IndicatorMaxLv * 4 + i] > 0.5f)
             {
-                speed += (int)(data[4] * (i + 1));
+                speed += (int)(data[4] + GetIndicatorLevelIncrease(4, i));
             }
         }
         int start = 0;
@@ -294,7 +294,7 @@ public static class CulculateLibrary
         {
             if (indicators[Config.Data.IndicatorMaxLv * 5 + i] > 0.5f)
             {
-                start += (int)(data[5] * (i + 1));
+                start += (int)(data[5] + GetIndicatorLevelIncrease(4, i));
             }
         }
         int selected = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
@@ -399,5 +399,32 @@ public static class CulculateLibrary
             }
         }
         return isGoodEnding;
+    }
+
+    public static int GetIndicatorLevelIncrease(int type, int level)
+    {
+        int baseValue = 0;
+        switch(type)
+        {
+            case 0:
+                baseValue = ExtinguishingIndicatorDataBase.Data.Deployment.lv_increase;
+                break;
+            case 1:
+                baseValue = ExtinguishingIndicatorDataBase.Data.UnitBasePressure.lv_increase;
+                break;
+            case 2:
+                baseValue = ExtinguishingIndicatorDataBase.Data.LvPressureRatio.lv_increase;
+                break;
+            case 3:
+                baseValue = ExtinguishingIndicatorDataBase.Data.UsablePressure.lv_increase;
+                break;
+            case 4:
+                baseValue = ExtinguishingIndicatorDataBase.Data.SpreadSpeed.lv_increase;
+                break;
+            case 5:
+                baseValue = ExtinguishingIndicatorDataBase.Data.StartTurn.lv_increase;
+                break;
+        }
+        return baseValue * level;
     }
 }
