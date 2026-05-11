@@ -158,7 +158,7 @@ public class UnitSceneManager : MonoBehaviour
         {
             if(indicators[i] > 0.5f)
             {
-                deployLimit += (int)baseValue[0] + CulculateLibrary.GetIndicatorLevelIncrease(0, i + 1);
+                deployLimit += (int)baseValue[0] + CulculateLibrary.GetIndicatorLevelIncrease(0, i);
             }
         }
 
@@ -167,7 +167,7 @@ public class UnitSceneManager : MonoBehaviour
         {
             if (indicators[(maxIndicatorLv * 3) + i] > 0.5f)
             {
-                pressureLimit += (int)baseValue[3] + CulculateLibrary.GetIndicatorLevelIncrease(3, i + 1);
+                pressureLimit += (int)baseValue[3] + CulculateLibrary.GetIndicatorLevelIncrease(3, i);
             }
         }
     }
