@@ -12,7 +12,7 @@ public class EndingSceneManager : MonoBehaviour
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
-        bool isGoodEnding = IsGoodEnding();
+        bool isGoodEnding = CulculateLibrary.IsGoodEnding();
         sceneView = new EndingSceneView(mainDocument, goodDocument, badDocument, isGoodEnding);
         EndingSceneController();
         UpdateMaxID(isGoodEnding);
@@ -43,20 +43,5 @@ public class EndingSceneManager : MonoBehaviour
         {
             SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.MaxID, now.ToArray());
         }
-    }
-
-    private bool IsGoodEnding()
-    {
-        ReadOnlySpan<float> blockSituation = SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span;
-        bool isGoodEnding = true;
-        for (int i = 0; i < blockSituation.Length; i++)
-        {
-            if (blockSituation[i] > 0.5f)
-            {
-                isGoodEnding = false;
-                break;
-            }
-        }
-        return isGoodEnding;
     }
 }

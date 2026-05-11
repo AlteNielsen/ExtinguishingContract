@@ -385,4 +385,19 @@ public static class CulculateLibrary
         }
         return (maxX, maxY, minX, minY);
     }
+
+    public static bool IsGoodEnding()
+    {
+        ReadOnlySpan<float> blockSituation = SaveDataManager.Instance.Access<BurningSituationChunk>((int)SaveDataManager.SaveDataChunk.BurningSituation).data.Span;
+        bool isGoodEnding = true;
+        for (int i = 0; i < blockSituation.Length; i++)
+        {
+            if (blockSituation[i] > 0.5f)
+            {
+                isGoodEnding = false;
+                break;
+            }
+        }
+        return isGoodEnding;
+    }
 }

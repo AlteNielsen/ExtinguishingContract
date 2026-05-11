@@ -56,7 +56,14 @@ public class TitleSceneManager : MonoBehaviour
         {
             return;
         }
-        GameSceneManager.ToHome();
+        if(CulculateLibrary.IsGoodEnding())
+        {
+            GameSceneManager.ToEnding();
+        }
+        else 
+        {
+            GameSceneManager.ToHome();
+        }
     }
 
     private void Help()
