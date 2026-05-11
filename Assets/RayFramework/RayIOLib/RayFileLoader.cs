@@ -1,6 +1,9 @@
+using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Ray.FileIO
 {
@@ -18,14 +21,34 @@ namespace Ray.FileIO
             return JsonUtility.FromJson<T>(json);
         }
 
-        public static Sprite LoadSprite(string path)
+        public static void LoadTextures(string folder, Memory<string> targets, Memory<Texture2D> results)
         {
-            string filePath = Path.Combine(assetsPath, path);
-            byte[] rawData = System.IO.File.ReadAllBytes(filePath);
-            Texture2D texture2D = new Texture2D(0, 0);
-            texture2D.LoadImage(rawData);
-            Sprite sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), 100f);
-            return sprite;
+            string[] pool = new string[targets.Length];
+            targets.CopyTo(pool);
+            Texture2D[] poolT = new Texture2D[results.Length];
+            LoadTexturesProcess(folder, pool, poolT);
+            poolT.CopyTo(results);
+        }
+
+        private async static void LoadTexturesProcess(string folder, string[] targets, Texture2D[] results)
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                results[i] = await LoadTexture(folder + "/" + targets[i]);
+            }
+        }
+
+        public async static Task<Texture2D> LoadTexture(string path)
+        {
+            string filePath = assetsPath + "/" + path;
+            filePath = new Uri(filePath).AbsoluteUri;
+            using UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(filePath, nonReadable: true);
+            var operation = uwr.SendWebRequest();
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+            }
+            return DownloadHandlerTexture.GetContent(uwr);
         }
 
         public static string[] LoadCSVAll(string path)
