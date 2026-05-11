@@ -120,16 +120,20 @@ public class ResultSceneView
 
     private void WriteDeployInfo(Label target)
     {
-        int deploy = 0;
-        ReadOnlySpan<float> info = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
-        for (int i = 0; i < info.Length; i++)
+        ReadOnlySpan<float> indicators = SaveDataManager.Instance.Access<IndicatorSelectChunk>((int)SaveDataManager.SaveDataChunk.IndicatorSelect).data.Span;
+        float[] baseValue = CulculateLibrary.IndicatorBaseValues(SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data.Span);
+        int maxIndicatorLv = indicators.Length / ExtinguishingContract.EIndicatorNum;
+
+        ReadOnlySpan<float> map = SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span;
+        int deployLimit = MapDataBase.Datas[(int)map[0]].Data.height;
+        for (int i = 0; i < maxIndicatorLv; i++)
         {
-            if (info[i] > 0.5f)
+            if (indicators[i] > 0.5f)
             {
-                deploy++;
+                deployLimit += (int)baseValue[0] + CulculateLibrary.GetIndicatorLevelIncrease(0, i);
             }
         }
-        target.text = "" + deploy;
+        target.text = "" + deployLimit;
     }
 
     private void WriteUsePressure(Label target)
