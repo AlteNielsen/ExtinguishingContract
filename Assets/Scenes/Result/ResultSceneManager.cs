@@ -4,6 +4,7 @@ using System;
 
 public class ResultSceneManager : MonoBehaviour
 {
+    [SerializeField] private UIDocument baseDocument;
     [SerializeField] private UIDocument document;
     [SerializeField] private VisualTreeAsset unitPlate;
     private ResultSceneView sceneView;
@@ -13,7 +14,7 @@ public class ResultSceneManager : MonoBehaviour
         ExtinguishingContract.DevelopOnlyGameSetup();
         UnitPlateSetup();
         var (isSuccess, isExtinguish, other) = IsStageSuccess();
-        sceneView = new ResultSceneView(document, isExtinguish);
+        sceneView = new ResultSceneView(document, baseDocument, isExtinguish);
         BurningSituationSetup(isExtinguish);
         OtherProgressExtinguish(other);
         BlockBurn();

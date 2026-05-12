@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18288fcb1b95054fb5d5dd551279411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultSceneManager
+  baseDocument: {fileID: 554559226}
   document: {fileID: 1856000192}
   unitPlate: {fileID: 9197481963319205126, guid: beb3a9ffc25710c4c89a0e142e7c458d, type: 3}
 --- !u!4 &1062828610

@@ -6,13 +6,29 @@ using UnityEngine.UIElements;
 public class ResultSceneView
 {
     private UIDocument document;
+    private VisualElement sectorImage;
 
-    public ResultSceneView(UIDocument doc, bool isSuccess)
+    public ResultSceneView(UIDocument doc, UIDocument baseDoc, bool isSuccess)
     {
         document = doc;
+        sectorImage = baseDoc.rootVisualElement.Q<VisualElement>("SectorImage");
+        BackgroundImageSetup(isSuccess);
         WriteSelectedUnit();
         WriteLabels();
         DisplayIsSuccess(isSuccess);
+    }
+
+    private void BackgroundImageSetup(bool isExtinguish)
+    {
+        float sector = SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+        if(isExtinguish)
+        {
+            sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapNormal)[(int)sector]);
+        }
+        else
+        {
+            sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapBurning)[(int)sector]);
+        }
     }
 
     private void WriteSelectedUnit()
