@@ -11,6 +11,7 @@ public class StageSceneView
     private int[] unitIndices;
     private VisualElement pauseScreen;
     private bool isPause = false;
+    private int unitNum = 0;
 
     public StageSceneView(UIDocument doc)
     {
@@ -19,6 +20,7 @@ public class StageSceneView
         unitIconDisplays = document.rootVisualElement.Query<VisualElement>("UnitIconDisplay").ToList();
         WriteTexts();
         SetupPauseScreen();
+        LightUpSelectUnitIcon(-1);
     }
 
     private void SetupPauseScreen()
@@ -74,17 +76,34 @@ public class StageSceneView
     {
         for (int i = 0; i < unitIconDisplays.Count; i++)
         {
-            unitIconDisplays[i].RemoveFromClassList("unit-icon-selected");
-            unitIconDisplays[i].AddToClassList("unit-icon-not-selected");
+            unitIconDisplays[i].style.backgroundImage = null;
+            if(i < unitNum)
+            {
+                unitIconDisplays[i].style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.UnitNot)[GetUnitIconIndex(i)]);
+            }
         }
 
         if (index >= 0)
         {
-            unitIconDisplays[unitIndices[index]].RemoveFromClassList("unit-icon-not-selected");
-            unitIconDisplays[unitIndices[index]].AddToClassList("unit-icon-selected");
+            unitIconDisplays[unitIndices[index]].style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.UnitSelected)[index]);
         }
     }
 
+    private int GetUnitIconIndex(int slotIndex)
+    {
+        ReadOnlySpan<float> unit = SaveDataManager.Instance.Access<UnitSelectChunk>((int)SaveDataManager.SaveDataChunk.UnitSelect).data.Span;
+        int counter = 0;
+        for(int i = 0; i < unit.Length; i++)
+        {
+            if (unit[i] < 0.5f) continue;
+            if (counter == slotIndex)
+            {
+                return i;
+            }
+            counter++;
+        }
+        return -1;
+    }
 
     public void LightUpSelectUnitRange(int index)
     {
@@ -116,6 +135,7 @@ public class StageSceneView
             if (unit[i] < 0.5f) continue;
 
             unitIndices[i] = counter;
+            unitNum++;
             int size = CulculateLibrary.GetUnitRangeDisplaySize(i, (int)levels[i] + 1);
             var(centerX, centerY) = CulculateLibrary.GetUnitRangeCenterPos(i, (int)levels[i] + 1);
             for (int j = 0; j < size * size; j++)
