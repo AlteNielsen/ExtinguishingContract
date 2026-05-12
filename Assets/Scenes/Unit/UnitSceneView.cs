@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UnitSceneView
 {
     private UIDocument document;
+    private VisualElement sectorImage;
     private List<VisualElement> unitRangeDisplays;
     private TileType[][][] unitRanges;//unitIndex, Level, slotNum
     private VisualElement[][] unitRangeTiles;
@@ -21,9 +21,10 @@ public class UnitSceneView
     private Label totalPressureDisplay;
     private VisualElement goButtonBG;
 
-    public UnitSceneView(UIDocument doc)
+    public UnitSceneView(UIDocument doc, UIDocument baseDoc)
     {
         document = doc;
+        sectorImage = baseDoc.rootVisualElement.Q<VisualElement>("SectorImage");
         unitRangeDisplays = document.rootVisualElement.Query<VisualElement>("UnitRange").ToList();
         levelSelectorBGs = document.rootVisualElement.Query<VisualElement>("LevelSelectorBG").ToList();
         levelSelectorLabels = document.rootVisualElement.Query<Label>("LevelSelectorLabel").ToList();
@@ -40,11 +41,18 @@ public class UnitSceneView
         cardScroll.horizontalScroller.valueChanged += ScrollBarDraw;
         cardScroll.RegisterCallback<GeometryChangedEvent>(evt => { ScrollBarDraw(0); });
 
+        BackgroundImageSetup();
         ScrollBarDraw(0);
         UnitRangeDataSetup();
         UnitRangeTileSetup();
         WriteText();
         SelectCardSetup();
+    }
+
+    private void BackgroundImageSetup()
+    {
+        float sector = SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
+        sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapBurning)[(int)sector]);
     }
 
     private void WriteText()

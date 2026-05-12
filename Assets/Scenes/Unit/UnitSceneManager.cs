@@ -5,6 +5,7 @@ using System;
 
 public class UnitSceneManager : MonoBehaviour
 {
+    [SerializeField] private UIDocument baseDocument;
     [SerializeField] private UIDocument document;
     [SerializeField] private VisualTreeAsset unitCard;
     [SerializeField] private VisualTreeAsset selectCard;
@@ -21,7 +22,7 @@ public class UnitSceneManager : MonoBehaviour
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
         ScrollViewSetup();
-        sceneView = new UnitSceneView(document);
+        sceneView = new UnitSceneView(document, baseDocument);
         unitLevels = new float[UnitDataBase.Datas.Length];
         unitIsSelected = new bool[UnitDataBase.Datas.Length];
         UnitSceneController();

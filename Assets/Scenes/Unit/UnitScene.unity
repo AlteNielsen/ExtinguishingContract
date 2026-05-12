@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f593ec46405acd47873234ac325df4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitSceneManager
+  baseDocument: {fileID: 1313430990}
   document: {fileID: 968458573}
   unitCard: {fileID: 9197481963319205126, guid: 6745b1f6661fdcb4da9437d8cddaceef, type: 3}
   selectCard: {fileID: 9197481963319205126, guid: 820c513ecc68be049844d6087f9d9d0c, type: 3}
