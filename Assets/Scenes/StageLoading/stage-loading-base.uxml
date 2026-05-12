@@ -4,6 +4,6 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/StageLoading/stage-loading.uss" />
     
-    <ui:VisualElement class="abs-all block-image" />
+    <ui:VisualElement name="SectorImage" class="abs-all block-image" />
     <ui:VisualElement class="all bg-black semi-transparent" />
 </ui:UXML>

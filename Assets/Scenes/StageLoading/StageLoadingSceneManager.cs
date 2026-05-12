@@ -5,13 +5,14 @@ using UnityEngine.UIElements;
 
 public class StageLoadingSceneManager : MonoBehaviour
 {
+    [SerializeField] private UIDocument baseDocument;
     [SerializeField] private UIDocument document;
 
     async void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
         StageLoadingSceneView();
-        await Task.Delay(5000);
+        await Task.Delay(3000);
         SaveDataManager.Instance.StageLoadingSceneSaveDataInitialize();
         GameSceneManager.ToStage();
     }
@@ -21,6 +22,9 @@ public class StageLoadingSceneManager : MonoBehaviour
         Label title = document.rootVisualElement.Q<Label>("Title");
         int mapSelect = (int)SaveDataManager.Instance.Access<MapSelectChunk>((int)SaveDataManager.SaveDataChunk.MapSelect).data.Span[0];
         title.text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[mapSelect] + " - " +WordDataBase.Word(WordDataBase.WordSelector.MapName)[mapSelect];
+
+        VisualElement sectorImage = baseDocument.rootVisualElement.Q<VisualElement>("SectorImage");
+        sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapBurning)[mapSelect]);
 
         Label topic = document.rootVisualElement.Q<Label>("Topic");
         int tableNum = TextDataBase.GetTexts(TextDataBase.TextDictionary.StageLoading).Length;

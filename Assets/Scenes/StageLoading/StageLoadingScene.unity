@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11164f2cba85444aa12edc2ef128919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageLoadingSceneManager
+  baseDocument: {fileID: 471831181}
   document: {fileID: 1794421660}
 --- !u!4 &1374410220
 Transform:
