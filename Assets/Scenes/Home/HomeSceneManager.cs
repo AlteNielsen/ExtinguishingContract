@@ -6,6 +6,7 @@ using System;
 public class HomeSceneManager : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
+    [SerializeField] private UIDocument baseDocument;
     private HomeSceneView sceneView;
     private int blockSelector;
     private bool[] isIndicatorSelected = new bool[ExtinguishingContract.IndicatorChoicesNum];
@@ -13,7 +14,7 @@ public class HomeSceneManager : MonoBehaviour
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
-        sceneView = new HomeSceneView(document);
+        sceneView = new HomeSceneView(document, baseDocument);
         HomeSceneController();
         RestoreSituationFromSaveData();
     }

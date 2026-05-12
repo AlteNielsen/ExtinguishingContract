@@ -21,20 +21,11 @@ namespace Ray.FileIO
             return JsonUtility.FromJson<T>(json);
         }
 
-        public static void LoadTextures(string folder, Memory<string> targets, Memory<Texture2D> results)
-        {
-            string[] pool = new string[targets.Length];
-            targets.CopyTo(pool);
-            Texture2D[] poolT = new Texture2D[results.Length];
-            LoadTexturesProcess(folder, pool, poolT);
-            poolT.CopyTo(results);
-        }
-
-        private async static void LoadTexturesProcess(string folder, string[] targets, Texture2D[] results)
+        public async static void LoadTextures(string folder, string[] targets, int offset, Texture2D[] results)
         {
             for (int i = 0; i < targets.Length; i++)
             {
-                results[i] = await LoadTexture(folder + "/" + targets[i]);
+                results[offset + i] = await LoadTexture(folder + "/" + targets[i]);
             }
         }
 

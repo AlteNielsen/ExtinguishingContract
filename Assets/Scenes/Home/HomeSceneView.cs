@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using UnityEngine;
 
 public class HomeSceneView
 {
     private UIDocument document;
+    private VisualElement sectorImage;
     private List<VisualElement> blockButtonBGs;
     private List<Label> mapInfo;
     private List<VisualElement> indicatorButtonBGs;
@@ -16,9 +18,10 @@ public class HomeSceneView
 
     private bool centerColomnCondition;//false: indicator true: map
 
-    public HomeSceneView(UIDocument doc)
+    public HomeSceneView(UIDocument doc, UIDocument baseDoc)
     {
         document = doc;
+        sectorImage = baseDoc.rootVisualElement.Q<VisualElement>("SectorImage");
         blockButtonBGs = document.rootVisualElement.Query<VisualElement>("BlockSelectorBG").ToList();
         mapInfo = document.rootVisualElement.Query<Label>("MapInfo").ToList();
         indicatorButtonBGs = document.rootVisualElement.Query<VisualElement>("IndicatorButtonBG").ToList();
@@ -147,6 +150,20 @@ public class HomeSceneView
             nextButtonBG.AddToClassList("color-gradiation-gray");
         }
         mapInfo[3].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[index];
+        DisplaySectorImage(index);
+    }
+
+    private void DisplaySectorImage(int index)
+    {
+        Debug.Log(TextureDataBase.GetTextures(GameTextures.MapBurning)[index] == null);
+        if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[index] > 0.5f)
+        {
+            sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapBurning)[index]);
+        }
+        else
+        {
+            sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapNormal)[index]);
+        }
     }
 
     public void IndicatorSelect(int index, Span<bool> indicatorCondition)

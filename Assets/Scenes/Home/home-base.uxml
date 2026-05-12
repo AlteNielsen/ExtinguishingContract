@@ -3,7 +3,7 @@
     <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
     <ui:Style src="project:/Assets/Scenes/Home/home.uss" />
 
-    <ui:VisualElement class="abs-all sector-image" />
+    <ui:VisualElement name="SectorImage" class="abs-all sector-image" />
     <ui:VisualElement class="all">
         <ui:VisualElement class="row upper-screen">
         </ui:VisualElement>

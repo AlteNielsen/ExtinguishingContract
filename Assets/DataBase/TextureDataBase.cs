@@ -31,11 +31,11 @@ public static class TextureDataBase
 
     public static void Load()
     {
-        RayFileLoader.LoadTextures((texFolderPath + "/" + "Unit"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, unitNotPaths)), textures.AsMemory(offsets[0], offsets[1] - offsets[0]));
-        RayFileLoader.LoadTextures((texFolderPath + "/" + "Unit"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, unitSelectedPaths)), textures.AsMemory(offsets[1], offsets[2] - offsets[1]));
-        RayFileLoader.LoadTextures((texFolderPath + "/" + "Map"),  RayFileLoader.LoadCSVAll(Path.Combine(folderPath, mapNormalPaths)), textures.AsMemory(offsets[2], offsets[3] - offsets[2]));
-        RayFileLoader.LoadTextures((texFolderPath + "/" + "Map"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, mapBurningPaths)), textures.AsMemory(offsets[3], offsets[4] - offsets[3]));
-        RayFileLoader.LoadTextures((texFolderPath + "/" + "Indicator"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, indicatorPaths)), textures.AsMemory(offsets[4], offsets[5] - offsets[4]));
+        RayFileLoader.LoadTextures((texFolderPath + "/" + "Unit"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, unitNotPaths)), offsets[0], textures);
+        RayFileLoader.LoadTextures((texFolderPath + "/" + "Unit"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, unitSelectedPaths)), offsets[1], textures);
+        RayFileLoader.LoadTextures((texFolderPath + "/" + "Map"),  RayFileLoader.LoadCSVAll(Path.Combine(folderPath, mapNormalPaths)), offsets[2], textures);
+        RayFileLoader.LoadTextures((texFolderPath + "/" + "Map"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, mapBurningPaths)), offsets[3], textures);
+        RayFileLoader.LoadTextures((texFolderPath + "/" + "Indicator"), RayFileLoader.LoadCSVAll(Path.Combine(folderPath, indicatorPaths)), offsets[4], textures);
     }
 
     public static ReadOnlySpan<Texture2D> GetTextures(GameTextures index)
