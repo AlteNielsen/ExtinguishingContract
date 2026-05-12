@@ -295,13 +295,11 @@ public class UnitSceneView
     {
         if (isSelected)
         {
-            unitIcons[index].RemoveFromClassList("unit-card-icon-not");
-            unitIcons[index].AddToClassList("unit-card-icon-selected");
+            unitIcons[index].style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.UnitSelected)[index]);
         }
         else
         {
-            unitIcons[index].RemoveFromClassList("unit-card-icon-selected");
-            unitIcons[index].AddToClassList("unit-card-icon-not");
+            unitIcons[index].style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.UnitNot)[index]);
         }
     }
 
