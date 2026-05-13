@@ -13,15 +13,21 @@ public class TitleSceneManager : MonoBehaviour
 
     void Awake()
     {
+        bool isStarted = true;
         if (SaveDataManager.Instance == null)
         {
             ExtinguishingContract.GameSetup();
+            isStarted = false;
         }
 
         TitleSceneController();
 
         sceneView = new TitleSceneView(document);
         SaveDataManager.Instance.TitleSceneSaveDataInitialize();
+        if(isStarted)
+        {
+            StartGame();
+        }
     }
 
     private void TitleSceneController()
