@@ -12,7 +12,7 @@
         <ui:VisualElement class="plank-line-large" />
         <ui:VisualElement name="StartScreen" class="base-flex center-line">
             <ui:Button class="abs-all transparent" />
-            <ui:Label name="Text" class="serif-bold text-mid color-white press-start" text="- Press Start -" />
+            <ui:Label name="Text" class="serif-bold text-mid color-white press-start flash-animation" text="- Press Start -" />
         </ui:VisualElement>
         <ui:VisualElement name="TitleScreen" class="menu non-display">
             <ui:VisualElement class="row hei-all">

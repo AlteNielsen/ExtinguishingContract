@@ -9,6 +9,17 @@
     top: 65%;
 }
 
+.flash-animation{
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 1.0s;
+    transition-timing-function: ease-in-out;
+}
+
+.flash-animation-off{
+    opacity: 0.1;
+}
+
 .menu{
     top: 100px;
 }

@@ -20,6 +20,7 @@ public class TitleSceneView
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Title)[i];
         }
+        labels[0].schedule.Execute(() => { labels[0].ToggleInClassList("flash-animation-off"); }).Every(1000);
         Label continueText = document.rootVisualElement.Q<Label>(className: "continue");
         VisualElement continueUnderbar = document.rootVisualElement.Q<VisualElement>("ContinueUnderbar");
         ReadOnlyMemory<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data;
