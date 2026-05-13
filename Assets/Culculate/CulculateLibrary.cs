@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public static class CulculateLibrary
 {
@@ -426,5 +427,17 @@ public static class CulculateLibrary
                 break;
         }
         return baseValue * level;
+    }
+
+    public static void SceneFadeIn(VisualElement fader)
+    {
+        fader.RegisterCallback<GeometryChangedEvent>(evt => {fader.RemoveFromClassList("fader-active");});
+        fader.AddToClassList("fader-active");
+    }
+
+    public static void SceneFadeOut(VisualElement fader, Action act)
+    {
+        fader.AddToClassList("fader-active");
+        fader.RegisterCallback<TransitionEndEvent>(evt => {act();});
     }
 }

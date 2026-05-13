@@ -12,6 +12,8 @@ public class ContractSceneManager : MonoBehaviour
     private Button sign;
     private Button reconsider;
 
+    private VisualElement fader;
+
     void Awake()
     {
         sceneView = new ContractSceneView(document);
@@ -21,6 +23,9 @@ public class ContractSceneManager : MonoBehaviour
             indicatorLevels[i] = 1;
             IndicatorButtonClicked(i, 0);
         }
+
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void ContractSceneController()
@@ -56,11 +61,11 @@ public class ContractSceneManager : MonoBehaviour
     private void SignClicked()
     {
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.NowID, indicatorLevels);
-        GameSceneManager.ToGameLoading();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToGameLoading);
     }
 
     private void ReconsiderClicked()
     {
-        GameSceneManager.ToTitle();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToTitle);
     }
 }

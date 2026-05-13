@@ -107,5 +107,5 @@
             </ui:VisualElement> 
         </ui:VisualElement>
     </ui:VisualElement>
-    
+    <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
 </ui:UXML>

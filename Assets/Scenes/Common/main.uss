@@ -93,3 +93,15 @@
     top: 10%;
     left: 4%;
 }
+
+.fader{
+    opacity: 0;
+    background-color: black;
+    transition-property: opacity;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+}
+
+.fader-active{
+    opacity: 1;
+}

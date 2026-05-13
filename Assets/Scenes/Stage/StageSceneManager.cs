@@ -39,6 +39,8 @@ public class StageSceneManager : MonoBehaviour
     private InputAction counterClockwiseRotate;
     private InputAction rightClick;
 
+    private VisualElement fader;
+
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
@@ -55,6 +57,9 @@ public class StageSceneManager : MonoBehaviour
         calcManager.WaterCalculate(water, UnitMap, NowUnitFacing);
         boardView.DisplayBoard(FireMap, water, UnitMap, NowUnitFacing);
         StageSceneController(width);
+
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void StageSceneController(int width)
@@ -435,7 +440,7 @@ public class StageSceneManager : MonoBehaviour
         sceneView.DisplayFinishScreen(true);
         Save();
         await Task.Delay(3000);
-        GameSceneManager.ToResult();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToResult);
     }
 
     async private void LoseProcess()
@@ -443,7 +448,7 @@ public class StageSceneManager : MonoBehaviour
         sceneView.DisplayFinishScreen(false);
         Save();
         await Task.Delay(3000);
-        GameSceneManager.ToResult();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToResult);
     }
 
     private void Save()

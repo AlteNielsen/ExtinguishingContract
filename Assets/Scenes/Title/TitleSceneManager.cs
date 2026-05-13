@@ -10,6 +10,7 @@ public class TitleSceneManager : MonoBehaviour
     private Action[] methods;
 
     private TitleSceneView sceneView;
+    private VisualElement fader;
 
     void Awake()
     {
@@ -28,6 +29,8 @@ public class TitleSceneManager : MonoBehaviour
         {
             StartGame();
         }
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void TitleSceneController()
@@ -52,7 +55,7 @@ public class TitleSceneManager : MonoBehaviour
 
     private void NewGame()
     {
-        GameSceneManager.ToContract();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToContract);
     }
 
     private void Continue()
@@ -64,26 +67,26 @@ public class TitleSceneManager : MonoBehaviour
         }
         if(CulculateLibrary.IsGoodEnding())
         {
-            GameSceneManager.ToEnding();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToEnding);
         }
         else 
         {
-            GameSceneManager.ToHome();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHome);
         }
     }
 
     private void Help()
     {
-        GameSceneManager.ToHelp();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
     }
 
     private void Exit()
     {
-        GameSceneManager.QuitGame();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.QuitGame);
     }
 
     private void Setting()
     {
-        GameSceneManager.ToHelp();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
     }
 }

@@ -17,4 +17,5 @@
             <ui:Label name="Topic" class="serif-bold text-mid color-white text-multi-line text-set-center" text="teseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeet" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
 </ui:UXML>

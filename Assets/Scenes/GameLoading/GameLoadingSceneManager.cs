@@ -12,8 +12,10 @@ public class GameLoadingSceneManager : MonoBehaviour
         SetupBurningSituation();
         SetupBlockIndicator();
         GameLoadingSceneView();
+        VisualElement fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
         await Task.Delay(3000);
-        GameSceneManager.ToHome();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHome);
     }
 
     private void SaveDataInitialize()

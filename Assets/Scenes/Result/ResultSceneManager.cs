@@ -9,6 +9,9 @@ public class ResultSceneManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset unitPlate;
     private ResultSceneView sceneView;
     private float[] blockSituations;
+
+    private VisualElement fader;
+
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
@@ -25,6 +28,9 @@ public class ResultSceneManager : MonoBehaviour
         UpdateSituation(other);
         SaveDataManager.Instance.ResultSceneSaveDataInitialize();
         ResultSceneCotroller();
+
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void ResultSceneCotroller()
@@ -250,11 +256,11 @@ public class ResultSceneManager : MonoBehaviour
         }
         if(isFinish || counter == blockSituations.Length)
         {
-            GameSceneManager.ToEnding();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToEnding);
         }
         else
         {
-            GameSceneManager.ToHome();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHome);
         }
     }
 }

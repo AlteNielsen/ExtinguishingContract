@@ -10,6 +10,7 @@ public class HomeSceneManager : MonoBehaviour
     private HomeSceneView sceneView;
     private int blockSelector;
     private bool[] isIndicatorSelected = new bool[ExtinguishingContract.IndicatorChoicesNum];
+    private VisualElement fader;
 
     void Awake()
     {
@@ -17,6 +18,9 @@ public class HomeSceneManager : MonoBehaviour
         sceneView = new HomeSceneView(document, baseDocument);
         HomeSceneController();
         RestoreSituationFromSaveData();
+
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void HomeSceneController()
@@ -84,7 +88,7 @@ public class HomeSceneManager : MonoBehaviour
     private void BackToTitle()
     {
         SaveProcess();
-        GameSceneManager.ToTitle();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToTitle);
     }
 
     private void ToUnitScene()
@@ -94,7 +98,7 @@ public class HomeSceneManager : MonoBehaviour
             return;
         }
         SaveProcess();
-        GameSceneManager.ToUnit();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToUnit);
     }
 
     private void SaveProcess()

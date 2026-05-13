@@ -9,6 +9,10 @@ public class EndingSceneManager : MonoBehaviour
     [SerializeField] private UIDocument badDocument;
     private EndingSceneView sceneView;
 
+    private VisualElement mainFader;
+    private VisualElement goodFader;
+    private VisualElement badFader;
+
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
@@ -17,16 +21,28 @@ public class EndingSceneManager : MonoBehaviour
         EndingSceneController();
         UpdateMaxID(isGoodEnding);
         SaveDataManager.Instance.EndingSceneSaveDataInitialize();
+
+        goodFader = goodDocument.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(goodFader);
+        badFader = badDocument.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(badFader);
     }
 
     private void EndingSceneController()
     {
         Button goodNext = goodDocument.rootVisualElement.Q<Button>("NextButton");
-        goodNext.clicked += sceneView.SwitchMainScreen;
+        goodNext.clicked += () => CulculateLibrary.SceneFadeOut(goodFader, SwitchMainScreen);
         Button badNext = badDocument.rootVisualElement.Q<Button>("NextButton");
-        badNext.clicked += sceneView.SwitchMainScreen;
+        badNext.clicked += () => CulculateLibrary.SceneFadeOut(badFader, SwitchMainScreen);
         Button backButton = mainDocument.rootVisualElement.Q<Button>("BackButton");
-        backButton.clicked += GameSceneManager.ToClear;
+        backButton.clicked += () =>  CulculateLibrary.SceneFadeOut(mainFader, GameSceneManager.ToClear);
+    }
+
+    private void SwitchMainScreen()
+    {
+        sceneView.SwitchMainScreen();
+        mainFader = mainDocument.rootVisualElement.Q<VisualElement>("Fader");
+        mainFader.RemoveFromClassList("fader-active");
     }
 
     private void UpdateMaxID(bool isGoodEnding)

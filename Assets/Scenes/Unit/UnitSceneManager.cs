@@ -18,6 +18,8 @@ public class UnitSceneManager : MonoBehaviour
     private int deployLimit;
     private int pressureLimit;
 
+    private VisualElement fader;
+
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
@@ -33,6 +35,9 @@ public class UnitSceneManager : MonoBehaviour
         sceneView.DisplayDeployPanel(deployCounter, deployLimit);
         sceneView.DisplayTotalPressurePanel(totalPressure, pressureLimit);
         sceneView.DisplayGoButton(canGo);
+
+        fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
     }
 
     private void ScrollViewSetup()
@@ -100,7 +105,7 @@ public class UnitSceneManager : MonoBehaviour
     private void BackToHome()
     {
         Save();
-        GameSceneManager.ToHome();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHome);
     }
 
     private void GoToStage()
@@ -108,7 +113,7 @@ public class UnitSceneManager : MonoBehaviour
         var (_, _, canGo) = JudgeCanGoStage();
         if (!canGo) return;
         Save(); 
-        GameSceneManager.ToStageLoading();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToStageLoading);
     }
 
     private void Load()

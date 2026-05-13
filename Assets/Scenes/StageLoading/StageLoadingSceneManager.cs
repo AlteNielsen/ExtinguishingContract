@@ -12,9 +12,11 @@ public class StageLoadingSceneManager : MonoBehaviour
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
         StageLoadingSceneView();
+        VisualElement fader = document.rootVisualElement.Q<VisualElement>("Fader");
+        CulculateLibrary.SceneFadeIn(fader);
         await Task.Delay(3000);
         SaveDataManager.Instance.StageLoadingSceneSaveDataInitialize();
-        GameSceneManager.ToStage();
+        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToStage);
     }
 
     private void StageLoadingSceneView()

@@ -244,4 +244,5 @@
         </ui:VisualElement>
         <ui:VisualElement class="underbar bg-darkred" />
     </ui:VisualElement>
+    <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
 </ui:UXML>
