@@ -59,7 +59,7 @@
 .indicator-icon{
     height: 100%;
     width: 100%;
-    background-image: url('project://database/Assets/Textures/square_test_icon.png');
+    background-image: url('project://database/Assets/Textures/test_indicator_icon.png');
     -unity-background-scale-mode: scale-to-fit;
     background-position-x: left;
 }
