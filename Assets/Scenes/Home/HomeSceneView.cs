@@ -92,6 +92,7 @@ public class HomeSceneView
 
     private void SetupIndicatorsDisplay()
     {
+        List<VisualElement> icons = document.rootVisualElement.Query<VisualElement>("IndicatorIcon").ToList();
         List<Label> chances = document.rootVisualElement.Query<Label>("IndicatorChance").ToList();
         List<Label> names = document.rootVisualElement.Query<Label>("IndicatorName").ToList();
         List<Label> types = document.rootVisualElement.Query<Label>("IndicatorType").ToList();
@@ -105,7 +106,8 @@ public class HomeSceneView
             {
                 int type = i / Config.Data.IndicatorMaxLv;
                 int level = i % Config.Data.IndicatorMaxLv;
-                
+
+                icons[buttonCounter].style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.Indicator)[type]);
                 chances[buttonCounter].text = "+" + CulculateLibrary.FloatToPercent(Config.Data.IndicatorBaseChance * (level + 1)) + "%";
                 names[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorTitle)[type];
                 types[buttonCounter].text = WordDataBase.Word(WordDataBase.WordSelector.EIndicatorEffect)[type];
@@ -155,7 +157,6 @@ public class HomeSceneView
 
     private void DisplaySectorImage(int index)
     {
-        Debug.Log(TextureDataBase.GetTextures(GameTextures.MapBurning)[index] == null);
         if(SaveDataManager.Instance.Access<BurningSituationChunk>(((int)SaveDataManager.SaveDataChunk.BurningSituation)).data.Span[index] > 0.5f)
         {
             sectorImage.style.backgroundImage = new StyleBackground(TextureDataBase.GetTextures(GameTextures.MapBurning)[index]);

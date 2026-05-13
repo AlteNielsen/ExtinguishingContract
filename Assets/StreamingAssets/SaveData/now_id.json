@@ -1,11 +1,11 @@
 {
-    "deployment": -1,
-    "unit_base_pressure": -1,
-    "lv_pressure_ratio": -1,
-    "usable_pressure": -1,
-    "spread_speed": -1,
-    "start_turn": -1,
-    "initial_chance": -1,
-    "start_burning_block": -1,
-    "burning_speed": -1
+    "deployment": 1,
+    "unit_base_pressure": 1,
+    "lv_pressure_ratio": 1,
+    "usable_pressure": 1,
+    "spread_speed": 1,
+    "start_turn": 1,
+    "initial_chance": 1,
+    "start_burning_block": 1,
+    "burning_speed": 1
 }
