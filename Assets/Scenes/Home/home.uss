@@ -179,16 +179,36 @@
 }
 
 .map-title{
-    width: 500px;
+    width: 900px;
     height: 80px;
 }
 
 .map-prev{
-    width: 1000px;
-    height: 610px;
+    width: 900px;
+    height: 600px;
+    background-color: black;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.grid-tile{
+    width: 75px;
+    height: 75px;
+}
+
+.on-grid{
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 73px;
+    height: 73px;
 }
 
 .map-prev-tex{
     background-image: url('project://database/Assets/Textures/map_prev_test.png');
     -unity-background-scale-mode: scale-to-fit;
+}
+
+.map-under-plank{
+    height: 10px;
 }

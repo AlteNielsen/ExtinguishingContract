@@ -6,6 +6,7 @@
 
     <ui:Template name="BlockButton" src="project:/Assets/Scenes/Home/BlockButton.uxml" />
     <ui:Template name="IndicatorButton" src="project:/Assets/Scenes/Home/IndicatorButton.uxml" />
+    <ui:Template name="GridTile" src="project:/Assets/Scenes/Home/grid-temp.uxml" />
 
     <ui:VisualElement class="all">
         <ui:VisualElement class="row upper-screen">
@@ -111,17 +112,20 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement name="MapPanel" class="center-line non-display">
-                    <ui:VisualElement class="plank-line-small" />
+                    <ui:VisualElement class="plank-line-mid" />
                     <ui:VisualElement class="row" >
                         <ui:VisualElement class="map-title" >
                             <ui:VisualElement class="all color-gradiation-red" />
                             <ui:Label name="MapInfo" class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
                         </ui:VisualElement>
-                        <ui:VisualElement class="map-title" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="map-prev" >
-                        <ui:VisualElement class="all map-prev-tex" />
-                    </ui:VisualElement>    
+                    <ui:VisualElement class="map-under-plank" />
+                    <ui:VisualElement class="">
+                        <ui:VisualElement name="MapGrids" class="map-prev" >
+                            <ui:Instance template="GridTile" />
+                            <ui:Instance template="GridTile" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
                 </ui:VisualElement>    
                 <ui:VisualElement class="plank-line-mid" />
                 <ui:VisualElement class="row">

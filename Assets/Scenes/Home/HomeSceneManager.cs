@@ -1,12 +1,15 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
-using System;
 
 public class HomeSceneManager : MonoBehaviour
 {
+    private const int tileCount = 96;
+
     [SerializeField] private UIDocument document;
     [SerializeField] private UIDocument baseDocument;
+    [SerializeField] private VisualTreeAsset grid;
     private HomeSceneView sceneView;
     private int blockSelector;
     private bool[] isIndicatorSelected = new bool[ExtinguishingContract.IndicatorChoicesNum];
@@ -15,12 +18,24 @@ public class HomeSceneManager : MonoBehaviour
     void Awake()
     {
         ExtinguishingContract.DevelopOnlyGameSetup();
+        GridSstup();
         sceneView = new HomeSceneView(document, baseDocument);
         HomeSceneController();
         RestoreSituationFromSaveData();
 
         fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
+    }
+
+    private void GridSstup()
+    {
+        VisualElement panel =  document.rootVisualElement.Q<VisualElement>("MapGrids");
+        panel.contentContainer.Clear();
+        for (int i = 0; i < tileCount; i++)
+        {
+            VisualElement ve = grid.Instantiate();
+            panel.contentContainer.Add(ve);
+        }
     }
 
     private void HomeSceneController()

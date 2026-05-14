@@ -13,6 +13,7 @@ public class HomeSceneView
     private List<VisualElement> waterGauge;
     private VisualElement indicatorPanel;
     private VisualElement mapPanel;
+    private List<VisualElement> mapGrids;
     private VisualElement mapButtonTex;
     private VisualElement nextButtonBG;
 
@@ -28,6 +29,7 @@ public class HomeSceneView
         waterGauge = document.rootVisualElement.Query<VisualElement>("WaterGauge").ToList();
         indicatorPanel = document.rootVisualElement.Q<VisualElement>("IndicatorPanel");
         mapPanel = document.rootVisualElement.Q<VisualElement>("MapPanel");
+        mapGrids = document.rootVisualElement.Query<VisualElement>("GridPanel").ToList();
         mapButtonTex = document.rootVisualElement.Q<VisualElement>("MapButtonTex");
         nextButtonBG = document.rootVisualElement.Q<VisualElement>("NextButtonBG");
         WriteText();
@@ -153,6 +155,7 @@ public class HomeSceneView
         }
         mapInfo[3].text = WordDataBase.Word(WordDataBase.WordSelector.MapTitle)[index] + " - " + WordDataBase.Word(WordDataBase.WordSelector.MapName)[index];
         DisplaySectorImage(index);
+        MapPreview(index);
     }
 
     private void DisplaySectorImage(int index)
@@ -233,6 +236,28 @@ public class HomeSceneView
             indicatorPanel.RemoveFromClassList("non-display");
             mapButtonTex.RemoveFromClassList("map-button-tex-on");
             mapButtonTex.AddToClassList("map-button-tex-off");
+        }
+    }
+
+    private void MapPreview(int index)
+    {
+        Span<int> layout = MapDataBase.Datas[index].Data.layout;
+        int fire = MapDataBase.Datas[index].Data.fire_point;
+        for(int i = 0; i < layout.Length; i++)
+        {
+            mapGrids[i].RemoveFromClassList("bg-red");
+            if(layout[i] < 1)
+            {
+                mapGrids[i].RemoveFromClassList("non-display");
+            }
+            else
+            {
+                mapGrids[i].AddToClassList("non-display");
+            }
+            if(i == fire)
+            {
+                mapGrids[i].AddToClassList("bg-red");
+            }
         }
     }
 }
