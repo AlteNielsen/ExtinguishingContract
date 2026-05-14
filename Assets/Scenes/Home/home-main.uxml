@@ -115,8 +115,8 @@
                     <ui:VisualElement class="plank-line-mid" />
                     <ui:VisualElement class="row" >
                         <ui:VisualElement class="map-title" >
-                            <ui:VisualElement class="all color-gradiation-red" />
-                            <ui:Label name="MapInfo" class="abs-all serif-bold text-mid color-white" text=" ダム区画-第二発電所内部" />
+                            <ui:VisualElement class="all color-gradiation-red semi-transparent" />
+                            <ui:Label name="MapInfo" class="abs-all serif-bold text-mid color-white text-offset-alpha" text=" ダム区画-第二発電所内部" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="map-under-plank" />

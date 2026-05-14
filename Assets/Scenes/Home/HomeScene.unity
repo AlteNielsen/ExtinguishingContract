@@ -297,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HomeSceneManager
   document: {fileID: 2106720757}
   baseDocument: {fileID: 283331346}
+  grid: {fileID: 9197481963319205126, guid: 3ce04c8ee6d59b447b9b00354304b517, type: 3}
 --- !u!4 &1059189745
 Transform:
   m_ObjectHideFlags: 0
