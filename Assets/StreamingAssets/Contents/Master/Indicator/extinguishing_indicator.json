@@ -6,8 +6,8 @@
     },
     "unit_base_pressure": {
         "icon_path": "ext_icon_base.png",
-        "base_value": 5,
-        "lv_increase": 5
+        "base_value": 10,
+        "lv_increase": 10
     },
     "lv_pressure_ratio": {
         "icon_path": "ext_icon_power.png",
@@ -16,7 +16,7 @@
     },
     "usable_pressure": {
         "icon_path": "ext_icon_usable.png",
-        "base_value": -10,
+        "base_value": -30,
         "lv_increase": -10
     },
     "spread_speed": {
