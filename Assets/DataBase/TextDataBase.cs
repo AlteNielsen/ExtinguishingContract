@@ -58,6 +58,7 @@ public static class TextDataBase
         EndingScreen,
         EndingView,
         StageLoading,
-        Stage
+        Stage,
+        Clear
     }
 }

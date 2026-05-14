@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5caeef132c53644e90dcb0e2aa021bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClearSceneManager
+  document: {fileID: 992864994}
 --- !u!4 &323601410
 Transform:
   m_ObjectHideFlags: 0
