@@ -5,7 +5,7 @@
     "usable_pressure": 4,
     "spread_speed": 4,
     "start_turn": 4,
-    "initial_chance": 1,
+    "initial_chance": 4,
     "start_burning_block": 0,
-    "burning_speed": 1
+    "burning_speed": 4
 }
