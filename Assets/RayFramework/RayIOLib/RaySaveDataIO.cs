@@ -7,7 +7,7 @@ namespace Ray.FileIO
     public static class RaySaveDataIO
     {
         private static readonly string originalPath = Path.Combine(Application.streamingAssetsPath, "SaveDataOriginal");
-        private static readonly string savedataPath = Path.Combine(Application.streamingAssetsPath, "SaveData");
+        private static readonly string savedataPath = Path.Combine(Application.persistentDataPath, "SaveData");
 
         public static T LoadSaveData<T>(string path) where T : class
         {

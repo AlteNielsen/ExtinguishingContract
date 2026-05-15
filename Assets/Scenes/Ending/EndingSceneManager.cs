@@ -22,10 +22,17 @@ public class EndingSceneManager : MonoBehaviour
         UpdateMaxID(isGoodEnding);
         SaveDataManager.Instance.EndingSceneSaveDataInitialize();
 
+        mainFader = mainDocument.rootVisualElement.Q<VisualElement>("Fader");
         goodFader = goodDocument.rootVisualElement.Q<VisualElement>("Fader");
-        CulculateLibrary.SceneFadeIn(goodFader);
         badFader = badDocument.rootVisualElement.Q<VisualElement>("Fader");
-        CulculateLibrary.SceneFadeIn(badFader);
+        if(isGoodEnding)
+        {
+            CulculateLibrary.SceneFadeIn(goodFader);
+        }
+        else
+        {
+            CulculateLibrary.SceneFadeIn(badFader);
+        }
     }
 
     private void EndingSceneController()
@@ -41,7 +48,6 @@ public class EndingSceneManager : MonoBehaviour
     private void SwitchMainScreen()
     {
         sceneView.SwitchMainScreen();
-        mainFader = mainDocument.rootVisualElement.Q<VisualElement>("Fader");
         mainFader.RemoveFromClassList("fader-active");
     }
 
