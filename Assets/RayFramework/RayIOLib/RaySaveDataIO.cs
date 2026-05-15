@@ -35,7 +35,13 @@ namespace Ray.FileIO
                 Directory.CreateDirectory(savedataPath);
             }
             string json = JsonUtility.ToJson(obj, true);
-            File.WriteAllText(Path.Combine(savedataPath, path), json);
+            string finalPath = Path.Combine(savedataPath, path);
+            File.WriteAllText(finalPath + ".tmp", json);
+            if(File.Exists(finalPath))
+            {
+                File.Delete(finalPath);
+            }
+            File.Move(finalPath + ".tmp", finalPath);
         }
 
         public static void Initialize<T>(string path) where T : class
