@@ -79,20 +79,23 @@ public static class CulculateLibrary
 
     public static int ContractGrade(ReadOnlySpan<float> data)
     {
-        int primaryValue = 11;
-        int counter = 0;
+        int primaryValue = 100;
+        double product = 1.0;
         for(int i = 0; i < data.Length; i++)
         {
+            int v = 0;
             if ((int)data[i] == 0)
             {
-                counter += 10;
+                v = 10;
             }
             else
             {
-                counter += (int)data[i];
+                v = (int)data[i];
             }
+            product *= v;
         }
-        return primaryValue * counter;
+        double geometricMean = Math.Pow(product, 1.0 / data.Length);
+        return (int)(primaryValue * geometricMean);
     }
 
     public static float[] IndicatorBaseValues(ReadOnlySpan<float> indicatorLevels)
