@@ -189,7 +189,8 @@
 }
 
 .scrollbar{
-    top: 10px;
+    position: absolute;
+    top: 883px;
     left: 10px;
     width: 99%;
     height: 20px;
@@ -212,4 +213,8 @@
     flex-grow: 1;
     background-color: var(--color-gray);
     opacity: 0.25;
+}
+
+.unity-scroller {
+    opacity: 0; 
 }

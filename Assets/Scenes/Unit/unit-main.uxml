@@ -36,14 +36,18 @@
         </ui:VisualElement>
         <ui:VisualElement class="row lower-screen">
             <ui:VisualElement class="unit-list">
-                <ui:ScrollView name="UnitScrollView" class="" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" >
-                    <ui:Instance template="UnitCardTemp" />
-                </ui:ScrollView>
                 <ui:VisualElement class="scrollbar row">
                     <ui:VisualElement name="CardScrollBar" class="scrollbar-truck-left" />
                     <ui:VisualElement name="CardScrollBar" class="scrollbar-slider" />
                     <ui:VisualElement class="scrollbar-truck-right" />
                 </ui:VisualElement>
+                <ui:ScrollView name="UnitScrollView" class="" mode="Horizontal" vertical-scroller-visibility="Hidden" >
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                    <ui:Instance template="UnitCardTemp" />
+                </ui:ScrollView>
             </ui:VisualElement>
             <ui:VisualElement class="partition center-line">
                 <ui:VisualElement class="partition-line" />
