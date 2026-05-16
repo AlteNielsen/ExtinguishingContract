@@ -14,6 +14,8 @@ public class ContractSceneManager : MonoBehaviour
 
     private VisualElement fader;
 
+    private const int randomLowMaxLv = 5;
+
     void Awake()
     {
         sceneView = new ContractSceneView(document);
@@ -40,6 +42,18 @@ public class ContractSceneManager : MonoBehaviour
         sign.clicked += SignClicked;
         reconsider = document.rootVisualElement.Q<Button>("Reconsider");
         reconsider.clicked += ReconsiderClicked;
+        
+        document.rootVisualElement.Q<Button>("RandomLow").clicked += () => IndicatorRandomSelect(randomLowMaxLv);
+        document.rootVisualElement.Q<Button>("RandomHigh").clicked += () => IndicatorRandomSelect(ExtinguishingContract.CIndicatorMaxLv);
+    }
+
+    private void IndicatorRandomSelect(int maxLv)
+    {
+        for(int i = 0; i < ExtinguishingContract.CIndicatorNum; i++)
+        {
+            int dice = UnityEngine.Random.Range(0, maxLv);
+            IndicatorButtonClicked(i, dice);
+        }
     }
 
     private void IndicatorButtonClicked(int indicator, int lv)

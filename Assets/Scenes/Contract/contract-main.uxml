@@ -11,12 +11,32 @@
             <ui:VisualElement class="colomn">
                 <ui:VisualElement class="left-logo" />
                 <ui:VisualElement class="plank-line-large" />
+                <ui:VisualElement class="plank-line-mid" />
                 <ui:VisualElement class="base-flex center-line">
                     <ui:VisualElement class="row">
-                        <ui:Label name="Text" class="serif-regular text-tiny color-white" text="▼契約内容▼" />
+                        <ui:VisualElement class="" >
+                            <ui:VisualElement class="base-flex" />
+                            <ui:Label name="Text" class="serif-regular text-tiny color-white" text="▼契約内容▼" />
+                        </ui:VisualElement>
                         <ui:VisualElement class="plank-alpha" />
+                        <ui:VisualElement class="random-buttons row" >
+                            <ui:VisualElement class="random-button">
+                                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                                <ui:VisualElement class="on-button bg-darkgray" />
+                                <ui:Label name="Text" class="random-button-text serif-regular text-small color-white" text="Random(Ⅰ~Ⅴ)" />
+                                <ui:Button name="RandomLow" class="abs-all button-initialize transparent" />
+                            </ui:VisualElement>
+                            <ui:VisualElement class="base-flex" />
+                            <ui:VisualElement class="random-button">
+                                <ui:VisualElement class="all bg-darkgray semi-transparent" />
+                                <ui:VisualElement class="on-button bg-darkgray" />
+                                <ui:Label name="Text" class="random-button-text serif-regular text-small color-white" text="Random(Ⅰ~Ⅹ)" />
+                                <ui:Button name="RandomHigh" class="abs-all button-initialize transparent" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:VisualElement class="plank-line-large" />
+                    <ui:VisualElement class="plank-line-small" />
+                    <ui:VisualElement class="plank-line-small" />
                     <ui:Instance template="IndicatorButton" />
                     <ui:VisualElement class="indicator-plank" />
                     <ui:Instance template="IndicatorButton" />

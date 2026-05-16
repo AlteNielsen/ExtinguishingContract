@@ -55,7 +55,7 @@
 }
 
 .plank-alpha{
-    width: 680px;
+    width: 99px;
 }
 
 .right-logo{
@@ -89,4 +89,20 @@
 
 .contract-button:hover .contract-button-text{
     left: -50px;
+}
+
+.random-buttons{
+    right: 0%;
+    width: 545px;
+    height: 60px;
+}
+
+.random-button{
+    width: 250px;
+    height: 100%;
+}
+
+.random-button-text{
+    position: absolute;
+    left: 12px;
 }
