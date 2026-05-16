@@ -11,7 +11,7 @@
         <ui:VisualElement class="logo" />
         <ui:VisualElement class="plank-line-large" />
         <ui:VisualElement name="StartScreen" class="base-flex center-line">
-            <ui:Button class="abs-all transparent" />
+            <ui:Button class="abs-all transparent button-initialize" />
             <ui:Label name="Text" class="serif-bold text-mid color-white press-start flash-animation" text="- Press Start -" />
         </ui:VisualElement>
         <ui:VisualElement name="TitleScreen" class="menu non-display">
@@ -119,7 +119,7 @@
                         <ui:VisualElement class="row" >
                             <ui:VisualElement class="plank-gamma" />
                             <ui:Label name="Text" class="serif-bold text-large button-text" text="新規契約" />
-                            <ui:Button class="abs-all transparent" />
+                            <ui:Button class="abs-all transparent button-initialize" />
                         </ui:VisualElement>
                         <ui:VisualElement class="underbar button-underbar" />
                     </ui:VisualElement>
@@ -127,7 +127,7 @@
                         <ui:VisualElement class="row" >
                             <ui:VisualElement class="plank-gamma" />
                             <ui:Label name="Text" class="serif-bold text-large button-text continue" text="契約継続" />
-                            <ui:Button class="abs-all transparent" />
+                            <ui:Button class="abs-all transparent button-initialize" />
                         </ui:VisualElement>
                         <ui:VisualElement name="ContinueUnderbar" class="underbar button-underbar" />
                     </ui:VisualElement>
@@ -135,7 +135,7 @@
                         <ui:VisualElement class="row" >
                             <ui:VisualElement class="plank-gamma" />
                             <ui:Label name="Text" class="serif-bold text-large button-text" text="契約説明" />
-                            <ui:Button class="abs-all transparent" />
+                            <ui:Button class="abs-all transparent button-initialize" />
                         </ui:VisualElement>
                         <ui:VisualElement class="underbar button-underbar" />
                     </ui:VisualElement>
@@ -143,7 +143,7 @@
                         <ui:VisualElement class="row" >
                             <ui:VisualElement class="plank-gamma" />
                             <ui:Label name="Text" class="serif-bold text-large button-text" text="終了" />
-                            <ui:Button class="abs-all transparent" />
+                            <ui:Button class="abs-all transparent button-initialize" />
                         </ui:VisualElement>
                         <ui:VisualElement class="underbar button-underbar" />
                     </ui:VisualElement>
@@ -151,7 +151,7 @@
             </ui:VisualElement>
             <ui:VisualElement class="setting">
                 <ui:VisualElement class="all setting-icon" />
-                <ui:Button class="abs-all transparent" />
+                <ui:Button class="abs-all transparent button-initialize" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
