@@ -87,8 +87,16 @@
     height: 75px;
 }
 
-.contract-button:hover .contract-button-text{
-    left: -50px;
+.contract-button-bg{
+    right: 0;
+    width: 0%;
+    transition-property: width;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+}
+
+.contract-button:hover .contract-button-bg{
+    width: 100%;
 }
 
 .random-buttons{

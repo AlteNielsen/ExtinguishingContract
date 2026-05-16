@@ -144,13 +144,15 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-line">
-                        <ui:VisualElement class="contract-button color-gradiation-red row center-row">
-                            <ui:Label name="Text" class="serif-bold text-mid color-white contract-button-text" text="契約締結" />
+                        <ui:VisualElement class="contract-button row center-row">
+                            <ui:VisualElement class="abs-all color-gradiation-red contract-button-bg" />
+                            <ui:Label name="Text" class="serif-bold text-mid color-white" text="契約締結" />
                             <ui:Button name="Sign" class="abs-all button-initialize transparent" />
                         </ui:VisualElement>
                         <ui:VisualElement class="plank-line-mid" />
-                        <ui:VisualElement class="contract-button bg-darkgray row center-row">
-                            <ui:Label name="Text" class="serif-bold text-mid color-white contract-button-text" text="検討" />
+                        <ui:VisualElement class="contract-button row center-row">
+                            <ui:VisualElement class="abs-all color-gradiation-gray contract-button-bg" />
+                            <ui:Label name="Text" class="serif-bold text-mid color-white" text="タイトルに戻る" />
                             <ui:Button name="Reconsider" class="abs-all button-initialize transparent" />
                         </ui:VisualElement>
                     </ui:VisualElement>
