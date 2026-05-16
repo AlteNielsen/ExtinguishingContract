@@ -13,19 +13,39 @@ namespace Ray.FileIO
         {
             if (!File.Exists(Path.Combine(savedataPath, path)))
             {
-                SaveJson<T>(path, LoadJSON<T>(originalPath, path));
+                SaveJson<T>(path, LoadJSON<T>(Path.Combine(originalPath, path), false));
             }
-            return LoadJSON<T>(savedataPath, path);
+            T data = LoadJSON<T>(Path.Combine(savedataPath, path), false);
+            if(data == null)
+            {
+                data = LoadJSON<T>(Path.Combine(savedataPath, path), true);
+            }
+            return data;
         }
 
-        private static T LoadJSON<T>(string parentPath, string path) where T : class 
+        private static T LoadJSON<T>(string filePath, bool isBak) where T : class 
         {
-            string filePath = Path.Combine(parentPath, path);
+            string json = null;
+            if (isBak && !File.Exists(filePath + ".bak"))
+            {
+                using StreamReader reader = new StreamReader(filePath + ".bak", Encoding.UTF8);
+                json = reader.ReadToEnd();
+            }
+            else
+            {
+                using StreamReader reader = new StreamReader(filePath, Encoding.UTF8);
+                json = reader.ReadToEnd();
+            }
 
-            using StreamReader reader = new StreamReader(filePath, Encoding.UTF8);
-            string json = reader.ReadToEnd();
-
-            return JsonUtility.FromJson<T>(json);
+            try
+            {
+                T data = JsonUtility.FromJson<T>(json);
+                return data;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static void SaveJson<T>(string path, T obj) where T : class
@@ -35,7 +55,14 @@ namespace Ray.FileIO
                 Directory.CreateDirectory(savedataPath);
             }
             string json = JsonUtility.ToJson(obj, true);
+
             string finalPath = Path.Combine(savedataPath, path);
+
+            if(File.Exists(finalPath))
+            {
+                File.Copy(finalPath, finalPath + ".bak", overwrite: true);
+            }
+
             File.WriteAllText(finalPath + ".tmp", json);
             if(File.Exists(finalPath))
             {
@@ -46,7 +73,7 @@ namespace Ray.FileIO
 
         public static void Initialize<T>(string path) where T : class
         {
-            SaveJson<T>(path, LoadJSON<T>(originalPath, path));
+            SaveJson<T>(path, LoadJSON<T>(Path.Combine(originalPath, path), false));
         }
     }
 }
