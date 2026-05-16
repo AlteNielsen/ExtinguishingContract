@@ -65,10 +65,12 @@ public class StageSceneView
         if(isPause)
         {
             pauseScreen.RemoveFromClassList("non-display");
+            pauseScreen.AddToClassList("fader-active");
         }
         else
         {
             pauseScreen.AddToClassList("non-display");
+            pauseScreen.RemoveFromClassList("fader-active");
         }
         isPause = !isPause;
     }

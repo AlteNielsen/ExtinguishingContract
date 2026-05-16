@@ -215,7 +215,7 @@
         </ui:VisualElement>
         <ui:VisualElement class="underbar bg-darkred" />
     </ui:VisualElement>
-    <ui:VisualElement name="PauseScreen" class="abs-all center-row non-display" >
+    <ui:VisualElement name="PauseScreen" class="abs-all center-row non-display fader-screen" >
         <ui:VisualElement class="abs-all screen-bg" />
         <ui:VisualElement class="underbar bg-darkred" />
         <ui:VisualElement class="pause-screen-center center-line center-row row">
