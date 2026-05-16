@@ -164,6 +164,7 @@ public class ResultSceneManager : MonoBehaviour
                 }
             }
             burningCount--;
+            Array.Copy(blockSituations, copy, blockSituations.Length);
         }
     }
 
