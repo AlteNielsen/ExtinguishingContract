@@ -102,6 +102,13 @@
     transition-timing-function: ease-in-out;
 }
 
+.fader-screen{
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
+}
+
 .fader-active{
     opacity: 1;
 }

@@ -48,6 +48,7 @@ public class StageSceneView
     {
         VisualElement screen = document.rootVisualElement.Q<VisualElement>("FinishScreen");
         screen.RemoveFromClassList("non-display");
+        screen.AddToClassList("fader-active");
         Label label = document.rootVisualElement.Q<Label>("FinishText");
         if(result)
         {
