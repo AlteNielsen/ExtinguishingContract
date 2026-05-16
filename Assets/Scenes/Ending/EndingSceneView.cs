@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
 public class EndingSceneView
@@ -50,6 +51,7 @@ public class EndingSceneView
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.EndingView)[i];
         }
+        labels[labels.Count - 1].schedule.Execute(() => { labels[labels.Count - 1].ToggleInClassList("flash-animation-off"); }).Every(1000);
     }
 
     private void DisplayEndingScreen(bool isGoodEnding)
