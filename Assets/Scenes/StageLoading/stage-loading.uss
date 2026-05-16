@@ -23,6 +23,6 @@
 }
 
 .topic{
-    left: 35%;
-    width: 30%;
+    left: 25%;
+    width: 50%;
 }

@@ -1,11 +1,6 @@
-10
-topic1,topic1
-topic2,topic2
-topic3,topic3
-topic4,topic4
-topic5,topic5
-topic6,topic6
-topic7,topic7
-topic8,topic8
-topic9,topic9
-topic10,topic10
+5
+画面左上の歯車アイコンから手動でステージから離脱できます(失敗判定),You can abandon the stage by tapping the gear icon in the top-left (counts as a defeat).
+右クリックでUndoが使えます,Right-click to Undo your last action.
+E/Rキーでユニットを90度回転させられます,Press E or R to rotate units 90 degrees.
+ユニットの移動可能範囲は消火範囲と同一です,A unit's movement range is identical to its extinguishing range.
+左クリックでユニットを選択できます,Left-click to select a unit.
