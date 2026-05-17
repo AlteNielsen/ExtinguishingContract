@@ -77,7 +77,3 @@ crashlytics-build.properties
 Assets/Textures/
 Assets/Sounds/
 Assets/Fonts/
-*.png
-*.wav
-*.mp3
-*.ttf
