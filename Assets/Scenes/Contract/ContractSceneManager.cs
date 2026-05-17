@@ -36,7 +36,11 @@ public class ContractSceneManager : MonoBehaviour
         for(int i = 0; i < indicatorButtons.Count; i++)
         {
             int j = i;
-            indicatorButtons[i].clicked += () => IndicatorButtonClicked(j / ExtinguishingContract.CIndicatorMaxLv, j % ExtinguishingContract.CIndicatorMaxLv);
+            indicatorButtons[i].clicked += () =>
+            {
+                SEManager.PlaySelectSE();
+                IndicatorButtonClicked(j / ExtinguishingContract.CIndicatorMaxLv, j % ExtinguishingContract.CIndicatorMaxLv);
+            };
         }
         sign = document.rootVisualElement.Q<Button>("Sign");
         sign.clicked += SignClicked;
@@ -49,7 +53,8 @@ public class ContractSceneManager : MonoBehaviour
 
     private void IndicatorRandomSelect(int maxLv)
     {
-        for(int i = 0; i < ExtinguishingContract.CIndicatorNum; i++)
+        SEManager.PlaySelectSE();
+        for (int i = 0; i < ExtinguishingContract.CIndicatorNum; i++)
         {
             int dice = UnityEngine.Random.Range(0, maxLv);
             IndicatorButtonClicked(i, dice);
@@ -74,12 +79,14 @@ public class ContractSceneManager : MonoBehaviour
 
     private void SignClicked()
     {
+        SEManager.PlayDecideSE();
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.NowID, indicatorLevels);
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToGameLoading);
     }
 
     private void ReconsiderClicked()
     {
+        SEManager.PlayCancelSE();
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToTitle);
     }
 }

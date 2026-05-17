@@ -36,6 +36,7 @@ public class ResultSceneManager : MonoBehaviour
     private void ResultSceneCotroller()
     {
         Button nextButton = document.rootVisualElement.Q<Button>("NextButton");
+        nextButton.clicked += SEManager.PlayDecideSE;
         nextButton.clicked += NextScene;
     }
 

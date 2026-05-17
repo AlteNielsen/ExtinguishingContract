@@ -33,16 +33,29 @@ public class EndingSceneManager : MonoBehaviour
         {
             CulculateLibrary.SceneFadeIn(badFader);
         }
+        SEManager.PlayEndSE();
     }
 
     private void EndingSceneController()
     {
         Button goodNext = goodDocument.rootVisualElement.Q<Button>("NextButton");
-        goodNext.clicked += () => CulculateLibrary.SceneFadeOut(goodFader, SwitchMainScreen);
+        goodNext.clicked += () =>
+        {
+            SEManager.PlaySelectSE();
+            CulculateLibrary.SceneFadeOut(goodFader, SwitchMainScreen);
+        };
         Button badNext = badDocument.rootVisualElement.Q<Button>("NextButton");
-        badNext.clicked += () => CulculateLibrary.SceneFadeOut(badFader, SwitchMainScreen);
+        badNext.clicked += () =>
+        {
+            SEManager.PlaySelectSE();
+            CulculateLibrary.SceneFadeOut(badFader, SwitchMainScreen);
+        };
         Button backButton = mainDocument.rootVisualElement.Q<Button>("BackButton");
-        backButton.clicked += () =>  CulculateLibrary.SceneFadeOut(mainFader, GameSceneManager.ToClear);
+        backButton.clicked += () =>
+        {
+            SEManager.PlayDecideSE();
+            CulculateLibrary.SceneFadeOut(mainFader, GameSceneManager.ToClear);
+        };
     }
 
     private void SwitchMainScreen()

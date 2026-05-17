@@ -67,17 +67,28 @@ public class UnitSceneManager : MonoBehaviour
         {
             int index = i / maxLv;
             int level = i % maxLv;
-            levelSelectors[i].clicked += () => UnitLevelSelect(index, level);
+            levelSelectors[i].clicked += () =>
+            {
+                SEManager.PlaySelectSE();
+                UnitLevelSelect(index, level);
+            };
         }
         Button back = document.rootVisualElement.Q<Button>("BackButton");
+        back.clicked += SEManager.PlayCancelSE;
         back.clicked += BackToHome;
+
         List<Button> unitSelectors = document.rootVisualElement.Query<Button>("UnitSelector").ToList();
         for(int i = 0; i < unitSelectors.Count;i++)
         {
             int index = i;
-            unitSelectors[i].clicked += () => UnitSelect(index);
+            unitSelectors[i].clicked += () => 
+            { 
+                SEManager.PlaySelectSE(); 
+                UnitSelect(index); 
+            };
         }
         Button go = document.rootVisualElement.Q<Button>("GoButton");
+        go.clicked += SEManager.PlayDecideSE;
         go.clicked += GoToStage;
     }
 

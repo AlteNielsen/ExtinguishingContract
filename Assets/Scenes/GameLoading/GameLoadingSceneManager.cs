@@ -14,6 +14,7 @@ public class GameLoadingSceneManager : MonoBehaviour
         GameLoadingSceneView();
         VisualElement fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
+        SEManager.PlayLoadingSE();
         await Task.Delay(3000);
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHome);
     }

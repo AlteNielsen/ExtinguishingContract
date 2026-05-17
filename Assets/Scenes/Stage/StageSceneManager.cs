@@ -69,17 +69,33 @@ public class StageSceneManager : MonoBehaviour
         {
             int index = i;
             int wid = width;
-            tiles[i].clicked += () => TileOnClicked(index, wid); 
+            tiles[i].clicked += () =>
+            {
+                SEManager.PlaySelectSE();
+                TileOnClicked(index, wid);
+            };
         }
 
         clockwiseRotate = new InputAction(binding: "<Keyboard>/r");
-        clockwiseRotate.performed += ctx => RotateUnit(width, true);
+        clockwiseRotate.performed += ctx =>
+        {
+            SEManager.PlaySelectSE();
+            RotateUnit(width, true);
+        };
         clockwiseRotate.Enable();
         counterClockwiseRotate = new InputAction(binding: "<Keyboard>/e");
-        counterClockwiseRotate.performed += ctx => RotateUnit(width, false);
+        counterClockwiseRotate.performed += ctx => 
+        { 
+            SEManager.PlaySelectSE(); 
+            RotateUnit(width, false); 
+        };
         counterClockwiseRotate.Enable();
         rightClick = new InputAction(binding: "<Mouse>/rightButton");
-        rightClick.performed += ctx => RightClicked(width);
+        rightClick.performed += ctx => 
+        { 
+            SEManager.PlayCancelSE(); 
+            RightClicked(width); 
+        };
         rightClick.Enable();
 
         List<Button> iconButtons = document.rootVisualElement.Query<Button>("UnitIconButton").ToList();
@@ -87,18 +103,28 @@ public class StageSceneManager : MonoBehaviour
         {
             int order = i;
             int wid = width;
-            iconButtons[i].clicked += () => SelectUnitByIcon(order, wid);
+            iconButtons[i].clicked += () => 
+            { 
+                SEManager.PlaySelectSE(); 
+                SelectUnitByIcon(order, wid); 
+            };
         }
 
         Button pause = document.rootVisualElement.Q<Button>("PauseButton");
+        pause.clicked += SEManager.PlaySelectSE;
         pause.clicked += sceneView.SwitchPauseScreen;
 
         Button retreat = document.rootVisualElement.Q<Button>("RetreatButton");
-        retreat.clicked += () => { sceneView.SwitchPauseScreen(); LoseProcess(); };
+        retreat.clicked += () => 
+        { 
+            sceneView.SwitchPauseScreen(); 
+            LoseProcess(); 
+        };
 
         Button setting = document.rootVisualElement.Q<Button>("SettingButton");
 
         Button resume = document.rootVisualElement.Q<Button>("ResumeButton");
+        resume.clicked += SEManager.PlayCancelSE;
         resume.clicked += sceneView.SwitchPauseScreen;
     }
 
@@ -445,6 +471,7 @@ public class StageSceneManager : MonoBehaviour
 
     async private void LoseProcess()
     {
+        SEManager.PlayAlertSE();
         sceneView.DisplayFinishScreen(false);
         Save();
         await Task.Delay(3000);

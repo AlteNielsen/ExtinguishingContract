@@ -44,20 +44,31 @@ public class HomeSceneManager : MonoBehaviour
         for(int i = 0; i < blockButtons.Count; i++)
         {
             int j = i;
-            blockButtons[i].clicked += () => BlockSelect(j);
+            blockButtons[i].clicked += () =>
+            {
+                SEManager.PlaySelectSE();
+                BlockSelect(j);
+            };
         }
         List<Button> indicatorButtons = document.rootVisualElement.Query<Button>("IndicatorButton").ToList();
         for (int i = 0; i < indicatorButtons.Count; i++)
         {
             int j = i;
-            indicatorButtons[i].clicked += () => IndicatorSelect(j);
+            indicatorButtons[i].clicked += () => 
+            { 
+                SEManager.PlaySelectSE(); 
+                IndicatorSelect(j); 
+            };
         }
         Button mapButton = document.rootVisualElement.Q<Button>("MapButton");
         mapButton.clicked += MapDisplaySwitch;
+        mapButton.clicked += SEManager.PlaySelectSE;
         Button nextButton = document.rootVisualElement.Q<Button>("NextButton");
         nextButton.clicked += ToUnitScene;
+        nextButton.clicked += SEManager.PlayDecideSE;
         Button backButton = document.rootVisualElement.Q<Button>("BackButton");
         backButton.clicked += BackToTitle;
+        backButton.clicked += SEManager.PlayCancelSE;
     }
 
     private void RestoreSituationFromSaveData()

@@ -27,7 +27,7 @@ public class TitleSceneManager : MonoBehaviour
         SaveDataManager.Instance.TitleSceneSaveDataInitialize();
         if(isStarted)
         {
-            StartGame();
+            sceneView.SwitchScreen();
         }
         fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
@@ -50,16 +50,19 @@ public class TitleSceneManager : MonoBehaviour
 
     private void StartGame()
     {
+        SEManager.PlaySelectSE();
         sceneView.SwitchScreen();
     }
 
     private void NewGame()
     {
+        SEManager.PlayDecideSE();
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToContract);
     }
 
     private void Continue()
     {
+        SEManager.PlayDecideSE();
         ReadOnlyMemory<float> now = SaveDataManager.Instance.Access<NowIDChunk>((int)SaveDataManager.SaveDataChunk.NowID).data;
         if (now.Span[0] < 0)
         {
@@ -77,16 +80,19 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Help()
     {
+        SEManager.PlayDecideSE();
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
     }
 
     private void Exit()
     {
+        SEManager.PlayDecideSE();
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.QuitGame);
     }
 
     private void Setting()
     {
+        SEManager.PlayDecideSE();
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
     }
 }

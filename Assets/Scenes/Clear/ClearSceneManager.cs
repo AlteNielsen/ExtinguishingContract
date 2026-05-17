@@ -11,6 +11,7 @@ public class ClearSceneManager : MonoBehaviour
         document.rootVisualElement.Q<Label>("Text").text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Clear)[0];
         VisualElement fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
+        SEManager.PlayLoadingSE();
         await Task.Delay(3000);
         CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToTitle);
     }
