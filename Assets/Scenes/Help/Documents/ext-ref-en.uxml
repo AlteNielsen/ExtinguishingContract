@@ -1,0 +1,79 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Extinguishing Indicator Levels" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Extinguishing Indicators have internal levels. Higher-level indicators feature more severe values, but they offer a much larger increase to your ultimate Clear Chance." />
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="How Extinguishing Indicators are Selected" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Nine indicators are randomly drawn from a table consisting of 6 categories, ranging from Level 1 to their maximum level." />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    This selection is refreshed upon Contract Conclusion, as well as at the end of a firefighting operation (regardless of success or failure)."/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="District Clearing via Other District Progress" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    ゲージを100%When the progress gauge reaches 100%, one random district will be automatically cleared at the end of the firefighting operation. Districts that you have already cleared directly through your actions will not be selected duplicate times."/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="How Other District Progress Accumulates" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    In the pre-match environment preview, the progress gauge only appears to fill when your Clear Chance exceeds 100% (storing the overflow). In reality, however, progress is pooled far more generously—even if the Clear Chance is below 100%." />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    The Overflow Pool : If your Clear Chance exceeds 100%, the amount exceeding 100% is immediately added to the progress pool. (If it is below 100%, this step is skipped)."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    The RNG Difference Pool : Regardless of whether you exceeded 100% or not, a random value (RNG) is generated to determine success. If your Clear Chance is higher than this value, the operation is a success (Cleared). Upon success, the difference between your Clear Chance and the generated RNG value is extracted and pooled into the gauge."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Because of this two-step system, raising your Clear Chance beyond 100% makes it exponentially easier to fill the Other District Progress gauge."/>
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="How Inter-District Spread Works" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    At the end of each firefighting operation, fires will spread between districts based on the Inter-District Spread Rate chosen in your Contract Indicators."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    On the vertical district list screen, fires spread between adjacent districts (up and down). Crucially, the very top and very bottom districts are also considered adjacent. If a fire breaks out in the bottommost district, it will wrap around and ignite the topmost district next."/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Inter-District Spread and Guards" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Districts cleared by either the player or via Other District Progress will grant a Guard to that district. This Guard is acquired the exact moment the district is cleared, and lasts until the next spread phase occurs."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    While a district retains this Guard, it is completely immune to spreading fires and cannot be ignited."/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Firefighting Operations and Fire Spread" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    During a firefighting operation, fire spread is triggered immediately after you move or rotate a unit."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Regardless of how fast the spread rate is, the system calculates the fire's expansion step-by-step (one tile at a time). After each individual step, the unit's survival and its active extinguishing range are instantly recalculated. When the spread rate is high, this calculation loops multiple times internally—making it appear on-screen as though the fire suddenly advanced by multiple tiles at once."/>
+</ui:UXML>
