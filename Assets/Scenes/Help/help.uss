@@ -36,3 +36,36 @@
 .text-plank{
     height: 20px;
 }
+
+.volume-plank{
+    width: 20px;
+}
+
+.volume-frame{
+    width: 200px;
+}
+
+.lang-plank{
+    width: 50px;
+}
+
+.lang-frame{
+    width: 300px;
+}
+
+.display-button{
+    width: 300px;
+    height: 75px;
+}
+
+.display-on-button{
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 286px;
+    height: 61px;
+}
+
+.display-button-label{
+    top: -7px;
+}

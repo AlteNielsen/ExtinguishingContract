@@ -1,0 +1,115 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Language" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row center-line">
+        <ui:VisualElement class="lang-plank" />
+        <ui:VisualElement class="selector reflect" />
+        <ui:VisualElement class="lang-frame center-line">
+            <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="English" />
+        </ui:VisualElement>
+        <ui:VisualElement class="selector" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Volume" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row">
+        <ui:VisualElement class="lang-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="Master" />
+        <ui:VisualElement class="lang-plank" />
+        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:VisualElement class="volume-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+    </ui:VisualElement>
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row">
+        <ui:VisualElement class="lang-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="BGM" />
+        <ui:VisualElement class="lang-plank" />
+        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:VisualElement class="volume-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+    </ui:VisualElement>
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row">
+        <ui:VisualElement class="lang-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="SE" />
+        <ui:VisualElement class="lang-plank" />
+        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:VisualElement class="volume-plank" />
+        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Display" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row" >
+        <ui:VisualElement class="lang-plank" />
+        <ui:VisualElement class="display-button">
+            <ui:VisualElement class="all bg-darkgray semi-transparent" />
+            <ui:VisualElement class="display-on-button bg-darkgray" />
+            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Full Display" />
+        </ui:VisualElement>
+        <ui:VisualElement class="volume-plank" />
+        <ui:VisualElement class="display-button">
+            <ui:VisualElement class="all bg-darkgray semi-transparent" />
+            <ui:VisualElement class="display-on-button bg-darkgray" />
+            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Window" />
+        </ui:VisualElement>
+        <ui:VisualElement class="volume-plank" />
+        <ui:VisualElement class="display-button">
+            <ui:VisualElement class="all bg-darkgray semi-transparent" />
+            <ui:VisualElement class="display-on-button bg-darkgray" />
+            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Borderless" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Resolution" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row center-line">
+        <ui:VisualElement class="lang-plank" />
+        <ui:VisualElement class="selector reflect" />
+        <ui:VisualElement class="lang-frame center-line">
+            <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="1920 x 1080" />
+        </ui:VisualElement>
+        <ui:VisualElement class="selector" />
+    </ui:VisualElement>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Reset" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="row" >
+        <ui:VisualElement class="lang-plank" />
+        <ui:VisualElement class="display-button">
+            <ui:VisualElement class="all bg-darkred semi-transparent" />
+            <ui:VisualElement class="display-on-button bg-darkred" />
+            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Volume" />
+        </ui:VisualElement>
+        <ui:VisualElement class="volume-plank" />
+        <ui:VisualElement class="display-button">
+            <ui:VisualElement class="all bg-darkred semi-transparent" />
+            <ui:VisualElement class="display-on-button bg-darkred" />
+            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Resolution" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
