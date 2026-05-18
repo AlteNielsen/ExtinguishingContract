@@ -1,0 +1,32 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="クレジット" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    開発 : Systems[alte] / AlteNielsen" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    BGM : 「仄青く眠る、海底遺跡」by 蒲鉾さちこ 様 (DOVA-SYNDROME)" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+        https://dova-s.jp/bgm/detail/15037" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    SE : 効果音ラボ 様 https://soundeffect-lab.info/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    SE : OtoLogic 様 https://otologic.jp/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    画像素材 : イラストAC 様 https://www.ac-illust.com/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    バグ報告 : 制作者のX https://x.com/AlteNielsen" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="underbar bg-white" />
+    <ui:Label class="serif-regular text-tiny color-white text-multi-line" text="
+    © 2026 Systems[alte] All Rights Reserved." />
+</ui:UXML>
