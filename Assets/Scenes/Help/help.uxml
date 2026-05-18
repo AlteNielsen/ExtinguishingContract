@@ -4,7 +4,7 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
     
-   <ui:Template name="ContractExplain" src="project:/Assets/Scenes/Help/contract-explain-temp.uxml" />
+   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/contract-explain-en.uxml" />
 
     <ui:VisualElement class="abs-all bg-black" />
     <ui:VisualElement class="all row padding-small" >
@@ -49,7 +49,7 @@
         <ui:VisualElement class="center-colomn">
             <ui:VisualElement class="plank-line-large" />
             <ui:ScrollView class="padding-large" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
-                <ui:Instance template="ContractExplain" />
+                <ui:Instance template="DocumentTemp" />
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement class="partition bg-darkgray" />

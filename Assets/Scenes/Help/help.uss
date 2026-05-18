@@ -32,3 +32,7 @@
 .tab{
     height: 100px;
 }
+
+.text-plank{
+    height: 20px;
+}
