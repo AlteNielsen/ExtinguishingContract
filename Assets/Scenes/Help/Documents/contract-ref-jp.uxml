@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="契約等級の計算式" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    契約等級(Grade)は相乗平均を用いて算出されています。" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    相乗平均の性質上、全体のレベルをバランスよく上げることで、高いスコアが出しやすくなります。"/>
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="契約指標と消火指標の関係性" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    契約指標は大きく分けて二種類、消火指標に影響するタイプと、全体に影響するタイプの二種類があります。" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    消火指標に影響するタイプは、レベルを上げることで対応する種類の消火指標の持つ数値がより厳しい方向へ強化される一方、その消火指標を取らない限り、対応する契約指標の影響は受けません。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    全体に影響するタイプは、レベルを上げると都市の消火活動全体が難しくなる一方、各区画での消火活動に直接影響を及ぼすことはありません。"/>
+</ui:UXML>

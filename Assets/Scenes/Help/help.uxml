@@ -4,7 +4,7 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
     
-   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/contract-explain-en.uxml" />
+   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/contract-ref-en.uxml" />
 
     <ui:VisualElement class="abs-all bg-black" />
     <ui:VisualElement class="all row padding-small" >

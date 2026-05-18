@@ -1,0 +1,26 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="How Contract Grades are Calculated" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Contract Grades are calculated using the geometric mean." />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Due to the nature of the geometric mean, raising all element levels in a well-balanced manner makes it easier to achieve a higher score."/>
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="The Relationship Between Contract Indicators and Extinguishing Indicators" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Contract Indicators are broadly divided into two categories: those that affect Extinguishing Indicators, and those that affect the Overall Environment." />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Extinguishing-Specific Indicators : Raising the level of this type will make the values of the corresponding Extinguishing Indicators more severe. However, as long as you do not select that specific Extinguishing Indicator, you will not be affected by this Contract Indicator."/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Overall-Environment Indicators : Raising the level of this type will make the entire firefighting operation across the city more difficult. However, it will not directly affect the firefighting conditions within each individual district."/>
+</ui:UXML>
