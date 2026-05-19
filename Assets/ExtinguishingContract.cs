@@ -48,6 +48,9 @@ public static class ExtinguishingContract
 
 public static class GameSceneManager
 {
+    private static GameScenes beforeScene;
+    public static bool helpIsSetting;
+
     public static void ToTitle()
     {
         SceneManager.LoadScene("TitleScene");
@@ -63,9 +66,30 @@ public static class GameSceneManager
         SceneManager.LoadScene("HomeScene");
     }
 
-    public static void ToHelp()
+    public static void ToHelp(GameScenes yourScene, bool isSetting)
     {
-        //SceneManager.LoadScene("HelpScene");
+        beforeScene = yourScene;
+        helpIsSetting = isSetting;
+        SceneManager.LoadScene("HelpScene");
+    }
+
+    public static void BackFromHelp()
+    {
+        switch(beforeScene)
+        {
+            case GameScenes.Title:
+                ToTitle();
+                break;
+            case GameScenes.Stage:
+                ToStage();
+                break;
+        }
+    }
+
+    public static void ReloadHelp()
+    {
+        helpIsSetting = true;
+        SceneManager.LoadScene("HelpScene");
     }
 
     public static void QuitGame()
@@ -111,4 +135,10 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("StageLoadingScene");
     }
+}
+
+public enum GameScenes
+{
+    Title,
+    Stage
 }

@@ -81,7 +81,7 @@ public class TitleSceneManager : MonoBehaviour
     private void Help()
     {
         SEManager.PlayDecideSE();
-        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
+        CulculateLibrary.SceneFadeOut(fader, () => GameSceneManager.ToHelp(GameScenes.Title, false));
     }
 
     private void Exit()
@@ -93,6 +93,6 @@ public class TitleSceneManager : MonoBehaviour
     private void Setting()
     {
         SEManager.PlayDecideSE();
-        CulculateLibrary.SceneFadeOut(fader, GameSceneManager.ToHelp);
+        CulculateLibrary.SceneFadeOut(fader, () => GameSceneManager.ToHelp(GameScenes.Title, true));
     }
 }

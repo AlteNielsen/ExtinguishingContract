@@ -27,7 +27,14 @@ public class HelpSceneManager : MonoBehaviour
         WriteText();
         fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
-        SwitchScreen(0);
+        if(GameSceneManager.helpIsSetting)
+        {
+            SwitchScreen(3);
+        }
+        else
+        {
+            SwitchScreen(0);
+        }
     }
 
     private void SetupScreens()
@@ -54,6 +61,8 @@ public class HelpSceneManager : MonoBehaviour
             int j = i;
             sideButtons[i].clicked += () => SwitchScreen(j);
         }
+        Button exit = document.rootVisualElement.Q<Button>("ExitButton");
+        exit.clicked += GameSceneManager.BackFromHelp;
     }
 
     private void WriteText()
