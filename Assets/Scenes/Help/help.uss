@@ -89,3 +89,11 @@
 .under-plank{
     height: 500px;
 }
+
+.topic .topic-label{
+    color: var(--color-white);
+}
+
+.topic:hover .topic-label{
+    color: red;
+}

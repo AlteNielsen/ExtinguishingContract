@@ -17,28 +17,28 @@
                     <ui:VisualElement class="selector" />
                 </ui:VisualElement>
                 <ui:VisualElement class="base-flex center-line">
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="鎮火契約とは" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-small lang-frame text-set-center topic-label" text="鎮火契約とは" />
                         <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="契約リファレンス" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-small lang-frame text-set-center topic-label" text="契約リファレンス" />
                         <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="消火リファレンス" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-small lang-frame text-set-center topic-label" text="消火リファレンス" />
                         <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="設定" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-small lang-frame text-set-center topic-label" text="設定" />
                         <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="クレジット" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-small lang-frame text-set-center topic-label" text="クレジット" />
                         <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
-                    <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label name="Text" class="serif-regular text-large color-white lang-frame text-set-center" text="EXIT" />
+                    <ui:VisualElement class="base-flex center-row center-line topic">
+                        <ui:Label name="Text" class="serif-regular text-large lang-frame text-set-center topic-label" text="EXIT" />
                         <ui:Button name="ExitButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                 </ui:VisualElement>
