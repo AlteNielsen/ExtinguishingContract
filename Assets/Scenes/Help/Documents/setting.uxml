@@ -105,23 +105,5 @@
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="text-plank" />
-
-    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Reset" />
-    <ui:VisualElement class="text-plank" />
-    <ui:VisualElement class="text-plank" />
-    <ui:VisualElement class="row" >
-        <ui:VisualElement class="lang-plank" />
-        <ui:VisualElement class="display-button">
-            <ui:VisualElement class="all bg-darkred semi-transparent" />
-            <ui:VisualElement class="display-on-button bg-darkred" />
-            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Volume" />
-        </ui:VisualElement>
-        <ui:VisualElement class="volume-plank" />
-        <ui:VisualElement class="display-button">
-            <ui:VisualElement class="all bg-darkred semi-transparent" />
-            <ui:VisualElement class="display-on-button bg-darkred" />
-            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Resolution" />
-        </ui:VisualElement>
-    </ui:VisualElement>
     <ui:VisualElement class="under-plank" />
 </ui:UXML>
