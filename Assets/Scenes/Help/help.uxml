@@ -4,8 +4,8 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
     
-   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/setting-jp.uxml" />
-
+   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/credit-jp.uxml" />
+    <ui:Template name="SettingTemp" src="project:/Assets/Scenes/Help/Documents/setting.uxml" />
     <ui:VisualElement class="abs-all bg-black" />
     <ui:VisualElement class="all row padding-small" >
         <ui:VisualElement class="side-colomn">
@@ -44,6 +44,7 @@
             <ui:VisualElement class="plank-line-large" />
             <ui:ScrollView class="padding-large" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
                 <ui:Instance template="DocumentTemp" />
+                <ui:Instance template="DocumentTemp" class="non-display" />
             </ui:ScrollView>
         </ui:VisualElement>        
     </ui:VisualElement>

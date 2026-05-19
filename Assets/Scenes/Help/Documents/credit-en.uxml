@@ -4,7 +4,7 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
 
-    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Credit" />
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Credits" />
     <ui:VisualElement class="text-plank" />
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     DEVELOPMENT : Systems[alte] / AlteNielsen" />
@@ -31,6 +31,9 @@
     <ui:VisualElement class="text-plank" />
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     Bug Report : https://x.com/AlteNielsen" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    This game utilizes AI-generated imagery for a portion of its visual assets." />
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="underbar bg-white" />
     <ui:Label class="serif-regular text-tiny color-white text-multi-line" text="

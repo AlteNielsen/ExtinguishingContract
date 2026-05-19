@@ -26,6 +26,9 @@
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     バグ報告 : 制作者のX https://x.com/AlteNielsen" />
     <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    このゲームは、ビジュアルアセットの一部にAI生成画像を使用しています。" />
+    <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="underbar bg-white" />
     <ui:Label class="serif-regular text-tiny color-white text-multi-line" text="
     © 2026 Systems[alte] All Rights Reserved." />
