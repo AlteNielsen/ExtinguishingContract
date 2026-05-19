@@ -24,6 +24,10 @@ public class HelpSceneManager : MonoBehaviour
     private float bgmVolume;
     private float seVolume;
 
+    private List<VisualElement> displayBGs;
+    private List<Label> displayLabels;
+    private int displayMode;
+
     private VisualElement fader;
 
     private void Awake()
@@ -74,7 +78,7 @@ public class HelpSceneManager : MonoBehaviour
         Button exit = document.rootVisualElement.Q<Button>("ExitButton");
         exit.clicked += () =>
         {
-            VolumeSave();
+            Save();
             CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
         };
     }
@@ -114,6 +118,7 @@ public class HelpSceneManager : MonoBehaviour
     {
         LangSetup();
         VolumeSetup();
+        DisplaySettingSetup();
     }
 
     private void LangSetup()
@@ -209,7 +214,58 @@ public class HelpSceneManager : MonoBehaviour
         });
     }
 
-    private void VolumeSave()
+    private void DisplaySettingSetup()
+    {
+        displayMode = (int)SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span[3];
+        displayBGs = document.rootVisualElement.Query<VisualElement>("DisplayBG").ToList();
+        displayLabels = document.rootVisualElement.Query<Label>("DisplayLabel").ToList();
+        
+        displayBGs[displayMode].RemoveFromClassList("bg-darkgray");
+        displayBGs[displayMode].AddToClassList("bg-white");
+        displayLabels[displayMode].RemoveFromClassList("color-white");
+        displayLabels[displayMode].AddToClassList("color-black");
+
+        List<Button> buttons = document.rootVisualElement.Query<Button>("DisplayButton").ToList();
+        for(int i = 0; i < buttons.Count; i++)
+        {
+            int j = i;
+            buttons[i].clicked += () => SelectDisplaySetting(j);
+        }
+    }
+
+    private void SelectDisplaySetting(int index)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            displayBGs[i].AddToClassList("bg-darkgray");
+            displayBGs[i].RemoveFromClassList("bg-white");
+            displayLabels[i].AddToClassList("color-white");
+            displayLabels[i].RemoveFromClassList("color-black");
+        }
+        displayBGs[index].RemoveFromClassList("bg-darkgray");
+        displayBGs[index].AddToClassList("bg-white");
+        displayLabels[index].RemoveFromClassList("color-white");
+        displayLabels[index].AddToClassList("color-black");
+
+        if (displayMode == index) return;
+
+        displayMode = index;
+        switch (index)
+        {
+            case 0:
+                Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                break;
+            case 1:
+                Screen.fullScreenMode = FullScreenMode.Windowed;
+                Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+                break;
+            case 2:
+                Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                break;
+        }
+    }
+
+    private void Save()
     {
         ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span;
         float[] save = new float[datas.Length];
@@ -217,6 +273,7 @@ public class HelpSceneManager : MonoBehaviour
         save[0] = masterVolume;
         save[1] = bgmVolume;
         save[2] = seVolume;
+        save[3] = displayMode;
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.Setting, save);
     }
 }

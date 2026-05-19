@@ -63,20 +63,23 @@
         <ui:VisualElement class="lang-plank" />
         <ui:VisualElement class="display-button">
             <ui:VisualElement class="all bg-darkgray semi-transparent" />
-            <ui:VisualElement class="display-on-button bg-darkgray" />
-            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Full Display" />
+            <ui:VisualElement name="DisplayBG" class="display-on-button bg-darkgray" />
+            <ui:Label name="DisplayLabel" class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Full Display" />
+            <ui:Button name="DisplayButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
         <ui:VisualElement class="volume-plank" />
         <ui:VisualElement class="display-button">
             <ui:VisualElement class="all bg-darkgray semi-transparent" />
-            <ui:VisualElement class="display-on-button bg-darkgray" />
-            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Window" />
+            <ui:VisualElement name="DisplayBG" class="display-on-button bg-darkgray" />
+            <ui:Label name="DisplayLabel" class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Window" />
+            <ui:Button name="DisplayButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
         <ui:VisualElement class="volume-plank" />
         <ui:VisualElement class="display-button">
             <ui:VisualElement class="all bg-darkgray semi-transparent" />
-            <ui:VisualElement class="display-on-button bg-darkgray" />
-            <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Borderless" />
+            <ui:VisualElement name="DisplayBG" class="display-on-button bg-darkgray" />
+            <ui:Label name="DisplayLabel" class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Borderless" />
+            <ui:Button name="DisplayButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
     </ui:VisualElement>
 
