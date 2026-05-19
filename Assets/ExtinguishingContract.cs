@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,27 @@ public static class ExtinguishingContract
     public const int CIndicatorNum = 9;
     public const int CIndicatorMaxLv = 10;
     public const int IndicatorChoicesNum = 9;
+    public const int ResolutionNum = 6;
+
+    public static Vector2Int GetResolution(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return new Vector2Int(1280, 720);
+            case 1:
+                return new Vector2Int(1920, 1080);
+            case 2:
+                return new Vector2Int(2560, 1440);
+            case 3:
+                return new Vector2Int(3840, 2160);
+            case 4:
+                return new Vector2Int(3440, 1440);
+            case 5:
+                return new Vector2Int(2160, 1440);
+        }
+        return new Vector2Int(1920, 1080);
+    }
 
     public static void GameSetup()
     {

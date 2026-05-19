@@ -28,6 +28,11 @@ public class HelpSceneManager : MonoBehaviour
     private List<Label> displayLabels;
     private int displayMode;
 
+    private VisualElement resolutonLeft;
+    private Label resolutionValueLabel;
+    private VisualElement resolutonRight;
+    private int resolutionValue;    
+
     private VisualElement fader;
 
     private void Awake()
@@ -119,6 +124,7 @@ public class HelpSceneManager : MonoBehaviour
         LangSetup();
         VolumeSetup();
         DisplaySettingSetup();
+        ResolutionSetup();
     }
 
     private void LangSetup()
@@ -263,6 +269,78 @@ public class HelpSceneManager : MonoBehaviour
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
                 break;
         }
+        Save();
+    }
+
+    private void ResolutionSetup()
+    {
+        resolutonLeft = document.rootVisualElement.Q<VisualElement>("ResolutionLeft");
+        resolutionValueLabel = document.rootVisualElement.Q<Label>("ResolutionValue");
+        resolutonRight = document.rootVisualElement.Q<VisualElement>("ResolutionRight");
+        resolutionValue = (int)SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span[4];
+        ResolutionButtonDisplay(resolutionValue);
+        WriteResolutionValueLabel(resolutionValue);
+        Button leftb = document.rootVisualElement.Q<Button>("ResolutionLeftButton");
+        leftb.clicked += () => ResolutionSwitch(false);
+        Button rightb = document.rootVisualElement.Q<Button>("ResolutionRightButton");
+        rightb.clicked += () => ResolutionSwitch(true);
+    }
+
+    private void ResolutionSwitch(bool facing)
+    {
+        if(facing)
+        {
+            if(resolutionValue != ExtinguishingContract.ResolutionNum - 1)
+            {
+                resolutionValue++;
+            }
+            else
+            {
+                return;
+            }
+        }
+        
+        if(!facing)
+        {
+            if(resolutionValue != 0)
+            {
+                resolutionValue--;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        Screen.SetResolution(ExtinguishingContract.GetResolution(resolutionValue).x, ExtinguishingContract.GetResolution(resolutionValue).y, Screen.fullScreenMode);
+
+        ResolutionButtonDisplay(resolutionValue);
+        WriteResolutionValueLabel(resolutionValue);
+        Save();
+    }
+
+    private void ResolutionButtonDisplay(int index)
+    {
+        if (index == 0)
+        {
+            resolutonLeft.AddToClassList("transparent");
+            resolutonRight.RemoveFromClassList("transparent");
+        }
+        else if (index == ExtinguishingContract.ResolutionNum - 1)
+        {
+            resolutonLeft.RemoveFromClassList("transparent");
+            resolutonRight.AddToClassList("transparent");
+        }
+        else
+        {
+            resolutonLeft.RemoveFromClassList("transparent");
+            resolutonRight.RemoveFromClassList("transparent");
+        }
+    }
+
+    private void WriteResolutionValueLabel(int index)
+    {
+        resolutionValueLabel.text = ExtinguishingContract.GetResolution(index).x + " x " + ExtinguishingContract.GetResolution(index).y;
     }
 
     private void Save()
@@ -274,6 +352,7 @@ public class HelpSceneManager : MonoBehaviour
         save[1] = bgmVolume;
         save[2] = seVolume;
         save[3] = displayMode;
+        save[4] = resolutionValue;
         SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.Setting, save);
     }
 }
