@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
+using System;
 
 public class HelpSceneManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class HelpSceneManager : MonoBehaviour
         WriteText();
         fader = document.rootVisualElement.Q<VisualElement>("Fader");
         CulculateLibrary.SceneFadeIn(fader);
-        if(GameSceneManager.helpIsSetting)
+        if (GameSceneManager.helpIsSetting)
         {
             SwitchScreen(3);
         }
@@ -35,12 +36,13 @@ public class HelpSceneManager : MonoBehaviour
         {
             SwitchScreen(0);
         }
+        LangSetup();
     }
 
     private void SetupScreens()
     {
         screens = new VisualElement[5];
-        int lang = (int)SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).GetLang();
+        int lang = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).GetLang();
         screens[0] = contract[lang].Instantiate();
         screens[1] = refCont[lang].Instantiate();
         screens[2] = refExt[lang].Instantiate();
@@ -62,7 +64,7 @@ public class HelpSceneManager : MonoBehaviour
             sideButtons[i].clicked += () => SwitchScreen(j);
         }
         Button exit = document.rootVisualElement.Q<Button>("ExitButton");
-        exit.clicked += GameSceneManager.BackFromHelp;
+        exit.clicked += () => CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
     }
 
     private void WriteText()
@@ -94,5 +96,53 @@ public class HelpSceneManager : MonoBehaviour
             selectorPlank.RemoveFromClassList("selector-pos-" + i);
         }
         selectorPlank.AddToClassList("selector-pos-" + index);
+    }
+
+    private void LangSetup()
+    {
+        int lang = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).GetLang();
+        ReadOnlySpan<string> words = WordDataBase.Word(WordDataBase.WordSelector.Language);
+        VisualElement leftbb = document.rootVisualElement.Q<VisualElement>("LeftLangButtonBlock");
+        if(lang == 0)
+        {
+            leftbb.AddToClassList("transparent");
+        }
+        else
+        {
+            Button leftButton = document.rootVisualElement.Q<Button>("LeftLangButton");
+            leftButton.clicked += () => LangSwitch(false, lang);
+        }
+        VisualElement rightbb = document.rootVisualElement.Q<VisualElement>("RightLangButtonBlock");
+        if(lang == words.Length - 1)
+        {
+            rightbb.AddToClassList("transparent");
+        }
+        else
+        {
+            Button leftButton = document.rootVisualElement.Q<Button>("RightLangButton");
+            leftButton.clicked += () => LangSwitch(true, lang);
+        }
+        Label label = document.rootVisualElement.Q<Label>("LangName");
+        label.text = words[lang]; 
+    }
+
+    private void LangSwitch(bool facing, int now)
+    {
+        float[] data = new float[6];
+        SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.Setting, data);
+        if(facing)
+        {
+            data[5] = (int)data[5] + 1;
+        }
+        else
+        {
+            data[5] = (int)data[5] - 1;
+        }
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.Setting, data);
+        CulculateLibrary.SceneFadeOut(fader, () =>
+        {
+            ExtinguishingContract.ReloadLang();
+            GameSceneManager.ReloadHelp();
+        });
     }
 }

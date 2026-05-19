@@ -44,6 +44,13 @@ public static class ExtinguishingContract
             GameSetup();
         }
     }
+
+    public static void ReloadLang()
+    {
+        int lang = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).GetLang();
+        WordDataBase.Load(lang);
+        TextDataBase.Load(lang);
+    }
 }
 
 public static class GameSceneManager

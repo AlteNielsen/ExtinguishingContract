@@ -8,11 +8,15 @@
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="row center-line">
         <ui:VisualElement class="lang-plank" />
-        <ui:VisualElement class="selector reflect" />
-        <ui:VisualElement class="lang-frame center-line">
-            <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="English" />
+        <ui:VisualElement name="LeftLangButtonBlock" class="setting-selector reflect">
+            <ui:Button name="LeftLangButton" class="abs-all button-initialize transparent" />
         </ui:VisualElement>
-        <ui:VisualElement class="selector" />
+        <ui:VisualElement class="lang-frame center-line">
+            <ui:Label name="LangName" class="serif-bold text-semi-middle color-white text-multi-line" text="English" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RightLangButtonBlock" class="setting-selector" >
+            <ui:Button name="RightLangButton" class="abs-all button-initialize transparent" />
+        </ui:VisualElement>
     </ui:VisualElement>
 
     <ui:VisualElement class="text-plank" />
@@ -84,11 +88,15 @@
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="row center-line">
         <ui:VisualElement class="lang-plank" />
-        <ui:VisualElement class="selector reflect" />
+        <ui:VisualElement class="setting-selector reflect">
+            <ui:Button class="abs-all button-initialize transparent" />
+        </ui:VisualElement>
         <ui:VisualElement class="lang-frame center-line">
             <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="1920 x 1080" />
         </ui:VisualElement>
-        <ui:VisualElement class="selector" />
+        <ui:VisualElement class="setting-selector" >
+            <ui:Button class="abs-all button-initialize transparent" />
+        </ui:VisualElement>
     </ui:VisualElement>
 
     <ui:VisualElement class="text-plank" />

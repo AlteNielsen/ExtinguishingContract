@@ -25,6 +25,20 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
+.setting-selector{
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Textures/selector.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.setting-selector:hover{
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Textures/selector_hover.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
 .selector-pos-0{
     height: 6.5%;
 }
