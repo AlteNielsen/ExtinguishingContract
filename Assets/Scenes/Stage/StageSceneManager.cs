@@ -122,6 +122,9 @@ public class StageSceneManager : MonoBehaviour
         };
 
         Button setting = document.rootVisualElement.Q<Button>("SettingButton");
+        setting.clicked += SEManager.PlaySelectSE;
+        setting.clicked += Save;
+        setting.clicked += () => CulculateLibrary.SceneFadeOut(fader, () => GameSceneManager.ToHelp(GameScenes.Stage, true));
 
         Button resume = document.rootVisualElement.Q<Button>("ResumeButton");
         resume.clicked += SEManager.PlayCancelSE;
