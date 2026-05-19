@@ -79,10 +79,12 @@ public class HelpSceneManager : MonoBehaviour
         {
             int j = i;
             sideButtons[i].clicked += () => SwitchScreen(j);
+            sideButtons[i].clicked += SEManager.PlaySelectSE;
         }
         Button exit = document.rootVisualElement.Q<Button>("ExitButton");
         exit.clicked += () =>
         {
+            SEManager.PlayCancelSE();
             Save();
             CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
         };
@@ -139,6 +141,7 @@ public class HelpSceneManager : MonoBehaviour
         else
         {
             Button leftButton = document.rootVisualElement.Q<Button>("LeftLangButton");
+            leftButton.clicked += SEManager.PlaySelectSE;
             leftButton.clicked += () => LangSwitch(false);
         }
         VisualElement rightbb = document.rootVisualElement.Q<VisualElement>("RightLangButtonBlock");
@@ -148,8 +151,9 @@ public class HelpSceneManager : MonoBehaviour
         }
         else
         {
-            Button leftButton = document.rootVisualElement.Q<Button>("RightLangButton");
-            leftButton.clicked += () => LangSwitch(true);
+            Button rightButton = document.rootVisualElement.Q<Button>("RightLangButton");
+            rightButton.clicked += SEManager.PlaySelectSE;
+            rightButton.clicked += () => LangSwitch(true);
         }
         Label label = document.rootVisualElement.Q<Label>("LangName");
         label.text = words[lang]; 
@@ -203,6 +207,7 @@ public class HelpSceneManager : MonoBehaviour
             BGMManager.Instance.SetVolume(masterVolume * bgmVolume);
             SEManager.Instance.SetVolume(masterVolume * seVolume);
             masterVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(masterVolume);
+            SEManager.PlaySelectSE();
         });
 
         bgm.RegisterValueChangedCallback(evt =>
@@ -210,6 +215,7 @@ public class HelpSceneManager : MonoBehaviour
             bgmVolume = evt.newValue;
             BGMManager.Instance.SetVolume(masterVolume * bgmVolume);
             bgmVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(bgmVolume);
+            SEManager.PlaySelectSE();
         });
 
         se.RegisterValueChangedCallback(evt =>
@@ -217,6 +223,7 @@ public class HelpSceneManager : MonoBehaviour
             seVolume = evt.newValue;
             SEManager.Instance.SetVolume(masterVolume * seVolume);
             sevolumeLabel.text = "" + CulculateLibrary.FloatToPercent(seVolume);
+            SEManager.PlaySelectSE();
         });
     }
 
@@ -235,6 +242,7 @@ public class HelpSceneManager : MonoBehaviour
         for(int i = 0; i < buttons.Count; i++)
         {
             int j = i;
+            buttons[i].clicked += SEManager.PlaySelectSE;
             buttons[i].clicked += () => SelectDisplaySetting(j);
         }
     }
@@ -281,8 +289,10 @@ public class HelpSceneManager : MonoBehaviour
         ResolutionButtonDisplay(resolutionValue);
         WriteResolutionValueLabel(resolutionValue);
         Button leftb = document.rootVisualElement.Q<Button>("ResolutionLeftButton");
+        leftb.clicked += SEManager.PlaySelectSE;
         leftb.clicked += () => ResolutionSwitch(false);
         Button rightb = document.rootVisualElement.Q<Button>("ResolutionRightButton");
+        rightb.clicked += SEManager.PlaySelectSE;
         rightb.clicked += () => ResolutionSwitch(true);
     }
 
