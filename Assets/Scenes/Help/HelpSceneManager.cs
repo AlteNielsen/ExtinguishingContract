@@ -16,6 +16,14 @@ public class HelpSceneManager : MonoBehaviour
     private ScrollView settingScroll;
     private VisualElement selectorPlank;
 
+    private Label masterVolumeLabel;
+    private Label bgmVolumeLabel;
+    private Label sevolumeLabel;
+
+    private float masterVolume;
+    private float bgmVolume;
+    private float seVolume;
+
     private VisualElement fader;
 
     private void Awake()
@@ -36,7 +44,7 @@ public class HelpSceneManager : MonoBehaviour
         {
             SwitchScreen(0);
         }
-        LangSetup();
+        SettingSetup();
     }
 
     private void SetupScreens()
@@ -64,7 +72,11 @@ public class HelpSceneManager : MonoBehaviour
             sideButtons[i].clicked += () => SwitchScreen(j);
         }
         Button exit = document.rootVisualElement.Q<Button>("ExitButton");
-        exit.clicked += () => CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
+        exit.clicked += () =>
+        {
+            VolumeSave();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
+        };
     }
 
     private void WriteText()
@@ -96,6 +108,12 @@ public class HelpSceneManager : MonoBehaviour
             selectorPlank.RemoveFromClassList("selector-pos-" + i);
         }
         selectorPlank.AddToClassList("selector-pos-" + index);
+    }
+
+    private void SettingSetup()
+    {
+        LangSetup();
+        VolumeSetup();
     }
 
     private void LangSetup()
@@ -144,5 +162,61 @@ public class HelpSceneManager : MonoBehaviour
             ExtinguishingContract.ReloadLang();
             GameSceneManager.ReloadHelp();
         });
+    }
+
+    private void VolumeSetup()
+    {
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span;
+
+        masterVolume = datas[0];
+        bgmVolume = datas[1];
+        seVolume = datas[2];
+
+        Slider master = document.rootVisualElement.Q<Slider>("MasterSlider");
+        master.value = masterVolume;
+        Slider bgm = document.rootVisualElement.Q<Slider>("BGMSlider");
+        bgm.value = bgmVolume;
+        Slider se = document.rootVisualElement.Q<Slider>("SESlider");
+        se.value = seVolume;
+
+        masterVolumeLabel = document.rootVisualElement.Q<Label>("MasterVolumeLabel");
+        masterVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(masterVolume);
+        bgmVolumeLabel = document.rootVisualElement.Q<Label>("BGMVolumeLabel");
+        bgmVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(bgmVolume);
+        sevolumeLabel = document.rootVisualElement.Q<Label>("SEVolumeLabel");
+        sevolumeLabel.text = "" + CulculateLibrary.FloatToPercent(seVolume);
+
+        master.RegisterValueChangedCallback(evt =>
+        {
+            masterVolume = evt.newValue;
+            BGMManager.Instance.SetVolume(masterVolume * bgmVolume);
+            SEManager.Instance.SetVolume(masterVolume * seVolume);
+            masterVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(masterVolume);
+        });
+
+        bgm.RegisterValueChangedCallback(evt =>
+        {
+            bgmVolume = evt.newValue;
+            BGMManager.Instance.SetVolume(masterVolume * bgmVolume);
+            bgmVolumeLabel.text = "" + CulculateLibrary.FloatToPercent(bgmVolume);
+        });
+
+        se.RegisterValueChangedCallback(evt =>
+        {
+            seVolume = evt.newValue;
+            SEManager.Instance.SetVolume(masterVolume * seVolume);
+            sevolumeLabel.text = "" + CulculateLibrary.FloatToPercent(seVolume);
+        });
+    }
+
+    private void VolumeSave()
+    {
+        ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span;
+        float[] save = new float[datas.Length];
+        datas.CopyTo(save);
+        save[0] = masterVolume;
+        save[1] = bgmVolume;
+        save[2] = seVolume;
+        SaveDataManager.Instance.SetData((int)SaveDataManager.SaveDataChunk.Setting, save);
     }
 }

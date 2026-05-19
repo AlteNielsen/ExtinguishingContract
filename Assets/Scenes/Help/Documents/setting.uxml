@@ -29,27 +29,27 @@
         <ui:VisualElement class="lang-plank" />
         <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="Master" />
         <ui:VisualElement class="lang-plank" />
-        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:Slider name="MasterSlider" class="lang-frame " low-value="0" high-value="1" value="0.5" />
         <ui:VisualElement class="volume-plank" />
-        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+        <ui:Label name="MasterVolumeLabel" class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
     </ui:VisualElement>
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="row">
         <ui:VisualElement class="lang-plank" />
         <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="BGM" />
         <ui:VisualElement class="lang-plank" />
-        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:Slider name="BGMSlider" class="lang-frame " low-value="0" high-value="1" value="0.5" />
         <ui:VisualElement class="volume-plank" />
-        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+        <ui:Label name="BGMVolumeLabel" class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
     </ui:VisualElement>
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="row">
         <ui:VisualElement class="lang-plank" />
         <ui:Label class="serif-bold text-semi-middle color-white text-multi-line volume-frame" text="SE" />
         <ui:VisualElement class="lang-plank" />
-        <ui:Slider class="lang-frame " low-value="0" high-value="1" value="0.5" />
+        <ui:Slider name="SESlider" class="lang-frame " low-value="0" high-value="1" value="0.5" />
         <ui:VisualElement class="volume-plank" />
-        <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
+        <ui:Label name="SEVolumeLabel" class="serif-bold text-semi-middle color-white text-multi-line" text="50" />
     </ui:VisualElement>
 
     <ui:VisualElement class="text-plank" />
