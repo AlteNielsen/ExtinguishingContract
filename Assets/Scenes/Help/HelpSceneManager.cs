@@ -139,7 +139,7 @@ public class HelpSceneManager : MonoBehaviour
         else
         {
             Button leftButton = document.rootVisualElement.Q<Button>("LeftLangButton");
-            leftButton.clicked += () => LangSwitch(false, lang);
+            leftButton.clicked += () => LangSwitch(false);
         }
         VisualElement rightbb = document.rootVisualElement.Q<VisualElement>("RightLangButtonBlock");
         if(lang == words.Length - 1)
@@ -149,13 +149,13 @@ public class HelpSceneManager : MonoBehaviour
         else
         {
             Button leftButton = document.rootVisualElement.Q<Button>("RightLangButton");
-            leftButton.clicked += () => LangSwitch(true, lang);
+            leftButton.clicked += () => LangSwitch(true);
         }
         Label label = document.rootVisualElement.Q<Label>("LangName");
         label.text = words[lang]; 
     }
 
-    private void LangSwitch(bool facing, int now)
+    private void LangSwitch(bool facing)
     {
         float[] data = new float[6];
         SaveDataManager.Instance.GetData((int)SaveDataManager.SaveDataChunk.Setting, data);
