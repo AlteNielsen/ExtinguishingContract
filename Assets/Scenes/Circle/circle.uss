@@ -1,0 +1,6 @@
+.circle-logo{
+    width: 40%;
+    height: 30%;
+    background-image: url('project://database/Assets/Textures/CircleLogo_White.png');
+    -unity-background-scale-mode: scale-to-fit;
+}

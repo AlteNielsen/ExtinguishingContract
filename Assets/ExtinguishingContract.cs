@@ -56,7 +56,6 @@ public static class ExtinguishingContract
         TextDataBase.Load(lang);
 
         TextureDataBase.Load();
-        SaveDataManager.Instance.Save();
     }
 
     public static void DevelopOnlyGameSetup()
