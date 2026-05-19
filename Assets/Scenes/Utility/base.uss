@@ -73,6 +73,9 @@
     -unity-text-align: middle-center;
 }
 
+.text-set-right{
+    -unity-text-align: middle-right;
+}
 
 .non-display{
     display: none;

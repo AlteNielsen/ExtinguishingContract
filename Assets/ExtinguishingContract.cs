@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,27 @@ public static class ExtinguishingContract
     public const int CIndicatorNum = 9;
     public const int CIndicatorMaxLv = 10;
     public const int IndicatorChoicesNum = 9;
+    public const int ResolutionNum = 6;
+
+    public static Vector2Int GetResolution(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return new Vector2Int(1280, 720);
+            case 1:
+                return new Vector2Int(1920, 1080);
+            case 2:
+                return new Vector2Int(2560, 1440);
+            case 3:
+                return new Vector2Int(3840, 2160);
+            case 4:
+                return new Vector2Int(3440, 1440);
+            case 5:
+                return new Vector2Int(2160, 1440);
+        }
+        return new Vector2Int(1920, 1080);
+    }
 
     public static void GameSetup()
     {
@@ -44,10 +66,20 @@ public static class ExtinguishingContract
             GameSetup();
         }
     }
+
+    public static void ReloadLang()
+    {
+        int lang = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).GetLang();
+        WordDataBase.Load(lang);
+        TextDataBase.Load(lang);
+    }
 }
 
 public static class GameSceneManager
 {
+    private static GameScenes beforeScene;
+    public static bool helpIsSetting;
+
     public static void ToTitle()
     {
         SceneManager.LoadScene("TitleScene");
@@ -63,9 +95,30 @@ public static class GameSceneManager
         SceneManager.LoadScene("HomeScene");
     }
 
-    public static void ToHelp()
+    public static void ToHelp(GameScenes yourScene, bool isSetting)
     {
-        //SceneManager.LoadScene("HelpScene");
+        beforeScene = yourScene;
+        helpIsSetting = isSetting;
+        SceneManager.LoadScene("HelpScene");
+    }
+
+    public static void BackFromHelp()
+    {
+        switch(beforeScene)
+        {
+            case GameScenes.Title:
+                ToTitle();
+                break;
+            case GameScenes.Stage:
+                ToStage();
+                break;
+        }
+    }
+
+    public static void ReloadHelp()
+    {
+        helpIsSetting = true;
+        SceneManager.LoadScene("HelpScene");
     }
 
     public static void QuitGame()
@@ -111,4 +164,10 @@ public static class GameSceneManager
     {
         SceneManager.LoadScene("StageLoadingScene");
     }
+}
+
+public enum GameScenes
+{
+    Title,
+    Stage
 }

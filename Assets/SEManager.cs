@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    private static SEManager Instance;
+    public static SEManager Instance { get; private set; }
     private AudioSource audioSource;
 
     [SerializeField] private AudioClip selectSE;
@@ -24,6 +24,11 @@ public class SEManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 
     public static void PlaySelectSE()

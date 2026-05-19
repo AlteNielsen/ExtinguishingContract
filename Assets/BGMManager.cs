@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    private static BGMManager Instance;
+    public static BGMManager Instance { get; private set; }
+    private AudioSource audio;
 
     void Awake()
     {
@@ -10,10 +11,16 @@ public class BGMManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            audio = GetComponent<AudioSource>();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetVolume(float volume)
+    {
+        audio.volume = volume;
     }
 }

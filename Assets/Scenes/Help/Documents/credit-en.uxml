@@ -1,0 +1,42 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Credits" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    DEVELOPMENT : Systems [alte] / AlteNielsen" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    BGM : 「仄青く眠る、海底遺跡」by 蒲鉾さちこ 様 (DOVA-SYNDROME)" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+        https://dova-s.jp/bgm/detail/15037" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    SE : Sound Effect Lab" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+        https://soundeffect-lab.info/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    SE : OtoLogic" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+        https://otologic.jp/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Texture : illust-ac" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+        https://www.ac-illust.com/" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Bug Report : https://x.com/AlteNielsen" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    This game utilizes AI-generated imagery for a portion of its visual assets." />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="underbar bg-white" />
+    <ui:Label class="serif-regular text-tiny color-white text-multi-line" text="
+    © 2026 Systems [alte] All Rights Reserved." />
+    <ui:VisualElement class="under-plank" />
+</ui:UXML>

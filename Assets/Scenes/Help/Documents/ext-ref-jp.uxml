@@ -1,0 +1,80 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="消火指標のレベル" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    消火指標には内部的にレベルが存在し、高い物ほど数値が厳しくなる代わりに鎮火確率の上昇幅が大きくなります。" />
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="消火指標の選ばれ方" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    消火指標は６種類ｘ１～最大レベルのテーブルから、ランダムに９つがピックアップされます。" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    これは契約締結時、消火活動終了時(成功失敗問わず)に更新されます。"/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="他地区進捗による区画鎮火" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    ゲージを100%までためると、消火活動終了時にランダムな区画が一つ鎮火されます。活動により直接鎮火した区画を重複して鎮火することはありません。"/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="他地区進捗の溜まり方" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    事前のプレビューでは鎮火確率が100%を超えてから、あふれた分だけ増加し始める他地区進捗ゲージですが、実際には溢れた分以上、100%を超えなくともプールされます。" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    計算方法としては、まず鎮火確率が100%を超えていた場合、超えていた分が即座にプールされます。下回る場合は行われません。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    次に、100%を超えていたかに関わらず、鎮火成功判定用の乱数が生成され、乱数より鎮火確率が高ければ鎮火、下回れば失敗となります。鎮火した際、鎮火確率と使われた乱数の差分が摘出され、さらにゲージへプールされます。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    このような仕組みのため、鎮火確率が100%を超えると、より他地区進捗ゲージが溜まりやすくなります。"/>
+    
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="区画間延焼の範囲" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    消火活動が終了するごとに、契約指標で選んだ区画間炎上速度に従って、区画間延焼が起こります。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    区画が縦に一覧になっている画面において、上下に接している区画間で延焼が発生します。一覧で最も上と、最も下にある区画も設定上上下で接しているという判定になっており、最も下の区画から延焼が起こると、最も上の区画が次に炎上します。"/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="区画間延焼とガード" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    プレイヤー、あるいは他地区進捗による鎮火が行われた区画は、鎮火が行われたタイミング、そして次の延焼のタイミングまでガードを得ます。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    ガードを保持する間、延焼して炎上することはありません。"/>
+
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+    <ui:VisualElement class="text-plank" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="消火活動と延焼" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    消火活動中の延焼のタイミングは、ユニットを移動または回転した後に起こります。"/>
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    延焼速度の速さに関わらず、延焼は一回ずつ計算され、毎回ユニットの生存と消火範囲が再計算されています。延焼速度が速い場合、これが内部で複数回繰り返されることで、画面ではいきなり数マス延焼が進んだように見えています。"/>
+    <ui:VisualElement class="under-plank" />
+</ui:UXML>

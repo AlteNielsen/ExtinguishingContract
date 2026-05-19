@@ -25,10 +25,89 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.selector-pos{
-    top: 5%;
+.setting-selector{
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Textures/selector.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.setting-selector:hover{
+    width: 30px;
+    height: 30px;
+    background-image: url('project://database/Assets/Textures/selector_hover.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.selector-pos-0{
+    height: 6.5%;
+}
+
+.selector-pos-1{
+    height: 23%;
+}
+
+.selector-pos-2{
+    height: 39%;
+}
+
+.selector-pos-3{
+    height: 55%;
+}
+
+.selector-pos-4{
+    height: 71%;
 }
 
 .tab{
     height: 100px;
+}
+
+.text-plank{
+    height: 20px;
+}
+
+.volume-plank{
+    width: 20px;
+}
+
+.volume-frame{
+    width: 200px;
+}
+
+.lang-plank{
+    width: 50px;
+}
+
+.lang-frame{
+    width: 300px;
+}
+
+.display-button{
+    width: 300px;
+    height: 75px;
+}
+
+.display-on-button{
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 286px;
+    height: 61px;
+}
+
+.display-button-label{
+    top: -7px;
+}
+
+.under-plank{
+    height: 500px;
+}
+
+.topic .topic-label{
+    color: var(--color-white);
+}
+
+.topic:hover .topic-label{
+    color: red;
 }

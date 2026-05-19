@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="What is the Extinguishing Contract?" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    The Extinguishing Contract is a crisis-response system established to combat the frequent fires caused by recent, intensifying magnetic storms.
+    " />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    Under this contract, we provide you, the Commanders, with all necessary equipment and compensation. In return, you are required to extinguish the flames—regardless of the casualties or collateral damage incurred."
+    />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    While we evaluate fire hazards based on urban conditions and release them as Contract Grades, we are currently facing a critical shortage of Commanders across all grades. This deficit is projected to worsen."
+    />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-center" text="
+    We need your exceptional skills."
+    />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-center" text="
+    Extinguish every flame. Protect human life."
+    />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-right" text="
+    — The Extinguishing Contract Organization (ECO)"
+    />
+</ui:UXML>

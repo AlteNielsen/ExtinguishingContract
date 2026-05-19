@@ -6,6 +6,10 @@
     font-size: 28px;
 }
 
+.text-semi-middle{
+    font-size: 30px;
+}
+
 .text-mid{
     font-size: 36px;
 }

@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Style src="project:/Assets/Scenes/Utility/base.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/main.uss" />
+    <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
+    <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
+
+    <ui:Label class="serif-bold text-large color-white text-multi-line" text="Extinguishing Contract(鎮火契約)とは" />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    鎮火契約とは、近年徐々に強まる磁気嵐により頻発する火災に対処するために設立されたシステムです。
+    " />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    本契約に基づき、我々はあなた方指揮官の皆様に機材と報酬をを提供します。指揮官の皆様はそれを用い、どのような損害を出そうと火災を鎮火することが求められます。"
+    />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
+    我々は各都市の状況から消火難易度を評価、契約等級の形で皆様に公開していますが、現在全等級において指揮官不足となっており、今後さらに不足は加速するとみられています。"
+    />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-center" text="
+    我々にはあなたの高い実力が必要です"
+    />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-center" text="
+    全ての火災を鎮火し人命を守るために"
+    />
+    <ui:VisualElement class="text-plank" />
+    <ui:Label class="serif-bold text-semi-middle color-white text-multi-line text-set-right" text="
+    ー鎮火契約機構"
+    />
+</ui:UXML>
