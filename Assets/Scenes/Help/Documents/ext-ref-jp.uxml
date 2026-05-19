@@ -76,4 +76,5 @@
     消火活動中の延焼のタイミングは、ユニットを移動または回転した後に起こります。"/>
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     延焼速度の速さに関わらず、延焼は一回ずつ計算され、毎回ユニットの生存と消火範囲が再計算されています。延焼速度が速い場合、これが内部で複数回繰り返されることで、画面ではいきなり数マス延焼が進んだように見えています。"/>
+    <ui:VisualElement class="under-plank" />
 </ui:UXML>

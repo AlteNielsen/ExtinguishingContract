@@ -25,8 +25,24 @@
     -unity-background-scale-mode: scale-to-fit;
 }
 
-.selector-pos{
-    top: 5%;
+.selector-pos-0{
+    height: 6.5%;
+}
+
+.selector-pos-1{
+    height: 23%;
+}
+
+.selector-pos-2{
+    height: 39%;
+}
+
+.selector-pos-3{
+    height: 55%;
+}
+
+.selector-pos-4{
+    height: 71%;
 }
 
 .tab{
@@ -68,4 +84,8 @@
 
 .display-button-label{
     top: -7px;
+}
+
+.under-plank{
+    height: 500px;
 }

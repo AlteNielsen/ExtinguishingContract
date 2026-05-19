@@ -7,7 +7,7 @@
     <ui:Label class="serif-bold text-large color-white text-multi-line" text="Credits" />
     <ui:VisualElement class="text-plank" />
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
-    DEVELOPMENT : Systems[alte] / AlteNielsen" />
+    DEVELOPMENT : Systems [alte] / AlteNielsen" />
     <ui:VisualElement class="text-plank" />
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     BGM : 「仄青く眠る、海底遺跡」by 蒲鉾さちこ 様 (DOVA-SYNDROME)" />
@@ -37,5 +37,6 @@
     <ui:VisualElement class="text-plank" />
     <ui:VisualElement class="underbar bg-white" />
     <ui:Label class="serif-regular text-tiny color-white text-multi-line" text="
-    © 2026 Systems[alte] All Rights Reserved." />
+    © 2026 Systems [alte] All Rights Reserved." />
+    <ui:VisualElement class="under-plank" />
 </ui:UXML>

@@ -4,7 +4,7 @@
     <ui:Style src="project:/Assets/Scenes/Common/fonts.uss" />
     <ui:Style src="project:/Assets/Scenes/Help/help.uss" />
     
-   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/credit-jp.uxml" />
+   <ui:Template name="DocumentTemp" src="project:/Assets/Scenes/Help/Documents/setting.uxml" />
     <ui:Template name="SettingTemp" src="project:/Assets/Scenes/Help/Documents/setting.uxml" />
     <ui:VisualElement class="abs-all bg-black" />
     <ui:VisualElement class="all row padding-small" >
@@ -13,28 +13,33 @@
             <ui:VisualElement class="plank-line-large" />
             <ui:VisualElement class="row base-flex">
                 <ui:VisualElement class="selector-icon-range" >
-                    <ui:VisualElement class="selector-pos">
-                        <ui:VisualElement class="selector" />
-                    </ui:VisualElement>
+                    <ui:VisualElement name="SelectorPlank" class="selector-pos-0" />
+                    <ui:VisualElement class="selector" />
                 </ui:VisualElement>
                 <ui:VisualElement class="base-flex center-line">
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="鎮火契約とは" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="鎮火契約とは" />
+                        <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="契約リファレンス" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="契約リファレンス" />
+                        <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="消火リファレンス" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="消火リファレンス" />
+                        <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="設定" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="設定" />
+                        <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-small color-white" text="クレジット" />
+                        <ui:Label name="Text" class="serif-regular text-small color-white lang-frame text-set-center" text="クレジット" />
+                        <ui:Button name="SideButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                     <ui:VisualElement class="base-flex center-row center-line">
-                        <ui:Label class="serif-regular text-large color-white" text="EXIT" />
+                        <ui:Label name="Text" class="serif-regular text-large color-white lang-frame text-set-center" text="EXIT" />
+                        <ui:Button name="ExitButton" class="abs-all button-initialize transparent" />
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -42,11 +47,13 @@
         <ui:VisualElement class="partition bg-darkgray" />
         <ui:VisualElement class="base-flex">
             <ui:VisualElement class="plank-line-large" />
-            <ui:ScrollView class="padding-large" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+            <ui:ScrollView name="DocumentScroll" class="padding-large" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
                 <ui:Instance template="DocumentTemp" />
-                <ui:Instance template="DocumentTemp" class="non-display" />
+            </ui:ScrollView>
+            <ui:ScrollView name="SettingScroll" class="padding-large non-display" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden">
+                <ui:Instance template="SettingTemp" class="" />
             </ui:ScrollView>
         </ui:VisualElement>        
     </ui:VisualElement>
-
+    <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
 </ui:UXML>

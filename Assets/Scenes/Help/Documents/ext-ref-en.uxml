@@ -76,4 +76,5 @@
     During a firefighting operation, fire spread is triggered immediately after you move or rotate a unit."/>
     <ui:Label class="serif-bold text-semi-middle color-white text-multi-line" text="
     Regardless of how fast the spread rate is, the system calculates the fire's expansion step-by-step (one tile at a time). After each individual step, the unit's survival and its active extinguishing range are instantly recalculated. When the spread rate is high, this calculation loops multiple times internally—making it appear on-screen as though the fire suddenly advanced by multiple tiles at once."/>
+    <ui:VisualElement class="under-plank" />
 </ui:UXML>

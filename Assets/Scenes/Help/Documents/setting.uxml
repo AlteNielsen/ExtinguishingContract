@@ -112,4 +112,5 @@
             <ui:Label class="abs-all display-button-label serif-bold text-semi-middle color-white text-set-center" text="Resolution" />
         </ui:VisualElement>
     </ui:VisualElement>
+    <ui:VisualElement class="under-plank" />
 </ui:UXML>
