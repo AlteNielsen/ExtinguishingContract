@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SEManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class SEManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
+            ReadOnlySpan<float> datas = SaveDataManager.Instance.Access<SettingChunk>((int)SaveDataManager.SaveDataChunk.Setting).data.Span;
+            SetVolume(datas[0] * datas[2]);
         }
         else
         {
