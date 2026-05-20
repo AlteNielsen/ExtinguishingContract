@@ -10,5 +10,5 @@
         <ui:VisualElement class="circle-logo" />
         <ui:VisualElement class="bg-white underbar" />
     </ui:VisualElement>
-    <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
+    <ui:VisualElement name="Fader" class="abs-all circle-fader" picking-mode="Ignore" />
 </ui:UXML>

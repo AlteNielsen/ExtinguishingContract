@@ -109,6 +109,14 @@
     transition-timing-function: ease-in-out;
 }
 
+.circle-fader{
+    opacity: 0;
+    background-color: black;
+    transition-property: opacity;
+    transition-duration: 1.0s;
+    transition-timing-function: ease-in-out;
+}
+
 .fader-active{
     opacity: 1;
 }
