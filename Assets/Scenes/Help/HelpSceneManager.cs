@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using System;
+using UnityEngine.InputSystem;
 
 public class HelpSceneManager : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class HelpSceneManager : MonoBehaviour
     private int resolutionValue;    
 
     private VisualElement fader;
+
+    private InputAction rightClick;
+    private InputAction esc;
 
     private void Awake()
     {
@@ -81,6 +85,7 @@ public class HelpSceneManager : MonoBehaviour
             sideButtons[i].clicked += () => SwitchScreen(j);
             sideButtons[i].clicked += SEManager.PlaySelectSE;
         }
+
         Button exit = document.rootVisualElement.Q<Button>("ExitButton");
         exit.clicked += () =>
         {
@@ -88,6 +93,24 @@ public class HelpSceneManager : MonoBehaviour
             Save();
             CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
         };
+
+        rightClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightClick.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            Save();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
+        };
+        rightClick.Enable();
+
+        esc = new InputAction(binding: "<Keyboard>/escape");
+        esc.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            Save();
+            CulculateLibrary.SceneFadeOut(fader, GameSceneManager.BackFromHelp);
+        };
+        esc.Enable();
     }
 
     private void WriteText()

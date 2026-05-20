@@ -1,7 +1,8 @@
-using UnityEngine;
-using UnityEngine.UIElements;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class UnitSceneManager : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class UnitSceneManager : MonoBehaviour
     private int pressureLimit;
 
     private VisualElement fader;
+
+    private InputAction rightClick;
+    private InputAction esc;
 
     void Awake()
     {
@@ -90,6 +94,22 @@ public class UnitSceneManager : MonoBehaviour
         Button go = document.rootVisualElement.Q<Button>("GoButton");
         go.clicked += SEManager.PlayDecideSE;
         go.clicked += GoToStage;
+
+        rightClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightClick.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            BackToHome();
+        };
+        rightClick.Enable();
+
+        esc = new InputAction(binding: "<Keyboard>/escape");
+        esc.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            BackToHome();
+        };
+        esc.Enable();
     }
 
     private void UnitSelect(int index)

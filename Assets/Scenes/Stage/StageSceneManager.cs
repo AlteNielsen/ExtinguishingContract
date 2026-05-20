@@ -38,6 +38,7 @@ public class StageSceneManager : MonoBehaviour
     private InputAction clockwiseRotate;
     private InputAction counterClockwiseRotate;
     private InputAction rightClick;
+    private InputAction esc;
 
     private VisualElement fader;
 
@@ -97,6 +98,14 @@ public class StageSceneManager : MonoBehaviour
             RightClicked(width); 
         };
         rightClick.Enable();
+
+        esc = new InputAction(binding: "<Keyboard>/escape");
+        esc.performed += ctx =>
+        {
+            SEManager.PlaySelectSE();
+            sceneView.SwitchPauseScreen();
+        };
+        esc.Enable();
 
         List<Button> iconButtons = document.rootVisualElement.Query<Button>("UnitIconButton").ToList();
         for(int i = 0; i < iconButtons.Count; i++)

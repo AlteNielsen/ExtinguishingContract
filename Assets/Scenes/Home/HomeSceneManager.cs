@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class HomeSceneManager : MonoBehaviour
@@ -14,6 +15,9 @@ public class HomeSceneManager : MonoBehaviour
     private int blockSelector;
     private bool[] isIndicatorSelected = new bool[ExtinguishingContract.IndicatorChoicesNum];
     private VisualElement fader;
+
+    private InputAction rightClick;
+    private InputAction esc;
 
     void Awake()
     {
@@ -69,6 +73,22 @@ public class HomeSceneManager : MonoBehaviour
         Button backButton = document.rootVisualElement.Q<Button>("BackButton");
         backButton.clicked += BackToTitle;
         backButton.clicked += SEManager.PlayCancelSE;
+
+        rightClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightClick.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            BackToTitle();
+        };
+        rightClick.Enable();
+
+        esc = new InputAction(binding: "<Keyboard>/escape");
+        esc.performed += ctx =>
+        {
+            SEManager.PlayCancelSE();
+            BackToTitle();
+        };
+        esc.Enable();
     }
 
     private void RestoreSituationFromSaveData()
