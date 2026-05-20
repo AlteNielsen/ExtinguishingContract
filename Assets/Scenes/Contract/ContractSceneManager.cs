@@ -1,7 +1,8 @@
-using UnityEngine;
-using System.Collections.Generic;
-using UnityEngine.UIElements;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class ContractSceneManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class ContractSceneManager : MonoBehaviour
     private VisualElement fader;
 
     private const int randomLowMaxLv = 5;
+
+    private InputAction rightClick;
+    private InputAction esc;
 
     void Awake()
     {
@@ -49,6 +53,20 @@ public class ContractSceneManager : MonoBehaviour
         
         document.rootVisualElement.Q<Button>("RandomLow").clicked += () => IndicatorRandomSelect(randomLowMaxLv);
         document.rootVisualElement.Q<Button>("RandomHigh").clicked += () => IndicatorRandomSelect(ExtinguishingContract.CIndicatorMaxLv);
+
+        rightClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightClick.performed += ctx =>
+        {
+            ReconsiderClicked();
+        };
+        rightClick.Enable();
+
+        esc = new InputAction(binding: "<Keyboard>/escape");
+        esc.performed += ctx =>
+        {
+            ReconsiderClicked();
+        };
+        esc.Enable();
     }
 
     private void IndicatorRandomSelect(int maxLv)
