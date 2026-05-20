@@ -154,6 +154,7 @@
                 <ui:Button class="abs-all transparent button-initialize" />
             </ui:VisualElement>
         </ui:VisualElement>
+        <ui:Label name="Version" class="serif-regular text-small color-white version" text="ver 0.9.0" />
     </ui:VisualElement>
     <ui:VisualElement name="Fader" class="abs-all fader" picking-mode="Ignore" />
 </ui:UXML>

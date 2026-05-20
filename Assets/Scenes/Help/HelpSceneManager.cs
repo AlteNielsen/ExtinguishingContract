@@ -97,6 +97,8 @@ public class HelpSceneManager : MonoBehaviour
         {
             labels[i].text = TextDataBase.GetTexts(TextDataBase.TextDictionary.Help)[i];
         }
+        Label version = document.rootVisualElement.Q<Label>("Version");
+        version.text = "ver " + Config.Data.Version;
     }
 
     private void SwitchScreen(int index)

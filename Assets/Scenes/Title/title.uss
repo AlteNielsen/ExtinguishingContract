@@ -79,3 +79,9 @@
 .button:hover .button-underbar{
     background-color: var(--color-red);
 }
+
+.version{
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}

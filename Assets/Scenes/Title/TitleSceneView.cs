@@ -30,6 +30,8 @@ public class TitleSceneView
             continueUnderbar.RemoveFromClassList("button-underbar");
             continueText.AddToClassList("color-darkgray");
         }
+        Label version = document.rootVisualElement.Q<Label>("Version");
+        version.text = "ver " + Config.Data.Version;
     }
 
     public void WriteValue()

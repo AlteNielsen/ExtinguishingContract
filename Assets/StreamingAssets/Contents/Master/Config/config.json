@@ -10,5 +10,6 @@
 
     "unit_max_lv": 4,
     "indicator_max_lv": 3,
-    "indicator_base_chance": 0.1
+    "indicator_base_chance": 0.1,
+    "version": "1.0.0"
 }
