@@ -151,6 +151,18 @@
 }
 
 .retreat-icon{
+    width: 110px;
+    height: 110px;
+    background-image: url('project://database/Assets/Textures/retreat_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 0.4;
+}
+
+.pause-icons{
+    width: 200px;
+}
+
+.pause-icons:hover .retreat-icon{
     width: 125px;
     height: 125px;
     background-image: url('project://database/Assets/Textures/retreat_icon.png');
@@ -164,6 +176,13 @@
 }
 
 .pause-setting-icon{
+    width: 110px;
+    height: 110px;
+    background-image: url('project://database/Assets/Textures/setting_icon.png');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.pause-icons:hover .pause-setting-icon{
     width: 125px;
     height: 125px;
     background-image: url('project://database/Assets/Textures/setting_icon.png');
@@ -171,8 +190,16 @@
 }
 
 .pause-resume-icon{
-    width: 120px;
-    height: 120px;
+    width: 105px;
+    height: 105px;
+    background-image: url('project://database/Assets/Textures/selector.png');
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 0.5;
+}
+
+.pause-icons:hover .pause-resume-icon{
+    width: 115px;
+    height: 115px;
     background-image: url('project://database/Assets/Textures/selector.png');
     -unity-background-scale-mode: scale-to-fit;
     opacity: 0.5;

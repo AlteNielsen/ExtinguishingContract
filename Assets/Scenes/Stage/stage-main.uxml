@@ -220,7 +220,7 @@
         <ui:VisualElement class="underbar bg-darkred" />
         <ui:VisualElement class="pause-screen-center center-line center-row row">
             <ui:VisualElement class="abs-all the-black" />
-            <ui:VisualElement class="center-line">
+            <ui:VisualElement class="center-line pause-icons">
                 <ui:VisualElement class="retreat-icon" />
                 <ui:Label name="RetreatText" class="serif-bold text-large color-red" text="総撤退" />
                 <ui:Button name="RetreatButton" class="abs-all button-initialize transparent" />
@@ -228,7 +228,7 @@
             <ui:VisualElement class="plank-row-large" />
             <ui:VisualElement class="pause-partition bg-white" />
             <ui:VisualElement class="plank-row-large" />
-            <ui:VisualElement class="center-line">
+            <ui:VisualElement class="center-line pause-icons">
                 <ui:VisualElement class="pause-setting-icon" />
                 <ui:Label name="SettingText" class="serif-bold text-large color-white" text="設定/ヘルプ" />
                 <ui:Button name="SettingButton" class="abs-all button-initialize transparent" />
@@ -236,7 +236,7 @@
             <ui:VisualElement class="plank-row-large" />
             <ui:VisualElement class="pause-partition bg-white" />
             <ui:VisualElement class="plank-row-large" />
-            <ui:VisualElement class="center-line">
+            <ui:VisualElement class="center-line pause-icons">
                 <ui:VisualElement class="pause-resume-icon" />
                 <ui:Label name="ResumeText" class="serif-bold text-large color-white" text="再開" />
                 <ui:Button name="ResumeButton" class="abs-all button-initialize transparent" />
