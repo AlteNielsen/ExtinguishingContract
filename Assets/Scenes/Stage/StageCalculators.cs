@@ -49,6 +49,7 @@ public class CalculatorManager
         }
         unit.CopyTo(unitMapResult);
 
+        water.Clear();
         waterCalc.WaterCalculate(water, unit, facing);
         water.CopyTo(waterResult);
     }
