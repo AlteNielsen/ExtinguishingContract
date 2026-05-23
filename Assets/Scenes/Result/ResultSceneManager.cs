@@ -105,6 +105,7 @@ public class ResultSceneManager : MonoBehaviour
     {
         if (chance <= 0) return;
         int extCount = (int)(chance + SaveDataManager.Instance.Access<OtherProgressChunk>((int)SaveDataManager.SaveDataChunk.OtherProgress).data.Span[0]);
+        if (extCount <= 0) return;
         int burningCounter = 0;
         for(int i = 0; i < blockSituations.Length; i++)
         {
@@ -113,6 +114,7 @@ public class ResultSceneManager : MonoBehaviour
                 burningCounter++;
             }
         }
+        if(burningCounter <= 0) return;
         if (extCount >= burningCounter)
         {
             extCount = burningCounter;

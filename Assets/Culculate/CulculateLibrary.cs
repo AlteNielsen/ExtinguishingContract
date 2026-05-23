@@ -145,7 +145,11 @@ public static class CulculateLibrary
     }
 
     public static bool[] nCrProcess(int n, int r)
-    {
+    { 
+        if(n == 1)
+        {
+            return new bool[]{ true};
+        }
         int[] ramdomizer = new int[n];
         for(int i = 0; i < n; i++)
         {
