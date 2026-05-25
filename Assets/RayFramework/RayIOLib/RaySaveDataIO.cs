@@ -26,7 +26,7 @@ namespace Ray.FileIO
         private static T LoadJSON<T>(string filePath, bool isBak) where T : class 
         {
             string json = null;
-            if (isBak && !File.Exists(filePath + ".bak"))
+            if (isBak && File.Exists(filePath + ".bak"))
             {
                 using StreamReader reader = new StreamReader(filePath + ".bak", Encoding.UTF8);
                 json = reader.ReadToEnd();
